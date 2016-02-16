@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "*.ts"
+    ],
+    "files": [
+        "./fresco/fresco-common.ts",
+        "./fresco/fresco.android.ts",
+        "./fresco/fresco.ios.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}

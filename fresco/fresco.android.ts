@@ -2,6 +2,7 @@ import commonModule = require("./fresco-common");
 import utils = require("utils/utils");
 
 export class FrescoDrawee extends commonModule.FrescoDrawee {
+    private _android;
     public _createUI() {
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
         this.initImage();
