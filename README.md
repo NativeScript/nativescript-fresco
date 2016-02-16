@@ -20,7 +20,7 @@ if (application.android) {
     };
 }
 ```
-5. Use `fresco` in the XML definition of the page as follows:
+Use `fresco` in the XML definition of the page as follows:
 ```XML
 <Page
     xmlns="http://www.nativescript.org/tns.xsd" xmlns:f="fresco/fresco">
