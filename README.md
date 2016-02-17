@@ -9,9 +9,9 @@ The `nativescript-fresco` plugin enables NativeScript developers to use the `Fre
 
 ## How to use `nativescript-fresco`?
 1. Clone the repository and go to the root directory on your computer.
-2. Use `tsc` to transpile the `.ts` sources: `tsc -p .`
-3. Go to the root folder of your {N} application where you would like to install the plugin and type `tns plugin add <path-to-fresco-repo-dir>`
-4. Initialize `fresco` in the `launch` event of your {N} application" by using the following code:
+2. Use `tsc` to transpile the `.ts` sources: `tsc -p`.
+3. Go to the root folder of your {N} application where you would like to install the plugin and type `tns plugin add <path-to-fresco-repo-dir>`.
+4. Initialize `fresco` in the `launch` event of your {N} application by using the following code:
 ```JavaScript
 var application = require("application");
 if (application.android) {
