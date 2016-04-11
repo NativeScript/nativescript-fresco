@@ -1,5 +1,3 @@
-
-
 import commonModule = require("./nativescript-fresco-common");
 import utils = require("utils/utils");
 import types = require("utils/types");
@@ -131,34 +129,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         }
     }
 
-    // private getUriFromFileOrResource(sourcePath: string): string {
-    //     var res = utils.ad.getApplicationContext().getResources();
-    //     if (!res) {
-    //         return undefined;
-    //     }
-
-    //     if (!utils.isFileOrResourcePath(sourcePath)) {
-    //         throw new Error("Path \"" + "\" is not a valid file or resource.");
-    //     }
-
-    //     var path = sourcePath;
-    //     if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
-    //         var resName = path.substr(utils.RESOURCE_PREFIX.length);
-    //         var identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
-    //         if (0 < identifier) {
-    //             var uri = new android.net.Uri.Builder()
-    //                 .scheme(com.facebook.common.util.UriUtil.LOCAL_RESOURCE_SCHEME)
-    //                 .path(java.lang.String.valueOf(identifier))
-    //                 .build();
-    //             this._android.setImageURI(uri);
-
-    //             return uri;
-    //         }
-    //     }
-
-    //     return undefined;
-    // }
-
     // TODO: check if this will not lead to performance overhead as it is called for each property set to the FrescoDrawee.
     // This is because some of the proeprties are settable obly from the GenericDraweeHierarchyBuilder rather than from the SimpleDraweeView itself. 
     private updateHierarchy() {
@@ -186,18 +156,37 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private getDrawable(path: string) {
         var drawable;
         var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
-        
+
         if (utils.isFileOrResourcePath(path)) {
             if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
-                console.log("from resource");
-                
-                drawable = getDrawableFromResource(path);
+                drawable = this.getDrawableFromResource(path);
             } else {
-                console.log("from file");
-                
-                drawable = getDrawableLocalFile(path);
+                drawable = this.getDrawableLocalFile(path);
             }
         }
+
+        return drawable;
+    }
+
+    private getDrawableLocalFile(localFilePath: string) {
+        var drawable;
+        if (!fs) {
+            fs = require("file-system");
+        }
+
+        var fileName = types.isString(localFilePath) ? localFilePath.trim() : "";
+        if (fileName.indexOf("~/") === 0) {
+            fileName = fs.path.join(fs.knownFolders.currentApp().path, fileName.replace("~/", ""));
+        }
+
+        drawable = android.graphics.drawable.Drawable.createFromPath(fileName);
+
+        return drawable;
+    }
+
+    private getDrawableFromResource(resourceName: string) {
+        var img = imageSource.fromResource(resourceName.substr(utils.RESOURCE_PREFIX.length));
+        var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
 
         return drawable;
     }
@@ -276,17 +265,14 @@ class GenericDraweeHierarchyBuilder {
         return this;
     }
 
-    public setBackgrounds(backgrounds: Array<string>): GenericDraweeHierarchyBuilder {
+    public setBackgrounds(drawables: Array<any>): GenericDraweeHierarchyBuilder {
         if (!application.android) {
             return;
         }
 
-        var backgroundsList = new java.util.ArrayList();
-        backgrounds.forEach(function(entry) {
-            backgroundsList.add(getDrawableFromHexColor(entry));
-        });
+        // Implement
 
-        this.nativeBuilder.setBackgrounds(backgroundsList);
+        //this.nativeBuilder.setBackgrounds(backgroundsList);
 
         return this;
     }
@@ -304,40 +290,4 @@ class GenericDraweeHierarchyBuilder {
     public shutDown(): void {
         this.nativeBuilder.shutDown();
     }
-}
-
-function getDrawableFromHexColor(obj) {
-    var hexValue = parseInt(obj, 16);
-    var drawable;
-    if (hexValue) {
-        drawable = new android.graphics.drawable.ColorDrawable(hexValue);
-    }
-
-    return drawable;
-}
-
-function getDrawableLocalFile(localFilePath: string) {
-    var drawable;
-    if (!fs) {
-        fs = require("file-system");
-    }
-
-    var fileName = types.isString(localFilePath) ? localFilePath.trim() : "";
-    if (fileName.indexOf("~/") === 0) {
-        fileName = fs.path.join(fs.knownFolders.currentApp().path, fileName.replace("~/", ""));
-    }
-
-    drawable = android.graphics.drawable.Drawable.createFromPath(fileName);
-    
-    return drawable;
-}
-
-function getDrawableFromResource(resourceName: string) {
-    console.log(resourceName);
-    
-    imageSource.fromResource(resourceName);
-    var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), imageSource.android);
-    
-    console.log(drawable);
-    return drawable;
 }
