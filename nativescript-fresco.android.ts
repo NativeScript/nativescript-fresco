@@ -1,7 +1,6 @@
-/// <reference path="../Work/work projs/fresco-test-app/node_modules/tns-core-modules/tns-core-modules.d.ts" />
 
 
-import commonModule = require("./fresco-common");
+import commonModule = require("./nativescript-fresco-common");
 import utils = require("utils/utils");
 import types = require("utils/types");
 import application = require("application");

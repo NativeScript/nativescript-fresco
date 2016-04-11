@@ -1,3 +1,5 @@
+/// <reference path="references.d.ts" />
+
 import viewModule = require("ui/core/view");
 import dependencyObservable = require("ui/core/dependency-observable");
 import proxyModule = require("ui/core/proxy");
