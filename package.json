@@ -2,10 +2,11 @@
   "name": "fresco",
   "version": "0.1.0",
   "description": "This is a NativeScript plugin wrapping the popular Fresco library for managing images on Android.",
-  "main": "fresco.js",
+  "main": "nativescript-fresco.js",
    "files": [
-       "fresco/*.js",
-       "platforms"
+       "*.js",
+       "platforms",
+       "fresco.d.ts"
    ],
   "nativescript": {
     "ios": "^1.5.0",
