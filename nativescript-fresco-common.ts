@@ -9,13 +9,13 @@ var IMAGEURI = "imageUri";
 var FRESCODRAWEE = "FrescoDrawee";
 var ACTUALIMAGESCALETYPE = "actualImageScaleType";
 var FADEDURATION = "fadeDuration";
-var BACKGROUND = "background";
+var BACKGROUNDURI = "backgroundUri";
 var PROGRESSIVERENDERINGENABLED = "progressiveRenderingEnabled";
 var SHOWPROGRESSBAR = "showProgressBar";
 var PROGRESSBARCOLOR = "progressBarColor";
+var FAILUREIMAGEURI = "failureImageUri";
 
 export class FrescoDrawee extends viewModule.View {
-
     private static imageUriProperty = new dependencyObservable.Property(
         IMAGEURI,
         FRESCODRAWEE,
@@ -31,6 +31,14 @@ export class FrescoDrawee extends viewModule.View {
             undefined,
             dependencyObservable.PropertyMetadataSettings.None,
             FrescoDrawee.onPlaceholderImageUriPropertyChanged));
+
+    private static failureImageUriProperty = new dependencyObservable.Property(
+        FAILUREIMAGEURI,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onFailureImageUriPropertyChanged));
 
     // TODO change this from string to enum
     private static actualImageScaleTypeProperty = new dependencyObservable.Property(
@@ -49,13 +57,13 @@ export class FrescoDrawee extends viewModule.View {
             dependencyObservable.PropertyMetadataSettings.None,
             FrescoDrawee.onFadeDurationPropertyChanged));
 
-    private static backgroundProperty = new dependencyObservable.Property(
-        BACKGROUND,
+    private static backgroundUriProperty = new dependencyObservable.Property(
+        BACKGROUNDURI,
         FRESCODRAWEE,
         new proxyModule.PropertyMetadata(
             undefined,
             dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onBackgroundPropertyChanged));
+            FrescoDrawee.onBackgroundUriPropertyChanged));
 
     private static progressiveRenderingEnabledProperty = new dependencyObservable.Property(
         PROGRESSIVERENDERINGENABLED,
@@ -96,6 +104,14 @@ export class FrescoDrawee extends viewModule.View {
     set placeholderImageUri(value: string) {
         this._setValue(FrescoDrawee.placeholderImageUriProperty, value);
     }
+    
+    get failureImageUri(): string {
+        return this._getValue(FrescoDrawee.failureImageUriProperty);
+    }
+
+    set failureImageUri(value: string) {
+        this._setValue(FrescoDrawee.failureImageUriProperty, value);
+    }
 
     get actualImageScaleType(): string {
         return this._getValue(FrescoDrawee.actualImageScaleTypeProperty);
@@ -113,12 +129,12 @@ export class FrescoDrawee extends viewModule.View {
         this._setValue(FrescoDrawee.fadeDurationProperty, value);
     }
 
-    get background(): string {
-        return this._getValue(FrescoDrawee.backgroundProperty);
+    get backgroundUri(): string {
+        return this._getValue(FrescoDrawee.backgroundUriProperty);
     }
 
-    set background(value: string) {
-        this._setValue(FrescoDrawee.backgroundProperty, value);
+    set backgroundUri(value: string) {
+        this._setValue(FrescoDrawee.backgroundUriProperty, value);
     }
 
     get progressiveRenderingEnabled(): boolean {
@@ -129,14 +145,14 @@ export class FrescoDrawee extends viewModule.View {
         this._setValue(FrescoDrawee.progressiveRenderingEnabledProperty, value);
     }
 
-    get showProgressBar(): string {
+    get showProgressBar(): boolean {
         return this._getValue(FrescoDrawee.showProgressBarProperty);
     }
 
-    set showProgressBar(value: string) {
+    set showProgressBar(value: boolean) {
         this._setValue(FrescoDrawee.showProgressBarProperty, value);
     }
-    
+
     get progressBarColor(): string {
         return this._getValue(FrescoDrawee.progressBarColorProperty);
     }
@@ -144,7 +160,7 @@ export class FrescoDrawee extends viewModule.View {
     set progressBarColor(value: string) {
         this._setValue(FrescoDrawee.progressBarColorProperty, value);
     }
-
+    
     private static onImageUriPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onImageUriChanged(args);
@@ -153,6 +169,11 @@ export class FrescoDrawee extends viewModule.View {
     private static onPlaceholderImageUriPropertyChanged(args) {
         var drawee = args.object;
         drawee.onPlaceholderImageUriChanged(args);
+    }
+    
+    private static onFailureImageUriPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onFailureImageUriChanged(args);
     }
 
     private static onActualImageScaleTypePropertyChanged(args) {
@@ -165,9 +186,9 @@ export class FrescoDrawee extends viewModule.View {
         drawee.onFadeDurationChanged(args);
     }
 
-    private static onBackgroundPropertyChanged(args) {
+    private static onBackgroundUriPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
-        drawee.onBackgroundChanged(args);
+        drawee.onBackgroundUriChanged(args);
     }
 
     private static onProgressiveRenderingEnabledPropertyChanged(args) {
@@ -179,7 +200,7 @@ export class FrescoDrawee extends viewModule.View {
         var drawee: FrescoDrawee = args.object;
         drawee.onShowProgressBarChanged(args);
     }
-    
+
     private static onProgressBarColorPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onProgressBarColorChanged(args);
@@ -192,6 +213,10 @@ export class FrescoDrawee extends viewModule.View {
     protected onPlaceholderImageUriChanged(args) {
 
     }
+    
+    protected onFailureImageUriChanged(args) {
+
+    }
 
     protected onActualImageScaleTypeChanged(args) {
 
@@ -201,7 +226,7 @@ export class FrescoDrawee extends viewModule.View {
 
     }
 
-    protected onBackgroundChanged(args) {
+    protected onBackgroundUriChanged(args) {
 
     }
 
@@ -212,7 +237,7 @@ export class FrescoDrawee extends viewModule.View {
     protected onShowProgressBarChanged(args) {
 
     }
-    
+
     protected onProgressBarColorChanged(args) {
 
     }

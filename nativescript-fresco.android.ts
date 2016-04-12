@@ -12,7 +12,8 @@ export function initialize(): void {
 
 export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android;
-    private imageDrawable;
+    private placeholderImageDrawable;
+    private failureImageDrawable;
     private backgroundDrawable;
 
     public _createUI() {
@@ -37,6 +38,10 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onPlaceholderImageUriChanged(args) {
         this.initPlaceholderImage();
     }
+    
+    protected onFailureImageUriChanged(args) {
+        this.initFailureImage();
+    }
 
     protected onActualImageScaleTypeChanged(args) {
         this.initActualImageScaleType();
@@ -46,7 +51,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initFadeDuration();
     }
 
-    protected onBackgroundChanged(args) {
+    protected onBackgroundUriChanged(args) {
         this.initBackground();
     }
 
@@ -54,7 +59,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     }
 
-    private onShowProgressBarChanged() {
+    protected onShowProgressBarChanged() {
         if (this._android) {
             if (this.showProgressBar) {
                 this.updateHierarchy();
@@ -72,6 +77,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     private initDrawee() {
         this.initImage();
+        this.initFailureImage();
         this.initPlaceholderImage();
         this.initActualImageScaleType();
         this.initFadeDuration();
@@ -134,7 +140,16 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private initPlaceholderImage() {
         if (this._android) {
             if (this.placeholderImageUri) {
-                this.imageDrawable = this.getDrawable(this.placeholderImageUri);
+                this.placeholderImageDrawable = this.getDrawable(this.placeholderImageUri);
+                this.updateHierarchy();
+            }
+        }
+    }
+    
+    private initFailureImage() {
+        if (this._android) {
+            if (this.failureImageUri) {
+                this.failureImageDrawable = this.getDrawable(this.failureImageUri);
                 this.updateHierarchy();
             }
         }
@@ -150,8 +165,8 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     private initBackground() {
         if (this._android) {
-            if (this.background) {
-                this.backgroundDrawable = this.getDrawable(this.background);
+            if (this.backgroundUri) {
+                this.backgroundDrawable = this.getDrawable(this.backgroundUri);
                 this.updateHierarchy();
             }
         }
@@ -161,19 +176,23 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     // This is because some of the proeprties are settable obly from the GenericDraweeHierarchyBuilder rather than from the SimpleDraweeView itself. 
     private updateHierarchy() {
         var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
-        if (this.placeholderImageUri) {
-            builder.setPlaceholderImage(this.imageDrawable);
+        if (this.failureImageUri && this.failureImageDrawable) {
+            builder.setFailureImage(this.failureImageDrawable);
+        }
+        
+        if (this.placeholderImageUri && this.placeholderImageDrawable) {
+            builder.setPlaceholderImage(this.placeholderImageDrawable);
         }
 
         if (this.actualImageScaleType) {
             builder.setActualImageScaleType(this.actualImageScaleType);
         }
 
-        if (this.fadeDuration && this.fadeDuration) {
+        if (this.fadeDuration) {
             builder.setFadeDuration(this.fadeDuration);
         }
 
-        if (this.background && this.backgroundDrawable) {
+        if (this.backgroundUri && this.backgroundDrawable) {
             builder.setBackground(this.backgroundDrawable);
         }
 
@@ -228,6 +247,16 @@ class GenericDraweeHierarchyBuilder {
         }
 
         this.nativeBuilder.setPlaceholderImage(drawable);
+
+        return this;
+    }
+    
+    public setFailureImage(drawable): GenericDraweeHierarchyBuilder {
+        if (!application.android) {
+            return;
+        }
+
+        this.nativeBuilder.setFailureImage(drawable);
 
         return this;
     }
