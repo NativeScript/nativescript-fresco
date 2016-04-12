@@ -2,10 +2,7 @@ import commonModule = require("./nativescript-fresco-common");
 import utils = require("utils/utils");
 import types = require("utils/types");
 import application = require("application");
-import * as fileSystemModule from "file-system";
 import imageSource = require("image-source");
-
-var fs: typeof fileSystemModule;
 
 export function initialize(): void {
     if (application.android) {
@@ -69,33 +66,35 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         }
     }
 
-    // TODO: refactor this
     private initImage() {
         if (this._android) {
-            this._android.setImageURI(null, null);
+            this._android.setImageURI(null);
             if (this.imageUri) {
-                if (!utils.isFileOrResourcePath(this.imageUri)) {
+                var image = this.getDrawable(this.imageUri);
+                if (!image) {
                     this._android.setImageURI(android.net.Uri.parse(this.imageUri), null);
-                }
-                else {
-                    var res = utils.ad.getApplicationContext().getResources();
-                    if (!res) {
-                        return;
-                    }
-                    if (!utils.isFileOrResourcePath(this.imageUri)) {
-                        throw new Error("Path \"" + "\" is not a valid file or resource.");
-                    }
-                    var path = this.imageUri;
-                    if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
-                        var resName = path.substr(utils.RESOURCE_PREFIX.length);
-                        var identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
-                        if (0 < identifier) {
-                            var uri = new android.net.Uri.Builder()
-                                .scheme(com.facebook.common.util.UriUtil.LOCAL_RESOURCE_SCHEME)
-                                .path(java.lang.String.valueOf(identifier))
-                                .build();
-                            this._android.setImageURI(uri);
+                } else {
+                    if (utils.isFileOrResourcePath(this.imageUri)) {
+                        var res = utils.ad.getApplicationContext().getResources();
+                        if (!res) {
+                            return;
                         }
+
+                        var uri;
+                        if (this.imageUri.indexOf(utils.RESOURCE_PREFIX) === 0) {
+                            var resName = this.imageUri.substr(utils.RESOURCE_PREFIX.length);
+                            var identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
+                            if (0 < identifier) {
+                                uri = new android.net.Uri.Builder()
+                                    .scheme(com.facebook.common.util.UriUtil.LOCAL_RESOURCE_SCHEME)
+                                    .path(java.lang.String.valueOf(identifier))
+                                    .build();
+                            }
+                        } else {
+                            // TODO: load from local file
+                        }
+
+                        this._android.setImageURI(uri);
                     }
                 }
             }
@@ -161,25 +160,16 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
                 drawable = this.getDrawableFromResource(path);
             } else {
-                drawable = this.getDrawableLocalFile(path);
+                drawable = this.getDrawableFromLocalFile(path);
             }
         }
 
         return drawable;
     }
 
-    private getDrawableLocalFile(localFilePath: string) {
-        var drawable;
-        if (!fs) {
-            fs = require("file-system");
-        }
-
-        var fileName = types.isString(localFilePath) ? localFilePath.trim() : "";
-        if (fileName.indexOf("~/") === 0) {
-            fileName = fs.path.join(fs.knownFolders.currentApp().path, fileName.replace("~/", ""));
-        }
-
-        drawable = android.graphics.drawable.Drawable.createFromPath(fileName);
+    private getDrawableFromLocalFile(localFilePath: string) {
+        var img = imageSource.fromFile(localFilePath);
+        var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
 
         return drawable;
     }
