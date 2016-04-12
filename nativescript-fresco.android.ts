@@ -34,20 +34,40 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initImage();
     }
 
-    protected onPlaceholderImageUriPropertyChanged(args) {
+    protected onPlaceholderImageUriChanged(args) {
         this.initPlaceholderImage();
     }
 
-    protected onActualImageScaleTypePropertyChanged(args) {
+    protected onActualImageScaleTypeChanged(args) {
         this.initActualImageScaleType();
     }
 
-    protected onFadeDurationPropertyChanged(args) {
+    protected onFadeDurationChanged(args) {
         this.initFadeDuration();
     }
 
-    protected onBackgroundPropertyChanged(args) {
+    protected onBackgroundChanged(args) {
         this.initBackground();
+    }
+
+    protected onProgressiveRenderingEnabledChanged(args) {
+
+    }
+
+    private onShowProgressBarChanged() {
+        if (this._android) {
+            if (this.showProgressBar) {
+                this.updateHierarchy();
+            }
+        }
+    }
+
+    protected onProgressBarColorChanged(args) {
+        if (this._android) {
+            if (this.progressBarColor) {
+                this.updateHierarchy();
+            }
+        }
     }
 
     private initDrawee() {
@@ -71,8 +91,9 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             this._android.setImageURI(null);
             if (this.imageUri) {
                 var image = this.getDrawable(this.imageUri);
+                var uri;
                 if (!image) {
-                    this._android.setImageURI(android.net.Uri.parse(this.imageUri), null);
+                    uri = android.net.Uri.parse(this.imageUri);
                 } else {
                     if (utils.isFileOrResourcePath(this.imageUri)) {
                         var res = utils.ad.getApplicationContext().getResources();
@@ -93,10 +114,19 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         } else {
                             // TODO: load from local file
                         }
-
-                        this._android.setImageURI(uri);
                     }
                 }
+
+                var progressiveRenderingEnabledValue = this.progressiveRenderingEnabled != undefined ? this.progressiveRenderingEnabled : false;
+                var request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
+                    .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                    .build();
+                var controller = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder()
+                    .setImageRequest(request)
+                    .setOldController(this._android.getController())
+                    .build();
+
+                this._android.setController(controller);
             }
         }
     }
@@ -122,7 +152,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (this._android) {
             if (this.background) {
                 this.backgroundDrawable = this.getDrawable(this.background);
-
                 this.updateHierarchy();
             }
         }
@@ -148,6 +177,10 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             builder.setBackground(this.backgroundDrawable);
         }
 
+        if (this.showProgressBar) {
+            builder.setProgressBarImage(this.progressBarColor);
+        }
+
         var hiearchy = builder.build();
         this._android.setHierarchy(hiearchy);
     }
@@ -155,7 +188,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private getDrawable(path: string) {
         var drawable;
         var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
-
         if (utils.isFileOrResourcePath(path)) {
             if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
                 drawable = this.getDrawableFromResource(path);
@@ -255,24 +287,27 @@ class GenericDraweeHierarchyBuilder {
         return this;
     }
 
-    public setBackgrounds(drawables: Array<any>): GenericDraweeHierarchyBuilder {
-        if (!application.android) {
-            return;
-        }
-
-        // Implement
-
-        //this.nativeBuilder.setBackgrounds(backgroundsList);
-
-        return this;
-    }
-
     public setBackground(drawable): GenericDraweeHierarchyBuilder {
         if (!application.android) {
             return;
         }
 
         this.nativeBuilder.setBackground(drawable);
+
+        return this;
+    }
+
+    public setProgressBarImage(color: string): GenericDraweeHierarchyBuilder {
+        if (!application.android) {
+            return;
+        }
+
+        var drawable = new com.facebook.drawee.drawable.ProgressBarDrawable();
+        if (color) {
+            drawable.setColor(android.graphics.Color.parseColor(color));
+        }
+        
+        this.nativeBuilder.setProgressBarImage(drawable);
 
         return this;
     }
