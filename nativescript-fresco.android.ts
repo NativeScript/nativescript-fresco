@@ -38,7 +38,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onPlaceholderImageUriChanged(args) {
         this.initPlaceholderImage();
     }
-    
+
     protected onFailureImageUriChanged(args) {
         this.initFailureImage();
     }
@@ -60,19 +60,11 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     protected onShowProgressBarChanged() {
-        if (this._android) {
-            if (this.showProgressBar) {
-                this.updateHierarchy();
-            }
-        }
+        this.initProcessBar();
     }
 
     protected onProgressBarColorChanged(args) {
-        if (this._android) {
-            if (this.progressBarColor) {
-                this.updateHierarchy();
-            }
-        }
+        this.initProcessBarColor();
     }
 
     private initDrawee() {
@@ -82,6 +74,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initActualImageScaleType();
         this.initFadeDuration();
         this.initBackground();
+        this.initProcessBar();
     }
 
     private initActualImageScaleType() {
@@ -145,7 +138,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             }
         }
     }
-    
+
     private initFailureImage() {
         if (this._android) {
             if (this.failureImageUri) {
@@ -172,6 +165,22 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         }
     }
 
+    private initProcessBar() {
+        if (this._android) {
+            if (this.showProgressBar) {
+                this.updateHierarchy();
+            }
+        }
+    }
+
+    private initProcessBarColor() {
+        if (this._android) {
+            if (this.progressBarColor) {
+                this.updateHierarchy();
+            }
+        }
+    }
+
     // TODO: check if this will not lead to performance overhead as it is called for each property set to the FrescoDrawee.
     // This is because some of the proeprties are settable obly from the GenericDraweeHierarchyBuilder rather than from the SimpleDraweeView itself. 
     private updateHierarchy() {
@@ -179,7 +188,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (this.failureImageUri && this.failureImageDrawable) {
             builder.setFailureImage(this.failureImageDrawable);
         }
-        
+
         if (this.placeholderImageUri && this.placeholderImageDrawable) {
             builder.setPlaceholderImage(this.placeholderImageDrawable);
         }
@@ -250,7 +259,7 @@ class GenericDraweeHierarchyBuilder {
 
         return this;
     }
-    
+
     public setFailureImage(drawable): GenericDraweeHierarchyBuilder {
         if (!application.android) {
             return;
@@ -265,36 +274,9 @@ class GenericDraweeHierarchyBuilder {
         if (!application.android) {
             return;
         }
-        switch (scaleType) {
-            case "center":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER);
-                break;
-            case "center_crop":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER_CROP);
-                break;
-            case "center_inside":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER_INSIDE);
-                break;
-            case "fit_center":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_CENTER);
-                break;
-            case "fit_end":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_END);
-                break;
-            case "fit_start":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_START);
-                break;
-            case "fit_xy":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_XY);
-                break;
-            case "matrix":
-                this.nativeBuilder.setActualImageScaleType(com.facebook.drawee.drawable.ScalingUtils.ScaleType.MATRIX);
-                break;
-            default:
-                break;
-        }
 
-
+        this.nativeBuilder.setActualImageScaleType(getScaleType(scaleType));
+     
         return this;
     }
 
@@ -335,7 +317,7 @@ class GenericDraweeHierarchyBuilder {
         if (color) {
             drawable.setColor(android.graphics.Color.parseColor(color));
         }
-        
+
         this.nativeBuilder.setProgressBarImage(drawable);
 
         return this;
@@ -343,5 +325,30 @@ class GenericDraweeHierarchyBuilder {
 
     public shutDown(): void {
         this.nativeBuilder.shutDown();
+    }
+}
+
+function getScaleType(scaleType: string) {
+    if (types.isString(scaleType)) {
+        switch (scaleType) {
+            case "center":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER;
+            case "centerCrop":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER_CROP;
+            case "centerInside":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER_INSIDE;
+            case "fitCenter":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_CENTER;
+            case "fitEnd":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_END;
+            case "fitStart":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_START;
+            case "fitXY":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_XY;
+            case "focusCrop":
+                return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FOCUS_CROP;
+            default:
+                break;
+        }
     }
 }

@@ -27,7 +27,7 @@ declare module "nativescript-fresco" {
         
          /**
          * String value used by FrescoDrawee image scale type. This property can be set to
-         * 'center', 'center_crop', 'center_inside', 'fit_center', 'fit_end', 'fit_start', 'fit_xy', 'matrix'.
+         * 'center', 'centerCrop', 'centerInside', 'fitCenter', 'fitEnd', 'fitStart', 'fitXY' and 'focusCrop'.
          */
         actualImageScaleType: string;
         
