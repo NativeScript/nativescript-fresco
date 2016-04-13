@@ -11,22 +11,22 @@ declare module "nativescript-fresco" {
     
     export class FrescoDrawee {
         /**
-         * String value used for the image's URI.
+         * String value used for the image URI.
          */
         imageUri: string;
         
          /**
-         * String value used for the placeholder image's URI.
+         * String value used for the placeholder image URI.
          */
         placeholderImageUri: string;
         
           /**
-         * String value used for the failure image's URI.
+         * String value used for the failure image URI.
          */
         failureImageUri: string;
         
          /**
-         * String value used by FrescoDrawee image's scale type. This property can be set to
+         * String value used by FrescoDrawee image scale type. This property can be set to
          * 'center', 'center_crop', 'center_inside', 'fit_center', 'fit_end', 'fit_start', 'fit_xy', 'matrix'.
          */
         actualImageScaleType: string;
@@ -37,7 +37,7 @@ declare module "nativescript-fresco" {
         fadeDuration: number;
         
         /**
-         * String value used for the background image's URI.
+         * String value used for the background image URI.
          */
         backgroundUri: string;
         
