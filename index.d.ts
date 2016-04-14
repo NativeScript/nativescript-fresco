@@ -55,6 +55,36 @@ declare module "nativescript-fresco" {
          * String value used for setting the color of the progress bar. Can be set to hex values ("#FF0000"") and predefined colors ("green").
          */
         progressBarColor: string;
+        
+         /**
+         * Boolean value used for determining if the image should be rounded as a circle.
+         */
+        roundAsCircle: boolean;
+        
+        /**
+         * Boolean value used for determining if the image's bottom right corner should be rounded.
+         */
+        roundBottomRight: boolean;
+        
+         /**
+         * Boolean value used for determining if the image's bottom left corner should be rounded.
+         */
+        roundBottomLeft: boolean;
+        
+        /**
+         * Boolean value used for determining if the image's top left corner should be rounded.
+         */
+        roundTopLeft: boolean;
+        
+        /**
+         * Boolean value used for determining if the image's top right corner should be rounded.
+         */
+        roundTopRight: boolean;
+        
+        /**
+         * Number value used as radius for rounding the image's corners.
+         */
+        roundedCornerRadius: number;
     }
     
     export enum ScaleType {

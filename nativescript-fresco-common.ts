@@ -14,6 +14,12 @@ var PROGRESSIVERENDERINGENABLED = "progressiveRenderingEnabled";
 var SHOWPROGRESSBAR = "showProgressBar";
 var PROGRESSBARCOLOR = "progressBarColor";
 var FAILUREIMAGEURI = "failureImageUri";
+var ROUNDASCIRCLE = "roundAsCircle";
+var ROUNDTOPLEFT = "roundTopLeft";
+var ROUNDTOPRIGHT = "roundTopRight";
+var ROUNDBOTTOMLEFT = "roundBottomLeft";
+var ROUNDBOTTOMRIGHT = "roundBottomRight";
+var ROUNDEDCORNERRADIUS = "roundedCornerRadius";
 
 export module ScaleType {
     export var Center = "center";
@@ -51,7 +57,6 @@ export class FrescoDrawee extends viewModule.View {
             dependencyObservable.PropertyMetadataSettings.None,
             FrescoDrawee.onFailureImageUriPropertyChanged));
 
-    // TODO change this from string to enum
     private static actualImageScaleTypeProperty = new dependencyObservable.Property(
         ACTUALIMAGESCALETYPE,
         FRESCODRAWEE,
@@ -100,6 +105,54 @@ export class FrescoDrawee extends viewModule.View {
             dependencyObservable.PropertyMetadataSettings.None,
             FrescoDrawee.onProgressBarColorPropertyChanged));
 
+    private static roundAsCircleProperty = new dependencyObservable.Property(
+        ROUNDASCIRCLE,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onRoundAsCirclePropertyChanged));
+
+    private static roundTopLeftProperty = new dependencyObservable.Property(
+        ROUNDTOPLEFT,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onRoundTopLeftPropertyChanged));
+
+    private static roundTopRightProperty = new dependencyObservable.Property(
+        ROUNDTOPRIGHT,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onRoundTopRightPropertyChanged));
+
+    private static roundBottomLeftroperty = new dependencyObservable.Property(
+        ROUNDBOTTOMLEFT,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onRoundBottomLeftPropertyChanged));
+
+    private static roundBottomRightProperty = new dependencyObservable.Property(
+        ROUNDBOTTOMRIGHT,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onRoundBottomRightPropertyChanged));
+
+    private static roundedCornerRadiusProperty = new dependencyObservable.Property(
+        ROUNDEDCORNERRADIUS,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onRoundedCornerRadiusPropertyChanged));
+
     get imageUri(): string {
         return this._getValue(FrescoDrawee.imageUriProperty);
     }
@@ -115,7 +168,7 @@ export class FrescoDrawee extends viewModule.View {
     set placeholderImageUri(value: string) {
         this._setValue(FrescoDrawee.placeholderImageUriProperty, value);
     }
-    
+
     get failureImageUri(): string {
         return this._getValue(FrescoDrawee.failureImageUriProperty);
     }
@@ -171,7 +224,55 @@ export class FrescoDrawee extends viewModule.View {
     set progressBarColor(value: string) {
         this._setValue(FrescoDrawee.progressBarColorProperty, value);
     }
-    
+
+    get roundAsCircle(): boolean {
+        return this._getValue(FrescoDrawee.roundAsCircleProperty);
+    }
+
+    set roundAsCircle(value: boolean) {
+        this._setValue(FrescoDrawee.roundAsCircleProperty, value);
+    }
+
+    get roundBottomRight(): boolean {
+        return this._getValue(FrescoDrawee.roundBottomRightProperty);
+    }
+
+    set roundBottomRight(value: boolean) {
+        this._setValue(FrescoDrawee.roundBottomRightProperty, value);
+    }
+
+    get roundTopLeft(): boolean {
+        return this._getValue(FrescoDrawee.roundTopLeftProperty);
+    }
+
+    set roundTopLeft(value: boolean) {
+        this._setValue(FrescoDrawee.roundTopLeftProperty, value);
+    }
+
+    get roundTopRight(): boolean {
+        return this._getValue(FrescoDrawee.roundTopRightProperty);
+    }
+
+    set roundTopRight(value: boolean) {
+        this._setValue(FrescoDrawee.roundTopRightProperty, value);
+    }
+
+    get roundBottomLeft(): boolean {
+        return this._getValue(FrescoDrawee.roundBottomLeftroperty);
+    }
+
+    set roundBottomLeft(value: boolean) {
+        this._setValue(FrescoDrawee.roundBottomLeftroperty, value);
+    }
+
+    get roundedCornerRadius(): number {
+        return this._getValue(FrescoDrawee.roundedCornerRadiusProperty);
+    }
+
+    set roundedCornerRadius(value: number) {
+        this._setValue(FrescoDrawee.roundedCornerRadiusProperty, value);
+    }
+
     private static onImageUriPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onImageUriChanged(args);
@@ -181,7 +282,7 @@ export class FrescoDrawee extends viewModule.View {
         var drawee = args.object;
         drawee.onPlaceholderImageUriChanged(args);
     }
-    
+
     private static onFailureImageUriPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onFailureImageUriChanged(args);
@@ -217,6 +318,36 @@ export class FrescoDrawee extends viewModule.View {
         drawee.onProgressBarColorChanged(args);
     }
 
+    private static onRoundAsCirclePropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onRoundAsCircleChanged(args);
+    }
+
+    private static onRoundTopLeftPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onRoundTopLeftChanged(args);
+    }
+
+    private static onRoundTopRightPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onRoundTopRightChanged(args);
+    }
+
+    private static onRoundBottomLeftPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onRoundBottomLeftrChanged(args);
+    }
+
+    private static onRoundBottomRightPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onRoundBottomRightChanged(args);
+    }
+
+    private static onRoundedCornerRadiusPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onRoundedCornerRadiusChanged(args);
+    }
+
     protected onImageUriChanged(args) {
 
     }
@@ -224,7 +355,7 @@ export class FrescoDrawee extends viewModule.View {
     protected onPlaceholderImageUriChanged(args) {
 
     }
-    
+
     protected onFailureImageUriChanged(args) {
 
     }
@@ -250,6 +381,30 @@ export class FrescoDrawee extends viewModule.View {
     }
 
     protected onProgressBarColorChanged(args) {
+
+    }
+
+    protected onRoundAsCircleChanged(args) {
+
+    }
+
+    protected onRoundTopLeftChanged(args) {
+
+    }
+
+    protected onRoundTopRightChanged(args) {
+
+    }
+
+    protected onRoundBottomLeftrChanged(args) {
+
+    }
+
+    protected onRoundBottomRightChanged(args) {
+
+    }
+
+    protected onRoundedCornerRadiusChanged(args) {
 
     }
 }

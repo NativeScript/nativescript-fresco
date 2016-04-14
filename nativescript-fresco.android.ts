@@ -69,6 +69,30 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initProcessBarColor();
     }
 
+    protected onRoundAsCircleChanged(args) {
+        this.initRoundingParamsAsCircle();
+    }
+
+    protected onRoundTopLeftChanged(args) {
+        this.initRoundTopLeft();
+    }
+
+    protected onRoundTopRightChanged(args) {
+        this.initRoundTopRight();
+    }
+
+    protected onRoundBottomLeftrChanged(args) {
+        this.initRoundBottomLeft();
+    }
+
+    protected onRoundBottomRightChanged(args) {
+        this.initRoundBottomRight();
+    }
+    
+    protected onRoundedCornerRadiusChanged(args) {
+        this.initRoundedCornerRadius();
+    }
+
     private initDrawee() {
         this.initImage();
         this.initFailureImage();
@@ -77,6 +101,12 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initFadeDuration();
         this.initBackground();
         this.initProcessBar();
+        this.initRoundingParamsAsCircle()
+        this.initRoundTopLeft();
+        this.initRoundTopRight();
+        this.initRoundBottomLeft();
+        this.initRoundBottomRight();
+        this.initRoundedCornerRadius();
     }
 
     private initActualImageScaleType() {
@@ -183,6 +213,54 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         }
     }
 
+    private initRoundingParamsAsCircle() {
+        if (this._android) {
+            if (this.roundAsCircle) {
+                this.updateHierarchy();
+            }
+        }
+    }
+    
+    private initRoundTopLeft() {
+        if (this._android) {
+            if (this.roundTopLeft) {
+                this.updateHierarchy();
+            }
+        }
+    }
+    
+    private initRoundTopRight() {
+        if (this._android) {
+            if (this.roundTopRight) {
+                this.updateHierarchy();
+            }
+        }
+    }
+    
+    private initRoundBottomLeft() {
+        if (this._android) {
+            if (this.roundBottomLeft) {
+                this.updateHierarchy();
+            }
+        }
+    }
+    
+    private initRoundBottomRight() {
+        if (this._android) {
+            if (this.roundBottomRight) {
+                this.updateHierarchy();
+            }
+        }
+    }
+    
+    private initRoundedCornerRadius() {
+        if (this._android) {
+            if (this.roundedCornerRadius) {
+                this.updateHierarchy();
+            }
+        }
+    }
+
     private updateHierarchy() {
         var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
         if (this.failureImageUri && this.failureImageDrawable) {
@@ -207,6 +285,18 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
         if (this.showProgressBar) {
             builder.setProgressBarImage(this.progressBarColor);
+        }
+
+        if (this.roundAsCircle) {
+            builder.setRoundingParamsAsCircle();
+        }
+        
+        if (this.roundBottomLeft || this.roundBottomRight || this.roundTopLeft ||this.roundTopRight) {
+            var topLeftRadius = this.roundTopLeft ? this.roundedCornerRadius : 0;
+            var topRightRadius = this.roundTopRight ? this.roundedCornerRadius : 0;
+            var bottomRightRadius = this.roundBottomRight ? this.roundedCornerRadius : 0;
+            var bottomLeftRadius = this.roundBottomLeft ? this.roundedCornerRadius : 0;
+            builder.setCornersRadii(topLeftRadius,  topRightRadius,  bottomRightRadius, bottomLeftRadius);
         }
 
         var hiearchy = builder.build();
@@ -276,7 +366,7 @@ class GenericDraweeHierarchyBuilder {
         }
 
         this.nativeBuilder.setActualImageScaleType(getScaleType(scaleType));
-     
+
         return this;
     }
 
@@ -319,6 +409,29 @@ class GenericDraweeHierarchyBuilder {
         }
 
         this.nativeBuilder.setProgressBarImage(drawable);
+
+        return this;
+    }
+
+    public setRoundingParamsAsCircle(): GenericDraweeHierarchyBuilder {
+        if (!application.android) {
+            return;
+        }
+
+        var params = new com.facebook.drawee.generic.RoundingParams.asCircle();
+        this.nativeBuilder.setRoundingParams(params)
+
+        return this;
+    }
+    
+    public setCornersRadii(topLeft: number, topRight, bottomRight: number, bottomLeft: number): GenericDraweeHierarchyBuilder {
+        if (!application.android) {
+            return;
+        }
+
+        var params = new com.facebook.drawee.generic.RoundingParams();
+        params.setCornersRadii(topLeft, topRight, bottomRight, bottomLeft);
+        this.nativeBuilder.setRoundingParams(params)
 
         return this;
     }
