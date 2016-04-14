@@ -56,4 +56,15 @@ declare module "nativescript-fresco" {
          */
         progressBarColor: string;
     }
+    
+    export enum ScaleType {
+        center,
+        centerCrop,
+        centerInside,
+        fitCenter,
+        fitEnd,
+        fitStart,
+        fitXY,
+        focusCrop
+    }
 }

@@ -21,7 +21,6 @@ if (application.android) {
     };
 }
 ```
-
 ```TypeScript
 import application = require("application");
 import fresco = require("nativescript-fresco");

@@ -15,6 +15,17 @@ var SHOWPROGRESSBAR = "showProgressBar";
 var PROGRESSBARCOLOR = "progressBarColor";
 var FAILUREIMAGEURI = "failureImageUri";
 
+export module ScaleType {
+    export var Center = "center";
+    export var CenterCrop = "centerCrop";
+    export var CenterInside = "centerInside";
+    export var FitCenter = "fitCenter";
+    export var FitEnd = "fitEnd";
+    export var FitStart = "fitStart";
+    export var FitXY = "fitXY";
+    export var FocusCrop = "focusCrop";
+}
+
 export class FrescoDrawee extends viewModule.View {
     private static imageUriProperty = new dependencyObservable.Property(
         IMAGEURI,

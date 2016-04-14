@@ -4,6 +4,8 @@ import types = require("utils/types");
 import application = require("application");
 import imageSource = require("image-source");
 
+global.moduleMerge(commonModule, exports);
+
 export function initialize(): void {
     if (application.android) {
         com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context);
@@ -181,8 +183,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         }
     }
 
-    // TODO: check if this will not lead to performance overhead as it is called for each property set to the FrescoDrawee.
-    // This is because some of the proeprties are settable obly from the GenericDraweeHierarchyBuilder rather than from the SimpleDraweeView itself. 
     private updateHierarchy() {
         var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
         if (this.failureImageUri && this.failureImageDrawable) {
@@ -331,21 +331,21 @@ class GenericDraweeHierarchyBuilder {
 function getScaleType(scaleType: string) {
     if (types.isString(scaleType)) {
         switch (scaleType) {
-            case "center":
+            case commonModule.ScaleType.Center:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER;
-            case "centerCrop":
+            case commonModule.ScaleType.CenterCrop:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER_CROP;
-            case "centerInside":
+            case commonModule.ScaleType.CenterInside:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.CENTER_INSIDE;
-            case "fitCenter":
+            case commonModule.ScaleType.FitCenter:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_CENTER;
-            case "fitEnd":
+            case commonModule.ScaleType.FitEnd:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_END;
-            case "fitStart":
+            case commonModule.ScaleType.FitStart:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_START;
-            case "fitXY":
+            case commonModule.ScaleType.FitXY:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FIT_XY;
-            case "focusCrop":
+            case commonModule.ScaleType.FocusCrop:
                 return com.facebook.drawee.drawable.ScalingUtils.ScaleType.FOCUS_CROP;
             default:
                 break;
