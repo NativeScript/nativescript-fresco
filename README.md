@@ -88,6 +88,30 @@ Boolean value used for showing or hiding the progress bar.
 
 String value used for setting the color of the progress bar. You can set it to hex values ("*#FF0000*") and/or predefined colors ("*green*").
 
+- **roundAsCircle** 
+
+Boolean value used for determining if the image should be rounded as a circle. Its default value is false. If set to true the image will be rounder to a circle.
+
+- **roundedCornerRadius** 
+
+Number value used as radius for rounding the image's corners.
+
+- **roundBottomRight** 
+
+Boolean value used for determining if the image's bottom right corner should be rounded.
+
+- **roundBottomLeft** 
+
+Boolean value used for determining if the image's bottom left corner should be rounded.
+
+- **roundTopLeft** 
+
+Boolean value used for determining if the image's top left corner should be rounded.
+
+- **roundTopRight** 
+
+Boolean value used for determining if the image's top right corner should be rounded.
+
 ## Sample Screenshots
 
 All of the images are sample images for showcasing purposes.
