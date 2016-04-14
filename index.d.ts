@@ -27,7 +27,14 @@ declare module "nativescript-fresco" {
         
          /**
          * String value used by FrescoDrawee image scale type. This property can be set to
-         * 'center', 'centerCrop', 'centerInside', 'fitCenter', 'fitEnd', 'fitStart', 'fitXY' and 'focusCrop'.
+         * 'center' - Performs no scaling.
+         * 'centerCrop' - Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent. 
+         * 'centerInside' - Scales the child so that it fits entirely inside the parent. 
+         * 'fitCenter' - Scales the child so that it fits entirely inside the parent. 
+         * 'fitStart' - Scales the child so that it fits entirely inside the parent.
+         * 'fitEnd' - Scales the child so that it fits entirely inside the parent.
+         * 'fitXY' - Scales width and height independently, so that the child matches the parent exactly.
+         * 'focusCrop' - Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
          */
         actualImageScaleType: string;
         
@@ -95,6 +102,7 @@ declare module "nativescript-fresco" {
         fitEnd,
         fitStart,
         fitXY,
-        focusCrop
+        focusCrop,
+        none
     }
 }
