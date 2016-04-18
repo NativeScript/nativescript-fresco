@@ -132,6 +132,10 @@ Boolean value used for determining if the image's top right corner should be rou
 
 Boolean value used for enabling the automatic playing of animated images. Note that rounding of such images is not supported and will be ignored.
 
+- **tapToRetryEnabled** 
+
+Boolean value used for enabling/disabling a tap to retry action for the download of the FrescoDrawee image.
+
 ### Events
 
 - **finalImageSet** 

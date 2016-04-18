@@ -126,9 +126,14 @@ declare module "nativescript-fresco" {
         roundedCornerRadius: number;
         
         /**
-         * Boolean value used for enabling automatic playing of animated images.
+         * Boolean value used for enabling/disabling automatic playing of animated images.
          */
         autoPlayAnimations: boolean;
+        
+        /**
+         * Boolean value used for enabling/disabling a tap to retry action for the download of the FrescoDrawee image.
+         */
+        tapToRetryEnabled: boolean;
     }
 
     /**

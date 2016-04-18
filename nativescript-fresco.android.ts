@@ -94,7 +94,11 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     protected onAutoPlayAnimationsPropertyChanged(args) {
-        this.initAutoPlayAnimations();
+        
+    }
+
+    protected onTapToRetryEnabledChanged(args) {
+
     }
 
     private initDrawee() {
@@ -111,7 +115,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initRoundBottomLeft();
         this.initRoundBottomRight();
         this.initRoundedCornerRadius();
-        this.initAutoPlayAnimations();
     }
 
     private initActualImageScaleType() {
@@ -214,6 +217,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     .setAutoPlayAnimations(this.autoPlayAnimations)
                     .setImageRequest(request)
                     .setControllerListener(listener)
+                    .setTapToRetryEnabled(this.tapToRetryEnabled)
                     .setOldController(this._android.getController())
                     .build();
 

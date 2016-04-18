@@ -22,6 +22,7 @@ var ROUNDBOTTOMLEFT = "roundBottomLeft";
 var ROUNDBOTTOMRIGHT = "roundBottomRight";
 var ROUNDEDCORNERRADIUS = "roundedCornerRadius";
 var AUTOPLAYANIMATIONS = "autoPlayAnimations";
+var TAPTORETRYENABLED = "tapToRetryEnabled";
 
 export module ScaleType {
     export var Center = "center";
@@ -191,6 +192,14 @@ export class FrescoDrawee extends viewModule.View {
             dependencyObservable.PropertyMetadataSettings.None,
             FrescoDrawee.onAutoPlayAnimationsPropertyChanged));
 
+    private static tapToRetryEnabledProperty = new dependencyObservable.Property(
+        TAPTORETRYENABLED,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onTapToRetryEnabledPropertyChanged));
+
     get imageUri(): string {
         return this._getValue(FrescoDrawee.imageUriProperty);
     }
@@ -318,6 +327,14 @@ export class FrescoDrawee extends viewModule.View {
     set autoPlayAnimations(value: boolean) {
         this._setValue(FrescoDrawee.autoPlayAnimationsProperty, value);
     }
+    
+    get tapToRetryEnabled(): boolean {
+        return this._getValue(FrescoDrawee.tapToRetryEnabledProperty);
+    }
+
+    set tapToRetryEnabled(value: boolean) {
+        this._setValue(FrescoDrawee.tapToRetryEnabledProperty, value);
+    }
 
     private static onImageUriPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
@@ -398,6 +415,11 @@ export class FrescoDrawee extends viewModule.View {
         var drawee: FrescoDrawee = args.object;
         drawee.onAutoPlayAnimationsPChanged(args);
     }
+    
+    private static onTapToRetryEnabledPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onTapToRetryEnabledChanged(args);
+    }
 
     protected onImageUriChanged(args) {
 
@@ -460,6 +482,10 @@ export class FrescoDrawee extends viewModule.View {
     }
 
     protected onAutoPlayAnimationsPChanged(args) {
+
+    }
+    
+    protected onTapToRetryEnabledChanged(args) {
 
     }
 }
