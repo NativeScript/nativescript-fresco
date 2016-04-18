@@ -13,7 +13,7 @@ export function initialize(): void {
 };
 
 export class FrescoDrawee extends commonModule.FrescoDrawee {
-    private _android;
+    private _android: com.facebook.drawee.view.SimpleDraweeView;
     private placeholderImageDrawable;
     private failureImageDrawable;
     private backgroundDrawable;
@@ -88,7 +88,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onRoundBottomRightChanged(args) {
         this.initRoundBottomRight();
     }
-    
+
     protected onRoundedCornerRadiusChanged(args) {
         this.initRoundedCornerRadius();
     }
@@ -144,6 +144,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                             }
                         } else {
                             // TODO: load from local file
+                            uri = android.net.Uri.parse("");
                         }
                     }
                 }
@@ -152,8 +153,61 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 var request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
                     .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
                     .build();
+
+                var that: WeakRef<FrescoDrawee> = new WeakRef(this);
+                var listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
+                    onFinalImageSet: function (id, imageInfo, animatable) {
+                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                            eventName: commonModule.FrescoDrawee.finalImageSetEvent,
+                            object: that.get()
+                        };
+
+                        that.get().notify(args);
+                    },
+                    onFailure: function (id, throwable) {
+                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                            eventName: commonModule.FrescoDrawee.failureEvent,
+                            object: that.get()
+                        };
+
+                        that.get().notify(args);
+                    },
+                    onIntermediateImageFailed: function (id, throwable) {
+                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                            eventName: commonModule.FrescoDrawee.intermediateImageFailedEvent,
+                            object: that.get()
+                        };
+
+                        that.get().notify(args);
+                    },
+                    onIntermediateImageSet: function (id, imageInfo) {
+                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                            eventName: commonModule.FrescoDrawee.intermediateImageSetEvent,
+                            object: that.get()
+                        };
+
+                        that.get().notify(args);
+                    },
+                    onRelease: function (id) {
+                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                            eventName: commonModule.FrescoDrawee.releaseEvent,
+                            object: that.get()
+                        };
+
+                        that.get().notify(args);
+                    },
+                    onSubmit: function (id, callerContext) {
+                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                            eventName: commonModule.FrescoDrawee.submitEvent,
+                            object: that.get()
+                        };
+
+                        that.get().notify(args);
+                    },
+                });
                 var controller = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder()
                     .setImageRequest(request)
+                    .setControllerListener(listener)
                     .setOldController(this._android.getController())
                     .build();
 
@@ -220,7 +274,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             }
         }
     }
-    
+
     private initRoundTopLeft() {
         if (this._android) {
             if (this.roundTopLeft) {
@@ -228,7 +282,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             }
         }
     }
-    
+
     private initRoundTopRight() {
         if (this._android) {
             if (this.roundTopRight) {
@@ -236,7 +290,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             }
         }
     }
-    
+
     private initRoundBottomLeft() {
         if (this._android) {
             if (this.roundBottomLeft) {
@@ -244,7 +298,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             }
         }
     }
-    
+
     private initRoundBottomRight() {
         if (this._android) {
             if (this.roundBottomRight) {
@@ -252,7 +306,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             }
         }
     }
-    
+
     private initRoundedCornerRadius() {
         if (this._android) {
             if (this.roundedCornerRadius) {
@@ -290,13 +344,13 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (this.roundAsCircle) {
             builder.setRoundingParamsAsCircle();
         }
-        
-        if (this.roundBottomLeft || this.roundBottomRight || this.roundTopLeft ||this.roundTopRight) {
+
+        if (this.roundBottomLeft || this.roundBottomRight || this.roundTopLeft || this.roundTopRight) {
             var topLeftRadius = this.roundTopLeft ? this.roundedCornerRadius : 0;
             var topRightRadius = this.roundTopRight ? this.roundedCornerRadius : 0;
             var bottomRightRadius = this.roundBottomRight ? this.roundedCornerRadius : 0;
             var bottomLeftRadius = this.roundBottomLeft ? this.roundedCornerRadius : 0;
-            builder.setCornersRadii(topLeftRadius,  topRightRadius,  bottomRightRadius, bottomLeftRadius);
+            builder.setCornersRadii(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
         }
 
         var hiearchy = builder.build();
@@ -423,7 +477,7 @@ class GenericDraweeHierarchyBuilder {
 
         return this;
     }
-    
+
     public setCornersRadii(topLeft: number, topRight, bottomRight: number, bottomLeft: number): GenericDraweeHierarchyBuilder {
         if (!application.android) {
             return;

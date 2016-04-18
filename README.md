@@ -70,7 +70,23 @@ String value used for the failure image URI. You can use this property to set a 
 
 - **actualImageScaleType** 
 
-String value used by FrescoDrawee image scale type. This property can be set to '*center*', '*centerCrop*', '*centerInside*', '*fitCenter*', '*fitEnd*', '*fitStart*', '*fitXY*', '*focusCrop*'.
+String value used by FrescoDrawee image scale type. This property can be set to:
+
+'*center*' - Performs no scaling.
+
+'*centerCrop*' - Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
+
+'*centerInside*' - Scales the child so that it fits entirely inside the parent.
+
+'*fitCenter*' - Scales the child so that it fits entirely inside the parent.
+
+'*fitStart*' - Scales the child so that it fits entirely inside the parent.
+
+'*fitEnd*' - Scales the child so that it fits entirely inside the parent.
+
+'*fitXY*' - Scales width and height independently, so that the child matches the parent exactly
+
+'*focusCrop*' - Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
 
 - **fadeDuration** 
 
@@ -112,14 +128,40 @@ Boolean value used for determining if the image's top left corner should be roun
 
 Boolean value used for determining if the image's top right corner should be rounded.
 
+### Events
+
+- **finalImageSetEvent** 
+
+This event is fired after the final image has been set.
+
+- **failureEvent** 
+
+This event is fired after the fetch of the final image failed.
+
+- **intermediateImageSetEvent** 
+
+This event is fired after any intermediate image has been set.
+
+- **intermediateImageFailedEvent** 
+
+This event is fired after the fetch of the intermediate image failed.
+
+- **submitEvent** 
+
+This event is fired before the image request is submitted.
+
+- **releaseEvent** 
+
+This event is fired after the controller released the fetched image.
+
 ## Sample Screenshots
 
 All of the images are sample images for showcasing purposes.
 
-Sample 1 - placeholder image |  Sample 2 - transition (fade-in animation)
+Sample 1 - Placeholder image |  Sample 2 - Transition (fade-in animation)
 -------- | ---------
 ![Placeholder image sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen1-with-placeholder.png) | ![Transition sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen2-transition-effect.png)
 
-Sample 3 - image shown successfully from imageUri |  Sample 4 - failure image when unsuccessful imageUri
+Sample 3 - Image shown successfully from imageUri |  Sample 4 - Failure image when unsuccessful imageUri
 -------- | ---------
 ![Successfully shown image sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen3-successful-show.png) | ![Successfully shown image sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen4-unsuccessful-show.png)

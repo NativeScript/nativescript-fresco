@@ -3,6 +3,7 @@
 import viewModule = require("ui/core/view");
 import dependencyObservable = require("ui/core/dependency-observable");
 import proxyModule = require("ui/core/proxy");
+import observableModule = require("data/observable");
 
 var PLACEHOLDERIMAGEURI = "placeholderImageUri";
 var IMAGEURI = "imageUri";
@@ -32,7 +33,35 @@ export module ScaleType {
     export var FocusCrop = "focusCrop";
 }
 
+export class FrescoEventData implements observableModule.EventData {
+    private _eventName: string;
+    private _object: any;
+
+    get eventName(): string {
+        return this._eventName;
+    }
+
+    set eventName(value: string) {
+        this._eventName = value;
+    }
+
+    get object(): any {
+        return this._object;
+    }
+
+    set object(value: any) {
+        this._object = value;
+    }
+}
+
 export class FrescoDrawee extends viewModule.View {
+    public static finalImageSetEvent: string = "finalImageSet";
+    public static failureEvent: string = "failure";
+    public static intermediateImageFailedEvent: string = "intermediateImageFailed";
+    public static intermediateImageSetEvent: string = "intermediateImageSet";
+    public static releaseEvent: string = "release";
+    public static submitEvent: string = "submit";
+
     private static imageUriProperty = new dependencyObservable.Property(
         IMAGEURI,
         FRESCODRAWEE,
@@ -110,7 +139,7 @@ export class FrescoDrawee extends viewModule.View {
         FRESCODRAWEE,
         new proxyModule.PropertyMetadata(
             undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
+            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
             FrescoDrawee.onRoundAsCirclePropertyChanged));
 
     private static roundTopLeftProperty = new dependencyObservable.Property(
@@ -118,7 +147,7 @@ export class FrescoDrawee extends viewModule.View {
         FRESCODRAWEE,
         new proxyModule.PropertyMetadata(
             undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
+            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
             FrescoDrawee.onRoundTopLeftPropertyChanged));
 
     private static roundTopRightProperty = new dependencyObservable.Property(
@@ -126,7 +155,7 @@ export class FrescoDrawee extends viewModule.View {
         FRESCODRAWEE,
         new proxyModule.PropertyMetadata(
             undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
+            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
             FrescoDrawee.onRoundTopRightPropertyChanged));
 
     private static roundBottomLeftroperty = new dependencyObservable.Property(
@@ -134,7 +163,7 @@ export class FrescoDrawee extends viewModule.View {
         FRESCODRAWEE,
         new proxyModule.PropertyMetadata(
             undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
+            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
             FrescoDrawee.onRoundBottomLeftPropertyChanged));
 
     private static roundBottomRightProperty = new dependencyObservable.Property(
@@ -142,7 +171,7 @@ export class FrescoDrawee extends viewModule.View {
         FRESCODRAWEE,
         new proxyModule.PropertyMetadata(
             undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
+            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
             FrescoDrawee.onRoundBottomRightPropertyChanged));
 
     private static roundedCornerRadiusProperty = new dependencyObservable.Property(
@@ -150,7 +179,7 @@ export class FrescoDrawee extends viewModule.View {
         FRESCODRAWEE,
         new proxyModule.PropertyMetadata(
             undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
+            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
             FrescoDrawee.onRoundedCornerRadiusPropertyChanged));
 
     get imageUri(): string {
