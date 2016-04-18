@@ -124,6 +124,11 @@ declare module "nativescript-fresco" {
          * Number value used as radius for rounding the image's corners.
          */
         roundedCornerRadius: number;
+        
+        /**
+         * Boolean value used for enabling automatic playing of animated images.
+         */
+        autoPlayAnimations: boolean;
     }
 
     /**

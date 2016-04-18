@@ -93,6 +93,10 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initRoundedCornerRadius();
     }
 
+    protected onAutoPlayAnimationsPropertyChanged(args) {
+        this.initAutoPlayAnimations();
+    }
+
     private initDrawee() {
         this.initImage();
         this.initFailureImage();
@@ -107,6 +111,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.initRoundBottomLeft();
         this.initRoundBottomRight();
         this.initRoundedCornerRadius();
+        this.initAutoPlayAnimations();
     }
 
     private initActualImageScaleType() {
@@ -206,6 +211,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     },
                 });
                 var controller = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder()
+                    .setAutoPlayAnimations(this.autoPlayAnimations)
                     .setImageRequest(request)
                     .setControllerListener(listener)
                     .setOldController(this._android.getController())
@@ -310,6 +316,14 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private initRoundedCornerRadius() {
         if (this._android) {
             if (this.roundedCornerRadius) {
+                this.updateHierarchy();
+            }
+        }
+    }
+
+    private initAutoPlayAnimations() {
+        if (this._android) {
+            if (this.autoPlayAnimations) {
                 this.updateHierarchy();
             }
         }

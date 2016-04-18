@@ -21,6 +21,7 @@ var ROUNDTOPRIGHT = "roundTopRight";
 var ROUNDBOTTOMLEFT = "roundBottomLeft";
 var ROUNDBOTTOMRIGHT = "roundBottomRight";
 var ROUNDEDCORNERRADIUS = "roundedCornerRadius";
+var AUTOPLAYANIMATIONS = "autoPlayAnimations";
 
 export module ScaleType {
     export var Center = "center";
@@ -182,6 +183,14 @@ export class FrescoDrawee extends viewModule.View {
             dependencyObservable.PropertyMetadataSettings.AffectsLayout,
             FrescoDrawee.onRoundedCornerRadiusPropertyChanged));
 
+    private static autoPlayAnimationsProperty = new dependencyObservable.Property(
+        AUTOPLAYANIMATIONS,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.None,
+            FrescoDrawee.onAutoPlayAnimationsPropertyChanged));
+
     get imageUri(): string {
         return this._getValue(FrescoDrawee.imageUriProperty);
     }
@@ -302,6 +311,14 @@ export class FrescoDrawee extends viewModule.View {
         this._setValue(FrescoDrawee.roundedCornerRadiusProperty, value);
     }
 
+    get autoPlayAnimations(): boolean {
+        return this._getValue(FrescoDrawee.autoPlayAnimationsProperty);
+    }
+
+    set autoPlayAnimations(value: boolean) {
+        this._setValue(FrescoDrawee.autoPlayAnimationsProperty, value);
+    }
+
     private static onImageUriPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onImageUriChanged(args);
@@ -377,6 +394,11 @@ export class FrescoDrawee extends viewModule.View {
         drawee.onRoundedCornerRadiusChanged(args);
     }
 
+    private static onAutoPlayAnimationsPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onAutoPlayAnimationsPChanged(args);
+    }
+
     protected onImageUriChanged(args) {
 
     }
@@ -434,6 +456,10 @@ export class FrescoDrawee extends viewModule.View {
     }
 
     protected onRoundedCornerRadiusChanged(args) {
+
+    }
+
+    protected onAutoPlayAnimationsPChanged(args) {
 
     }
 }

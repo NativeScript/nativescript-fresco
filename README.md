@@ -50,11 +50,11 @@ As documented by the Fresco library setting the **height and width** are **manda
 
 ### Basic attributes
 
-- **imageUri** - String value used for the actual image URI. You can use this property to set the image to be loaded from remote location (http, https) or from the resources files of your {N} application.
+- **imageUri** - String value used for the image URI. You can use this property to set the image to be loaded from remote location (http, https) or from the resources files of your {N} application.
 
 ### Advanced *optional* attributes
 
-There are a couple of *optional* attributes that could be set on the FrescoDrawee instance in order to achieve some advanced behaviors:
+There are a couple of *optional* attributes that could be set on the FrescoDrawee instance to achieve advanced behaviors:
 
 - **placeholderImageUri** 
 
@@ -66,7 +66,7 @@ String value used for the background image URI. Using this property has similar 
 
 - **failureImageUri** 
 
-String value used for the failure image URI. You can use this property to set a failure image loaded from the local and resources files of your {N} application that is shown if the loading of the imageUri is not successful.
+String value used for the failure image URI. You can use this property to set a failure image loaded from the local and resources files of your {N} application that will be shown if the loading of the imageUri is not successful.
 
 - **actualImageScaleType** 
 
@@ -94,7 +94,7 @@ Number value used for the fade-in duration. This value is in milliseconds.
 
 - **progressiveRenderingEnabled** 
 
-Boolean value used for enabling or disabling the streaming of progressive JPEG images. It is set to 'false' by default. Setting this property to 'true' while loading JPEG images not encoded in progressive format will lead to a standard loading of those images.
+Boolean value used for enabling or disabling the streaming of progressive JPEG images. This property is set to 'false' by default. Setting this property to 'true' while loading JPEG images not encoded in progressive format will lead to a standard loading of those images.
 
 - **showProgressBar** 
 
@@ -106,7 +106,7 @@ String value used for setting the color of the progress bar. You can set it to h
 
 - **roundAsCircle** 
 
-Boolean value used for determining if the image should be rounded as a circle. Its default value is false. If set to true the image will be rounder to a circle.
+Boolean value used for determining if the image will be rounded as a circle. Its default value is false. If set to true the image will be rounder to a circle.
 
 - **roundedCornerRadius** 
 
@@ -114,43 +114,47 @@ Number value used as radius for rounding the image's corners.
 
 - **roundBottomRight** 
 
-Boolean value used for determining if the image's bottom right corner should be rounded.
+Boolean value used for determining if the image's bottom right corner will be rounded.
 
 - **roundBottomLeft** 
 
-Boolean value used for determining if the image's bottom left corner should be rounded.
+Boolean value used for determining if the image's bottom left corner will be rounded.
 
 - **roundTopLeft** 
 
-Boolean value used for determining if the image's top left corner should be rounded.
+Boolean value used for determining if the image's top left corner will be rounded.
 
 - **roundTopRight** 
 
 Boolean value used for determining if the image's top right corner should be rounded.
 
+- **autoPlayAnimations** 
+
+Boolean value used for enabling the automatic playing of animated images. Note that rounding of such images is not supported and will be ignored.
+
 ### Events
 
-- **finalImageSetEvent** 
+- **finalImageSet** 
 
 This event is fired after the final image has been set.
 
-- **failureEvent** 
+- **failure** 
 
 This event is fired after the fetch of the final image failed.
 
-- **intermediateImageSetEvent** 
+- **intermediateImageSet** 
 
 This event is fired after any intermediate image has been set.
 
-- **intermediateImageFailedEvent** 
+- **intermediateImageFailed** 
 
 This event is fired after the fetch of the intermediate image failed.
 
-- **submitEvent** 
+- **submit** 
 
 This event is fired before the image request is submitted.
 
-- **releaseEvent** 
+- **release** 
 
 This event is fired after the controller released the fetched image.
 
