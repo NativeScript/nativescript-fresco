@@ -84,7 +84,7 @@ String value used by FrescoDrawee image scale type. This property can be set to:
 
 '*fitEnd*' - Scales the child so that it fits entirely inside the parent.
 
-'*fitXY*' - Scales width and height independently, so that the child matches the parent exactly
+'*fitXY*' - Scales width and height independently, so that the child matches the parent exactly.
 
 '*focusCrop*' - Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
 
@@ -138,29 +138,49 @@ Boolean value used for enabling/disabling a tap to retry action for the download
 
 ### Events
 
-- **finalImageSet** 
+- **finalImageSet** - arguments *FinalEventData*
 
 This event is fired after the final image has been set.
 
-- **failure** 
+- **failure** - arguments *FailureEventData*
 
 This event is fired after the fetch of the final image failed.
 
-- **intermediateImageSet** 
+- **intermediateImageSet** - arguments *IntermediateEventData*
 
 This event is fired after any intermediate image has been set.
 
-- **intermediateImageFailed** 
+- **intermediateImageFailed** - arguments *FailureEventData*
 
 This event is fired after the fetch of the intermediate image failed.
 
-- **submit** 
+- **submit** - arguments *EventData*
 
 This event is fired before the image request is submitted.
 
-- **release** 
+- **release** -arguments *EventData*
 
 This event is fired after the controller released the fetched image.
+
+#### Event arguments
+
+All events exposed by 'nativescript-fresco' provide additional information to their handlers that is needed to properly handle them. Here's a brief description of the event arguments coming with each of the events:
+
+- **FinalEventData**
+
+Instances of this class are provided to the handlers of the *finalImageSet*.
+
+- **FailureEventData**
+
+Instances of this class are provided to the handlers of the *failure* and *intermediateImageFailed*.
+
+- **IntermediateEventData**
+
+Instances of this class are provided to the handlers of the *intermediateImageSet*.
+
+- **EventData**
+
+Instances of this class are provided to the handlers of the *release* and *submit*.
 
 ## Sample Screenshots
 

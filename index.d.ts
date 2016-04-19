@@ -16,27 +16,27 @@ declare module "nativescript-fresco" {
          * This event is fired after the final image has been set.
          */
         static finalImageSetEvent: string;
-        
+
         /**
          * This event is fired after the fetch of the final image failed.
          */
         static failureEvent: string;
-        
-         /**
-         * This event is fired after the fetch of the intermediate image failed.
-         */
+
+        /**
+        * This event is fired after the fetch of the intermediate image failed.
+        */
         static intermediateImageFailedEvent: string;
-        
+
         /**
          * This event is fired after any intermediate image has been set.
          */
         static intermediateImageSetEvent: string;
-        
+
         /**
          * This event is fired after the controller released the fetched image.
          */
         static releaseEvent: string;
-        
+
         /**
          * This event is fired before the image request is submitted.
          */
@@ -124,12 +124,12 @@ declare module "nativescript-fresco" {
          * Number value used as radius for rounding the image's corners.
          */
         roundedCornerRadius: number;
-        
+
         /**
          * Boolean value used for enabling/disabling automatic playing of animated images.
          */
         autoPlayAnimations: boolean;
-        
+
         /**
          * Boolean value used for enabling/disabling a tap to retry action for the download of the FrescoDrawee image.
          */
@@ -137,30 +137,222 @@ declare module "nativescript-fresco" {
     }
 
     /**
-     * Generic scheme for event arguments provided to handlers of events exposed
-     * by a {@link FrescoDrawee}.
-     */
-    export class FrescoEventData {
+    * Encapsulates the common abstraction behind a platform specific object (typically a Bitmap) quality.
+    */
+    export class QualityInfo {
+        getQuality(): number;
+
+        isOfFullQuality(): boolean;
+
+        isOfGoodEnoughQuality(): boolean;
+    }
+
+    /**
+    * Encapsulates the common abstraction behind a platform specific object (typically a Bitmap's quality) details.
+    */
+    export class ImageInfo {
+        getHeight(): number;
+
+        getWidth(): number;
+
+        getQualityInfo(): QualityInfo;
+    }
+
+    /**
+    * Interface of the common abstraction behind a platform specific error object that is used by the FrescoDrawee's events.
+    */
+    export interface IError {
         /**
-        *Returns the name of the event that has been fired.
+        * Returns the message of the Error.
+        */
+        getMessage(): string;
+
+        /**
+        * Returns the type (typically the class name) of the Error.
+        */
+        getErrorType(): string;
+
+        /**
+        * Returns the string representation of the Error.
+        */
+        toString(): string;
+    }
+
+    /**
+    * Encapsulates the common abstraction behind a platform specific error object that is used by the FrescoDrawee's events.
+    */
+    export class FrescoError {
+        /**
+        * Returns the message of the Error.
+        */
+        getMessage(): string;
+
+        /**
+        * Returns the type (typically the class name) of the Error.
+        */
+        getErrorType(): string;
+
+        /**
+        * Returns the string representation of the Error.
+        */
+        toString(): string;
+    }
+
+    /**
+    * Instances of this class are provided to the handlers of the {@link release} and {@link submit}.
+    */
+    export class EventData {
+        /**
+        * Returns the name of the event that has been fired.
         */
         eventName: string;
 
         /**
         * The object that fires the event.
         */
-        object: any
+        object: any;
+    }
+    
+    /**
+    * Instances of this class are provided to the handlers of the {@link finalImageSet}.
+    */
+    export class FinalEventData {
+        /**
+        * Returns the name of the event that has been fired.
+        */
+        eventName: string;
+
+        /**
+        * The object that fires the event.
+        */
+        object: any;
+
+        /**
+        * Contains information about an image.
+        */
+        imageInfo: ImageInfo;
+
+        /**
+        * An object that renders an animated image.
+        */
+        animatable: AnimatedImage;
+    }
+    
+    /**
+    * Instances of this class are provided to the handlers of the {@link intermediateImageSet}.
+    */
+    export class IntermediateEventData {
+        /**
+        * Returns the name of the event that has been fired.
+        */
+        eventName: string;
+
+        /**
+        * The object that fires the event.
+        */
+        object: any;
+
+        /**
+        * Contains information about an image.
+        */
+        imageInfo: ImageInfo;
+    }
+    
+    /**
+    * Instances of this class are provided to the handlers of the {@link failure} and {@link intermediateImageFailed}.
+    */
+    export class FailureEventData {
+        /**
+        * Returns the name of the event that has been fired.
+        */
+        eventName: string;
+
+        /**
+        * The object that fires the event.
+        */
+        object: any;
+
+        /**
+        * An object containing information about the status of the event.
+        */
+        error: FrescoError;
     }
 
+    /**
+    * Interface of the common abstraction behind a platform specific animated image object.
+    */
+    export interface IAnimatedImage {
+        /**
+         * Starts the AnimatedDrawable image.
+         */
+        start(): void;
+
+        /**
+         * Stops the AnimatedDrawable image.
+         */
+        stop(): void;
+
+        /**
+         * Returns boolean value representing the if the AnimatedDrawable's is being animated.
+         */
+        isRunning(): boolean;
+    }
+
+    /**
+     * Encapsulates the common abstraction behind a platform specific animated image object.
+     */
+    export class AnimatedImage {
+        /**
+         * Starts the AnimatedImage image.
+         */
+        start(): void;
+
+        /**
+         * Stops the AnimatedImage image.
+         */
+        stop(): void;
+
+        /**
+         * Returns boolean value representing the if the AnimatedImage's is being animated.
+         */
+        isRunning(): boolean;
+    }
+
+    /**
+     * Options for scaling the child bounds to the parent bounds
+     */
     export enum ScaleType {
+        /**
+         * Performs no scaling.
+         */
         center,
+        /**
+         * Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
+         */
         centerCrop,
+        /**
+         * Scales the child so that it fits entirely inside the parent.
+         */
         centerInside,
+        /**
+         * Scales the child so that it fits entirely inside the parent.
+         */
         fitCenter,
+        /**
+         * Scales the child so that it fits entirely inside the parent.
+         */
         fitEnd,
+        /**
+        * Scales the child so that it fits entirely inside the parent.
+        */
         fitStart,
+        /**
+        * Scales width and height independently, so that the child matches the parent exactly.
+        */
         fitXY,
-        focusCrop,
-        none
+        /**
+        * Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
+        */
+        focusCrop
     }
 }

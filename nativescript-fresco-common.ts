@@ -35,7 +35,24 @@ export module ScaleType {
     export var FocusCrop = "focusCrop";
 }
 
-export class FrescoEventData implements observableModule.EventData {
+export interface IAnimatedImage {
+    start(): void;
+    stop(): void;
+    isRunning(): boolean;
+}
+
+export interface IImageInfo {
+    getHeight(): number;
+    getWidth(): number;
+}
+
+export interface IError {
+    getMessage(): string;
+    getErrorType(): string;
+    toString(): string;
+}
+
+export class EventData implements observableModule.EventData {
     private _eventName: string;
     private _object: any;
 
@@ -327,7 +344,7 @@ export class FrescoDrawee extends viewModule.View {
     set autoPlayAnimations(value: boolean) {
         this._setValue(FrescoDrawee.autoPlayAnimationsProperty, value);
     }
-    
+
     get tapToRetryEnabled(): boolean {
         return this._getValue(FrescoDrawee.tapToRetryEnabledProperty);
     }
@@ -415,7 +432,7 @@ export class FrescoDrawee extends viewModule.View {
         var drawee: FrescoDrawee = args.object;
         drawee.onAutoPlayAnimationsPChanged(args);
     }
-    
+
     private static onTapToRetryEnabledPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onTapToRetryEnabledChanged(args);
@@ -484,7 +501,7 @@ export class FrescoDrawee extends viewModule.View {
     protected onAutoPlayAnimationsPChanged(args) {
 
     }
-    
+
     protected onTapToRetryEnabledChanged(args) {
 
     }

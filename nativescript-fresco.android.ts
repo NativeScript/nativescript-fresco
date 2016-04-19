@@ -12,6 +12,124 @@ export function initialize(): void {
     }
 };
 
+export class AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable implements commonModule.IAnimatedImage {
+    start(): void {
+        super.start();
+    }
+
+    stop(): void {
+        super.stop();
+    }
+
+    isRunning(): boolean {
+        return super.isRunning();
+    }
+}
+
+export class FrescoError implements commonModule.IError {
+    private _stringValue;
+    private _message;
+    private _errorType;
+    
+    constructor (throwable: java.lang.Throwable) {
+        this._message = throwable.getMessage();
+        this._errorType = throwable.getClass().getName();
+        this._stringValue = throwable.toString();
+    }
+    
+    getMessage(): string {
+        return this._message;
+    }
+    
+    getErrorType(): string {
+        return this._errorType;
+    }
+    
+    toString(): string {
+        return this._stringValue;
+    }
+}
+
+export class QualityInfo extends com.facebook.imagepipeline.image.ImmutableQualityInfo {
+    getQuality(): number {
+        return super.getQuality();
+    }
+    
+    isOfFullQuality(): boolean {
+        return super.isOfFullQuality();
+    }
+    
+    isOfGoodEnoughQuality():boolean {
+        return super.isOfGoodEnoughQuality();
+    }
+}
+
+export class ImageInfo implements commonModule.IImageInfo {
+    private _nativeImageInfo: com.facebook.imagepipeline.image.ImageInfo;
+    
+    constructor (imageInfo) {
+        this._nativeImageInfo = imageInfo;
+    }
+    
+    getHeight(): number {
+        return this._nativeImageInfo.getHeight();
+    }
+
+    getWidth(): number {
+        return this._nativeImageInfo.getWidth();
+
+    }
+
+    getQualityInfo(): QualityInfo {
+        return this._nativeImageInfo.getQualityInfo();
+    }
+}
+
+export class FinalEventData extends commonModule.EventData {
+    private _imageInfo: ImageInfo;
+    private _animatable: commonModule.IAnimatedImage;
+
+    get imageInfo(): ImageInfo {
+        return this._imageInfo;
+    }
+
+    set imageInfo(value: ImageInfo) {
+        this._imageInfo = value;
+    }
+
+    get animatable(): commonModule.IAnimatedImage {
+        return this._animatable;
+    }
+
+    set animatable(value: commonModule.IAnimatedImage) {
+        this._animatable = value;
+    }
+}
+
+export class IntermediateEventData extends commonModule.EventData {
+    private _imageInfo: ImageInfo;
+
+    get imageInfo(): ImageInfo {
+        return this._imageInfo;
+    }
+
+    set imageInfo(value: ImageInfo) {
+        this._imageInfo = value;
+    }
+}
+
+export class FailureEventData extends commonModule.EventData {
+    private _error: FrescoError;
+
+    get error(): FrescoError {
+        return this._error;
+    }
+
+    set error(value: FrescoError) {
+        this._error = value;
+    }
+}
+
 export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
     private placeholderImageDrawable;
@@ -94,7 +212,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     protected onAutoPlayAnimationsPropertyChanged(args) {
-        
+
     }
 
     protected onTapToRetryEnabledChanged(args) {
@@ -165,39 +283,48 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 var that: WeakRef<FrescoDrawee> = new WeakRef(this);
                 var listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
                     onFinalImageSet: function (id, imageInfo, animatable) {
-                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                        var info = new ImageInfo(imageInfo);
+                        var args: FinalEventData = <FinalEventData>{
                             eventName: commonModule.FrescoDrawee.finalImageSetEvent,
-                            object: that.get()
+                            object: that.get(),
+                            imageInfo: info,
+                            animatable: animatable,
                         };
 
                         that.get().notify(args);
                     },
                     onFailure: function (id, throwable) {
-                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                        var frescoError = new FrescoError(throwable);
+                        var args: FailureEventData = <FailureEventData>{
                             eventName: commonModule.FrescoDrawee.failureEvent,
-                            object: that.get()
+                            object: that.get(),
+                            error: frescoError
                         };
 
                         that.get().notify(args);
                     },
                     onIntermediateImageFailed: function (id, throwable) {
-                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                        var frescoError = new FrescoError(throwable);
+                        var args: FailureEventData = <FailureEventData>{
                             eventName: commonModule.FrescoDrawee.intermediateImageFailedEvent,
-                            object: that.get()
+                            object: that.get(),
+                            error: frescoError
                         };
 
                         that.get().notify(args);
                     },
                     onIntermediateImageSet: function (id, imageInfo) {
-                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                        var info = new ImageInfo(imageInfo);
+                        var args: IntermediateEventData = <IntermediateEventData>{
                             eventName: commonModule.FrescoDrawee.intermediateImageSetEvent,
-                            object: that.get()
+                            object: that.get(),
+                            imageInfo: info
                         };
 
                         that.get().notify(args);
                     },
                     onRelease: function (id) {
-                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                        var args: commonModule.EventData = <commonModule.EventData>{
                             eventName: commonModule.FrescoDrawee.releaseEvent,
                             object: that.get()
                         };
@@ -205,7 +332,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         that.get().notify(args);
                     },
                     onSubmit: function (id, callerContext) {
-                        var args: commonModule.FrescoEventData = <commonModule.FrescoEventData>{
+                        var args: commonModule.EventData = <commonModule.EventData>{
                             eventName: commonModule.FrescoDrawee.submitEvent,
                             object: that.get()
                         };
@@ -371,8 +498,8 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             builder.setCornersRadii(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
         }
 
-        var hiearchy = builder.build();
-        this._android.setHierarchy(hiearchy);
+        var hierarchy = builder.build();
+        this._android.setHierarchy(hierarchy);
     }
 
     private getDrawable(path: string) {
