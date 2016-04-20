@@ -46,7 +46,7 @@ Use `fresco` in the XML definition of the page as follows:
 
 ## Attributes
 
-As documented by the Fresco library setting the **height and width** are **mandatory**, more details on this topic could be found [here](http://frescolib.org/docs/using-drawees-xml.html#height-and-width-mandatory). SO the first this you should do when declaring the FrescoDrawee is set its **width** and **height** attributes.
+As documented by the Fresco library setting the **height and width** are **mandatory**, more details on this topic could be found [here](http://frescolib.org/docs/using-drawees-xml.html#height-and-width-mandatory). So the first this you should do when declaring the FrescoDrawee is set its *width* and *height* attributes or set only one of them and set the FrescoDrawee's **aspectRatio**. The width and height of the FrescoDrawee in your {N} application supports percentages which makes it possible to declare for example *width="50%"* and *aspectRatio="1.33"* achieving exactly 50% width with dynamically calculated height based on the aspect ration of the loaded image from the *imageUri*.
 
 ### Basic attributes
 
@@ -192,8 +192,8 @@ All of the images are sample images for showcasing purposes.
 
 Sample 1 - Placeholder image |  Sample 2 - Transition (fade-in animation)
 -------- | ---------
-![Placeholder image sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen1-with-placeholder.png) | ![Transition sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen2-transition-effect.png)
+![Placeholder image sample](screenshots/screen1-with-placeholder.png) | ![Transition sample](screenshots/screen2-transition-effect.png)
 
 Sample 3 - Image shown successfully from imageUri |  Sample 4 - Failure image when unsuccessful imageUri
 -------- | ---------
-![Successfully shown image sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen3-successful-show.png) | ![Successfully shown image sample](/Users/amiorkov/Desktop/Work/nativescript-fresco/screenshots/screen4-unsuccessful-show.png)
+![Successfully shown image sample](screenshots/screen3-successful-show.png) | ![Successfully shown image sample](screenshots/screen4-unsuccessful-show.png)
