@@ -432,7 +432,7 @@ export class FrescoDrawee extends viewModule.View {
 
     private static onRoundBottomLeftPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
-        drawee.onRoundBottomLeftrChanged(args);
+        drawee.onRoundBottomLeftChanged(args);
     }
 
     private static onRoundBottomRightPropertyChanged(args) {
@@ -508,7 +508,7 @@ export class FrescoDrawee extends viewModule.View {
 
     }
 
-    protected onRoundBottomLeftrChanged(args) {
+    protected onRoundBottomLeftChanged(args) {
 
     }
 

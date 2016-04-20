@@ -132,13 +132,11 @@ export class FailureEventData extends commonModule.EventData {
 
 export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
-    private placeholderImageDrawable;
-    private failureImageDrawable;
-    private backgroundDrawable;
 
     public _createUI() {
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
         this.initDrawee();
+        this.updateHierarchy();
     }
 
     public _clearAndroidReference() {
@@ -156,23 +154,23 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     protected onPlaceholderImageUriChanged(args) {
-        this.initPlaceholderImage();
+        this.updateHierarchy();
     }
 
     protected onFailureImageUriChanged(args) {
-        this.initFailureImage();
+        this.updateHierarchy();
     }
 
     protected onActualImageScaleTypeChanged(args) {
-        this.initActualImageScaleType();
+        this.updateHierarchy();
     }
 
     protected onFadeDurationChanged(args) {
-        this.initFadeDuration();
+        this.updateHierarchy();
     }
 
     protected onBackgroundUriChanged(args) {
-        this.initBackground();
+        this.updateHierarchy();
     }
 
     protected onProgressiveRenderingEnabledChanged(args) {
@@ -180,35 +178,35 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     protected onShowProgressBarChanged() {
-        this.initProcessBar();
+        this.updateHierarchy();
     }
 
     protected onProgressBarColorChanged(args) {
-        this.initProcessBarColor();
+        this.updateHierarchy();
     }
 
     protected onRoundAsCircleChanged(args) {
-        this.initRoundingParamsAsCircle();
+        this.updateHierarchy();
     }
 
     protected onRoundTopLeftChanged(args) {
-        this.initRoundTopLeft();
+        this.updateHierarchy();
     }
 
     protected onRoundTopRightChanged(args) {
-        this.initRoundTopRight();
+        this.updateHierarchy();
     }
 
-    protected onRoundBottomLeftrChanged(args) {
-        this.initRoundBottomLeft();
+    protected onRoundBottomLeftChanged(args) {
+        this.updateHierarchy();
     }
 
     protected onRoundBottomRightChanged(args) {
-        this.initRoundBottomRight();
+        this.updateHierarchy();
     }
 
     protected onRoundedCornerRadiusChanged(args) {
-        this.initRoundedCornerRadius();
+        this.updateHierarchy();
     }
 
     protected onAutoPlayAnimationsPropertyChanged(args) {
@@ -225,26 +223,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     private initDrawee() {
         this.initImage();
-        this.initFailureImage();
-        this.initPlaceholderImage();
-        this.initActualImageScaleType();
-        this.initFadeDuration();
-        this.initBackground();
-        this.initProcessBar();
-        this.initRoundingParamsAsCircle()
-        this.initRoundTopLeft();
-        this.initRoundTopRight();
-        this.initRoundBottomLeft();
-        this.initRoundBottomRight();
-        this.initRoundedCornerRadius();
-    }
-
-    private initActualImageScaleType() {
-        if (this._android) {
-            if (this.actualImageScaleType) {
-                this.updateHierarchy();
-            }
-        }
     }
 
     private initImage() {
@@ -351,168 +329,78 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 if (this.autoPlayAnimations) {
                     builder.setAutoPlayAnimations(this.autoPlayAnimations);
                 }
-                
+
                 if (this.tapToRetryEnabled) {
                     builder.setTapToRetryEnabled(this.tapToRetryEnabled)
                 }
-                
+
                 var controller = builder.build();
                 if (this.aspectRatio) {
                     this._android.setAspectRatio(this.aspectRatio);
                 }
-                
+
                 this._android.setController(controller);
             }
         }
     }
 
-    private initPlaceholderImage() {
-        if (this._android) {
-            if (this.placeholderImageUri) {
-                this.placeholderImageDrawable = this.getDrawable(this.placeholderImageUri);
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initFailureImage() {
-        if (this._android) {
-            if (this.failureImageUri) {
-                this.failureImageDrawable = this.getDrawable(this.failureImageUri);
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initFadeDuration() {
-        if (this._android) {
-            if (this.fadeDuration) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initBackground() {
-        if (this._android) {
-            if (this.backgroundUri) {
-                this.backgroundDrawable = this.getDrawable(this.backgroundUri);
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initProcessBar() {
-        if (this._android) {
-            if (this.showProgressBar) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initProcessBarColor() {
-        if (this._android) {
-            if (this.progressBarColor) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initRoundingParamsAsCircle() {
-        if (this._android) {
-            if (this.roundAsCircle) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initRoundTopLeft() {
-        if (this._android) {
-            if (this.roundTopLeft) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initRoundTopRight() {
-        if (this._android) {
-            if (this.roundTopRight) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initRoundBottomLeft() {
-        if (this._android) {
-            if (this.roundBottomLeft) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initRoundBottomRight() {
-        if (this._android) {
-            if (this.roundBottomRight) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initRoundedCornerRadius() {
-        if (this._android) {
-            if (this.roundedCornerRadius) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
-    private initAutoPlayAnimations() {
-        if (this._android) {
-            if (this.autoPlayAnimations) {
-                this.updateHierarchy();
-            }
-        }
-    }
-
     private updateHierarchy() {
-        var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
-        if (this.failureImageUri && this.failureImageDrawable) {
-            builder.setFailureImage(this.failureImageDrawable);
-        }
+        if (this._android) {
+            var failureImageDrawable;
+            var placeholderImageDrawable;
+            var backgroundDrawable;
+            if (this.failureImageUri) {
+                failureImageDrawable = this.getDrawable(this.failureImageUri);
+            }
 
-        if (this.placeholderImageUri && this.placeholderImageDrawable) {
-            builder.setPlaceholderImage(this.placeholderImageDrawable);
-        }
+            if (this.placeholderImageUri) {
+                placeholderImageDrawable = this.getDrawable(this.placeholderImageUri);
+            }
 
-        if (this.actualImageScaleType) {
-            builder.setActualImageScaleType(this.actualImageScaleType);
-        }
+            if (this.backgroundUri) {
+                backgroundDrawable = this.getDrawable(this.backgroundUri);
+            }
 
-        if (this.fadeDuration) {
-            builder.setFadeDuration(this.fadeDuration);
-        }
+            var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
+            if (this.failureImageUri && failureImageDrawable) {
+                builder.setFailureImage(failureImageDrawable);
+            }
 
-        if (this.backgroundUri && this.backgroundDrawable) {
-            builder.setBackground(this.backgroundDrawable);
-        }
+            if (this.placeholderImageUri && placeholderImageDrawable) {
+                builder.setPlaceholderImage(placeholderImageDrawable);
+            }
 
-        if (this.showProgressBar) {
-            builder.setProgressBarImage(this.progressBarColor);
-        }
+            if (this.actualImageScaleType) {
+                builder.setActualImageScaleType(this.actualImageScaleType);
+            }
 
-        if (this.roundAsCircle) {
-            builder.setRoundingParamsAsCircle();
-        }
+            if (this.fadeDuration) {
+                builder.setFadeDuration(this.fadeDuration);
+            }
 
-        if (this.roundBottomLeft || this.roundBottomRight || this.roundTopLeft || this.roundTopRight) {
-            var topLeftRadius = this.roundTopLeft ? this.roundedCornerRadius : 0;
-            var topRightRadius = this.roundTopRight ? this.roundedCornerRadius : 0;
-            var bottomRightRadius = this.roundBottomRight ? this.roundedCornerRadius : 0;
-            var bottomLeftRadius = this.roundBottomLeft ? this.roundedCornerRadius : 0;
-            builder.setCornersRadii(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
-        }
+            if (this.backgroundUri && backgroundDrawable) {
+                builder.setBackground(backgroundDrawable);
+            }
 
-        var hierarchy = builder.build();
-        this._android.setHierarchy(hierarchy);
+            if (this.showProgressBar) {
+                builder.setProgressBarImage(this.progressBarColor);
+            }
+
+            if (this.roundAsCircle) {
+                builder.setRoundingParamsAsCircle();
+            }
+
+            if (this.roundBottomLeft || this.roundBottomRight || this.roundTopLeft || this.roundTopRight) {
+                var topLeftRadius = this.roundTopLeft ? this.roundedCornerRadius : 0;
+                var topRightRadius = this.roundTopRight ? this.roundedCornerRadius : 0;
+                var bottomRightRadius = this.roundBottomRight ? this.roundedCornerRadius : 0;
+                var bottomLeftRadius = this.roundBottomLeft ? this.roundedCornerRadius : 0;
+                builder.setCornersRadii(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
+            }
+
+            var hierarchy = builder.build();
+            this._android.setHierarchy(hierarchy);
+        }
     }
 
     private getDrawable(path: string) {
@@ -636,7 +524,7 @@ class GenericDraweeHierarchyBuilder {
         return this;
     }
 
-    public setCornersRadii(topLeft: number, topRight, bottomRight: number, bottomLeft: number): GenericDraweeHierarchyBuilder {
+    public setCornersRadii(topLeft: number, topRight: number, bottomRight: number, bottomLeft: number): GenericDraweeHierarchyBuilder {
         if (!application.android) {
             return;
         }

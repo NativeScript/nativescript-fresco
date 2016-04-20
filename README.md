@@ -118,19 +118,22 @@ Number value used as radius for rounding the image's corners.
 
 - **roundBottomRight** 
 
-Boolean value used for determining if the image's bottom right corner will be rounded.
+Boolean value used for determining if the image's bottom right corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
 - **roundBottomLeft** 
 
-Boolean value used for determining if the image's bottom left corner will be rounded.
+Boolean value used for determining if the image's bottom left corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
+
 
 - **roundTopLeft** 
 
-Boolean value used for determining if the image's top left corner will be rounded.
+Boolean value used for determining if the image's top left corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
+
 
 - **roundTopRight** 
 
-Boolean value used for determining if the image's top right corner should be rounded.
+Boolean value used for determining if the image's top right corner should be rounded. The *roundedCornerRadius* is used as the rounding radius.
+
 
 - **autoPlayAnimations** 
 

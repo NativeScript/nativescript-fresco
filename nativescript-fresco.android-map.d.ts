@@ -108,7 +108,7 @@ declare module com {
 
                 class RoundingParams {
                     static asCircle(): void;
-                    setCornersRadii(topLeft: number, topRight, bottomRight: number, bottomLeft: number);
+                    setCornersRadii(topLeft: number, topRight: number, bottomRight: number, bottomLeft: number);
                 }
             }
         }
