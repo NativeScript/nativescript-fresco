@@ -94,7 +94,7 @@ Number value used for the fade-in duration. This value is in milliseconds.
 
 - **aspectRatio** 
 
-Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio is calculated by deviding the image's (that is set via the imageUri) width / height.
+Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio of an image is calculated by dividing its width by its height.
 
 - **progressiveRenderingEnabled**
 
@@ -144,7 +144,7 @@ Boolean value used for enabling/disabling a tap to retry action for the download
 
 - **finalImageSet** - arguments *FinalEventData*
 
-This event is fired after the final image has been set.
+This event is fired after the final image has been set. When working with animated images you could use this event to start the animation by calling the *FinalEventData.animatable.start()* function.
 
 - **failure** - arguments *FailureEventData*
 
