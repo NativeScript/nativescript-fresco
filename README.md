@@ -92,7 +92,11 @@ String value used by FrescoDrawee image scale type. This property can be set to:
 
 Number value used for the fade-in duration. This value is in milliseconds.
 
-- **progressiveRenderingEnabled** 
+- **aspectRatio** 
+
+Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio is calculated by deviding the image's (that is set via the imageUri) width / height.
+
+- **progressiveRenderingEnabled**
 
 Boolean value used for enabling or disabling the streaming of progressive JPEG images. This property is set to 'false' by default. Setting this property to 'true' while loading JPEG images not encoded in progressive format will lead to a standard loading of those images.
 

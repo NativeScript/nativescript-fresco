@@ -65,6 +65,7 @@ declare module com {
                     getController();
                     setController(controller);
                     setHierarchy(hierarchy);
+                    setAspectRatio(ratio:number);
                 }
             }
 

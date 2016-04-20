@@ -30,21 +30,21 @@ export class FrescoError implements commonModule.IError {
     private _stringValue;
     private _message;
     private _errorType;
-    
-    constructor (throwable: java.lang.Throwable) {
+
+    constructor(throwable: java.lang.Throwable) {
         this._message = throwable.getMessage();
         this._errorType = throwable.getClass().getName();
         this._stringValue = throwable.toString();
     }
-    
+
     getMessage(): string {
         return this._message;
     }
-    
+
     getErrorType(): string {
         return this._errorType;
     }
-    
+
     toString(): string {
         return this._stringValue;
     }
@@ -54,23 +54,23 @@ export class QualityInfo extends com.facebook.imagepipeline.image.ImmutableQuali
     getQuality(): number {
         return super.getQuality();
     }
-    
+
     isOfFullQuality(): boolean {
         return super.isOfFullQuality();
     }
-    
-    isOfGoodEnoughQuality():boolean {
+
+    isOfGoodEnoughQuality(): boolean {
         return super.isOfGoodEnoughQuality();
     }
 }
 
 export class ImageInfo implements commonModule.IImageInfo {
     private _nativeImageInfo: com.facebook.imagepipeline.image.ImageInfo;
-    
-    constructor (imageInfo) {
+
+    constructor(imageInfo) {
         this._nativeImageInfo = imageInfo;
     }
-    
+
     getHeight(): number {
         return this._nativeImageInfo.getHeight();
     }
@@ -218,6 +218,10 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onTapToRetryEnabledChanged(args) {
 
     }
+    
+    protected onAspectRatioChanged(args) {
+
+    }
 
     private initDrawee() {
         this.initImage();
@@ -348,6 +352,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     .setOldController(this._android.getController())
                     .build();
 
+                this._android.setAspectRatio(this.aspectRatio);
                 this._android.setController(controller);
             }
         }

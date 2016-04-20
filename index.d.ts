@@ -134,6 +134,11 @@ declare module "nativescript-fresco" {
          * Boolean value used for enabling/disabling a tap to retry action for the download of the FrescoDrawee image.
          */
         tapToRetryEnabled: boolean;
+        
+        /**
+         * Number value used as the aspect ratio of the image.
+         */
+        aspectRatio: number;
     }
 
     /**

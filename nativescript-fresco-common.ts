@@ -23,6 +23,7 @@ var ROUNDBOTTOMRIGHT = "roundBottomRight";
 var ROUNDEDCORNERRADIUS = "roundedCornerRadius";
 var AUTOPLAYANIMATIONS = "autoPlayAnimations";
 var TAPTORETRYENABLED = "tapToRetryEnabled";
+var ASPECTRATIO = "aspectRatio";
 
 export module ScaleType {
     export var Center = "center";
@@ -217,6 +218,14 @@ export class FrescoDrawee extends viewModule.View {
             dependencyObservable.PropertyMetadataSettings.None,
             FrescoDrawee.onTapToRetryEnabledPropertyChanged));
 
+    private static aspectRatioProperty = new dependencyObservable.Property(
+        ASPECTRATIO,
+        FRESCODRAWEE,
+        new proxyModule.PropertyMetadata(
+            undefined,
+            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
+            FrescoDrawee.onAspectRatioPropertyChanged));
+
     get imageUri(): string {
         return this._getValue(FrescoDrawee.imageUriProperty);
     }
@@ -353,6 +362,14 @@ export class FrescoDrawee extends viewModule.View {
         this._setValue(FrescoDrawee.tapToRetryEnabledProperty, value);
     }
 
+    get aspectRatio(): number {
+        return this._getValue(FrescoDrawee.aspectRatioProperty);
+    }
+
+    set aspectRatio(value: number) {
+        this._setValue(FrescoDrawee.aspectRatioProperty, value);
+    }
+
     private static onImageUriPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onImageUriChanged(args);
@@ -437,6 +454,11 @@ export class FrescoDrawee extends viewModule.View {
         var drawee: FrescoDrawee = args.object;
         drawee.onTapToRetryEnabledChanged(args);
     }
+    
+    private static onAspectRatioPropertyChanged(args) {
+        var drawee: FrescoDrawee = args.object;
+        drawee.onAspectRatioChanged(args);
+    }
 
     protected onImageUriChanged(args) {
 
@@ -503,6 +525,10 @@ export class FrescoDrawee extends viewModule.View {
     }
 
     protected onTapToRetryEnabledChanged(args) {
+
+    }
+    
+    protected onAspectRatioChanged(args) {
 
     }
 }
