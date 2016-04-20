@@ -218,7 +218,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onTapToRetryEnabledChanged(args) {
 
     }
-    
+
     protected onAspectRatioChanged(args) {
 
     }
@@ -344,15 +344,23 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         that.get().notify(args);
                     },
                 });
-                var controller = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder()
-                    .setAutoPlayAnimations(this.autoPlayAnimations)
-                    .setImageRequest(request)
-                    .setControllerListener(listener)
-                    .setTapToRetryEnabled(this.tapToRetryEnabled)
-                    .setOldController(this._android.getController())
-                    .build();
-
-                this._android.setAspectRatio(this.aspectRatio);
+                var builder = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder();
+                builder.setImageRequest(request);
+                builder.setControllerListener(listener);
+                builder.setOldController(this._android.getController());
+                if (this.autoPlayAnimations) {
+                    builder.setAutoPlayAnimations(this.autoPlayAnimations);
+                }
+                
+                if (this.tapToRetryEnabled) {
+                    builder.setTapToRetryEnabled(this.tapToRetryEnabled)
+                }
+                
+                var controller = builder.build();
+                if (this.aspectRatio) {
+                    this._android.setAspectRatio(this.aspectRatio);
+                }
+                
                 this._android.setController(controller);
             }
         }

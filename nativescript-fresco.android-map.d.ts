@@ -52,8 +52,21 @@ declare module com {
                     class Fresco {
                         static initialize(context);
 
-                        static newDraweeControllerBuilder();
+                        static newDraweeControllerBuilder(): PipelineDraweeControllerBuilder;
                     }
+                }
+                
+                class PipelineDraweeController {
+                    
+                }
+                
+                class PipelineDraweeControllerBuilder {
+                    setAutoPlayAnimations(value: boolean): PipelineDraweeControllerBuilder;
+                    setImageRequest(uri): PipelineDraweeControllerBuilder;
+                    setControllerListener(controller: com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>): PipelineDraweeControllerBuilder;
+                    setTapToRetryEnabled(value: boolean): PipelineDraweeControllerBuilder;
+                    setOldController(controller): PipelineDraweeControllerBuilder;
+                    build(): PipelineDraweeController;
                 }
             }
 
