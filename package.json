@@ -1,25 +1,38 @@
 {
   "name": "nativescript-fresco",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "This is a NativeScript plugin wrapping the popular Fresco library for managing images on Android.",
   "main": "nativescript-fresco.js",
-   "files": [
-       "*.js",
-       "platforms",
-       "index.d.ts"
-   ],
-  "nativescript": {
-    "ios": "^1.5.0",
-    "android": "^1.5.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-fresco"
   },
-  "dependencies": {
-    "tns-core-modules": "^1.5.2"
+  "bugs": {
+    "url": "https://github.com/NativeScript/nativescript-fresco/issues"
+  },
+  "files": [
+    "*.js",
+    "platforms",
+    "index.d.ts"
+  ],
+  "nativescript": {
+    "ios": "^1.7.1",
+    "android": "^1.7.1"
+  },
+  "devDependencies": {
+    "tns-core-modules": "1.7.1"
   },
   "keywords": [
     "fresco",
     "android",
     "nativescript"
   ],
-  "author": "Deyan.Ginev@telerik.com",
+  "author": "Deyan Ginev <Deyan.Ginev@telerik.com>",
+  "contributors": [
+    {
+      "name": "Vladimir Amiorkov",
+      "email": "Vladimir.Amiorkov@telerik.com"
+    }
+  ],
   "license": "ISC"
 }
