@@ -2,7 +2,7 @@
  * When called, initializes the android Fresco library. Calling this method is required.
  * A good place to call it is at the application onLaunch() method.
  */
-function initialize(): void;
+declare function initialize(): void;
 
 /**
 * Encapsulates the common abstraction behind a platform specific object (typically a Bitmap) that is used view to show remote or local images.
