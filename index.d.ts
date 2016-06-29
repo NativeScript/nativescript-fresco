@@ -1,3 +1,5 @@
+import viewModule = require("ui/core/view");
+
 /**
  * When called, initializes the android Fresco library. Calling this method is required.
  * A good place to call it is at the application onLaunch() method.
@@ -7,7 +9,7 @@ declare function initialize(): void;
 /**
 * Encapsulates the common abstraction behind a platform specific object (typically a Bitmap) that is used view to show remote or local images.
 */
-export class FrescoDrawee {
+export class FrescoDrawee extends viewModule.View {
     /**
      * This event is fired after the final image has been set.
      */
@@ -140,7 +142,7 @@ export class FrescoDrawee {
 /**
 * Encapsulates the common abstraction behind a platform specific object (typically a Bitmap) quality.
 */
-export class QualityInfo {
+export interface QualityInfo {
     getQuality(): number;
 
     isOfFullQuality(): boolean;

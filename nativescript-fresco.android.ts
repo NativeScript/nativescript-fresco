@@ -50,18 +50,12 @@ export class FrescoError implements commonModule.IError {
     }
 }
 
-export class QualityInfo extends com.facebook.imagepipeline.image.ImmutableQualityInfo {
-    getQuality(): number {
-        return super.getQuality();
-    }
+export interface QualityInfo {
+    getQuality();
 
-    isOfFullQuality(): boolean {
-        return super.isOfFullQuality();
-    }
+    isOfFullQuality();
 
-    isOfGoodEnoughQuality(): boolean {
-        return super.isOfGoodEnoughQuality();
-    }
+    isOfGoodEnoughQuality();
 }
 
 export class ImageInfo implements commonModule.IImageInfo {
