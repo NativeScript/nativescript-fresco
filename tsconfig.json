@@ -13,9 +13,9 @@
         "*.ts"
     ],
     "files": [
-        "./fresco/fresco-common.ts",
-        "./fresco/fresco.android.ts",
-        "./fresco/fresco.ios.ts"
+        "./nativescript-fresco-common.ts",
+        "./nativescript-fresco.android.ts",
+        "./nativescript-fresco.ios.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
