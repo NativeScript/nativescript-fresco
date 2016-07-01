@@ -11,7 +11,9 @@ The `nativescript-fresco` plugin enables NativeScript developers to use the `Fre
 3. Go to the root folder of your {N} application where you would like to install the plugin and type `tns plugin add <path-to-fresco-repo-dir>`.
 4. Initialize `nativescript-fresco` in the `launch` event of your {N} application by using the following code:
 
-```JavaScript
+JavaScript:
+
+```javascript
 var application = require("application");
 var fresco = require("nativescript-fresco");
 
@@ -21,7 +23,10 @@ if (application.android) {
     };
 }
 ```
-```TypeScript
+
+TypeScript:
+
+```typescript
 import application = require("application");
 import fresco = require("nativescript-fresco");
 
@@ -34,11 +39,11 @@ if (application.android) {
 
 Use `fresco` in the XML definition of the page as follows:
 
-```XML
+```xlm
 <Page
     xmlns="http://www.nativescript.org/tns.xsd" 
-    xmlns:Fresco="nativescript-fresco">
-    <Fresco:FrescoDrawee width="250" 
+    xmlns:nativescript-fresco="nativescript-fresco">
+    <nativescript-fresco:FrescoDrawee width="250" 
 						 height="250"
 					     imageUri="<uri-to-a-photo-from-the-web-or-a-local-resource>"/>
 </Page>
@@ -50,7 +55,13 @@ As documented by the Fresco library setting the **height and width** are **manda
 
 ### Basic attributes
 
-- **imageUri** - String value used for the image URI. You can use this property to set the image to be loaded from remote location (http, https) or from the resources files of your {N} application.
+- **imageUri** 
+
+String value used for the image URI. You can use this property to set the image to be loaded from remote location (http, https) or from the resources files of your {N} application.
+
+```xlm
+<nativescript-fresco:FrescoDrawee imageUri="https://docs.nativescript.org/angular/img/cli-getting-started/angular/chapter0/NativeScript_logo.png"/>
+```
 
 ### Advanced *optional* attributes
 
@@ -60,13 +71,25 @@ There are a couple of *optional* attributes that could be set on the FrescoDrawe
 
 String value used for the placeholder image URI. You can use this property to set a placeholder image loaded from the local and resources files of your {N} application.
 
+```xlm
+<nativescript-fresco:FrescoDrawee placeholderImageUri="~/placeholder.jpg"/>
+```
+
 - **backgroundUri** 
 
 String value used for the background image URI. Using this property has similar effect as the placeholderImageUri but the image is stretched to the size of the FrescoDrawee.
 
+```xlm
+<nativescript-fresco:FrescoDrawee backgroundUri="~/image.jpg"/>
+```
+
 - **failureImageUri** 
 
 String value used for the failure image URI. You can use this property to set a failure image loaded from the local and resources files of your {N} application that will be shown if the loading of the imageUri is not successful.
+
+```xlm
+<nativescript-fresco:FrescoDrawee failureImageUri="~/failure.jpg"/>
+```
 
 - **actualImageScaleType** 
 
@@ -88,60 +111,113 @@ String value used by FrescoDrawee image scale type. This property can be set to:
 
 '*focusCrop*' - Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
 
+```xlm
+<nativescript-fresco:FrescoDrawee actualImageScaleType="centerInside"/>
+```
+
 - **fadeDuration** 
 
 Number value used for the fade-in duration. This value is in milliseconds.
+
+```xlm
+<nativescript-fresco:FrescoDrawee fadeDuration="3000"/>
+```
 
 - **aspectRatio** 
 
 Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio of an image is calculated by dividing its width by its height.
 
+```xlm
+<nativescript-fresco:FrescoDrawee aspectRatio="1.33"/>
+```
+
 - **progressiveRenderingEnabled**
 
 Boolean value used for enabling or disabling the streaming of progressive JPEG images. This property is set to 'false' by default. Setting this property to 'true' while loading JPEG images not encoded in progressive format will lead to a standard loading of those images.
+
+```xlm
+<nativescript-fresco:FrescoDrawee progressiveRenderingEnabled="true"/>
+```
 
 - **showProgressBar** 
 
 Boolean value used for showing or hiding the progress bar.
 
+```xlm
+<nativescript-fresco:FrescoDrawee showProgressBar="true"/>
+```
+
 - **progressBarColor** 
 
 String value used for setting the color of the progress bar. You can set it to hex values ("*#FF0000*") and/or predefined colors ("*green*").
+
+```xlm
+<nativescript-fresco:FrescoDrawee progressBarColor="blue"/>
+```
 
 - **roundAsCircle** 
 
 Boolean value used for determining if the image will be rounded as a circle. Its default value is false. If set to true the image will be rounder to a circle.
 
+```xlm
+<nativescript-fresco:FrescoDrawee roundAsCircle="true"/>
+```
+
 - **roundedCornerRadius** 
 
 Number value used as radius for rounding the image's corners.
+
+```xlm
+<nativescript-fresco:FrescoDrawee roundedCornerRadius="50"/>
+```
 
 - **roundBottomRight** 
 
 Boolean value used for determining if the image's bottom right corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
+```xlm
+<nativescript-fresco:FrescoDrawee roundBottomRight="true"/>
+```
+
 - **roundBottomLeft** 
 
 Boolean value used for determining if the image's bottom left corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
+```xlm
+<nativescript-fresco:FrescoDrawee roundBottomLeft="true"/>
+```
 
 - **roundTopLeft** 
 
 Boolean value used for determining if the image's top left corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
+```xlm
+<nativescript-fresco:FrescoDrawee roundTopLeft="true"/>
+```
 
 - **roundTopRight** 
 
 Boolean value used for determining if the image's top right corner should be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
+```xlm
+<nativescript-fresco:FrescoDrawee roundTopRight="true"/>
+```
 
 - **autoPlayAnimations** 
 
 Boolean value used for enabling the automatic playing of animated images. Note that rounding of such images is not supported and will be ignored.
 
+```xlm
+<nativescript-fresco:FrescoDrawee autoPlayAnimations="true"/>
+```
+
 - **tapToRetryEnabled** 
 
 Boolean value used for enabling/disabling a tap to retry action for the download of the FrescoDrawee image.
+
+```xlm
+<nativescript-fresco:FrescoDrawee tapToRetryEnabled="true"/>
+```
 
 ### Events
 
@@ -149,25 +225,164 @@ Boolean value used for enabling/disabling a tap to retry action for the download
 
 This event is fired after the final image has been set. When working with animated images you could use this event to start the animation by calling the *FinalEventData.animatable.start()* function.
 
+```xlm
+<nativescript-fresco:FrescoDrawee finalImageSet="onFinalImageSet"/>
+```
+
+JavaScript:
+
+```javascript
+function onFinalImageSet(args) {
+    var frescoEventData = args;
+    var drawee = frescoEventData.object;
+}
+exports.onFinalImageSet = onFinalImageSet;
+```
+
+TypeScript:
+
+```typescript
+import {FrescoDrawee, FinalEventData } from "nativescript-fresco";
+
+export function onFinalImageSet(args: FinalEventData) {
+    var drawee = args.object as FrescoDrawee;
+}
+```
+
 - **failure** - arguments *FailureEventData*
 
 This event is fired after the fetch of the final image failed.
+
+```xlm
+<nativescript-fresco:FrescoDrawee failure="onFailure"/>
+```
+
+JavaScript:
+
+```javascript
+function onFailure(args) {
+    var drawee = args.object;
+}
+exports.onFailure = onFailure;
+```
+
+TypeScript:
+
+```typescript
+import {FrescoDrawee, FailureEventData } from "nativescript-fresco";
+
+export function onFailure(args: FailureEventData) {
+    var drawee = args.object as FrescoDrawee;
+}
+```
 
 - **intermediateImageSet** - arguments *IntermediateEventData*
 
 This event is fired after any intermediate image has been set.
 
+```xlm
+<nativescript-fresco:FrescoDrawee intermediateImageSet="onIntermediateImageSet"/>
+```
+
+JavaScript:
+
+```javascript
+function onIntermediateImageSet(args) {
+    var drawee = args.object;
+}
+exports.onIntermediateImageSet = onIntermediateImageSet;
+```
+
+TypeScript:
+
+```typescript
+import {FrescoDrawee, IntermediateEventData } from "nativescript-fresco";
+
+export function onIntermediateImageSet(args: IntermediateEventData) {
+    var drawee = args.object as FrescoDrawee;
+}
+```
+
 - **intermediateImageFailed** - arguments *FailureEventData*
 
 This event is fired after the fetch of the intermediate image failed.
+
+```xlm
+<nativescript-fresco:FrescoDrawee intermediateImageFailed="onIntermediateImageFailed"/>
+```
+
+JavaScript:
+
+```javascript
+function intermediateImageFailed(args) {
+    var drawee = args.object;
+}
+exports.intermediateImageFailed = intermediateImageFailed;
+```
+
+TypeScript:
+
+```typescript
+import {FrescoDrawee, FailureEventData } from "nativescript-fresco";
+
+export function intermediateImageFailed(args: FailureEventData) {
+    var drawee = args.object as FrescoDrawee;
+}
+```
 
 - **submit** - arguments *EventData*
 
 This event is fired before the image request is submitted.
 
-- **release** -arguments *EventData*
+```xlm
+<nativescript-fresco:FrescoDrawee submit="onSubmit"/>
+```
+
+JavaScript:
+
+```javascript
+function onSubmit(args) {
+    var drawee = args.object;
+}
+exports.onSubmit = onSubmit;
+```
+
+TypeScript:
+
+```typescript
+import {FrescoDrawee, EventData } from "nativescript-fresco";
+
+export function onSubmit(args: EventData) {
+    var drawee = args.object as FrescoDrawee;
+}
+```
+
+- **release** - arguments *EventData*
 
 This event is fired after the controller released the fetched image.
+
+```xlm
+<nativescript-fresco:FrescoDrawee release="onRelease"/>
+```
+
+JavaScript:
+
+```javascript
+function onRelease(args) {
+    var drawee = args.object;
+}
+exports.onRelease = onRelease;
+```
+
+TypeScript:
+
+```typescript
+import {FrescoDrawee, EventData } from "nativescript-fresco";
+
+export function onRelease(args: EventData) {
+    var drawee = args.object as FrescoDrawee;
+}
+```
 
 #### Event arguments
 
@@ -177,17 +392,57 @@ All events exposed by 'nativescript-fresco' provide additional information to th
 
 Instances of this class are provided to the handlers of the *finalImageSet*.
 
+```typescript
+import {FrescoDrawee, FinalEventData, ImageInfo } from "nativescript-fresco";
+
+export function onFinalImageSet(args: FinalEventData) {
+    var info: ImageInfo  = args.imageInfo;
+    var quality: number = info.getQualityInfo().getQuality();
+    var isFullQuality: boolean = info.getQualityInfo().isOfFullQuality();
+    var isOfGoodEnoughQuality: boolean = info.getQualityInfo().isOfGoodEnoughQuality();
+}
+```
+
 - **FailureEventData**
 
 Instances of this class are provided to the handlers of the *failure* and *intermediateImageFailed*.
+
+```typescript
+import {FrescoDrawee, FailureEventData, FrescoError } from "nativescript-fresco";
+
+export function onFailure(args: FailureEventData) {
+    var error: FrescoError = args.error;
+    var message: string = error.getMessage();
+    var type: string = error.getErrorType();
+    var fullError: string = error.toString();
+}
+```
 
 - **IntermediateEventData**
 
 Instances of this class are provided to the handlers of the *intermediateImageSet*.
 
+```typescript
+import {FrescoDrawee, IntermediateEventData, ImageInfo } from "nativescript-fresco";
+
+export function onIntermediateImageSet(args: IntermediateEventData) {
+    var info: ImageInfo  = args.imageInfo;
+    var quality: number = info.getQualityInfo().getQuality();
+    var isFullQuality: boolean = info.getQualityInfo().isOfFullQuality();
+    var isOfGoodEnoughQuality: boolean = info.getQualityInfo().isOfGoodEnoughQuality();}
+```
+
 - **EventData**
 
 Instances of this class are provided to the handlers of the *release* and *submit*.
+
+```typescript
+import {FrescoDrawee, EventData } from "nativescript-fresco";
+
+export function onSubmit(args: EventData) {
+    var drawee = args.object as FrescoDrawee;
+}
+```
 
 ## Sample Screenshots
 
