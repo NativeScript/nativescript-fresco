@@ -39,7 +39,7 @@ if (application.android) {
 
 Use `fresco` in the XML definition of the page as follows:
 
-```xlm
+```xml
 <Page
     xmlns="http://www.nativescript.org/tns.xsd" 
     xmlns:nativescript-fresco="nativescript-fresco">
@@ -59,7 +59,7 @@ As documented by the Fresco library setting the **height and width** are **manda
 
 String value used for the image URI. You can use this property to set the image to be loaded from remote location (http, https) or from the resources files of your {N} application.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee imageUri="https://docs.nativescript.org/angular/img/cli-getting-started/angular/chapter0/NativeScript_logo.png"/>
 ```
 
@@ -71,7 +71,7 @@ There are a couple of *optional* attributes that could be set on the FrescoDrawe
 
 String value used for the placeholder image URI. You can use this property to set a placeholder image loaded from the local and resources files of your {N} application.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee placeholderImageUri="~/placeholder.jpg"/>
 ```
 
@@ -79,7 +79,7 @@ String value used for the placeholder image URI. You can use this property to se
 
 String value used for the background image URI. Using this property has similar effect as the placeholderImageUri but the image is stretched to the size of the FrescoDrawee.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee backgroundUri="~/image.jpg"/>
 ```
 
@@ -87,7 +87,7 @@ String value used for the background image URI. Using this property has similar 
 
 String value used for the failure image URI. You can use this property to set a failure image loaded from the local and resources files of your {N} application that will be shown if the loading of the imageUri is not successful.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee failureImageUri="~/failure.jpg"/>
 ```
 
@@ -111,7 +111,7 @@ String value used by FrescoDrawee image scale type. This property can be set to:
 
 '*focusCrop*' - Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee actualImageScaleType="centerInside"/>
 ```
 
@@ -119,7 +119,7 @@ String value used by FrescoDrawee image scale type. This property can be set to:
 
 Number value used for the fade-in duration. This value is in milliseconds.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee fadeDuration="3000"/>
 ```
 
@@ -127,7 +127,7 @@ Number value used for the fade-in duration. This value is in milliseconds.
 
 Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio of an image is calculated by dividing its width by its height.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee aspectRatio="1.33"/>
 ```
 
@@ -135,7 +135,7 @@ Number value used as the aspect ratio of the image. This property is useful when
 
 Boolean value used for enabling or disabling the streaming of progressive JPEG images. This property is set to 'false' by default. Setting this property to 'true' while loading JPEG images not encoded in progressive format will lead to a standard loading of those images.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee progressiveRenderingEnabled="true"/>
 ```
 
@@ -143,7 +143,7 @@ Boolean value used for enabling or disabling the streaming of progressive JPEG i
 
 Boolean value used for showing or hiding the progress bar.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee showProgressBar="true"/>
 ```
 
@@ -151,7 +151,7 @@ Boolean value used for showing or hiding the progress bar.
 
 String value used for setting the color of the progress bar. You can set it to hex values ("*#FF0000*") and/or predefined colors ("*green*").
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee progressBarColor="blue"/>
 ```
 
@@ -159,7 +159,7 @@ String value used for setting the color of the progress bar. You can set it to h
 
 Boolean value used for determining if the image will be rounded as a circle. Its default value is false. If set to true the image will be rounder to a circle.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee roundAsCircle="true"/>
 ```
 
@@ -167,7 +167,7 @@ Boolean value used for determining if the image will be rounded as a circle. Its
 
 Number value used as radius for rounding the image's corners.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee roundedCornerRadius="50"/>
 ```
 
@@ -175,7 +175,7 @@ Number value used as radius for rounding the image's corners.
 
 Boolean value used for determining if the image's bottom right corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee roundBottomRight="true"/>
 ```
 
@@ -183,7 +183,7 @@ Boolean value used for determining if the image's bottom right corner will be ro
 
 Boolean value used for determining if the image's bottom left corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee roundBottomLeft="true"/>
 ```
 
@@ -191,7 +191,7 @@ Boolean value used for determining if the image's bottom left corner will be rou
 
 Boolean value used for determining if the image's top left corner will be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee roundTopLeft="true"/>
 ```
 
@@ -199,7 +199,7 @@ Boolean value used for determining if the image's top left corner will be rounde
 
 Boolean value used for determining if the image's top right corner should be rounded. The *roundedCornerRadius* is used as the rounding radius.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee roundTopRight="true"/>
 ```
 
@@ -207,7 +207,7 @@ Boolean value used for determining if the image's top right corner should be rou
 
 Boolean value used for enabling the automatic playing of animated images. Note that rounding of such images is not supported and will be ignored.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee autoPlayAnimations="true"/>
 ```
 
@@ -215,7 +215,7 @@ Boolean value used for enabling the automatic playing of animated images. Note t
 
 Boolean value used for enabling/disabling a tap to retry action for the download of the FrescoDrawee image.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee tapToRetryEnabled="true"/>
 ```
 
@@ -225,7 +225,7 @@ Boolean value used for enabling/disabling a tap to retry action for the download
 
 This event is fired after the final image has been set. When working with animated images you could use this event to start the animation by calling the *FinalEventData.animatable.start()* function.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee finalImageSet="onFinalImageSet"/>
 ```
 
@@ -253,7 +253,7 @@ export function onFinalImageSet(args: FinalEventData) {
 
 This event is fired after the fetch of the final image failed.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee failure="onFailure"/>
 ```
 
@@ -280,7 +280,7 @@ export function onFailure(args: FailureEventData) {
 
 This event is fired after any intermediate image has been set.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee intermediateImageSet="onIntermediateImageSet"/>
 ```
 
@@ -307,7 +307,7 @@ export function onIntermediateImageSet(args: IntermediateEventData) {
 
 This event is fired after the fetch of the intermediate image failed.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee intermediateImageFailed="onIntermediateImageFailed"/>
 ```
 
@@ -334,7 +334,7 @@ export function intermediateImageFailed(args: FailureEventData) {
 
 This event is fired before the image request is submitted.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee submit="onSubmit"/>
 ```
 
@@ -361,7 +361,7 @@ export function onSubmit(args: EventData) {
 
 This event is fired after the controller released the fetched image.
 
-```xlm
+```xml
 <nativescript-fresco:FrescoDrawee release="onRelease"/>
 ```
 
