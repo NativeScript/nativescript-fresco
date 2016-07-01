@@ -1,5 +1,7 @@
 # Welcome to `nativescript-fresco`
 
+> A NativeScript Plugin for Android apps.
+
 ## What is `nativescript-fresco`?
 `nativescript-fresco` is a NativeScript plugin that exposes the Fresco library used for efficiently displaying images on Android. More information about what Fresco is and how it works is available on its official website [here](https://code.facebook.com/posts/366199913563917/introducing-fresco-a-new-image-library-for-android/).
 
