@@ -27,8 +27,12 @@
     "android",
     "nativescript"
   ],
-  "author": "Deyan Ginev <Deyan.Ginev@telerik.com>",
+  "author": "Deyan Ginev <Deyan.Ginev@telerik.com> & Vladimir Amiorkov <Vladimir.Amiorkov@telerik.com> ",
   "contributors": [
+    {
+      "name": "Deyan Ginev",
+      "email": "Deyan.Ginev@telerik.com"
+    },
     {
       "name": "Vladimir Amiorkov",
       "email": "Vladimir.Amiorkov@telerik.com"
