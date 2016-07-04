@@ -136,7 +136,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     public _clearAndroidReference() {
         this._android.setImageURI(null, null);
         this._android = undefined;
-        super._clearAndroidReference();
     }
 
     get android() {
