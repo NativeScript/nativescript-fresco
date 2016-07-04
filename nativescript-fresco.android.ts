@@ -413,15 +413,19 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     private getDrawableFromLocalFile(localFilePath: string) {
         var img = imageSource.fromFile(localFilePath);
-        var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
+        if (img) {
+            var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
+        }
 
         return drawable;
     }
 
     private getDrawableFromResource(resourceName: string) {
         var img = imageSource.fromResource(resourceName.substr(utils.RESOURCE_PREFIX.length));
-        var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
-
+        if (img) {
+            var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
+        }
+        
         return drawable;
     }
 }
