@@ -132,10 +132,12 @@ Number value used for the fade-in duration. This value is in milliseconds.
 
 - **aspectRatio** 
 
-Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio of an image is calculated by dividing its width by its height.
+Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio of an image is calculated by dividing its width by its height. 
+
+Note: In some layout scenarios it is necessary to set the *verticalAlignment* of the FrescoDrawee in order to "anchor" it and achieve the dynamically sizing by the set aspect ratio.
 
 ```xml
-<nativescript-fresco:FrescoDrawee aspectRatio="1.33"/>
+<nativescript-fresco:FrescoDrawee aspectRatio="1.33" verticalAlignment="top"/>
 ```
 
 - **progressiveRenderingEnabled**
