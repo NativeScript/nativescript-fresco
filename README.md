@@ -78,6 +78,8 @@ There are a couple of *optional* attributes that could be set on the FrescoDrawe
 
 String value used for the placeholder image URI. You can use this property to set a placeholder image loaded from the local and resources files of your {N} application.
 
+**Note: Currently there are limitations on how many different Images can be set to as 'placeholderImage' before OutOfMemoryError is thrown. For best results its recommended to use a single image for all ```placeholderImageUri``` of your FrescoDrawee instances.*
+
 ```xml
 <nativescript-fresco:FrescoDrawee placeholderImageUri="~/placeholder.jpg"/>
 ```
@@ -85,6 +87,8 @@ String value used for the placeholder image URI. You can use this property to se
 - **backgroundUri** 
 
 String value used for the background image URI. Using this property has similar effect as the placeholderImageUri but the image is stretched to the size of the FrescoDrawee.
+
+**Note: Currently there are limitations on how many different Images can be set to as 'background' before OutOfMemoryError is thrown. For best results its recommended to use a single image for all ```backgroundUri``` of your FrescoDrawee instances.*
 
 ```xml
 <nativescript-fresco:FrescoDrawee backgroundUri="~/image.jpg"/>
