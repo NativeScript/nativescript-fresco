@@ -222,32 +222,27 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (this._android) {
             this._android.setImageURI(null);
             if (this.imageUri) {
-                var image = this.getDrawable(this.imageUri);
                 var uri;
-                if (!image) {
-                    uri = android.net.Uri.parse(this.imageUri);
-                } else {
-                    if (utils.isFileOrResourcePath(this.imageUri)) {
-                        var res = utils.ad.getApplicationContext().getResources();
-                        if (!res) {
-                            return;
-                        }
+                if (utils.isFileOrResourcePath(this.imageUri)) {
+                    var res = utils.ad.getApplicationContext().getResources();
+                    if (!res) {
+                        return;
+                    }
 
-                        var uri;
-                        if (this.imageUri.indexOf(utils.RESOURCE_PREFIX) === 0) {
-                            var resName = this.imageUri.substr(utils.RESOURCE_PREFIX.length);
-                            var identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
-                            if (0 < identifier) {
-                                uri = new android.net.Uri.Builder()
-                                    .scheme(com.facebook.common.util.UriUtil.LOCAL_RESOURCE_SCHEME)
-                                    .path(java.lang.String.valueOf(identifier))
-                                    .build();
-                            }
-                        } else {
-                            // TODO: load from local file
-                            uri = android.net.Uri.parse("");
+                    var uri;
+                    if (this.imageUri.indexOf(utils.RESOURCE_PREFIX) === 0) {
+                        var resName = this.imageUri.substr(utils.RESOURCE_PREFIX.length);
+                        var identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
+                        if (0 < identifier) {
+                            uri = new android.net.Uri.Builder()
+                                .scheme(com.facebook.common.util.UriUtil.LOCAL_RESOURCE_SCHEME)
+                                .path(java.lang.String.valueOf(identifier))
+                                .build();
                         }
                     }
+                }
+                if (uri === undefined) {
+                    uri = android.net.Uri.parse(this.imageUri);
                 }
 
                 var progressiveRenderingEnabledValue = this.progressiveRenderingEnabled != undefined ? this.progressiveRenderingEnabled : false;
@@ -424,7 +419,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (img) {
             var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
         }
-        
+
         return drawable;
     }
 }
