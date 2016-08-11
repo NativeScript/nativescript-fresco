@@ -253,61 +253,86 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 var that: WeakRef<FrescoDrawee> = new WeakRef(this);
                 var listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
                     onFinalImageSet: function (id, imageInfo, animatable) {
-                        var info = new ImageInfo(imageInfo);
-                        var args: FinalEventData = <FinalEventData>{
-                            eventName: commonModule.FrescoDrawee.finalImageSetEvent,
-                            object: that.get(),
-                            imageInfo: info,
-                            animatable: animatable,
-                        };
+                        if (that) {
+                            var info = new ImageInfo(imageInfo);
 
-                        that.get().notify(args);
+                            var args: FinalEventData = <FinalEventData>{
+                                eventName: commonModule.FrescoDrawee.finalImageSetEvent,
+                                object: that.get(),
+                                imageInfo: info,
+                                animatable: animatable,
+                            };
+
+                            that.get().notify(args);
+                        } else {
+                            console.log("Warning: WeakRef<FrescoDrawee> was GC and no '" + commonModule.FrescoDrawee.finalImageSetEvent + "' callback will be raised.");
+                        }
                     },
                     onFailure: function (id, throwable) {
-                        var frescoError = new FrescoError(throwable);
-                        var args: FailureEventData = <FailureEventData>{
-                            eventName: commonModule.FrescoDrawee.failureEvent,
-                            object: that.get(),
-                            error: frescoError
-                        };
+                        if (that) {
+                            var frescoError = new FrescoError(throwable);
+                            var args: FailureEventData = <FailureEventData>{
+                                eventName: commonModule.FrescoDrawee.failureEvent,
+                                object: that.get(),
+                                error: frescoError
+                            };
 
-                        that.get().notify(args);
+                            that.get().notify(args);
+                        } else {
+                            console.log("Warning: WeakRef<FrescoDrawee> was GC and no '" + commonModule.FrescoDrawee.failureEvent + "' callback will be raised.");
+                        }
                     },
                     onIntermediateImageFailed: function (id, throwable) {
-                        var frescoError = new FrescoError(throwable);
-                        var args: FailureEventData = <FailureEventData>{
-                            eventName: commonModule.FrescoDrawee.intermediateImageFailedEvent,
-                            object: that.get(),
-                            error: frescoError
-                        };
+                        if (that) {
+                            var frescoError = new FrescoError(throwable);
+                            var args: FailureEventData = <FailureEventData>{
+                                eventName: commonModule.FrescoDrawee.intermediateImageFailedEvent,
+                                object: that.get(),
+                                error: frescoError
+                            };
 
-                        that.get().notify(args);
+                            that.get().notify(args);
+                        } else {
+                            console.log("Warning: WeakRef<FrescoDrawee> was GC and no '" + commonModule.FrescoDrawee.intermediateImageFailedEvent + "' callback will be raised.");
+                        }
                     },
                     onIntermediateImageSet: function (id, imageInfo) {
-                        var info = new ImageInfo(imageInfo);
-                        var args: IntermediateEventData = <IntermediateEventData>{
-                            eventName: commonModule.FrescoDrawee.intermediateImageSetEvent,
-                            object: that.get(),
-                            imageInfo: info
-                        };
+                        if (that) {
+                            var info = new ImageInfo(imageInfo);
+                            var args: IntermediateEventData = <IntermediateEventData>{
+                                eventName: commonModule.FrescoDrawee.intermediateImageSetEvent,
+                                object: that.get(),
+                                imageInfo: info
+                            };
 
-                        that.get().notify(args);
+                            that.get().notify(args);
+                        } else {
+                            console.log("Warning: WeakRef<FrescoDrawee> was GC and no '" + commonModule.FrescoDrawee.intermediateImageSetEvent + "' callback will be raised.");
+                        }
                     },
                     onRelease: function (id) {
-                        var args: commonModule.EventData = <commonModule.EventData>{
-                            eventName: commonModule.FrescoDrawee.releaseEvent,
-                            object: that.get()
-                        };
+                        if (that) {
+                            var args: commonModule.EventData = <commonModule.EventData>{
+                                eventName: commonModule.FrescoDrawee.releaseEvent,
+                                object: that.get()
+                            };
 
-                        that.get().notify(args);
+                            that.get().notify(args);
+                        } else {
+                            console.log("Warning: WeakRef<FrescoDrawee> was GC and no '" + commonModule.FrescoDrawee.releaseEvent + "' callback will be raised.");
+                        }
                     },
                     onSubmit: function (id, callerContext) {
-                        var args: commonModule.EventData = <commonModule.EventData>{
-                            eventName: commonModule.FrescoDrawee.submitEvent,
-                            object: that.get()
-                        };
+                        if (that) {
+                            var args: commonModule.EventData = <commonModule.EventData>{
+                                eventName: commonModule.FrescoDrawee.submitEvent,
+                                object: that.get()
+                            };
 
-                        that.get().notify(args);
+                            that.get().notify(args);
+                        } else {
+                            console.log("Warning: WeakRef<FrescoDrawee> was GC and no 'submitEvent' callback will be raised.");
+                        }
                     },
                 });
                 var builder = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder();
