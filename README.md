@@ -410,6 +410,7 @@ import {FrescoDrawee, FinalEventData, ImageInfo } from "nativescript-fresco";
 
 export function onFinalImageSet(args: FinalEventData) {
     var info: ImageInfo  = args.imageInfo;
+    var animatable: AnimatedImage = args.animatable;
     var quality: number = info.getQualityInfo().getQuality();
     var isFullQuality: boolean = info.getQualityInfo().isOfFullQuality();
     var isOfGoodEnoughQuality: boolean = info.getQualityInfo().isOfGoodEnoughQuality();
