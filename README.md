@@ -406,7 +406,7 @@ All events exposed by 'nativescript-fresco' provide additional information to th
 Instances of this class are provided to the handlers of the *finalImageSet*.
 
 ```typescript
-import {FrescoDrawee, FinalEventData, ImageInfo } from "nativescript-fresco";
+import {FrescoDrawee, FinalEventData, ImageInfo, AnimatedImage } from "nativescript-fresco";
 
 export function onFinalImageSet(args: FinalEventData) {
     var info: ImageInfo  = args.imageInfo;
