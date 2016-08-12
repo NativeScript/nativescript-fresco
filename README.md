@@ -56,6 +56,9 @@ Use `fresco` in the XML definition of the page as follows:
 </Page>
 ```
 
+## Examples
+You can refer the [sample](https://github.com/NativeScript/nativescript-fresco/tree/master/sample) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
+
 ## Attributes
 
 As documented by the Fresco library setting the **height and width** are **mandatory**, more details on this topic could be found [here](http://frescolib.org/docs/using-drawees-xml.html#height-and-width-mandatory). So the first this you should do when declaring the FrescoDrawee is set its *width* and *height* attributes or set only one of them and set the FrescoDrawee's **aspectRatio**. The width and height of the FrescoDrawee in your {N} application supports percentages which makes it possible to declare for example *width="50%"* and *aspectRatio="1.33"* achieving exactly 50% width with dynamically calculated height based on the aspect ration of the loaded image from the *imageUri*.
