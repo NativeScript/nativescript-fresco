@@ -1,0 +1,5 @@
+<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                    verticalAlignment="center"
+                    placeholderImageUri="res://ns_logo"
+                    aspectRatio="2"
+                    imageUri="http://lorempixel.com/400/200/"/>

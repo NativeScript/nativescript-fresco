@@ -1,0 +1,95 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="onNavigatingTo" 
+      xmlns:fresco="nativescript-fresco"
+      xmlns:lv="nativescript-telerik-ui/listview">
+<Page.actionBar>
+    <ActionBar title="{N} Fresco sample app"/>
+</Page.actionBar>
+<TabView selectedIndexChanged="onSelectedIndexChanged">
+    <TabView.items>
+      <TabViewItem title="single">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center" />
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="multiple">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="failure">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="actualImagescaletype">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="fade">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <StackLayout>
+                <Button text="set" tap="onSetTap"/>
+                <GridLayout id="rootLayout"/>
+            </StackLayout>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="progressiverenderingenabled">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="showprogressbar">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="roundascircle">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="roundedcornerradius">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="autoplayanimations">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+    </TabView.items>
+  </TabView>
+</Page>

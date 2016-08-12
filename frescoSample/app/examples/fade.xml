@@ -1,0 +1,6 @@
+<fresco:FrescoDrawee verticalAlignment="center" row="1"
+                    id="frescoDrawee"
+                    xmlns:fresco="nativescript-fresco"
+                    fadeDuration="3000"
+                    placeholderImageUri="res://ns_logo"
+                    aspectRatio="2"/>

@@ -1,0 +1,30 @@
+{
+    "name": "fresco-sample",
+    "main": "app.js",
+    "version": "1.0.0",
+    "author": {
+        "name": "Vladimir Amiorkov",
+        "email": "Vladimir.Amiorkov@telerik.com"
+    },
+    "description": "Sample {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "sample",
+        "fresco",
+        "android"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/nativescript-fresco"
+    },
+    "bugs": {
+        "url": "https://github.com/NativeScript/nativescript-fresco/issues"
+    },
+    "readme": "Sample {N} project that demonstrates the nativescript-fresco plugin with all of its features in action"
+}
