@@ -7,6 +7,7 @@ import { EventData} from "data/observable";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { ActivityIndicator } from "ui/activity-indicator";
 import { FrescoDrawee, FailureEventData, FinalEventData, IntermediateEventData } from "nativescript-fresco";
+let timerId;
 
 export function onNavigatingTo(args) {
     var page = args.object;
@@ -14,6 +15,10 @@ export function onNavigatingTo(args) {
 }
 
 export function onSelectedIndexChanged(args) {
+    if (timerId) {
+        timerModule.clearInterval(timerId);
+    }
+    
     var tabView: TabView = args.object;
     var tabViewItem: TabViewItem = tabView.items[args.newIndex];
     var title: string = tabViewItem.title;
@@ -26,7 +31,7 @@ export function onSelectedIndexChanged(args) {
         var layout = tabViewItem.view.getViewById("rootLayout") as GridLayout;
         var indicator = tabViewItem.view.getViewById("indicator") as ActivityIndicator;
         if (layout.getChildrenCount() <= 0) {
-            let timerId = timerModule.setInterval(function () {
+            timerId = timerModule.setInterval(function () {
                 indicator.busy = false;
                 indicator.visibility = "collapsed";
                 layout.addChild(myComponentInstance);
