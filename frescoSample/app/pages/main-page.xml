@@ -31,6 +31,14 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem>
+      <TabViewItem title="taptoretry">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
       <TabViewItem title="actualImagescaletype">
         <TabViewItem.view>
           <GridLayout>
