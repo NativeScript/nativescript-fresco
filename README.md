@@ -57,7 +57,7 @@ Use `fresco` in the XML definition of the page as follows:
 ```
 
 ## Examples
-You can refer the [sample](https://github.com/NativeScript/nativescript-fresco/tree/master/frescoSample) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action. Make sure you compile the TypeScript files to JavaScript using the ts.config.json configuration, otherwise running `tns run android` will lead to an error massage. In Visual Studio Code editor you can do this via [tasks](https://code.visualstudio.com/docs/editor/tasks).
+You can refer the [sample](https://github.com/NativeScript/nativescript-fresco/tree/master/frescoSample) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action. Make sure you transpile the TypeScript to JavaScript using the ts.config.json configuration, otherwise running `tns run android` will lead to an error massage. In Visual Studio Code editor you can do this via [tasks](https://code.visualstudio.com/docs/editor/tasks).
 
 ## Attributes
 
