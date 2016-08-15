@@ -57,7 +57,7 @@ Use `fresco` in the XML definition of the page as follows:
 ```
 
 ## Examples
-You can refer the [sample](https://github.com/NativeScript/nativescript-fresco/tree/master/sample) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
+You can refer the [sample](https://github.com/NativeScript/nativescript-fresco/tree/master/frescoSample) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
 
 ## Attributes
 
