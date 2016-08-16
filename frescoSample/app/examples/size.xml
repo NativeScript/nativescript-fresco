@@ -1,0 +1,11 @@
+<ScrollView>
+    <StackLayout>
+        <Button text="change" tap="onChangeTap"/>
+        <fresco:FrescoDrawee verticalAlignment="center" row="1"
+                            id="frescoDrawee"
+                            xmlns:fresco="nativescript-fresco"
+                            imageUri="http://lorempixel.com/200/200"
+                            aspectRatio="1"
+                            placeholderImageUri="res://ns_logo"/>
+    </StackLayout>
+</ScrollView>

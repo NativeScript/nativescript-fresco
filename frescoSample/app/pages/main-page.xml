@@ -23,6 +23,14 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem>
+      <TabViewItem title="size">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
       <TabViewItem title="failure">
         <TabViewItem.view>
           <GridLayout>
