@@ -1,6 +1,7 @@
 <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
                     verticalAlignment="center"
                     placeholderImageUri="res://ns_logo"
+                    margin="10"
                     aspectRatio="2"
                     roundedCornerRadius="50"
                     roundBottomRight="true"
