@@ -52,7 +52,6 @@
           <GridLayout>
             <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
             <StackLayout>
-                <Button text="set" tap="onSetTap"/>
                 <GridLayout id="rootLayout"/>
             </StackLayout>
           </GridLayout>
@@ -91,6 +90,14 @@
         </TabViewItem.view>
       </TabViewItem>
       <TabViewItem title="autoplayanimations">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="events">
         <TabViewItem.view>
           <GridLayout>
             <ActivityIndicator busy="true" id="indicator" verticalAlignment="center"/>

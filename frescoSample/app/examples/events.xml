@@ -1,12 +1,18 @@
-<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
-                    verticalAlignment="center"
-                    placeholderImageUri="res://ns_logo"
-                    aspectRatio="0.754"
-                    progressiveRenderingEnabled="true"
-                    showProgressBar="true"
-                    progressBarColor="blue"
-                    imageUri="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"
-                    finalImageSet="onFinalImageSet"
-                    intermediateImageSet="onIntermediateImageSet"
-                    submit="onSubmit"
-                    release="onRelease"/>
+<ScrollView>
+    <GridLayout rows="*, auto">
+        <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                            placeholderImageUri="res://ns_logo"
+                            verticalAlignment="top"
+                            width="75%"
+                            aspectRatio="0.754"
+                            progressiveRenderingEnabled="true"
+                            showProgressBar="true"
+                            progressBarColor="#3C5AFD"
+                            imageUri="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"
+                            finalImageSet="onFinalImageSet"
+                            intermediateImageSet="onIntermediateImageSet"
+                            submit="onSubmit"
+                            release="onRelease"/>
+        <Label id="outputLabel" text="output: " row="1" textWrap="true"/>
+    </GridLayout>
+</ScrollView>
