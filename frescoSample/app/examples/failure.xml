@@ -1,8 +1,13 @@
-<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco"  
+<ScrollView>
+    <GridLayout rows="*, auto">
+        <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco"  
                         height="200" width="400"
                         placeholderImageUri="res://ns_logo"            
                         failureImageUri="res://ns_logo_black"
                         aspectRatio="2"
                         showProgressBar="true"
+                        failure="onFailure"
                         imageUri="http://error.jpgerror"/>
-                    
+        <Label id="outputLabel" text="output: " row="1" textWrap="true"/>
+    </GridLayout>
+</ScrollView>
