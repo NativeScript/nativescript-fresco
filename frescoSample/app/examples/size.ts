@@ -22,8 +22,6 @@ export function onChangeTap(args: EventData) {
     var drawee = gridLayout.getViewById("frescoDrawee") as FrescoDrawee;
     drawee.aspectRatio = uris[currentIndex].aspectRation;
     drawee.imageUri = uris[currentIndex].uri;
-    console.log(drawee.imageUri);
-    console.log(drawee.aspectRatio);
 
     currentIndex++;
     if (currentIndex >= uris.length) {
