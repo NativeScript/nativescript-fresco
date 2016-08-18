@@ -1,12 +1,12 @@
 {
-  "name": "nativescript-fresco test app",
+  "name": "nativescript-fresco_test_app",
   "version": "1.0.0",
   "description": "NativeScript Application",
   "license": "SEE LICENSE IN <your-license-filename>",
   "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
+  "repository": "https://github.com/NativeScript/nativescript-fresco",
   "nativescript": {
-    "id": "org.nativescript.sample",
+    "id": "org.nativescript.frescodemo",
     "tns-android": {
       "version": "2.2.0"
     }
