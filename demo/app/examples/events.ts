@@ -2,6 +2,7 @@ import { FrescoDrawee, FailureEventData, FinalEventData, IntermediateEventData }
 import { EventData } from "data/observable";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { Label } from "ui/label";
+import { writeToOutputLabel } from "./appLogger";
 
 export function onFinalImageSet(args: FinalEventData) {
     var drawee = args.object as FrescoDrawee;
@@ -10,14 +11,12 @@ export function onFinalImageSet(args: FinalEventData) {
     writeToOutputLabel(drawee, message);
 }
 
-
 export function onIntermediateImageSet(args: IntermediateEventData) {
     var drawee = args.object as FrescoDrawee;
     var message = ">>>>> onIntermediateImageSet ";
     console.log(message);
     writeToOutputLabel(drawee, message);
 }
-
 
 export function intermediateImageFailed(args: FailureEventData) {
     var drawee = args.object as FrescoDrawee;
@@ -40,10 +39,4 @@ export function onRelease(args: EventData) {
     var message = ">>>>> onRelease ";
     console.log(message);
     writeToOutputLabel(drawee, message);
-}
-
-function  writeToOutputLabel(drawee: FrescoDrawee, message: string) {
-    var gridLayout = drawee.parent as GridLayout;
-    var label = gridLayout.getViewById("outputLabel") as Label;
-    label.text += message;
 }
