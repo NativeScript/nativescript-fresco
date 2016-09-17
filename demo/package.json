@@ -12,7 +12,7 @@
     }
   },
   "dependencies": {
-    "nativescript-fresco": "^1.0.6",
+    "nativescript-fresco": "^1.0.7",
     "nativescript-telerik-ui": "1.4.0",
     "tns-core-modules": "2.3.0"
   },

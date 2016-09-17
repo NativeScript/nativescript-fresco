@@ -475,7 +475,9 @@ Not so rarely you may have a scenario where the actual image on your remote serv
 // 'drawee' is the instance the 'FrescoDrawee' in the project.
 drawee.updateImageUri();
 ```
-#### Clear everything from the cache
+
+
+#### Clear everything from the cache
 Managing the caches in nativescript-fresco is done via the `ImagePipeline`. In order to get the reference of the ImagePipeline simply call the `getImagePipeline()` function:
 
 ```
@@ -514,20 +516,21 @@ var imagePipeLine = frescoModel.getImagePipeline();
 - Evict URI from both the memory and disk caches
 
 ```
-imagePipeLine.evictFromCache("<uri-to-a-photo-from-the-web-or-a-local-resource>");
+imagePipeLine.evictFromCache("<uri-to-a-photo-from-the-web>");
 ``` 
 
 - Evict URI from the memory cache
 
 ```
-imagePipeLine.evictFromMemoryCache("<uri-to-a-photo-from-the-web-or-a-local-resource>");
+imagePipeLine.evictFromMemoryCache("<uri-to-a-photo-from-the-web>");
 ``` 
 
 - Evict URI from the disk cache
 
 ```
-imagePipeLine.evictFromDiskCache("<uri-to-a-photo-from-the-web-or-a-local-resource>");
-```
+imagePipeLine.evictFromDiskCache("<uri-to-a-photo-from-the-web>");
+```
+
 ## Sample Screenshots
 
 All of the images are sample images for showcasing purposes.

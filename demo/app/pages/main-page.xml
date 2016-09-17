@@ -3,7 +3,9 @@
       xmlns:fresco="nativescript-fresco"
       xmlns:lv="nativescript-telerik-ui/listview">
 <Page.actionBar>
-    <ActionBar title="{N} Fresco sample app"/>
+    <ActionBar title="{N} Fresco sample app">
+      <ActionItem text="Clear Fresco cache" android.position="popup" tap="onClearCache"/>
+    </ActionBar>
 </Page.actionBar>
 <TabView selectedIndexChanged="onSelectedIndexChanged">
     <TabView.items>
