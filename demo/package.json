@@ -8,13 +8,13 @@
   "nativescript": {
     "id": "org.nativescript.frescodemo",
     "tns-android": {
-      "version": "2.2.0"
+      "version": "2.3.0"
     }
   },
   "dependencies": {
     "nativescript-fresco": "^1.0.6",
-    "nativescript-telerik-ui": "^1.3.0",
-    "tns-core-modules": "2.2.0"
+    "nativescript-telerik-ui": "1.4.0",
+    "tns-core-modules": "2.3.0"
   },
   "devDependencies": {
     "babel-traverse": "6.13.0",

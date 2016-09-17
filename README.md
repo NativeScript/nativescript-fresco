@@ -62,7 +62,7 @@ Use `fresco` in the XML definition of the page as follows:
 ## Examples
 You can refer the [demo](https://github.com/NativeScript/nativescript-fresco/tree/master/demo) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
 
-## Attributes
+## Features
 
 As documented by the Fresco library setting the **height and width** are **mandatory**, more details on this topic could be found [here](http://frescolib.org/docs/using-drawees-xml.html#height-and-width-mandatory). So the first this you should do when declaring the FrescoDrawee is set its *width* and *height* attributes or set only one of them and set the FrescoDrawee's **aspectRatio**. The width and height of the FrescoDrawee in your {N} application supports percentages which makes it possible to declare for example *width="50%"* and *aspectRatio="1.33"* achieving exactly 50% width with dynamically calculated height based on the aspect ration of the loaded image from the *imageUri*.
 
@@ -76,10 +76,6 @@ String value used for the image URI. You can use this property to set the image 
 <nativescript-fresco:FrescoDrawee imageUri="https://docs.nativescript.org/angular/img/cli-getting-started/angular/chapter0/NativeScript_logo.png"/>
 ```
 
-### Advanced *optional* attributes
-
-There are a couple of *optional* attributes that could be set on the FrescoDrawee instance to achieve advanced behaviors:
-
 - **placeholderImageUri** 
 
 String value used for the placeholder image URI. You can use this property to set a placeholder image loaded from the local and resources files of your {N} application.
@@ -90,6 +86,19 @@ String value used for the placeholder image URI. You can use this property to se
 <nativescript-fresco:FrescoDrawee placeholderImageUri="~/placeholder.jpg"/>
 ```
 
+- **failureImageUri** 
+
+String value used for the failure image URI. You can use this property to set a failure image loaded from the local and resources files of your {N} application that will be shown if the loading of the imageUri is not successful.
+
+```xml
+<nativescript-fresco:FrescoDrawee failureImageUri="~/failure.jpg"/>
+```
+
+
+### Advanced *optional* attributes
+
+There are a couple of *optional* attributes that could be set on the FrescoDrawee instance to achieve advanced behaviors:
+
 - **backgroundUri** 
 
 String value used for the background image URI. Using this property has similar effect as the placeholderImageUri but the image is stretched to the size of the FrescoDrawee.
@@ -98,14 +107,6 @@ String value used for the background image URI. Using this property has similar 
 
 ```xml
 <nativescript-fresco:FrescoDrawee backgroundUri="~/image.jpg"/>
-```
-
-- **failureImageUri** 
-
-String value used for the failure image URI. You can use this property to set a failure image loaded from the local and resources files of your {N} application that will be shown if the loading of the imageUri is not successful.
-
-```xml
-<nativescript-fresco:FrescoDrawee failureImageUri="~/failure.jpg"/>
 ```
 
 - **actualImageScaleType** 
@@ -464,6 +465,69 @@ export function onSubmit(args: EventData) {
 }
 ```
 
+### Cache
+The nativescript-fresco {N} plugin has built-in cache mechanism which handles managing the images in the memory. There are two types of cache mechanisms `memory` and `disk`, you can manually manage both of them with the following functionality.
+
+#### 'Refresh' the 'imageUri'
+Not so rarely you may have a scenario where the actual image on your remote service from the `imageUri` of the `FrescoDrawee` has changed but the {N} app already has an image in its internal cache. In such scenario you can easily 'refresh' the `imageUri` by calling the `updateImageUri()`:
+
+```
+// 'drawee' is the instance the 'FrescoDrawee' in the project.
+drawee.updateImageUri();
+```
+#### Clear everything from the cache
+Managing the caches in nativescript-fresco is done via the `ImagePipeline`. In order to get the reference of the ImagePipeline simply call the `getImagePipeline()` function:
+
+```
+var frescoModel = require("nativescript-fresco");
+
+var imagePipeLine = frescoModel.getImagePipeline();
+```
+
+- Clear both the memory and disk caches
+
+```
+imagePipeLine.clearCaches();
+``` 
+
+- Clear the memory cache
+
+```
+imagePipeLine.clearMemoryCaches();
+``` 
+
+- Clear the disk cache
+
+```
+imagePipeLine.clearDiskCaches();
+``` 
+
+#### Evict all images with a specific URI from the cache
+If clearing the entire cache is not what you desired, you can clear only the images linked with a specific URI (`imageUri`). Evicting is done again via the ImagePipeline:
+
+```
+var frescoModel = require("nativescript-fresco");
+
+var imagePipeLine = frescoModel.getImagePipeline();
+```
+
+- Evict URI from both the memory and disk caches
+
+```
+imagePipeLine.evictFromCache("<uri-to-a-photo-from-the-web-or-a-local-resource>");
+``` 
+
+- Evict URI from the memory cache
+
+```
+imagePipeLine.evictFromMemoryCache("<uri-to-a-photo-from-the-web-or-a-local-resource>");
+``` 
+
+- Evict URI from the disk cache
+
+```
+imagePipeLine.evictFromDiskCache("<uri-to-a-photo-from-the-web-or-a-local-resource>");
+```
 ## Sample Screenshots
 
 All of the images are sample images for showcasing purposes.

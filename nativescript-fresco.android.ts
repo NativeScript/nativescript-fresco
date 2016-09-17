@@ -12,6 +12,61 @@ export function initialize(): void {
     }
 };
 
+export function getImagePipeline(): ImagePipeline {
+    if (application.android) {
+        var nativePipe = com.facebook.drawee.backends.pipeline.Fresco.getImagePipeline();
+        var imagePineLine = new ImagePipeline();
+        imagePineLine.android = nativePipe;
+
+        return imagePineLine;
+    }
+};
+
+export class ImagePipeline {
+    private _android: com.facebook.imagepipeline.core.ImagePipeline;
+
+    // Currently not available in 0.9.0+
+    private isInDiskCacheSync(uri: string) {
+        return this._android.isInDiskCacheSync(android.net.Uri.parse(uri));
+    }
+
+    isInBitmapMemoryCache(uri: string): boolean {
+        return this._android.isInBitmapMemoryCache(android.net.Uri.parse(uri));
+    }
+
+    evictFromMemoryCache(uri: string): void {
+        this._android.evictFromMemoryCache(android.net.Uri.parse(uri));
+    }
+
+    evictFromDiskCache(uri: string): void {
+        this._android.evictFromDiskCache(android.net.Uri.parse(uri));
+    }
+
+    evictFromCache(uri: string): void {
+        this._android.evictFromCache(android.net.Uri.parse(uri));
+    }
+
+    clearCaches() {
+        this._android.clearCaches();
+    }
+
+    clearMemoryCaches() {
+        this._android.clearMemoryCaches();
+    }
+
+    clearDiskCaches() {
+        this._android.clearDiskCaches();
+    }
+
+    get android(): any {
+        return this._android;
+    }
+
+    set android(value: any) {
+        this._android = value;
+    }
+}
+
 export class AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable implements commonModule.IAnimatedImage {
     start(): void {
         super.start();
@@ -136,6 +191,17 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     public _clearAndroidReference() {
         this._android.setImageURI(null, null);
         this._android = undefined;
+    }
+
+    public updateImageUri() {
+        var imagePipeLine = getImagePipeline();
+        var isInCache = imagePipeLine.isInBitmapMemoryCache(this.imageUri);
+        if (isInCache) {
+            imagePipeLine.evictFromCache(this.imageUri);
+            var imageUri = this.imageUri;
+            this.imageUri = null;
+            this.imageUri = imageUri;
+        }
     }
 
     get android() {

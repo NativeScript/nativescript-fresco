@@ -1,0 +1,14 @@
+<ScrollView xmlns:fresco="nativescript-fresco" >
+    <StackLayout>
+       <fresco:FrescoDrawee id="frescoDrawee"
+                            verticalAlignment="center"
+                            placeholderImageUri="res://ns_logo"
+                            aspectRatio="2"
+                            imageUri="http://lorempixel.com/400/200/"/>
+        <Button text="Check cache" textWrap="true" tap="onCheckCache"/>
+        <Button text="Clear cache" textWrap="true" tap="onClearCache"/>
+        <Button text="Set image" textWrap="true" tap="onSetImage"/>
+        <Button text="Reset image" textWrap="true" tap="onResetImage"/>
+        <Label id="outputLabel" text="output:" textWrap="true"/>
+    </StackLayout>
+</ScrollView>

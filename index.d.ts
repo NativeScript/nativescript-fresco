@@ -7,6 +7,12 @@ import viewModule = require("ui/core/view");
 declare function initialize(): void;
 
 /**
+ * When called, initializes the android Fresco library. Calling this method is required.
+ * A good place to call it is at the application onLaunch() method.
+ */
+declare function getImagePipeline(): ImagePipeline;
+
+/**
 * Encapsulates the common abstraction behind a platform specific object (typically a Bitmap) that is used view to show remote or local images.
 */
 export class FrescoDrawee extends viewModule.View {
@@ -39,6 +45,11 @@ export class FrescoDrawee extends viewModule.View {
      * This event is fired before the image request is submitted.
      */
     static submitEvent: string;
+
+    /**
+     * Removes all images with the specified Uri from the memory or/and disk and reinitialize the 'imageUri'.
+     */
+    updateImageUri(): void;
 
     /**
      * String value used for the image URI.
@@ -319,6 +330,51 @@ export class AnimatedImage {
      * Returns boolean value representing the if the AnimatedImage's is being animated.
      */
     isRunning(): boolean;
+}
+
+/**
+ * The entry point for the image pipeline..
+ */
+export class ImagePipeline {
+    /**
+     * Returns whether the image is stored in the bitmap memory cache.
+     */
+    isInBitmapMemoryCache(uri: string): boolean;
+
+    /**
+     * Returns whether the image is stored in the disk cache.
+     */
+    private isInDiskCacheSync(uri: string): boolean;
+
+    /**
+     * Removes all images with the specified Uri from memory cache.
+     */
+    evictFromMemoryCache(uri: string): void;
+
+    /**
+     * Removes all images with the specified Uri from disk cache.
+     */
+    evictFromDiskCache(uri: string): void;
+
+    /**
+     * Removes all images with the specified Uri from all the caches (memory and disk).
+     */
+    evictFromCache(uri: string): void;
+
+    /**
+     * Clear all the caches (memory and disk).
+     */
+    clearCaches(): void;
+
+    /**
+     * Clear the memory caches.
+     */
+    clearMemoryCaches(): void;
+
+    /**
+     * Clear disk caches.
+     */
+    clearDiskCaches(): void;
 }
 
 /**

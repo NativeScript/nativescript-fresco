@@ -16,11 +16,11 @@
     "index.d.ts"
   ],
   "nativescript": {
-    "ios": "2.1.0",
-    "android": "2.1.1"
+    "ios": "2.3.0",
+    "android": "2.3.0"
   },
   "devDependencies": {
-    "tns-core-modules": "2.1.0"
+    "tns-core-modules": "2.3.0"
   },
   "keywords": [
     "fresco",

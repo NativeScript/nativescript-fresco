@@ -53,6 +53,8 @@ declare module com {
                         static initialize(context);
 
                         static newDraweeControllerBuilder(): PipelineDraweeControllerBuilder;
+
+                        static getImagePipeline(): com.facebook.imagepipeline.core.ImagePipeline;
                     }
                 }
                 
@@ -147,7 +149,7 @@ declare module com {
                     isOfGoodEnoughQuality(): boolean;
                 }
             }
-            
+
             module animated {
                 module base {
                     class AnimatedDrawable {
@@ -155,6 +157,19 @@ declare module com {
                         stop(): void;
                         isRunning(): boolean;
                     }
+                }
+            }
+
+             module core {
+                class ImagePipeline {
+                    isInBitmapMemoryCache(uri: string): boolean;
+                    isInDiskCacheSync(uri: string): boolean;
+                    evictFromMemoryCache(uri: string): void;
+                    evictFromDiskCache(uri: string): void;
+                    evictFromCache(uri: string): void;
+                    clearCaches(): void;
+                    clearMemoryCaches(): void;
+                    clearDiskCaches(): void;
                 }
             }
         }
