@@ -30,13 +30,14 @@ export function onSelectedIndexChanged(args) {
     var title: string = tabViewItem.title;
     xmlFileName = title.toLowerCase();
     indicator = tabViewItem.view.getViewById("indicator") as ActivityIndicator;
+    layout = tabViewItem.view.getViewById("rootLayout") as GridLayout;
     setContent();
 }
 
 export function onClearCache(args: EventData) {
     var imagePipeLine = frescoModel.getImagePipeline();
     imagePipeLine.clearCaches();
-    layout.removeChild(myComponentInstance);
+    layout.removeChildren();
     toggleBusyIndicator(true);
     setContent();
 }
@@ -52,7 +53,6 @@ function setContent() {
         name: xmlFileName
     });
     if (tabViewItem && tabViewItem.view) {
-        layout = tabViewItem.view.getViewById("rootLayout") as GridLayout;
         if (layout && layout.getChildrenCount() <= 0) {
             timerId = timerModule.setInterval(function () {
                 toggleBusyIndicator(false);
