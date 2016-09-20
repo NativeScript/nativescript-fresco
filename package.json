@@ -20,7 +20,8 @@
     "android": "2.3.0"
   },
   "devDependencies": {
-    "tns-core-modules": "2.3.0"
+    "tns-core-modules": "2.3.0",
+    "nativescript-angular": "1.0.0"
   },
   "keywords": [
     "fresco",
