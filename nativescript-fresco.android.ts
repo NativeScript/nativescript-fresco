@@ -3,7 +3,6 @@ import utils = require("utils/utils");
 import types = require("utils/types");
 import application = require("application");
 import imageSource = require("image-source");
-import * as elementRegistryModule from 'nativescript-angular/element-registry';
 
 global.moduleMerge(commonModule, exports);
 
@@ -649,5 +648,3 @@ function getScaleType(scaleType: string) {
         }
     }
 }
-
-elementRegistryModule.registerElement("FrescoDrawee", () => FrescoDrawee);
