@@ -7,7 +7,9 @@
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "suppressImplicitAnyIndexErrors": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     },
     "filesGlob": [
         "*.ts"
@@ -15,7 +17,8 @@
     "files": [
         "./nativescript-fresco-common.ts",
         "./nativescript-fresco.android.ts",
-        "./nativescript-fresco.ios.ts"
+        "./nativescript-fresco.ios.ts",
+        "./angular/nativescript-fresco-directives.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

@@ -12,11 +12,12 @@ The `nativescript-fresco` plugin enables NativeScript developers to use the `Fre
 
 ## How to use `nativescript-fresco`?
 
-### From npm
+### In vanila NativeScript
+#### From npm
 1. Go to the root folder of your {N} application where you would like to install the plugin and type `tns plugin add nativescript-fresco`.
 4. Initialize `nativescript-fresco` in the `launch` event of your {N} application by using the following code:
 
-### From local repo?
+#### From local repo?
 1. Clone the repository and go to the root directory on your computer.
 2. Use `tsc` to transpile the `.ts` sources: `tsc -p`.
 3. Go to the root folder of your {N} application where you would like to install the plugin and type `tns plugin add <path-to-fresco-repo-dir>`.
@@ -58,6 +59,11 @@ Use `fresco` in the XML definition of the page as follows:
                                       imageUri="<uri-to-a-photo-from-the-web-or-a-local-resource>"/>
 </Page>
 ```
+
+### In NativeScript + Angular 2
+
+1. Import the `NSFRESCO_DIRECTIVES` from `nativescript-fresco/angular` and add it to the `declarations` of your initial `@NgModule`, like shown [here](https://github.com/NativeScript/nativescript-fresco/blob/master/demo/app/app.module.ts#L23).
+2. As described above make sure to initialize the `nativescript-fresco` plugin in the `launch` event of your {N} application.
 
 ## Examples
 You can refer the [demo](https://github.com/NativeScript/nativescript-fresco/tree/master/demo) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.

@@ -12,9 +12,11 @@
     }
   },
   "dependencies": {
-    "nativescript-fresco": "^1.0.7",
+    "nativescript-fresco": "^1.0.10",
     "nativescript-telerik-ui": "1.4.0",
-    "tns-core-modules": "2.3.0"
+    "nativescript-angular": "1.0.0",
+    "tns-core-modules": "2.3.0",
+    "@angular/core": "2.0.0"
   },
   "devDependencies": {
     "babel-traverse": "6.13.0",
