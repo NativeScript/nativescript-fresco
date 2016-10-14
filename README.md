@@ -4,6 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/nativescript-fresco.svg)](https://www.npmjs.com/package/nativescript-fresco)
 [![npm](https://img.shields.io/npm/dt/nativescript-fresco.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-fresco)
+[![Dependency status](https://david-dm.org/NativeScript/nativescript-fresco.svg)](https://david-dm.org/NativeScript/nativescript-fresco)
 
 ## What is `nativescript-fresco`?
 `nativescript-fresco` is a NativeScript plugin that exposes the Fresco library used for efficiently displaying images on Android. More information about what Fresco is and how it works is available on its official website [here](https://code.facebook.com/posts/366199913563917/introducing-fresco-a-new-image-library-for-android/).
