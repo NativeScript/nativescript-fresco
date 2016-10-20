@@ -1,10 +1,10 @@
-import * as applicationModel from "application";
-import * as frescoModel from "nativescript-fresco";
+import * as applicationModule from "application";
+import * as frescoModule from "nativescript-fresco";
 
-if (applicationModel.android) {
-    applicationModel.onLaunch = function (intent) {
-        frescoModel.initialize();
-    };
+if (applicationModule.android) {
+    applicationModule.on("launch", () => {
+        frescoModule.initialize();
+    });
 }
 
-applicationModel.start({ moduleName: "pages/main-page" });
+applicationModule.start({ moduleName: "pages/main-page" });
