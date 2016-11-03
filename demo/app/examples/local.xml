@@ -1,0 +1,12 @@
+<ScrollView xmlns:fresco="nativescript-fresco">
+    <StackLayout>
+        <fresco:FrescoDrawee verticalAlignment="center"
+                            placeholderImageUri="res://ns_logo"
+                            aspectRatio="1.4"
+                            imageUri="~/images/drink.jpg"/>
+        <fresco:FrescoDrawee verticalAlignment="center"
+                            placeholderImageUri="res://ns_logo"
+                            aspectRatio="1.4"
+                            imageUri="~/images/dessert.jpg"/>
+    </StackLayout>
+</ScrollView>

@@ -123,6 +123,14 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem>
+      <TabViewItem title="local">
+        <TabViewItem.view>
+          <GridLayout>
+            <ActivityIndicator busy="true" id="indicator" verticalAlignment="center" />
+            <GridLayout id="rootLayout"/>
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem>
     </TabView.items>
   </TabView>
 </Page>
