@@ -3,7 +3,7 @@ import utils = require("utils/utils");
 import types = require("utils/types");
 import application = require("application");
 import imageSource = require("image-source");
-
+import fs = require("file-system");
 global.moduleMerge(commonModule, exports);
 
 export function initialize(): void {
@@ -305,6 +305,10 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                                 .path(java.lang.String.valueOf(identifier))
                                 .build();
                         }
+                    }else if (this.imageUri.indexOf("~/") === 0) {
+                        uri = android.net.Uri.parse(`file:${fs.path.join(fs.knownFolders.currentApp().path, this.imageUri.replace("~/", ""))}`);
+                    }else if (this.imageUri.startsWith("/")) {
+                        uri = android.net.Uri.parse(`file:${this.imageUri}`);
                     }
                 }
                 if (uri === undefined) {
