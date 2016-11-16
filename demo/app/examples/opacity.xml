@@ -1,0 +1,21 @@
+<GridLayout rows="*, auto, *, auto, auto, auto, auto">
+    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                id="opacityDrawee"
+                verticalAlignment="center"
+                placeholderImageUri="res://ns_logo"
+                aspectRatio="2"
+                opacity="0.5"
+                imageUri="http://lorempixel.com/400/200/"/>
+    <Label text="With css: " row="1"/>
+    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                verticalAlignment="center"
+                row="2"
+                class="opacityDrawee"
+                placeholderImageUri="res://ns_logo"
+                aspectRatio="2"
+                imageUri="http://lorempixel.com/400/200/"/>
+    <Button text="Set 1" row="3" tap="onSeOpacityTo1"/>
+    <Button text="Set 0.5" row="4" tap="onSeOpacityTo05"/>
+    <Button text="Set 0.1" row="5" tap="onSeOpacityTo01"/>
+    <Button text="Animate css" row="6" tap="onAnimateCss"/>
+</GridLayout>

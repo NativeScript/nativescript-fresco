@@ -5,6 +5,7 @@ import * as timerModule from "timer";
 import { TabView, TabViewItem} from "ui/tab-view";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { ActivityIndicator } from "ui/activity-indicator";
+import * as frameModule from "ui/frame";
 import { EventData} from "data/observable";
 import * as frescoModel from "nativescript-fresco";
 
@@ -14,10 +15,11 @@ let myComponentInstance;
 let xmlFileName: string;
 let tabViewItem: TabViewItem;
 let indicator: ActivityIndicator;
+let page: Page;
 
 export function onNavigatingTo(args) {
-    var page = args.object;
-    page.bindingContext = new ViewModel();
+    this.page = args.object;
+    this.page.bindingContext = new ViewModel();
 }
 
 export function onSelectedIndexChanged(args) {
@@ -48,8 +50,10 @@ function toggleBusyIndicator(state: boolean) {
 }
 
 function setContent() {
+    var page = frameModule.topmost().currentPage;
     myComponentInstance = builderModule.load({
         path: "~/examples/",
+        page: page,
         name: xmlFileName
     });
     if (tabViewItem && tabViewItem.view) {

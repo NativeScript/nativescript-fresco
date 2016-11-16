@@ -14,7 +14,7 @@
   "dependencies": {
     "@angular/core": "2.0.0",
     "nativescript-angular": "1.0.0",
-    "nativescript-fresco": "^1.0.12",
+    "nativescript-fresco": "file:..",
     "nativescript-telerik-ui": "1.4.1",
     "tns-core-modules": "2.3.0"
   },
