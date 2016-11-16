@@ -6,6 +6,7 @@ import { TabView, TabViewItem} from "ui/tab-view";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { ActivityIndicator } from "ui/activity-indicator";
 import * as frameModule from "ui/frame";
+import * as pageModule from "ui/page";
 import { EventData} from "data/observable";
 import * as frescoModel from "nativescript-fresco";
 
@@ -15,7 +16,7 @@ let myComponentInstance;
 let xmlFileName: string;
 let tabViewItem: TabViewItem;
 let indicator: ActivityIndicator;
-let page: Page;
+let page: pageModule.Page;
 
 export function onNavigatingTo(args) {
     this.page = args.object;

@@ -1,20 +1,5 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import * as builderModule from "ui/builder";
-import { Button } from "ui/button";
-import * as timerModule from "timer";
-import { TabView, TabViewItem} from "ui/tab-view";
-import { GridLayout } from "ui/layouts/grid-layout";
-import { ActivityIndicator } from "ui/activity-indicator";
-import { EventData} from "data/observable";
-import * as frescoModel from "nativescript-fresco";
-import { ViewModel } from "../models/main-view-model";
-
-let timerId: number;
-let layout: GridLayout;
-let myComponentInstance;
-let xmlFileName: string;
-let tabViewItem: TabViewItem;
-let indicator: ActivityIndicator;
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { FrescoDraweeDirective } from "nativescript-fresco/angular";
 
 @Component({
     selector: "my-app",
@@ -22,21 +7,28 @@ let indicator: ActivityIndicator;
     templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit {
-    private _dataItems;
 
     constructor() {
 
     }
 
+    @ViewChild("drawee") frescoDraweeComponent: ElementRef;
+
     ngOnInit() {
-        this.dataItems = new ViewModel().dataItems;
+
     }
 
-    get dataItems() {
-        return this._dataItems;
+    onAnimateToZero(args) {
+        this.frescoDraweeComponent.nativeElement.animate({
+            opacity: 0,
+            duration: 500
+        });
     }
 
-    set dataItems(value) {
-        this._dataItems = value;
+    onAnimateToOne(args) {
+        this.frescoDraweeComponent.nativeElement.animate({
+            opacity: 1,
+            duration: 500
+        });
     }
 }

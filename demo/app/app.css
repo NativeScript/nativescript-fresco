@@ -1,4 +1,6 @@
-﻿button {
+﻿@import '~/css/core.light.css'; 
+
+button {
     font-size: 20;
     horizontal-align: center;
 }
