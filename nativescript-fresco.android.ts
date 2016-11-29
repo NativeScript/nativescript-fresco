@@ -323,7 +323,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 var that: WeakRef<FrescoDrawee> = new WeakRef(this);
                 var listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
                     onFinalImageSet: function (id, imageInfo, animatable) {
-                        if (that) {
+                        if (that && that.get()) {
                             var info = new ImageInfo(imageInfo);
 
                             var args: FinalEventData = <FinalEventData>{
@@ -339,7 +339,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         }
                     },
                     onFailure: function (id, throwable) {
-                        if (that) {
+                        if (that && that.get()) {
                             var frescoError = new FrescoError(throwable);
                             var args: FailureEventData = <FailureEventData>{
                                 eventName: commonModule.FrescoDrawee.failureEvent,
@@ -353,7 +353,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         }
                     },
                     onIntermediateImageFailed: function (id, throwable) {
-                        if (that) {
+                        if (that && that.get()) {
                             var frescoError = new FrescoError(throwable);
                             var args: FailureEventData = <FailureEventData>{
                                 eventName: commonModule.FrescoDrawee.intermediateImageFailedEvent,
@@ -367,7 +367,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         }
                     },
                     onIntermediateImageSet: function (id, imageInfo) {
-                        if (that) {
+                        if (that && that.get()) {
                             var info = new ImageInfo(imageInfo);
                             var args: IntermediateEventData = <IntermediateEventData>{
                                 eventName: commonModule.FrescoDrawee.intermediateImageSetEvent,
@@ -381,7 +381,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         }
                     },
                     onRelease: function (id) {
-                        if (that) {
+                        if (that && that.get()) {
                             var args: commonModule.EventData = <commonModule.EventData>{
                                 eventName: commonModule.FrescoDrawee.releaseEvent,
                                 object: that.get()
@@ -393,7 +393,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         }
                     },
                     onSubmit: function (id, callerContext) {
-                        if (that) {
+                        if (that && that.get()) {
                             var args: commonModule.EventData = <commonModule.EventData>{
                                 eventName: commonModule.FrescoDrawee.submitEvent,
                                 object: that.get()
