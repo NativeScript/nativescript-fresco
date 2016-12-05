@@ -544,8 +544,8 @@ All of the images are sample images for showcasing purposes.
 
 Sample 1 - Placeholder image |  Sample 2 - Transition (fade-in animation)
 -------- | ---------
-![Placeholder image sample](screenshots/screen1-with-placeholder.png) | ![Transition sample](screenshots/screen2-transition-effect.png)
+![Placeholder image sample](../screenshots/screen1-with-placeholder.png) | ![Transition sample](../screenshots/screen2-transition-effect.png)
 
 Sample 3 - Image shown successfully from imageUri |  Sample 4 - 'Failure' image shown
 -------- | ---------
-![Successfully shown image sample](screenshots/screen3-successful-show.png) | ![Successfully shown image sample](screenshots/screen4-unsuccessful-show.png)
+![Successfully shown image sample](../screenshots/screen3-successful-show.png) | ![Successfully shown image sample](../screenshots/screen4-unsuccessful-show.png)
