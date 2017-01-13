@@ -305,9 +305,9 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                                 .path(java.lang.String.valueOf(identifier))
                                 .build();
                         }
-                    }else if (this.imageUri.indexOf("~/") === 0) {
+                    } else if (this.imageUri.indexOf("~/") === 0) {
                         uri = android.net.Uri.parse(`file:${fs.path.join(fs.knownFolders.currentApp().path, this.imageUri.replace("~/", ""))}`);
-                    }else if (this.imageUri.startsWith("/")) {
+                    } else if (this.imageUri.indexOf("/") === 0) {
                         uri = android.net.Uri.parse(`file:${this.imageUri}`);
                     }
                 }

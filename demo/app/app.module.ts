@@ -1,13 +1,18 @@
 // this import should be first in order to load some required settings (like globals and reflect-metadata)
-import { NativeScriptModule, platformNativeScriptDynamic } from "nativescript-angular/platform";
-import { AppComponent } from "./components/app.component";
-import { NSFRESCO_DIRECTIVES } from 'nativescript-fresco/angular';
-import { FrescoDrawee } from 'nativescript-fresco';
+import { NativeScriptModule } from "nativescript-angular/platform";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { NgModule, OnInit } from "@angular/core";
+import { NgModule, OnInit, NO_ERRORS_SCHEMA } from "@angular/core";
+import { AppComponent } from "./components/app.component";
+
+import { TNSFrescoModule } from "nativescript-fresco/angular";
+import { FrescoDrawee } from "nativescript-fresco";
 import * as frescoModule from "nativescript-fresco";
 import * as applicationModule from "application";
+
+import { registerElement } from "nativescript-angular/element-registry";
+
+registerElement("FrescoDrawee", () => FrescoDrawee);
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
@@ -20,19 +25,20 @@ if (applicationModule.android) {
         AppComponent
     ],
     declarations: [
-        NSFRESCO_DIRECTIVES,
         AppComponent
     ],
     imports: [
         NativeScriptModule,
         NativeScriptFormsModule,
-        NativeScriptRouterModule
+        NativeScriptRouterModule,
+        TNSFrescoModule
     ],
     exports: [
         NativeScriptModule,
         NativeScriptRouterModule
+    ],
+    schemas: [
+        NO_ERRORS_SCHEMA
     ]
 })
-class AppModule { }
-
-platformNativeScriptDynamic().bootstrapModule(AppModule);
+export class AppModule { }

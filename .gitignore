@@ -1,5 +1,9 @@
-#JavaScript files
+# JavaScript files
 /**/*.js
+/**/*.js.map
+
+# ngc metadata
+/**/*.metadata.json
 
 # built application files
 *.apk

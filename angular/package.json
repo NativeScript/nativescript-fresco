@@ -1,4 +1,4 @@
 {
-    "name": "nativescript-fresco-directives",
-    "main": "nativescript-fresco-directives.js"
+    "name": "nativescript-fresco-module",
+    "main": "index.js"
 }

@@ -1,6 +1,6 @@
 {
     "name": "fresco-sample",
-    "main": "app.js",
+    "main": "main",
     "version": "1.0.0",
     "author": {
         "name": "Vladimir Amiorkov",
