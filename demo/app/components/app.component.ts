@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { FrescoDraweeDirective } from "nativescript-fresco/angular";
 
 @Component({
     selector: "my-app",

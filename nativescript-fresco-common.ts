@@ -454,7 +454,7 @@ export class FrescoDrawee extends viewModule.View {
         var drawee: FrescoDrawee = args.object;
         drawee.onTapToRetryEnabledChanged(args);
     }
-    
+
     private static onAspectRatioPropertyChanged(args) {
         var drawee: FrescoDrawee = args.object;
         drawee.onAspectRatioChanged(args);
@@ -527,7 +527,7 @@ export class FrescoDrawee extends viewModule.View {
     protected onTapToRetryEnabledChanged(args) {
 
     }
-    
+
     protected onAspectRatioChanged(args) {
 
     }
