@@ -6,13 +6,8 @@ import { NgModule, OnInit, NO_ERRORS_SCHEMA } from "@angular/core";
 import { AppComponent } from "./components/app.component";
 
 import { TNSFrescoModule } from "nativescript-fresco/angular";
-import { FrescoDrawee } from "nativescript-fresco";
 import * as frescoModule from "nativescript-fresco";
 import * as applicationModule from "application";
-
-import { registerElement } from "nativescript-angular/element-registry";
-
-registerElement("FrescoDrawee", () => FrescoDrawee);
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
