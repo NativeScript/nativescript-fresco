@@ -1,9 +1,9 @@
-import commonModule = require("./nativescript-fresco-common");
-import utils = require("utils/utils");
-import types = require("utils/types");
-import application = require("application");
-import imageSource = require("image-source");
-import fs = require("file-system");
+import * as commonModule from "./nativescript-fresco-common";
+import * as utils from "utils/utils";
+import * as types from "utils/types";
+import * as application from "application";
+import * as imageSource from "image-source";
+import * as fs from "file-system";
 global.moduleMerge(commonModule, exports);
 
 export function initialize(): void {

@@ -1,9 +1,9 @@
 /// <reference path="references.d.ts" />
 
-import viewModule = require("ui/core/view");
-import dependencyObservable = require("ui/core/dependency-observable");
-import proxyModule = require("ui/core/proxy");
-import observableModule = require("data/observable");
+import * as viewModule from "ui/core/view";
+import * as dependencyObservable from "ui/core/dependency-observable";
+import * as proxyModule from "ui/core/proxy";
+import * as observableModule from "data/observable";
 
 var PLACEHOLDERIMAGEURI = "placeholderImageUri";
 var IMAGEURI = "imageUri";

@@ -1,4 +1,4 @@
-import viewModule = require("ui/core/view");
+import * as viewModule from "ui/core/view";
 
 /**
  * When called, initializes the android Fresco library. Calling this method is required.

@@ -1,6 +1,6 @@
 /// <reference path="references.d.ts" />
-import viewModule = require("ui/core/view");
-import observableModule = require("data/observable");
+import * as viewModule from "ui/core/view";
+import * as observableModule from "data/observable";
 export declare module ScaleType {
     var Center: string;
     var CenterCrop: string;

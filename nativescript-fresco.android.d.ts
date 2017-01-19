@@ -1,4 +1,4 @@
-import commonModule = require("./nativescript-fresco-common");
+import * as commonModule from "./nativescript-fresco-common";
 export declare function initialize(): void;
 export declare function getImagePipeline(): ImagePipeline;
 export declare class ImagePipeline {

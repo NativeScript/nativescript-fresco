@@ -2,8 +2,8 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-	"moduleResolution": "node",
-	"sourceMap": true,
+        "moduleResolution": "node",
+        "sourceMap": false,
         "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
@@ -16,13 +16,17 @@
     "filesGlob": [
         "*.ts"
     ],
-    "files": [
+    "include": [
         "./nativescript-fresco-common.ts",
         "./nativescript-fresco.android.ts",
         "./nativescript-fresco.ios.ts",
         "./angular/nativescript-fresco-directives.ts",
         "./angular/nativescript-fresco.module.ts",
-        "./angular/index.ts"
+        "./angular/index.ts",
+        "references.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
     ],
     "atom": {
         "rewriteTsconfig": true
