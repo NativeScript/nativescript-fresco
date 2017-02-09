@@ -1,4 +1,7 @@
  <lv:RadListView xmlns:lv="nativescript-telerik-ui/listview" xmlns:fresco="nativescript-fresco" items="{{ dataItems }}">
+    <lv:RadListView.listViewLayout>
+              <lv:ListViewLinearLayout/>
+    </lv:RadListView.listViewLayout>
     <lv:RadListView.itemTemplate>
         <GridLayout rows="*, auto">
                 <fresco:FrescoDrawee verticalAlignment="top"
@@ -6,7 +9,7 @@
                                     backgroundUri="res://ns_logo"
                                     imageUri="{{ imageUri }}"/>
                 <StackLayout backgroundColor="#BBFFFFFF" height="20" verticalAlignment="top" row="1">
-                <Label text="{{ id }}" verticalAlignment="center" horizontalAlignment="center"/>
+                    <Label text="{{ id }}" verticalAlignment="center" horizontalAlignment="center"/>
                 </StackLayout>
         </GridLayout>
     </lv:RadListView.itemTemplate>
