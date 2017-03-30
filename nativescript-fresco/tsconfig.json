@@ -3,7 +3,6 @@
         "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
-        "sourceMap": false,
         "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
@@ -11,7 +10,18 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "./node_modules/tns-core-modules/*",
+                "./node_modules/*"
+            ]
+        }
     },
     "filesGlob": [
         "*.ts"
