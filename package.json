@@ -15,7 +15,8 @@
     "platforms",
     "*.d.ts",
     "angular/*.js*",
-    "angular/*.d.ts"
+    "angular/*.d.ts",
+    "!tsconfig.json"
   ],
   "nativescript": {
     "ios": "2.4.0",

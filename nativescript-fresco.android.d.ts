@@ -55,10 +55,10 @@ export declare class FailureEventData extends commonModule.EventData {
 }
 export declare class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android;
-    _createUI(): void;
-    _clearAndroidReference(): void;
+    createNativeView(): com.facebook.drawee.view.SimpleDraweeView;
+    initNativeView(): void;
+    disposeNativeView(): void;
     updateImageUri(): void;
-    readonly android: com.facebook.drawee.view.SimpleDraweeView;
     protected onImageUriChanged(oldValue: string, newValue: string): void;
     protected onPlaceholderImageUriChanged(oldValue: string, newValue: string): void;
     protected onFailureImageUriChanged(oldValue: string, newValue: string): void;

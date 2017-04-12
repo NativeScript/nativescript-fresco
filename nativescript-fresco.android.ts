@@ -182,13 +182,17 @@ export class FailureEventData extends commonModule.EventData {
 export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
 
-    public _createUI() {
+    public createNativeView() {
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
+        return this._android;
+    }
+
+    public initNativeView(): void {
         this.initDrawee();
         this.updateHierarchy();
     }
 
-    public _clearAndroidReference() {
+    public disposeNativeView() {
         this._android.setImageURI(null, null);
         this._android = undefined;
     }
@@ -202,10 +206,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             this.imageUri = null;
             this.imageUri = imageUri;
         }
-    }
-
-    get android() {
-        return this._android;
     }
 
     protected onImageUriChanged(oldValue: string, newValue: string) {
