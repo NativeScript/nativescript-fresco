@@ -1,29 +1,7 @@
 /// <reference path="references.d.ts" />
 
-import * as viewModule from "ui/core/view";
-import * as dependencyObservable from "ui/core/dependency-observable";
-import * as proxyModule from "ui/core/proxy";
+import { View, Property, booleanConverter } from "tns-core-modules/ui/core/view";
 import * as observableModule from "data/observable";
-
-var PLACEHOLDERIMAGEURI = "placeholderImageUri";
-var IMAGEURI = "imageUri";
-var FRESCODRAWEE = "FrescoDrawee";
-var ACTUALIMAGESCALETYPE = "actualImageScaleType";
-var FADEDURATION = "fadeDuration";
-var BACKGROUNDURI = "backgroundUri";
-var PROGRESSIVERENDERINGENABLED = "progressiveRenderingEnabled";
-var SHOWPROGRESSBAR = "showProgressBar";
-var PROGRESSBARCOLOR = "progressBarColor";
-var FAILUREIMAGEURI = "failureImageUri";
-var ROUNDASCIRCLE = "roundAsCircle";
-var ROUNDTOPLEFT = "roundTopLeft";
-var ROUNDTOPRIGHT = "roundTopRight";
-var ROUNDBOTTOMLEFT = "roundBottomLeft";
-var ROUNDBOTTOMRIGHT = "roundBottomRight";
-var ROUNDEDCORNERRADIUS = "roundedCornerRadius";
-var AUTOPLAYANIMATIONS = "autoPlayAnimations";
-var TAPTORETRYENABLED = "tapToRetryEnabled";
-var ASPECTRATIO = "aspectRatio";
 
 export module ScaleType {
     export var Center = "center";
@@ -74,7 +52,7 @@ export class EventData implements observableModule.EventData {
     }
 }
 
-export class FrescoDrawee extends viewModule.View {
+export class FrescoDrawee extends View {
     public static finalImageSetEvent: string = "finalImageSet";
     public static failureEvent: string = "failure";
     public static intermediateImageFailedEvent: string = "intermediateImageFailed";
@@ -82,453 +60,367 @@ export class FrescoDrawee extends viewModule.View {
     public static releaseEvent: string = "release";
     public static submitEvent: string = "submit";
 
-    private static imageUriProperty = new dependencyObservable.Property(
-        IMAGEURI,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onImageUriPropertyChanged));
-
-    private static placeholderImageUriProperty = new dependencyObservable.Property(
-        PLACEHOLDERIMAGEURI,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onPlaceholderImageUriPropertyChanged));
-
-    private static failureImageUriProperty = new dependencyObservable.Property(
-        FAILUREIMAGEURI,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onFailureImageUriPropertyChanged));
-
-    private static actualImageScaleTypeProperty = new dependencyObservable.Property(
-        ACTUALIMAGESCALETYPE,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onActualImageScaleTypePropertyChanged));
-
-    private static fadeDurationProperty = new dependencyObservable.Property(
-        FADEDURATION,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onFadeDurationPropertyChanged));
-
-    private static backgroundUriProperty = new dependencyObservable.Property(
-        BACKGROUNDURI,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onBackgroundUriPropertyChanged));
-
-    private static progressiveRenderingEnabledProperty = new dependencyObservable.Property(
-        PROGRESSIVERENDERINGENABLED,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onProgressiveRenderingEnabledPropertyChanged));
-
-    private static showProgressBarProperty = new dependencyObservable.Property(
-        SHOWPROGRESSBAR,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onShowProgressBarPropertyChanged));
-
-    private static progressBarColorProperty = new dependencyObservable.Property(
-        PROGRESSBARCOLOR,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onProgressBarColorPropertyChanged));
-
-    private static roundAsCircleProperty = new dependencyObservable.Property(
-        ROUNDASCIRCLE,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
-            FrescoDrawee.onRoundAsCirclePropertyChanged));
-
-    private static roundTopLeftProperty = new dependencyObservable.Property(
-        ROUNDTOPLEFT,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
-            FrescoDrawee.onRoundTopLeftPropertyChanged));
-
-    private static roundTopRightProperty = new dependencyObservable.Property(
-        ROUNDTOPRIGHT,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
-            FrescoDrawee.onRoundTopRightPropertyChanged));
-
-    private static roundBottomLeftroperty = new dependencyObservable.Property(
-        ROUNDBOTTOMLEFT,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
-            FrescoDrawee.onRoundBottomLeftPropertyChanged));
+    public imageUri: string;
+    public placeholderImageUri: string;
+    public failureImageUri: string;
+    public actualImageScaleType: string;
+    public fadeDuration: number;
+    public backgroundUri: string;
+    public progressiveRenderingEnabled: boolean;
+    public showProgressBar: boolean;
+    public progressBarColor: string;
+    public roundAsCircle: boolean;
+    public roundBottomRight: boolean;
+    public roundTopLeft: boolean;
+    public roundTopRight: boolean;
+    public roundBottomLeft: boolean;
+    public roundedCornerRadius: number;
+    public autoPlayAnimations: boolean;
+    public tapToRetryEnabled: boolean;
+    public aspectRatio: number;
+
+    public static imageUriProperty = new Property<FrescoDrawee, string>(
+        {
+            name: "imageUri",
+            defaultValue: undefined,
+            valueConverter: (v) => v,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onImageUriPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static placeholderImageUriProperty = new Property<FrescoDrawee, string>(
+        {
+            name: "placeholderImageUri",
+            defaultValue: undefined,
+            valueConverter: (v) => v,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onPlaceholderImageUriPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static failureImageUriProperty = new Property<FrescoDrawee, string>(
+        {
+            name: "failureImageUri",
+            defaultValue: undefined,
+            valueConverter: (v) => v,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onFailureImageUriPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static actualImageScaleTypeProperty = new Property<FrescoDrawee, string>(
+        {
+            name: "actualImageScaleType",
+            defaultValue: undefined,
+            valueConverter: (v) => v,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onActualImageScaleTypePropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static fadeDurationProperty = new Property<FrescoDrawee, number>(
+        {
+            name: "fadeDuration",
+            defaultValue: undefined,
+            valueConverter: (v) => parseFloat(v),
+            valueChanged: (target, oldValue, newValue) => {
+                target.onFadeDurationPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static backgroundUriProperty = new Property<FrescoDrawee, string>(
+        {
+            name: "backgroundUri",
+            defaultValue: undefined,
+            valueConverter: (v) => v,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onBackgroundUriPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static progressiveRenderingEnabledProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "progressiveRenderingEnabled",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onProgressiveRenderingEnabledPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static showProgressBarProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "showProgressBar",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onShowProgressBarPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static progressBarColorProperty = new Property<FrescoDrawee, string>(
+        {
+            name: "progressBarColor",
+            defaultValue: undefined,
+            valueConverter: (v) => v,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onProgressBarColorPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static roundAsCircleProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "roundAsCircle",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            affectsLayout: true,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onRoundAsCirclePropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static roundTopLeftProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "roundTopLeft",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            affectsLayout: true,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onRoundTopLeftPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static roundTopRightProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "roundTopRight",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            affectsLayout: true,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onRoundTopRightPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static roundBottomLeftProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "roundBottomLeft",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onRoundBottomLeftPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static roundBottomRightProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "roundBottomRight",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onRoundBottomRightPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static roundedCornerRadiusProperty = new Property<FrescoDrawee, number>(
+        {
+            name: "roundedCornerRadius",
+            defaultValue: undefined,
+            valueConverter: (v) => parseFloat(v),
+            valueChanged: (target, oldValue, newValue) => {
+                target.onRoundedCornerRadiusPropertyChanged(oldValue, newValue);
+            },
+        });
 
-    private static roundBottomRightProperty = new dependencyObservable.Property(
-        ROUNDBOTTOMRIGHT,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
-            FrescoDrawee.onRoundBottomRightPropertyChanged));
+    public static autoPlayAnimationsProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "autoPlayAnimations",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onAutoPlayAnimationsPropertyChanged(oldValue, newValue);
+            },
+        });
 
-    private static roundedCornerRadiusProperty = new dependencyObservable.Property(
-        ROUNDEDCORNERRADIUS,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
-            FrescoDrawee.onRoundedCornerRadiusPropertyChanged));
+    public static tapToRetryEnabledProperty = new Property<FrescoDrawee, boolean>(
+        {
+            name: "tapToRetryEnabled",
+            defaultValue: undefined,
+            valueConverter: booleanConverter,
+            valueChanged: (target, oldValue, newValue) => {
+                target.onTapToRetryEnabledPropertyChanged(oldValue, newValue);
+            },
+        });
 
-    private static autoPlayAnimationsProperty = new dependencyObservable.Property(
-        AUTOPLAYANIMATIONS,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onAutoPlayAnimationsPropertyChanged));
+    public static aspectRatioProperty = new Property<FrescoDrawee, number>(
+        {
+            name: "aspectRatio",
+            defaultValue: undefined,
+            valueConverter: (v) => parseFloat(v),
+            valueChanged: (target, oldValue, newValue) => {
+                target.onAspectRatioPropertyChanged(oldValue, newValue);
+            },
+        });
 
-    private static tapToRetryEnabledProperty = new dependencyObservable.Property(
-        TAPTORETRYENABLED,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.None,
-            FrescoDrawee.onTapToRetryEnabledPropertyChanged));
-
-    private static aspectRatioProperty = new dependencyObservable.Property(
-        ASPECTRATIO,
-        FRESCODRAWEE,
-        new proxyModule.PropertyMetadata(
-            undefined,
-            dependencyObservable.PropertyMetadataSettings.AffectsLayout,
-            FrescoDrawee.onAspectRatioPropertyChanged));
-
-    get imageUri(): string {
-        return this._getValue(FrescoDrawee.imageUriProperty);
-    }
-
-    set imageUri(value: string) {
-        this._setValue(FrescoDrawee.imageUriProperty, value);
-    }
-
-    get placeholderImageUri(): string {
-        return this._getValue(FrescoDrawee.placeholderImageUriProperty);
-    }
-
-    set placeholderImageUri(value: string) {
-        this._setValue(FrescoDrawee.placeholderImageUriProperty, value);
-    }
-
-    get failureImageUri(): string {
-        return this._getValue(FrescoDrawee.failureImageUriProperty);
-    }
-
-    set failureImageUri(value: string) {
-        this._setValue(FrescoDrawee.failureImageUriProperty, value);
-    }
-
-    get actualImageScaleType(): string {
-        return this._getValue(FrescoDrawee.actualImageScaleTypeProperty);
-    }
-
-    set actualImageScaleType(value: string) {
-        this._setValue(FrescoDrawee.actualImageScaleTypeProperty, value);
-    }
-
-    get fadeDuration(): number {
-        return this._getValue(FrescoDrawee.fadeDurationProperty);
-    }
-
-    set fadeDuration(value: number) {
-        this._setValue(FrescoDrawee.fadeDurationProperty, value);
-    }
-
-    get backgroundUri(): string {
-        return this._getValue(FrescoDrawee.backgroundUriProperty);
-    }
-
-    set backgroundUri(value: string) {
-        this._setValue(FrescoDrawee.backgroundUriProperty, value);
-    }
-
-    get progressiveRenderingEnabled(): boolean {
-        return this._getValue(FrescoDrawee.progressiveRenderingEnabledProperty);
-    }
-
-    set progressiveRenderingEnabled(value: boolean) {
-        this._setValue(FrescoDrawee.progressiveRenderingEnabledProperty, value);
-    }
-
-    get showProgressBar(): boolean {
-        return this._getValue(FrescoDrawee.showProgressBarProperty);
-    }
-
-    set showProgressBar(value: boolean) {
-        this._setValue(FrescoDrawee.showProgressBarProperty, value);
-    }
-
-    get progressBarColor(): string {
-        return this._getValue(FrescoDrawee.progressBarColorProperty);
-    }
-
-    set progressBarColor(value: string) {
-        this._setValue(FrescoDrawee.progressBarColorProperty, value);
-    }
-
-    get roundAsCircle(): boolean {
-        return this._getValue(FrescoDrawee.roundAsCircleProperty);
-    }
-
-    set roundAsCircle(value: boolean) {
-        this._setValue(FrescoDrawee.roundAsCircleProperty, value);
-    }
-
-    get roundBottomRight(): boolean {
-        return this._getValue(FrescoDrawee.roundBottomRightProperty);
-    }
-
-    set roundBottomRight(value: boolean) {
-        this._setValue(FrescoDrawee.roundBottomRightProperty, value);
-    }
-
-    get roundTopLeft(): boolean {
-        return this._getValue(FrescoDrawee.roundTopLeftProperty);
-    }
-
-    set roundTopLeft(value: boolean) {
-        this._setValue(FrescoDrawee.roundTopLeftProperty, value);
-    }
-
-    get roundTopRight(): boolean {
-        return this._getValue(FrescoDrawee.roundTopRightProperty);
-    }
-
-    set roundTopRight(value: boolean) {
-        this._setValue(FrescoDrawee.roundTopRightProperty, value);
-    }
-
-    get roundBottomLeft(): boolean {
-        return this._getValue(FrescoDrawee.roundBottomLeftroperty);
-    }
-
-    set roundBottomLeft(value: boolean) {
-        this._setValue(FrescoDrawee.roundBottomLeftroperty, value);
-    }
-
-    get roundedCornerRadius(): number {
-        return this._getValue(FrescoDrawee.roundedCornerRadiusProperty);
-    }
-
-    set roundedCornerRadius(value: number) {
-        this._setValue(FrescoDrawee.roundedCornerRadiusProperty, value);
-    }
-
-    get autoPlayAnimations(): boolean {
-        return this._getValue(FrescoDrawee.autoPlayAnimationsProperty);
-    }
-
-    set autoPlayAnimations(value: boolean) {
-        this._setValue(FrescoDrawee.autoPlayAnimationsProperty, value);
-    }
-
-    get tapToRetryEnabled(): boolean {
-        return this._getValue(FrescoDrawee.tapToRetryEnabledProperty);
-    }
-
-    set tapToRetryEnabled(value: boolean) {
-        this._setValue(FrescoDrawee.tapToRetryEnabledProperty, value);
-    }
-
-    get aspectRatio(): number {
-        return this._getValue(FrescoDrawee.aspectRatioProperty);
-    }
-
-    set aspectRatio(value: number) {
-        this._setValue(FrescoDrawee.aspectRatioProperty, value);
-    }
-
-    private static onImageUriPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onImageUriChanged(args);
+    private onImageUriPropertyChanged(oldValue: string, newValue: string) {
+        this.onImageUriChanged(oldValue, newValue);
     }
 
-    private static onPlaceholderImageUriPropertyChanged(args) {
-        var drawee = args.object;
-        drawee.onPlaceholderImageUriChanged(args);
+    private onPlaceholderImageUriPropertyChanged(oldValue: string, newValue: string) {
+        this.onPlaceholderImageUriChanged(oldValue, newValue);
     }
 
-    private static onFailureImageUriPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onFailureImageUriChanged(args);
+    private onFailureImageUriPropertyChanged(oldValue: string, newValue: string) {
+        this.onFailureImageUriChanged(oldValue, newValue);
     }
 
-    private static onActualImageScaleTypePropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onActualImageScaleTypeChanged(args);
+    private onActualImageScaleTypePropertyChanged(oldValue: string, newValue: string) {
+        this.onActualImageScaleTypeChanged(oldValue, newValue);
     }
 
-    private static onFadeDurationPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onFadeDurationChanged(args);
+    private onFadeDurationPropertyChanged(oldValue: number, newValue: number) {
+        this.onFadeDurationChanged(oldValue, newValue);
     }
 
-    private static onBackgroundUriPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onBackgroundUriChanged(args);
+    private onBackgroundUriPropertyChanged(oldValue: string, newValue: string) {
+        this.onBackgroundUriChanged(oldValue, newValue);
     }
 
-    private static onProgressiveRenderingEnabledPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onProgressiveRenderingEnabledChanged(args);
+    private onProgressiveRenderingEnabledPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onProgressiveRenderingEnabledChanged(oldValue, newValue);
     }
 
-    private static onShowProgressBarPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onShowProgressBarChanged(args);
+    private onShowProgressBarPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onShowProgressBarChanged(oldValue, newValue);
     }
 
-    private static onProgressBarColorPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onProgressBarColorChanged(args);
+    private onProgressBarColorPropertyChanged(oldValue: string, newValue: string) {
+        this.onProgressBarColorChanged(oldValue, newValue);
     }
 
-    private static onRoundAsCirclePropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onRoundAsCircleChanged(args);
+    private onRoundAsCirclePropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onRoundAsCircleChanged(oldValue, newValue);
     }
 
-    private static onRoundTopLeftPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onRoundTopLeftChanged(args);
+    private onRoundTopLeftPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onRoundTopLeftChanged(oldValue, newValue);
     }
 
-    private static onRoundTopRightPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onRoundTopRightChanged(args);
+    private onRoundTopRightPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onRoundTopRightChanged(oldValue, newValue);
     }
 
-    private static onRoundBottomLeftPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onRoundBottomLeftChanged(args);
+    private onRoundBottomLeftPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onRoundBottomLeftChanged(oldValue, newValue);
     }
 
-    private static onRoundBottomRightPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onRoundBottomRightChanged(args);
+    private onRoundBottomRightPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onRoundBottomRightChanged(oldValue, newValue);
     }
 
-    private static onRoundedCornerRadiusPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onRoundedCornerRadiusChanged(args);
+    private onRoundedCornerRadiusPropertyChanged(oldValue: number, newValue: number) {
+        this.onRoundedCornerRadiusChanged(oldValue, newValue);
     }
 
-    private static onAutoPlayAnimationsPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onAutoPlayAnimationsPChanged(args);
+    private onAutoPlayAnimationsPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onAutoPlayAnimationsPChanged(oldValue, newValue);
     }
 
-    private static onTapToRetryEnabledPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onTapToRetryEnabledChanged(args);
+    private onTapToRetryEnabledPropertyChanged(oldValue: boolean, newValue: boolean) {
+        this.onTapToRetryEnabledChanged(oldValue, newValue);
     }
 
-    private static onAspectRatioPropertyChanged(args) {
-        var drawee: FrescoDrawee = args.object;
-        drawee.onAspectRatioChanged(args);
+    private onAspectRatioPropertyChanged(oldValue: number, newValue: number) {
+        this.onAspectRatioChanged(oldValue, newValue);
     }
 
-    protected onImageUriChanged(args) {
+    protected onImageUriChanged(oldValue: string, newValue: string) {
 
     }
 
-    protected onPlaceholderImageUriChanged(args) {
+    protected onPlaceholderImageUriChanged(oldValue: string, newValue: string) {
 
     }
 
-    protected onFailureImageUriChanged(args) {
+    protected onFailureImageUriChanged(oldValue: string, newValue: string) {
 
     }
 
-    protected onActualImageScaleTypeChanged(args) {
+    protected onActualImageScaleTypeChanged(oldValue: string, newValue: string) {
 
     }
 
-    protected onFadeDurationChanged(args) {
+    protected onFadeDurationChanged(oldValue: number, newValue: number) {
 
     }
 
-    protected onBackgroundUriChanged(args) {
+    protected onBackgroundUriChanged(oldValue: string, newValue: string) {
 
     }
 
-    protected onProgressiveRenderingEnabledChanged(args) {
+    protected onProgressiveRenderingEnabledChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onShowProgressBarChanged(args) {
+    protected onShowProgressBarChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onProgressBarColorChanged(args) {
+    protected onProgressBarColorChanged(oldValue: string, newValue: string) {
 
     }
 
-    protected onRoundAsCircleChanged(args) {
+    protected onRoundAsCircleChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onRoundTopLeftChanged(args) {
+    protected onRoundTopLeftChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onRoundTopRightChanged(args) {
+    protected onRoundTopRightChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onRoundBottomLeftChanged(args) {
+    protected onRoundBottomLeftChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onRoundBottomRightChanged(args) {
+    protected onRoundBottomRightChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onRoundedCornerRadiusChanged(args) {
+    protected onRoundedCornerRadiusChanged(oldValue: number, newValue: number) {
 
     }
 
-    protected onAutoPlayAnimationsPChanged(args) {
+    protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onTapToRetryEnabledChanged(args) {
+    protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onAspectRatioChanged(args) {
+    protected onAspectRatioChanged(oldValue: number, newValue: number) {
 
     }
 }
+FrescoDrawee.imageUriProperty.register(FrescoDrawee);
+FrescoDrawee.placeholderImageUriProperty.register(FrescoDrawee);
+FrescoDrawee.failureImageUriProperty.register(FrescoDrawee);
+FrescoDrawee.actualImageScaleTypeProperty.register(FrescoDrawee);
+FrescoDrawee.fadeDurationProperty.register(FrescoDrawee);
+FrescoDrawee.backgroundUriProperty.register(FrescoDrawee);
+FrescoDrawee.progressiveRenderingEnabledProperty.register(FrescoDrawee);
+FrescoDrawee.showProgressBarProperty.register(FrescoDrawee);
+FrescoDrawee.progressBarColorProperty.register(FrescoDrawee);
+FrescoDrawee.roundAsCircleProperty.register(FrescoDrawee);
+FrescoDrawee.roundTopLeftProperty.register(FrescoDrawee);
+FrescoDrawee.roundTopRightProperty.register(FrescoDrawee);
+FrescoDrawee.roundBottomLeftProperty.register(FrescoDrawee);
+FrescoDrawee.roundBottomRightProperty.register(FrescoDrawee);
+FrescoDrawee.roundedCornerRadiusProperty.register(FrescoDrawee);
+FrescoDrawee.autoPlayAnimationsProperty.register(FrescoDrawee);
+FrescoDrawee.tapToRetryEnabledProperty.register(FrescoDrawee);
+FrescoDrawee.aspectRatioProperty.register(FrescoDrawee);

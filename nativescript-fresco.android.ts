@@ -182,13 +182,17 @@ export class FailureEventData extends commonModule.EventData {
 export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
 
-    public _createUI() {
+    public createNativeView() {
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
+        return this._android;
+    }
+
+    public initNativeView(): void {
         this.initDrawee();
         this.updateHierarchy();
     }
 
-    public _clearAndroidReference() {
+    public disposeNativeView() {
         this._android.setImageURI(null, null);
         this._android = undefined;
     }
@@ -204,79 +208,75 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         }
     }
 
-    get android() {
-        return this._android;
-    }
-
-    protected onImageUriChanged(args) {
+    protected onImageUriChanged(oldValue: string, newValue: string) {
         this.initImage();
     }
 
-    protected onPlaceholderImageUriChanged(args) {
+    protected onPlaceholderImageUriChanged(oldValue: string, newValue: string) {
         this.updateHierarchy();
     }
 
-    protected onFailureImageUriChanged(args) {
+    protected onFailureImageUriChanged(oldValue: string, newValue: string) {
         this.updateHierarchy();
     }
 
-    protected onActualImageScaleTypeChanged(args) {
+    protected onActualImageScaleTypeChanged(oldValue: string, newValue: string) {
         this.updateHierarchy();
     }
 
-    protected onFadeDurationChanged(args) {
+    protected onFadeDurationChanged(oldValue: number, newValue: number) {
         this.updateHierarchy();
     }
 
-    protected onBackgroundUriChanged(args) {
+    protected onBackgroundUriChanged(oldValue: string, newValue: string) {
         this.updateHierarchy();
     }
 
-    protected onProgressiveRenderingEnabledChanged(args) {
+    protected onProgressiveRenderingEnabledChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onShowProgressBarChanged() {
+    protected onShowProgressBarChanged(oldValue: boolean, newValue: boolean) {
         this.updateHierarchy();
     }
 
-    protected onProgressBarColorChanged(args) {
+    protected onProgressBarColorChanged(oldValue: string, newValue: string) {
         this.updateHierarchy();
     }
 
-    protected onRoundAsCircleChanged(args) {
+    protected onRoundAsCircleChanged(oldValue: boolean, newValue: boolean) {
         this.updateHierarchy();
     }
 
-    protected onRoundTopLeftChanged(args) {
+    protected onRoundTopLeftChanged(oldValue: boolean, newValue: boolean) {
         this.updateHierarchy();
     }
 
-    protected onRoundTopRightChanged(args) {
+    protected onRoundTopRightChanged(oldValue: boolean, newValue: boolean) {
         this.updateHierarchy();
     }
 
-    protected onRoundBottomLeftChanged(args) {
+    protected onRoundBottomLeftChanged(oldValue: boolean, newValue: boolean) {
         this.updateHierarchy();
     }
 
-    protected onRoundBottomRightChanged(args) {
+    protected onRoundBottomRightChanged(oldValue: boolean, newValue: boolean) {
         this.updateHierarchy();
     }
 
-    protected onRoundedCornerRadiusChanged(args) {
+    protected onRoundedCornerRadiusChanged(oldValue: number, newValue: number) {
         this.updateHierarchy();
     }
 
-    protected onAutoPlayAnimationsPropertyChanged(args) {
+    protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onTapToRetryEnabledChanged(args) {
+    protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean) {
 
     }
 
-    protected onAspectRatioChanged(args) {
+    protected onAspectRatioChanged(oldValue: number, newValue: number) {
 
     }
 

@@ -1,4 +1,4 @@
-import * as viewModule from "ui/core/view";
+import * as viewModule from "tns-core-modules/ui/core/view";
 
 /**
  * When called, initializes the android Fresco library. Calling this method is required.

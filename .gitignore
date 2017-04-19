@@ -47,7 +47,6 @@ Build/intermediates
 /.metadata
 
 #NativeScript
-platforms/
 lib/
 frameworks/
 /samples/app/tns_modules
