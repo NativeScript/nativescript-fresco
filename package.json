@@ -19,8 +19,10 @@
     "!tsconfig.json"
   ],
   "nativescript": {
-    "ios": "2.4.0",
-    "android": "2.4.1"
+      "platforms": {
+          "android": "3.0.0",
+          "ios": "3.0.0"
+      }
   },
   "devDependencies": {
     "@angular/compiler": "~4.0.2",
