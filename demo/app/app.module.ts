@@ -1,5 +1,5 @@
 // this import should be first in order to load some required settings (like globals and reflect-metadata)
-import { NativeScriptModule } from "nativescript-angular/platform";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NgModule, OnInit, NO_ERRORS_SCHEMA } from "@angular/core";

@@ -2,12 +2,12 @@ import { ViewModel } from "../models/main-view-model";
 import * as builderModule from "ui/builder";
 import { Button } from "ui/button";
 import * as timerModule from "timer";
-import { TabView, TabViewItem} from "ui/tab-view";
+import { TabView, TabViewItem } from "ui/tab-view";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { ActivityIndicator } from "ui/activity-indicator";
 import * as frameModule from "ui/frame";
 import * as pageModule from "ui/page";
-import { EventData} from "data/observable";
+import { EventData } from "data/observable";
 import * as frescoModel from "nativescript-fresco";
 
 let timerId: number;
@@ -47,7 +47,7 @@ export function onClearCache(args: EventData) {
 
 function toggleBusyIndicator(state: boolean) {
     indicator.busy = state;
-    indicator.visibility = state ? "visible" : "collapsed";
+    indicator.visibility = state ? "visible" : "collapse";
 }
 
 function setContent() {
