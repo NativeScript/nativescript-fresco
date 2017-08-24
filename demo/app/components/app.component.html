@@ -2,6 +2,6 @@
 </ActionBar>
 <GridLayout rows="*, auto, auto">
     <FrescoDrawee #drawee verticalAlignment="center" placeholderImageUri="res://ns_logo" aspectRatio="2" imageUri="http://lorempixel.com/400/200/"></FrescoDrawee>
-    <Button text="Animate to 0" row="1" (tap)="onAnimateToZero($args)"></Button>
-    <Button text="Animate to 1" row="2" (tap)="onAnimateToOne($args)"></Button>
+    <Button text="Animate to 0" row="1" (tap)="onAnimateToZero($event)"></Button>
+    <Button text="Animate to 1" row="2" (tap)="onAnimateToOne($event)"></Button>
 </GridLayout>
