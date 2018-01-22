@@ -44,7 +44,8 @@
     "tns-core-modules": "^3.1.0 || >3.3.0-"
   },
   "scripts": {
-    "prepublish": "ngc"
+    "prepublish": "ngc",
+    "tsc": "tsc -skipLibCheck"
   },
   "keywords": [
     "fresco",
