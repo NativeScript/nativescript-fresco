@@ -14,8 +14,9 @@ export function onCheckCache(args: EventData) {
     var drawee = gridLayout.getViewById("frescoDrawee") as FrescoDrawee;
     var imagePipeLine = frescoModel.getImagePipeline();
     var isInCache = imagePipeLine.isInBitmapMemoryCache(imageUri);
-    writeToOutputLabel(drawee, ">>>>> Image is in the Bitmap cache - " + isInCache);
+    writeToOutputLabel(drawee, ">>>>> Image is in the Bitmap memory cache - " + isInCache);
 
+    // TODO: Uncomment this after upgrading the native Fresco library above the currently used 0.9.0+ version and make sure its is available in the new version. 
     // var isInDiskCache = imagePipeLine.isInDiskCacheSync(imageUri);
     // var message = ">>>>> Image is in the disk cache: " + isInDiskCache;
     // console.log(message);
