@@ -67,7 +67,19 @@ export class ImagePipeline {
     }
 }
 
-export class AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable implements commonModule.IAnimatedImage {
+export interface AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable, commonModule.IAnimatedImage {
+    /*tslint:disable-next-line no-misused-new*/
+    new(): AnimatedImage;
+    start(): void;
+    stop(): void;
+    isRunning(): boolean;
+}
+export let AnimatedImage: AnimatedImage;
+function initializeAnimatedImage() {
+if (AnimatedImage) {
+    return;
+}
+class AnimatedImageImpl extends com.facebook.imagepipeline.animated.base.AnimatedDrawable implements commonModule.IAnimatedImage {
     start(): void {
         super.start();
     }
@@ -80,6 +92,9 @@ export class AnimatedImage extends com.facebook.imagepipeline.animated.base.Anim
         return super.isRunning();
     }
 }
+AnimatedImage = AnimatedImageImpl as any;
+}
+
 
 export class FrescoError implements commonModule.IError {
     private _stringValue;
@@ -183,6 +198,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
 
     public createNativeView() {
+        initializeAnimatedImage();
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
         return this._android;
     }
