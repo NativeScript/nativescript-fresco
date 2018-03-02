@@ -1,4 +1,4 @@
-# Welcome to `nativescript-fresco`
+# Welcome to NativeScript Fresco
 
 > A NativeScript Plugin for Android apps.
 
@@ -6,6 +6,25 @@
 [![npm](https://img.shields.io/npm/dt/nativescript-fresco.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-fresco)
 [![Dependency status](https://david-dm.org/NativeScript/nativescript-fresco.svg)](https://david-dm.org/NativeScript/nativescript-fresco)
 [![peerDependencies Status](https://david-dm.org/NativeScript/nativescript-fresco/peer-status.svg)](https://david-dm.org/NativeScript/nativescript-fresco?type=peer)
+
+
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [What is `nativescript-fresco`?](#what-is-nativescript-fresco)
+- [How to use `nativescript-fresco`?](#how-to-use-nativescript-fresco)
+    - [In vanila NativeScript](#in-vanila-nativescript)
+    - [In NativeScript + Angular 2](#in-nativescript--angular-2)
+- [Examples](#examples)
+- [Features](#features)
+    - [Basic attributes](#basic-attributes)
+    - [Advanced *optional* attributes](#advanced-optional-attributes)
+    - [Events](#events)
+    - [Cache](#cache)
+- [Sample Screenshots](#sample-screenshots)
+- [Contribute](#contribute)
+- [Get Help](#get-help)
+
+<!-- /TOC -->
 
 ## What is `nativescript-fresco`?
 `nativescript-fresco` is a NativeScript plugin that exposes the Fresco library used for efficiently displaying images on Android. More information about what Fresco is and how it works is available on its official website [here](https://code.facebook.com/posts/366199913563917/introducing-fresco-a-new-image-library-for-android/).
@@ -550,3 +569,11 @@ Sample 1 - Placeholder image |  Sample 2 - Transition (fade-in animation)
 Sample 3 - Image shown successfully from imageUri |  Sample 4 - 'Failure' image shown
 -------- | ---------
 ![Successfully shown image sample](screenshots/screen3-successful-show.png) | ![Successfully shown image sample](screenshots/screen4-unsuccessful-show.png)
+
+## Contribute
+We love PRs! Check out the [contributing guidelines](CONTRIBUTING.md). If you want to contribute, but you are not sure where to start - look for [issues labeled `help wanted`](https://github.com/NativeScript/nativescript-fresco/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
+
+## Get Help 
+Please, use [github issues](https://github.com/NativeScript/nativescript-fresco/issues) strictly for [reporting bugs](CONTRIBUTING.md#reporting-bugs) or [requesting features](CONTRIBUTING.md#requesting-new-features). For general questions and support, check out the [NativeScript community forum](https://discourse.nativescript.org/) or ask our experts in [NativeScript community Slack channel](http://developer.telerik.com/wp-login.php?action=slack-invitation).
+
+![](https://ga-beacon.appspot.com/UA-111455-24/nativescript/nativescript-fresco?pixel)
