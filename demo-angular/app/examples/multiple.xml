@@ -1,4 +1,4 @@
- <lv:RadListView xmlns:lv="nativescript-pro-ui/listview" xmlns:fresco="nativescript-fresco" items="{{ dataItems }}">
+ <lv:RadListView xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco" items="{{ dataItems }}">
     <lv:RadListView.listViewLayout>
               <lv:ListViewLinearLayout/>
     </lv:RadListView.listViewLayout>
