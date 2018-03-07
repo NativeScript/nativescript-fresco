@@ -2,6 +2,7 @@
 
 > A NativeScript Plugin for Android apps.
 
+[![Build Status](https://travis-ci.org/NativeScript/nativescript-fresco.svg?branch=master)](https://travis-ci.org/NativeScript/nativescript-fresco)
 [![npm](https://img.shields.io/npm/v/nativescript-fresco.svg)](https://www.npmjs.com/package/nativescript-fresco)
 [![npm](https://img.shields.io/npm/dt/nativescript-fresco.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-fresco)
 [![Dependency status](https://david-dm.org/NativeScript/nativescript-fresco.svg)](https://david-dm.org/NativeScript/nativescript-fresco)
