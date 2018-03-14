@@ -49,7 +49,6 @@
     "build": "npm i && tsc",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\"",
     "plugin.tscwatch": "npm run tsc -- -w",
-    "demo.ng.ios": "npm i && npm run tsc && cd ../demo-angular && tns run ios --syncAllFiles",
     "demo.ng.android": "npm i && npm run tsc && cd ../demo-angular && tns run android --syncAllFiles",
     "demo.ng.reset": "cd ../demo-angular && rimraf platforms",
     "plugin.prepare": "npm run tsc && cd ../demo-angular && tns plugin remove nativescript-fresco && tns plugin add ../src",
