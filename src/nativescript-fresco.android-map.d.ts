@@ -1,10 +1,10 @@
-declare module android {
-    module net {
+declare namespace android {
+    namespace net {
         class Uri {
             static parse(orientation);
         }
 
-        module Uri {
+        namespace Uri {
             class Builder {
                 scheme(scheme: string);
                 path(path: string);
@@ -12,8 +12,8 @@ declare module android {
         }
     }
 
-    module graphics {
-        module drawable {
+    namespace graphics {
+        namespace drawable {
             class BitmapDrawable {
                 constructor(resources, image);
             }
@@ -24,16 +24,16 @@ declare module android {
     }
 }
 
-declare module com {
-    module facebook {
-        module drawee {
-            module drawable {
+declare namespace com {
+    namespace facebook {
+        namespace drawee {
+            namespace drawable {
                 class ProgressBarDrawable<T> {
                     constructor();
                     setColor(color: any);
                 }
 
-                module ScalingUtils {
+                namespace ScalingUtils {
                     class ScaleType {
                         static CENTER;
                         static CENTER_CROP;
@@ -47,8 +47,8 @@ declare module com {
                 }
             }
 
-            module backends {
-                module pipeline {
+            namespace backends {
+                namespace pipeline {
                     class Fresco {
                         static initialize(context);
 
@@ -57,11 +57,11 @@ declare module com {
                         static getImagePipeline(): com.facebook.imagepipeline.core.ImagePipeline;
                     }
                 }
-                
+
                 class PipelineDraweeController {
-                    
+
                 }
-                
+
                 class PipelineDraweeControllerBuilder {
                     setAutoPlayAnimations(value: boolean): PipelineDraweeControllerBuilder;
                     setImageRequest(uri): PipelineDraweeControllerBuilder;
@@ -72,7 +72,7 @@ declare module com {
                 }
             }
 
-            module view {
+            namespace view {
                 class SimpleDraweeView {
                     constructor(context);
                     setImageURI(context, hierarchy);
@@ -80,17 +80,17 @@ declare module com {
                     getController();
                     setController(controller);
                     setHierarchy(hierarchy);
-                    setAspectRatio(ratio:number);
+                    setAspectRatio(ratio: number);
                 }
             }
 
-            module controller {
+            namespace controller {
                 class ControllerListener<T> {
                     constructor(context);
                 }
             }
 
-            module generic {
+            namespace generic {
                 class GenericDraweeHierarchyBuilder {
                     constructor(context);
                     setPlaceholderImage(drawable);
@@ -115,34 +115,34 @@ declare module com {
             }
         }
 
-        module common {
-            module util {
+        namespace common {
+            namespace util {
                 class UriUtil {
                     static LOCAL_RESOURCE_SCHEME;
                 }
             }
         }
 
-        module imagepipeline {
-            module request {
+        namespace imagepipeline {
+            namespace request {
                 class ImageRequestBuilder {
                     static newBuilderWithSource(url);
                 }
             }
 
-            module image {
+            namespace image {
                 class ImageInfo {
                     getHeight(): number;
                     getWidth(): number;
                     getQualityInfo(): QualityInfo;
                 }
-                
+
                 class QualityInfo {
                     getQuality(): number;
                     isOfFullQuality(): boolean;
                     isOfGoodEnoughQuality(): boolean;
                 }
-                
+
                 class ImmutableQualityInfo {
                     getQuality(): number;
                     isOfFullQuality(): boolean;
@@ -150,8 +150,8 @@ declare module com {
                 }
             }
 
-            module animated {
-                module base {
+            namespace animated {
+                namespace base {
                     class AnimatedDrawable {
                         start(): void;
                         stop(): void;
@@ -160,7 +160,7 @@ declare module com {
                 }
             }
 
-             module core {
+            namespace core {
                 class ImagePipeline {
                     isInBitmapMemoryCache(uri: string): boolean;
                     isInDiskCacheSync(uri: string): boolean;
@@ -176,16 +176,16 @@ declare module com {
     }
 }
 
-declare module java {
-    module lang {
+declare namespace java {
+    namespace lang {
         class String {
             static valueOf(identifier);
         }
-        
+
         class Class {
             getName(): string;
         }
-        
+
         class Throwable {
             getClass(): java.lang.Class;
             getMessage(): string;

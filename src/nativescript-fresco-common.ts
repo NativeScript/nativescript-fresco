@@ -3,15 +3,15 @@
 import { View, Property, booleanConverter } from "tns-core-modules/ui/core/view";
 import * as observableModule from "tns-core-modules/data/observable";
 
-export module ScaleType {
-    export var Center = "center";
-    export var CenterCrop = "centerCrop";
-    export var CenterInside = "centerInside";
-    export var FitCenter = "fitCenter";
-    export var FitEnd = "fitEnd";
-    export var FitStart = "fitStart";
-    export var FitXY = "fitXY";
-    export var FocusCrop = "focusCrop";
+export namespace ScaleType {
+    export const Center = "center";
+    export const CenterCrop = "centerCrop";
+    export const CenterInside = "centerInside";
+    export const FitCenter = "fitCenter";
+    export const FitEnd = "fitEnd";
+    export const FitStart = "fitStart";
+    export const FitXY = "fitXY";
+    export const FocusCrop = "focusCrop";
 }
 
 export interface IAnimatedImage {

@@ -10,19 +10,19 @@ export function initialize(): void {
     if (application.android) {
         com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context);
     }
-};
+}
 
 export function getImagePipeline(): ImagePipeline {
     if (application.android) {
-        var nativePipe = com.facebook.drawee.backends.pipeline.Fresco.getImagePipeline();
-        var imagePineLine = new ImagePipeline();
+        let nativePipe = com.facebook.drawee.backends.pipeline.Fresco.getImagePipeline();
+        let imagePineLine = new ImagePipeline();
         imagePineLine.android = nativePipe;
 
         return imagePineLine;
     }
 
     return null;
-};
+}
 
 export class ImagePipeline {
     private _android: com.facebook.imagepipeline.core.ImagePipeline;
@@ -216,11 +216,11 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     public updateImageUri() {
-        var imagePipeLine = getImagePipeline();
-        var isInCache = imagePipeLine.isInBitmapMemoryCache(this.imageUri);
+        let imagePipeLine = getImagePipeline();
+        let isInCache = imagePipeLine.isInBitmapMemoryCache(this.imageUri);
         if (isInCache) {
             imagePipeLine.evictFromCache(this.imageUri);
-            var imageUri = this.imageUri;
+            let imageUri = this.imageUri;
             this.imageUri = null;
             this.imageUri = imageUri;
         }
@@ -306,17 +306,18 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (this._android) {
             this._android.setImageURI(null);
             if (this.imageUri) {
-                var uri;
+                console.log("LOG: Image URI: " + this.imageUri);
+                let uri;
                 if (utils.isFileOrResourcePath(this.imageUri)) {
-                    var res = utils.ad.getApplicationContext().getResources();
+                    let res = utils.ad.getApplicationContext().getResources();
                     if (!res) {
                         return;
                     }
 
-                    var uri;
+                    let uri;
                     if (this.imageUri.indexOf(utils.RESOURCE_PREFIX) === 0) {
-                        var resName = this.imageUri.substr(utils.RESOURCE_PREFIX.length);
-                        var identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
+                        let resName = this.imageUri.substr(utils.RESOURCE_PREFIX.length);
+                        let identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
                         if (0 < identifier) {
                             uri = new android.net.Uri.Builder()
                                 .scheme(com.facebook.common.util.UriUtil.LOCAL_RESOURCE_SCHEME)
@@ -333,18 +334,18 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     uri = android.net.Uri.parse(this.imageUri);
                 }
 
-                var progressiveRenderingEnabledValue = this.progressiveRenderingEnabled != undefined ? this.progressiveRenderingEnabled : false;
-                var request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
+                let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;
+                let request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
                     .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
                     .build();
 
-                var that: WeakRef<FrescoDrawee> = new WeakRef(this);
-                var listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
+                let that: WeakRef<FrescoDrawee> = new WeakRef(this);
+                let listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
                     onFinalImageSet: function (id, imageInfo, animatable) {
                         if (that && that.get()) {
-                            var info = new ImageInfo(imageInfo);
+                            let info = new ImageInfo(imageInfo);
 
-                            var args: FinalEventData = <FinalEventData>{
+                            let args: FinalEventData = <FinalEventData>{
                                 eventName: commonModule.FrescoDrawee.finalImageSetEvent,
                                 object: that.get(),
                                 imageInfo: info,
@@ -358,8 +359,8 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     },
                     onFailure: function (id, throwable) {
                         if (that && that.get()) {
-                            var frescoError = new FrescoError(throwable);
-                            var args: FailureEventData = <FailureEventData>{
+                            let frescoError = new FrescoError(throwable);
+                            let args: FailureEventData = <FailureEventData>{
                                 eventName: commonModule.FrescoDrawee.failureEvent,
                                 object: that.get(),
                                 error: frescoError
@@ -372,8 +373,8 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     },
                     onIntermediateImageFailed: function (id, throwable) {
                         if (that && that.get()) {
-                            var frescoError = new FrescoError(throwable);
-                            var args: FailureEventData = <FailureEventData>{
+                            let frescoError = new FrescoError(throwable);
+                            let args: FailureEventData = <FailureEventData>{
                                 eventName: commonModule.FrescoDrawee.intermediateImageFailedEvent,
                                 object: that.get(),
                                 error: frescoError
@@ -386,8 +387,8 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     },
                     onIntermediateImageSet: function (id, imageInfo) {
                         if (that && that.get()) {
-                            var info = new ImageInfo(imageInfo);
-                            var args: IntermediateEventData = <IntermediateEventData>{
+                            let info = new ImageInfo(imageInfo);
+                            let args: IntermediateEventData = <IntermediateEventData>{
                                 eventName: commonModule.FrescoDrawee.intermediateImageSetEvent,
                                 object: that.get(),
                                 imageInfo: info
@@ -400,7 +401,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     },
                     onRelease: function (id) {
                         if (that && that.get()) {
-                            var args: commonModule.EventData = <commonModule.EventData>{
+                            let args: commonModule.EventData = <commonModule.EventData>{
                                 eventName: commonModule.FrescoDrawee.releaseEvent,
                                 object: that.get()
                             };
@@ -412,7 +413,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     },
                     onSubmit: function (id, callerContext) {
                         if (that && that.get()) {
-                            var args: commonModule.EventData = <commonModule.EventData>{
+                            let args: commonModule.EventData = <commonModule.EventData>{
                                 eventName: commonModule.FrescoDrawee.submitEvent,
                                 object: that.get()
                             };
@@ -423,7 +424,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         }
                     },
                 });
-                var builder = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder();
+                let builder = com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBuilder();
                 builder.setImageRequest(request);
                 builder.setControllerListener(listener);
                 builder.setOldController(this._android.getController());
@@ -432,10 +433,10 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 }
 
                 if (this.tapToRetryEnabled) {
-                    builder.setTapToRetryEnabled(this.tapToRetryEnabled)
+                    builder.setTapToRetryEnabled(this.tapToRetryEnabled);
                 }
 
-                var controller = builder.build();
+                let controller = builder.build();
                 if (this.aspectRatio) {
                     this._android.setAspectRatio(this.aspectRatio);
                 }
@@ -447,9 +448,9 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     private updateHierarchy() {
         if (this._android) {
-            var failureImageDrawable;
-            var placeholderImageDrawable;
-            var backgroundDrawable;
+            let failureImageDrawable;
+            let placeholderImageDrawable;
+            let backgroundDrawable;
             if (this.failureImageUri) {
                 failureImageDrawable = this.getDrawable(this.failureImageUri);
             }
@@ -462,7 +463,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 backgroundDrawable = this.getDrawable(this.backgroundUri);
             }
 
-            var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
+            let builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
             if (this.failureImageUri && failureImageDrawable) {
                 builder.setFailureImage(failureImageDrawable);
             }
@@ -492,21 +493,21 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
             }
 
             if (this.roundBottomLeft || this.roundBottomRight || this.roundTopLeft || this.roundTopRight) {
-                var topLeftRadius = this.roundTopLeft ? this.roundedCornerRadius : 0;
-                var topRightRadius = this.roundTopRight ? this.roundedCornerRadius : 0;
-                var bottomRightRadius = this.roundBottomRight ? this.roundedCornerRadius : 0;
-                var bottomLeftRadius = this.roundBottomLeft ? this.roundedCornerRadius : 0;
+                let topLeftRadius = this.roundTopLeft ? this.roundedCornerRadius : 0;
+                let topRightRadius = this.roundTopRight ? this.roundedCornerRadius : 0;
+                let bottomRightRadius = this.roundBottomRight ? this.roundedCornerRadius : 0;
+                let bottomLeftRadius = this.roundBottomLeft ? this.roundedCornerRadius : 0;
                 builder.setCornersRadii(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
             }
 
-            var hierarchy = builder.build();
+            let hierarchy = builder.build();
             this._android.setHierarchy(hierarchy);
         }
     }
 
     private getDrawable(path: string) {
-        var drawable;
-        var builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
+        let drawable;
+        let builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
         if (utils.isFileOrResourcePath(path)) {
             if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
                 drawable = this.getDrawableFromResource(path);
@@ -519,18 +520,20 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     private getDrawableFromLocalFile(localFilePath: string) {
-        var img = imageSource.fromFile(localFilePath);
+        let img = imageSource.fromFile(localFilePath);
+        let drawable: android.graphics.drawable.BitmapDrawable = null;
         if (img) {
-            var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
+            drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
         }
 
         return drawable;
     }
 
     private getDrawableFromResource(resourceName: string) {
-        var img = imageSource.fromResource(resourceName.substr(utils.RESOURCE_PREFIX.length));
+        let img = imageSource.fromResource(resourceName.substr(utils.RESOURCE_PREFIX.length));
+        let drawable: android.graphics.drawable.BitmapDrawable = null;
         if (img) {
-            var drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
+            drawable = new android.graphics.drawable.BitmapDrawable(utils.ad.getApplicationContext().getResources(), img.android);
         }
 
         return drawable;
@@ -541,7 +544,7 @@ class GenericDraweeHierarchyBuilder {
     private nativeBuilder: com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 
     constructor() {
-        var res = application.android.context.getResources();
+        let res = application.android.context.getResources();
         this.nativeBuilder = new com.facebook.drawee.generic.GenericDraweeHierarchyBuilder(res);
     }
 
@@ -608,7 +611,7 @@ class GenericDraweeHierarchyBuilder {
             return null;
         }
 
-        var drawable = new com.facebook.drawee.drawable.ProgressBarDrawable();
+        let drawable = new com.facebook.drawee.drawable.ProgressBarDrawable();
         if (color) {
             drawable.setColor(android.graphics.Color.parseColor(color));
         }
@@ -623,8 +626,8 @@ class GenericDraweeHierarchyBuilder {
             return null;
         }
 
-        var params = new com.facebook.drawee.generic.RoundingParams.asCircle();
-        this.nativeBuilder.setRoundingParams(params)
+        let params = new com.facebook.drawee.generic.RoundingParams.asCircle();
+        this.nativeBuilder.setRoundingParams(params);
 
         return this;
     }
@@ -634,9 +637,9 @@ class GenericDraweeHierarchyBuilder {
             return null;
         }
 
-        var params = new com.facebook.drawee.generic.RoundingParams();
+        let params = new com.facebook.drawee.generic.RoundingParams();
         params.setCornersRadii(topLeft, topRight, bottomRight, bottomLeft);
-        this.nativeBuilder.setRoundingParams(params)
+        this.nativeBuilder.setRoundingParams(params);
 
         return this;
     }

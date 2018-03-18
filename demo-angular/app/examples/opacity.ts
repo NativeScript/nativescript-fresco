@@ -7,32 +7,32 @@ import * as frescoModel from "nativescript-fresco";
 import { writeToOutputLabel } from "./appLogger";
 
 export function onSeOpacityTo1(args: EventData) {
-    var button = args.object as Button;
-    var gridLayout = button.parent as GridLayout;
-    var drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
+    let button = args.object as Button;
+    let gridLayout = button.parent as GridLayout;
+    let drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
     drawee.opacity = 1;
 }
 
 export function onSeOpacityTo01(args: EventData) {
-    var button = args.object as Button;
-    var gridLayout = button.parent as GridLayout;
-    var drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
+    let button = args.object as Button;
+    let gridLayout = button.parent as GridLayout;
+    let drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
     drawee.opacity = 0.1;
 }
 
 export function onSeOpacityTo05(args: EventData) {
-    var button = args.object as Button;
-    var gridLayout = button.parent as GridLayout;
-    var drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
+    let button = args.object as Button;
+    let gridLayout = button.parent as GridLayout;
+    let drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
     drawee.opacity = 0.5;
 }
 
 export function onAnimateCss(args) {
-    var button = args.object as Button;
-    var gridLayout = button.parent as GridLayout;
-    var drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
+    let button = args.object as Button;
+    let gridLayout = button.parent as GridLayout;
+    let drawee = gridLayout.getViewById("opacityDrawee") as FrescoDrawee;
     drawee.animate({
-                    opacity: 1,
-                    duration: 200
-                }); 
+        opacity: 1,
+        duration: 200
+    });
 }

@@ -1,15 +1,15 @@
 /// <reference path="references.d.ts" />
 import { View, Property } from "tns-core-modules/ui/core/view";
 import * as observableModule from "tns-core-modules/data/observable";
-export declare module ScaleType {
-    var Center: string;
-    var CenterCrop: string;
-    var CenterInside: string;
-    var FitCenter: string;
-    var FitEnd: string;
-    var FitStart: string;
-    var FitXY: string;
-    var FocusCrop: string;
+export declare namespace ScaleType {
+    const Center = "center";
+    const CenterCrop = "centerCrop";
+    const CenterInside = "centerInside";
+    const FitCenter = "fitCenter";
+    const FitEnd = "fitEnd";
+    const FitStart = "fitStart";
+    const FitXY = "fitXY";
+    const FocusCrop = "focusCrop";
 }
 export interface IAnimatedImage {
     start(): void;

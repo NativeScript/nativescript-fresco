@@ -4,8 +4,8 @@ import { Label } from "tns-core-modules/ui/label";
 import { writeToOutputLabel } from "./appLogger";
 
 export function onFailure(args: FailureEventData) {
-    var drawee = args.object as FrescoDrawee;
-    var message = ">>>>> onFailure ";
+    let drawee = args.object as FrescoDrawee;
+    let message = ">>>>> onFailure ";
     console.log(message);
     writeToOutputLabel(drawee, message);
 }

@@ -5,38 +5,38 @@ import { Label } from "tns-core-modules/ui/label";
 import { writeToOutputLabel } from "./appLogger";
 
 export function onFinalImageSet(args: FinalEventData) {
-    var drawee = args.object as FrescoDrawee;
-    var message = ">>>>> onFinalImageSet ";
+    let drawee = args.object as FrescoDrawee;
+    let message = ">>>>> onFinalImageSet ";
     console.log(message);
     writeToOutputLabel(drawee, message);
 }
 
 export function onIntermediateImageSet(args: IntermediateEventData) {
-    var drawee = args.object as FrescoDrawee;
-    var message = ">>>>> onIntermediateImageSet ";
+    let drawee = args.object as FrescoDrawee;
+    let message = ">>>>> onIntermediateImageSet ";
     console.log(message);
     writeToOutputLabel(drawee, message);
 }
 
 export function intermediateImageFailed(args: FailureEventData) {
-    var drawee = args.object as FrescoDrawee;
-    var message = ">>>>> intermediateImageFailed ";
+    let drawee = args.object as FrescoDrawee;
+    let message = ">>>>> intermediateImageFailed ";
     console.log(message);
     writeToOutputLabel(drawee, message);
 }
 
 
 export function onSubmit(args: EventData) {
-    var drawee = args.object as FrescoDrawee;
-    var message = ">>>>> onSubmit ";
+    let drawee = args.object as FrescoDrawee;
+    let message = ">>>>> onSubmit ";
     console.log(message);
     writeToOutputLabel(drawee, message);
 }
 
 
 export function onRelease(args: EventData) {
-    var drawee = args.object as FrescoDrawee;
-    var message = ">>>>> onRelease ";
+    let drawee = args.object as FrescoDrawee;
+    let message = ">>>>> onRelease ";
     console.log(message);
     writeToOutputLabel(drawee, message);
 }

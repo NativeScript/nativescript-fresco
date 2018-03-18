@@ -28,9 +28,9 @@ export function onSelectedIndexChanged(args) {
         timerModule.clearInterval(timerId);
     }
 
-    var tabView: TabView = args.object;
+    let tabView: TabView = args.object;
     tabViewItem = tabView.items[args.newIndex];
-    var title: string = tabViewItem.title;
+    let title: string = tabViewItem.title;
     xmlFileName = title.toLowerCase();
     indicator = tabViewItem.view.getViewById("indicator") as ActivityIndicator;
     layout = tabViewItem.view.getViewById("rootLayout") as GridLayout;
@@ -38,7 +38,7 @@ export function onSelectedIndexChanged(args) {
 }
 
 export function onClearCache(args: EventData) {
-    var imagePipeLine = frescoModel.getImagePipeline();
+    let imagePipeLine = frescoModel.getImagePipeline();
     imagePipeLine.clearCaches();
     layout.removeChildren();
     toggleBusyIndicator(true);
@@ -51,7 +51,7 @@ function toggleBusyIndicator(state: boolean) {
 }
 
 function setContent() {
-    var page = frameModule.topmost().currentPage;
+    let page = frameModule.topmost().currentPage;
     myComponentInstance = builderModule.load({
         path: "~/examples/",
         page: page,

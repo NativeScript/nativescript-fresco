@@ -17,9 +17,9 @@ let uris: Array<Image> = new Array(new Image("http://lorempixel.com/200/200", 1)
 let currentIndex = 1;
 
 export function onChangeTap(args: EventData) {
-    var button = args.object as Button;
-    var gridLayout = button.parent as GridLayout;
-    var drawee = gridLayout.getViewById("frescoDrawee") as FrescoDrawee;
+    let button = args.object as Button;
+    let gridLayout = button.parent as GridLayout;
+    let drawee = gridLayout.getViewById("frescoDrawee") as FrescoDrawee;
     drawee.aspectRatio = uris[currentIndex].aspectRation;
     drawee.imageUri = uris[currentIndex].uri;
 

@@ -51,7 +51,8 @@
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-sources": "~1.0.1",
     "zone.js": "^0.8.4",
-    "uglifyjs-webpack-plugin": "~1.1.6"
+    "uglifyjs-webpack-plugin": "~1.1.6",
+    "tslint": "^5.0.0"
   },
   "scripts": {
     "build.plugin": "cd ../src && npm run build",

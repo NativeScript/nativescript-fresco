@@ -16,7 +16,7 @@ export class ViewModel {
         if (!this._dataItems) {
             this._dataItems = new ObservableArray<DataItem>();
 
-            for (var i = 1; i <= 50; i++) {
+            for (let i = 1; i <= 50; i++) {
                 this._dataItems.push(new DataItem(i, "http://lorempixel.com/400/200/"));
             }
         }
