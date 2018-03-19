@@ -306,7 +306,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (this._android) {
             this._android.setImageURI(null);
             if (this.imageUri) {
-                console.log("LOG: Image URI: " + this.imageUri);
                 let uri;
                 if (utils.isFileOrResourcePath(this.imageUri)) {
                     let res = utils.ad.getApplicationContext().getResources();
@@ -314,7 +313,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         return;
                     }
 
-                    let uri;
                     if (this.imageUri.indexOf(utils.RESOURCE_PREFIX) === 0) {
                         let resName = this.imageUri.substr(utils.RESOURCE_PREFIX.length);
                         let identifier = res.getIdentifier(resName, 'drawable', utils.ad.getApplication().getPackageName());
