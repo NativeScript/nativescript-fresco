@@ -21,6 +21,7 @@ proguard/
 
 #NativeScript
 platforms/
+!src/platforms/
 lib/
 tns_modules/
 frameworks/

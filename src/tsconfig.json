@@ -1,0 +1,47 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["es6", "dom"],
+        "sourceMap": true,
+        "pretty": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noEmitHelpers": true,
+        "noEmitOnError": false,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitUseStrict": false,
+        "noFallthroughCasesInSwitch": true
+    },
+    "filesGlob": [
+        "*.ts"
+    ],
+    "include": [
+        "./nativescript-fresco-common.ts",
+        "./nativescript-fresco.android.ts",
+        "./nativescript-fresco.ios.ts",
+        "./angular/nativescript-fresco-directives.ts",
+        "./angular/nativescript-fresco.module.ts",
+        "./angular/index.ts",
+        "references.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "angularCompilerOptions": {
+        "genDir": ".",
+        "skipMetadataEmit": false,
+        "skipTemplateCodegen": true,
+        "debug": true
+    },
+    "compileOnSave": false
+}
