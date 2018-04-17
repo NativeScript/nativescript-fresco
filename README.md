@@ -84,11 +84,11 @@ Use `fresco` in the XML definition of the page as follows:
 
 ### In NativeScript + Angular 2
 
-1. Import the `TNSFrescoModule` from `nativescript-fresco/angular` and add it to the `imports` of your initial `@NgModule`, like shown [here](https://github.com/NativeScript/nativescript-fresco/blob/master/demo/app/app.module.ts).
+1. Import the `TNSFrescoModule` from `nativescript-fresco/angular` and add it to the `imports` of your initial `@NgModule`, like shown [here](https://github.com/NativeScript/nativescript-fresco/blob/master/demo-angular/app/app.module.ts).
 2. As described above make sure to initialize the `nativescript-fresco` plugin in the `launch` event of your {N} application.
 
 ## Examples
-You can refer the [demo](https://github.com/NativeScript/nativescript-fresco/tree/master/demo) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
+You can refer the [demo-angular](https://github.com/NativeScript/nativescript-fresco/tree/master/demo-angular) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
 
 ## Features
 
