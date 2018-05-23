@@ -8,7 +8,6 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 export class AppComponent implements OnInit {
 
     constructor() {
-
     }
 
     @ViewChild("drawee") frescoDraweeComponent: ElementRef;

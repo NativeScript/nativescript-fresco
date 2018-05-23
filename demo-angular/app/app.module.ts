@@ -28,10 +28,6 @@ if (applicationModule.android) {
         NativeScriptRouterModule,
         TNSFrescoModule
     ],
-    exports: [
-        NativeScriptModule,
-        NativeScriptRouterModule
-    ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
