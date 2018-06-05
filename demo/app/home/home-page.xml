@@ -1,0 +1,95 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="onNavigatingTo" 
+      xmlns:fresco="nativescript-fresco"
+      xmlns:lv="nativescript-ui-listview"
+      xmlns:examples="examples">
+<Page.actionBar>
+    <ActionBar title="NativeScript-Fresco sample app">
+      <ActionItem text="Clear Fresco cache" android.position="popup" tap="onClearCache"/>
+    </ActionBar>
+</Page.actionBar>
+<TabView>
+    <TabView.items>
+      <TabViewItem title="single">
+        <TabViewItem.view>
+            <examples:single />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="multiple">
+        <TabViewItem.view>
+            <examples:multiple />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="size">
+        <TabViewItem.view>
+            <examples:size />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="failure">
+        <TabViewItem.view>
+            <examples:failure />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="taptoretry">
+        <TabViewItem.view>
+            <examples:taptoretry />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="actualimagescaletype">
+        <TabViewItem.view>
+            <examples:actualimagescaletype />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="fade">
+        <TabViewItem.view>
+            <examples:fade />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="progressiverenderingenabled">
+        <TabViewItem.view>
+            <examples:progressiverenderingenabled />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="showprogressbar">
+        <TabViewItem.view>
+            <examples:showprogressbar />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="roundascircle">
+        <TabViewItem.view>
+            <examples:roundascircle />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="roundedcornerradius">
+        <TabViewItem.view>
+            <examples:roundedcornerradius />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="autoplayanimations">
+        <TabViewItem.view>
+            <examples:autoplayanimations />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="events">
+        <TabViewItem.view>
+            <examples:events />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="cache">
+        <TabViewItem.view>
+            <examples:cache />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="local">
+        <TabViewItem.view>
+            <examples:local />
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="opacity">
+        <TabViewItem.view>
+            <examples:opacity />
+        </TabViewItem.view>
+      </TabViewItem>
+    </TabView.items>
+  </TabView>
+</Page>

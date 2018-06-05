@@ -1,10 +1,10 @@
+export * from "./nativescript-fresco-common";
 import * as commonModule from "./nativescript-fresco-common";
 import * as utils from "tns-core-modules/utils/utils";
 import * as types from "tns-core-modules/utils/types";
 import * as application from "tns-core-modules/application";
 import * as imageSource from "tns-core-modules/image-source";
 import * as fs from "tns-core-modules/file-system";
-global.moduleMerge(commonModule, exports);
 
 export function initialize(): void {
     if (application.android) {

@@ -1,7 +1,11 @@
 {
     "name": "fresco-sample",
-    "main": "app",
+    "main": "main.js",
     "version": "1.0.0",
+    "android": {
+        "v8Flags": "--expose_gc",
+        "requireModules": ["nativescript-fresco"]
+    },
     "author": {
         "name": "Vladimir Amiorkov",
         "email": "Vladimir.Amiorkov@telerik.com"
