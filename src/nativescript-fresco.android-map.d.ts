@@ -124,9 +124,18 @@ declare namespace com {
         }
 
         namespace imagepipeline {
+
+            namespace common {
+              class ResizeOptions{
+                constructor(decodeWidth:number,decodeHeight:number);
+              }
+            }
+
             namespace request {
                 class ImageRequestBuilder {
                     static newBuilderWithSource(url);
+                }
+                class ImageRequest {
                 }
             }
 
@@ -171,6 +180,18 @@ declare namespace com {
                     clearMemoryCaches(): void;
                     clearDiskCaches(): void;
                 }
+
+                class ImagePipelineConfig {
+                    static newBuilder(context): ImagePipelineConfig.Builder;
+                }                    
+
+                namespace ImagePipelineConfig{
+                    class Builder{
+                      setDownsampleEnabled(value:boolean): ImagePipelineConfig.Builder;
+                      build(): ImagePipelineConfig;
+                    }
+                }
+
             }
         }
     }

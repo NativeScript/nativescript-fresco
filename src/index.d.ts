@@ -148,6 +148,21 @@ export class FrescoDrawee extends viewModule.View {
      * Number value used as the aspect ratio of the image.
      */
     aspectRatio: number;
+
+    /**
+     * Number value used as the resized image width
+     */
+    decodeWidth: number;
+    
+    /**
+     * Number value used as the resized image height
+     */
+    decodeHeight: number;
+
+    /**
+     * Boolean value used for enabling or disabling the resizing images. 
+     */
+    resizingEnabled: boolean;
 }
 
 /**

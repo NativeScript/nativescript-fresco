@@ -56,6 +56,10 @@ export declare class FrescoDrawee extends View {
     autoPlayAnimations: boolean;
     tapToRetryEnabled: boolean;
     aspectRatio: number;
+    decodeWidth: number;
+    decodeHeight: number;
+    resizingEnabled: boolean;
+
     static imageUriProperty: Property<FrescoDrawee, string>;
     static placeholderImageUriProperty: Property<FrescoDrawee, string>;
     static failureImageUriProperty: Property<FrescoDrawee, string>;
@@ -74,6 +78,9 @@ export declare class FrescoDrawee extends View {
     static autoPlayAnimationsProperty: Property<FrescoDrawee, boolean>;
     static tapToRetryEnabledProperty: Property<FrescoDrawee, boolean>;
     static aspectRatioProperty: Property<FrescoDrawee, number>;
+    static decodeWidthProperty: Property<FrescoDrawee, number>;
+    static decodeHeightProperty: Property<FrescoDrawee, number>;
+    static resizingEnabledProperty: Property<FrescoDrawee, boolean>;
     private onImageUriPropertyChanged(oldValue, newValue);
     private onPlaceholderImageUriPropertyChanged(oldValue, newValue);
     private onFailureImageUriPropertyChanged(oldValue, newValue);
@@ -110,4 +117,9 @@ export declare class FrescoDrawee extends View {
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean): void;
     protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean): void;
     protected onAspectRatioChanged(oldValue: number, newValue: number): void;
+    protected onDecodeWidthChanged(oldValue: number, newValue: number): void;
+    protected onDecodeHeightChanged(oldValue: number, newValue: number): void;
+    protected onResizingEnabledChanged(oldValue: boolean, newValue: boolean): void;
+
+
 }

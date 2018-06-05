@@ -80,6 +80,9 @@ export declare class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean): void;
     protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean): void;
     protected onAspectRatioChanged(oldValue: number, newValue: number): void;
+    protected onDecodeWidthChanged(oldValue: number, newValue: number): void;
+    protected onDecodeHeightChanged(oldValue: number, newValue: number): void;
+    protected onResizingEnabledChanged(oldValue: boolean, newValue: boolean): void;
     private initDrawee();
     private initImage();
     private updateHierarchy();

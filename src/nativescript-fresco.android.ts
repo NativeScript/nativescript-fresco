@@ -332,10 +332,19 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     uri = android.net.Uri.parse(this.imageUri);
                 }
 
-                let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;
-                let request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                    .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                    .build();
+                let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled != undefined ? this.progressiveRenderingEnabled : false;
+                
+                let request: com.facebook.imagepipeline.request.ImageRequest;
+                if (this.resizingEnabled && this.decodeWidth && this.decodeHeight){
+                    request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
+                      .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                      .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
+                      .build();
+                }else{
+                    request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
+                      .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                      .build();
+                }
 
                 let that: WeakRef<FrescoDrawee> = new WeakRef(this);
                 let listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
