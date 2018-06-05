@@ -42,9 +42,6 @@
     "zone.js": "0.8.4",
     "tslint": "^5.0.0"
   },
-  "peerDependencies": {
-    "tns-core-modules": "^3.1.0 || >3.3.0-"
-  },
   "scripts": {
     "ngc": "node --max-old-space-size=8192 ./node_modules/.bin/ngc",
     "tsc": "tsc -skipLibCheck",
