@@ -153,7 +153,7 @@ export class FrescoDrawee extends viewModule.View {
      * Number value used as the resized image width
      */
     decodeWidth: number;
-    
+
     /**
      * Number value used as the resized image height
      */
@@ -427,7 +427,7 @@ export enum ScaleType {
 }
 
 /**
- * Advanced Configurations used for initializing Fresco 
+ * Advanced Configurations used for initializing Fresco
  * For more details, see http://frescolib.org/docs/configure-image-pipeline.html
  */
 export interface ImagePipelineConfigSetting {

@@ -51,7 +51,7 @@ declare namespace com {
                 namespace pipeline {
                     class Fresco {
                         static initialize(context);
-                        static initialize(context,config);
+                        static initialize(context, config);
 
                         static newDraweeControllerBuilder(): PipelineDraweeControllerBuilder;
 
@@ -127,8 +127,8 @@ declare namespace com {
         namespace imagepipeline {
 
             namespace common {
-              class ResizeOptions{
-                constructor(decodeWidth:number,decodeHeight:number);
+              class ResizeOptions {
+                constructor(decodeWidth: number, decodeHeight: number);
               }
             }
 
@@ -184,11 +184,11 @@ declare namespace com {
 
                 class ImagePipelineConfig {
                     static newBuilder(context): ImagePipelineConfig.Builder;
-                }                    
+                }
 
-                namespace ImagePipelineConfig{
-                    class Builder{
-                      setDownsampleEnabled(value:boolean): ImagePipelineConfig.Builder;
+                namespace ImagePipelineConfig {
+                    class Builder {
+                      setDownsampleEnabled(value: boolean): ImagePipelineConfig.Builder;
                       build(): ImagePipelineConfig;
                     }
                 }

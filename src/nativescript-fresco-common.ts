@@ -287,7 +287,7 @@ export class FrescoDrawee extends View {
                 target.onDecodeHeightPropertyChanged(oldValue, newValue);
             },
         });
-    
+
     private onImageUriPropertyChanged(oldValue: string, newValue: string) {
         this.onImageUriChanged(oldValue, newValue);
     }
@@ -439,13 +439,13 @@ export class FrescoDrawee extends View {
     protected onAspectRatioChanged(oldValue: number, newValue: number) {
 
     }
-    
+
     protected onDecodeWidthChanged(oldValue: number, newValue: number) {
-    
+
     }
 
     protected onDecodeHeightChanged(oldValue: number, newValue: number) {
-    
+
     }
 
 

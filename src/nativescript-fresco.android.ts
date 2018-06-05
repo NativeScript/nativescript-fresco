@@ -8,12 +8,12 @@ import * as fs from "tns-core-modules/file-system";
 
 export function initialize(config?: commonModule.ImagePipelineConfigSetting): void {
     if (application.android) {
-        if(config && config.isDownsampleEnabled){
+        if (config && config.isDownsampleEnabled) {
             let imagePipelineConfig = com.facebook.imagepipeline.core.ImagePipelineConfig.newBuilder(application.android.context)
                 .setDownsampleEnabled(true)
                 .build();
-            com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context,imagePipelineConfig);
-        }else{
+            com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context, imagePipelineConfig);
+        } else {
             com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context);
         }
     }
@@ -339,15 +339,15 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     uri = android.net.Uri.parse(this.imageUri);
                 }
 
-                let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled != undefined ? this.progressiveRenderingEnabled : false;
-                
+                let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;
+
                 let request: com.facebook.imagepipeline.request.ImageRequest;
-                if (this.decodeWidth && this.decodeHeight){
+                if (this.decodeWidth && this.decodeHeight) {
                     request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
                       .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
                       .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
                       .build();
-                }else{
+                } else {
                     request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
                       .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
                       .build();
