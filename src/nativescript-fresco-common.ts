@@ -84,7 +84,6 @@ export class FrescoDrawee extends View {
     public aspectRatio: number;
     public decodeWidth: number;
     public decodeHeight: number;
-    public resizingEnabled: boolean;
 
     public static imageUriProperty = new Property<FrescoDrawee, string>(
         {
@@ -289,16 +288,6 @@ export class FrescoDrawee extends View {
             },
         });
     
-    public static resizingEnabledProperty = new Property<FrescoDrawee, boolean>(
-        {
-            name: "resizingEnabled",
-            defaultValue: undefined,
-            valueConverter: booleanConverter,
-            valueChanged: (target, oldValue, newValue) => {
-                target.onResizingEnabledPropertyChanged(oldValue, newValue);
-            },
-        });
-
     private onImageUriPropertyChanged(oldValue: string, newValue: string) {
         this.onImageUriChanged(oldValue, newValue);
     }
@@ -377,10 +366,6 @@ export class FrescoDrawee extends View {
 
     private onDecodeHeightPropertyChanged(oldValue: number, newValue: number) {
         this.onDecodeHeightChanged(oldValue, newValue);
-    }
-
-    private onResizingEnabledPropertyChanged(oldValue: boolean, newValue: boolean) {
-        this.onResizingEnabledChanged(oldValue, newValue);
     }
 
     protected onImageUriChanged(oldValue: string, newValue: string) {
@@ -463,10 +448,6 @@ export class FrescoDrawee extends View {
     
     }
 
-    protected onResizingEnabledChanged(oldValue: boolean, newValue: boolean) {
-    
-    }
-
 
 }
 FrescoDrawee.imageUriProperty.register(FrescoDrawee);
@@ -489,4 +470,3 @@ FrescoDrawee.tapToRetryEnabledProperty.register(FrescoDrawee);
 FrescoDrawee.aspectRatioProperty.register(FrescoDrawee);
 FrescoDrawee.decodeWidthProperty.register(FrescoDrawee);
 FrescoDrawee.decodeHeightProperty.register(FrescoDrawee);
-FrescoDrawee.resizingEnabledProperty.register(FrescoDrawee);

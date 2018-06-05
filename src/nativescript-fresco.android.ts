@@ -342,7 +342,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled != undefined ? this.progressiveRenderingEnabled : false;
                 
                 let request: com.facebook.imagepipeline.request.ImageRequest;
-                if (this.resizingEnabled && this.decodeWidth && this.decodeHeight){
+                if (this.decodeWidth && this.decodeHeight){
                     request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
                       .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
                       .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))

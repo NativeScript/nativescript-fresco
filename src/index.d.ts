@@ -159,10 +159,6 @@ export class FrescoDrawee extends viewModule.View {
      */
     decodeHeight: number;
 
-    /**
-     * Boolean value used for enabling or disabling the resizing images. 
-     */
-    resizingEnabled: boolean;
 }
 
 /**
