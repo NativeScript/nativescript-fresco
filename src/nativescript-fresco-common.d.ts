@@ -25,6 +25,9 @@ export interface IError {
     getErrorType(): string;
     toString(): string;
 }
+export interface ImagePipelineConfigSetting {
+    isDownsampleEnabled?: boolean;
+}
 export declare class EventData implements observableModule.EventData {
     private _eventName;
     private _object;
@@ -59,7 +62,6 @@ export declare class FrescoDrawee extends View {
     decodeWidth: number;
     decodeHeight: number;
     resizingEnabled: boolean;
-
     static imageUriProperty: Property<FrescoDrawee, string>;
     static placeholderImageUriProperty: Property<FrescoDrawee, string>;
     static failureImageUriProperty: Property<FrescoDrawee, string>;
@@ -81,24 +83,27 @@ export declare class FrescoDrawee extends View {
     static decodeWidthProperty: Property<FrescoDrawee, number>;
     static decodeHeightProperty: Property<FrescoDrawee, number>;
     static resizingEnabledProperty: Property<FrescoDrawee, boolean>;
-    private onImageUriPropertyChanged(oldValue, newValue);
-    private onPlaceholderImageUriPropertyChanged(oldValue, newValue);
-    private onFailureImageUriPropertyChanged(oldValue, newValue);
-    private onActualImageScaleTypePropertyChanged(oldValue, newValue);
-    private onFadeDurationPropertyChanged(oldValue, newValue);
-    private onBackgroundUriPropertyChanged(oldValue, newValue);
-    private onProgressiveRenderingEnabledPropertyChanged(oldValue, newValue);
-    private onShowProgressBarPropertyChanged(oldValue, newValue);
-    private onProgressBarColorPropertyChanged(oldValue, newValue);
-    private onRoundAsCirclePropertyChanged(oldValue, newValue);
-    private onRoundTopLeftPropertyChanged(oldValue, newValue);
-    private onRoundTopRightPropertyChanged(oldValue, newValue);
-    private onRoundBottomLeftPropertyChanged(oldValue, newValue);
-    private onRoundBottomRightPropertyChanged(oldValue, newValue);
-    private onRoundedCornerRadiusPropertyChanged(oldValue, newValue);
-    private onAutoPlayAnimationsPropertyChanged(oldValue, newValue);
-    private onTapToRetryEnabledPropertyChanged(oldValue, newValue);
-    private onAspectRatioPropertyChanged(oldValue, newValue);
+    private onImageUriPropertyChanged;
+    private onPlaceholderImageUriPropertyChanged;
+    private onFailureImageUriPropertyChanged;
+    private onActualImageScaleTypePropertyChanged;
+    private onFadeDurationPropertyChanged;
+    private onBackgroundUriPropertyChanged;
+    private onProgressiveRenderingEnabledPropertyChanged;
+    private onShowProgressBarPropertyChanged;
+    private onProgressBarColorPropertyChanged;
+    private onRoundAsCirclePropertyChanged;
+    private onRoundTopLeftPropertyChanged;
+    private onRoundTopRightPropertyChanged;
+    private onRoundBottomLeftPropertyChanged;
+    private onRoundBottomRightPropertyChanged;
+    private onRoundedCornerRadiusPropertyChanged;
+    private onAutoPlayAnimationsPropertyChanged;
+    private onTapToRetryEnabledPropertyChanged;
+    private onAspectRatioPropertyChanged;
+    private onDecodeWidthPropertyChanged;
+    private onDecodeHeightPropertyChanged;
+    private onResizingEnabledPropertyChanged;
     protected onImageUriChanged(oldValue: string, newValue: string): void;
     protected onPlaceholderImageUriChanged(oldValue: string, newValue: string): void;
     protected onFailureImageUriChanged(oldValue: string, newValue: string): void;
@@ -120,6 +125,4 @@ export declare class FrescoDrawee extends View {
     protected onDecodeWidthChanged(oldValue: number, newValue: number): void;
     protected onDecodeHeightChanged(oldValue: number, newValue: number): void;
     protected onResizingEnabledChanged(oldValue: boolean, newValue: boolean): void;
-
-
 }

@@ -51,6 +51,7 @@ declare namespace com {
                 namespace pipeline {
                     class Fresco {
                         static initialize(context);
+                        static initialize(context,config);
 
                         static newDraweeControllerBuilder(): PipelineDraweeControllerBuilder;
 

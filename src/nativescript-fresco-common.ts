@@ -31,6 +31,10 @@ export interface IError {
     toString(): string;
 }
 
+export interface ImagePipelineConfigSetting {
+  isDownsampleEnabled?: boolean;
+}
+
 export class EventData implements observableModule.EventData {
     private _eventName: string;
     private _object: any;
