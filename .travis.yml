@@ -3,7 +3,7 @@ branches:
     - next
 matrix:
   include:
-    - stage: "WebPack, Build and Test"
+    - stage: "WebPack and Build"
       os: osx
       env:
         - WebPack="iOS"
