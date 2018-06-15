@@ -17,22 +17,21 @@
         "noImplicitAny": false,
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "skipLibCheck": true
     },
     "filesGlob": [
         "*.ts"
     ],
     "include": [
+        "./node_modules/tns-platform-declarations/android.d.ts",
+        "./nativescript-fresco.android-map.d.ts",
         "./nativescript-fresco-common.ts",
         "./nativescript-fresco.android.ts",
         "./nativescript-fresco.ios.ts",
         "./angular/nativescript-fresco-directives.ts",
         "./angular/nativescript-fresco.module.ts",
-        "./angular/index.ts",
-        "references.d.ts"
-    ],
-    "exclude": [
-        "node_modules"
+        "./angular/index.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

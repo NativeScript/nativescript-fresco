@@ -162,11 +162,11 @@ declare namespace com {
 
             namespace core {
                 class ImagePipeline {
-                    isInBitmapMemoryCache(uri: string): boolean;
-                    isInDiskCacheSync(uri: string): boolean;
-                    evictFromMemoryCache(uri: string): void;
-                    evictFromDiskCache(uri: string): void;
-                    evictFromCache(uri: string): void;
+                    isInBitmapMemoryCache(uri: android.net.Uri): boolean;
+                    isInDiskCacheSync(uri: android.net.Uri): boolean;
+                    evictFromMemoryCache(uri: android.net.Uri): void;
+                    evictFromDiskCache(uri: android.net.Uri): void;
+                    evictFromCache(uri: android.net.Uri): void;
                     clearCaches(): void;
                     clearMemoryCaches(): void;
                     clearDiskCaches(): void;
