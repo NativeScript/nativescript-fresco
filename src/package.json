@@ -65,12 +65,8 @@
   "author": "NativeScript Team",
   "contributors": [
     {
-      "name": "Deyan Ginev",
-      "email": "Deyan.Ginev@telerik.com"
-    },
-    {
       "name": "Vladimir Amiorkov",
-      "email": "Vladimir.Amiorkov@telerik.com"
+      "email": "Vladimir.Amiorkov@progress.com"
     }
   ],
   "license": "Apache-2.0"
