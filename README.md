@@ -71,6 +71,13 @@ if (application.android) {
 }
 ```
 
+> When working with "downsampling" you will need to pass a configuration to the `initialize` function:
+
+```javascript
+frescoModule.initialize({ isDownsampleEnabled: true });
+```
+
+
 Use `fresco` in the XML definition of the page as follows:
 
 ```xml
@@ -178,6 +185,23 @@ Number value used as the aspect ratio of the image. This property is useful when
 ```xml
 <nativescript-fresco:FrescoDrawee aspectRatio="1.33" verticalAlignment="top"/>
 ```
+
+- **decodeWidth** (downsampling) - make sure to enable downsample (**isDownsampleEnabled**) in the initialize function of the plugin otherwise this property is disregarded.
+
+Number value used as the downsampled width of the fresco drawable.
+
+```xml
+<nativescript-fresco:FrescoDrawee decodeWidth="100"/>
+```
+
+- **decodeHeight** (downsampling) - make sure to enable downsample (**isDownsampleEnabled**) in the initialize function of the plugin otherwise this property is disregarded.
+
+Number value used as the downsampled width of the fresco drawable.
+
+```xml
+<nativescript-fresco:FrescoDrawee decodeHeight="100"/>
+```
+
 
 - **progressiveRenderingEnabled**
 
