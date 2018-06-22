@@ -302,7 +302,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     protected onAspectRatioChanged(oldValue: number, newValue: number) {
-
+        this.initImage();
     }
 
     private initDrawee() {

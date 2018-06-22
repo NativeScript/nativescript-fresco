@@ -13,18 +13,21 @@ class Image {
     }
 }
 
-let uris: Array<Image> = new Array(new Image("http://lorempixel.com/200/200", 1), new Image("http://lorempixel.com/400/200", 2), new Image("http://lorempixel.com/400/400", 1), new Image("http://lorempixel.com/200/400", 0.5));
+let images: Array<Image> = new Array(
+    new Image("https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/drink1.jpg", 1.49),
+    new Image("https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/dessert1.jpg", 0.66),
+    new Image("https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/drink2.jpg", 1.49));
 let currentIndex = 1;
 
 export function onChangeTap(args: EventData) {
     let button = args.object as Button;
     let gridLayout = button.parent as GridLayout;
     let drawee = gridLayout.getViewById("frescoDrawee") as FrescoDrawee;
-    drawee.aspectRatio = uris[currentIndex].aspectRation;
-    drawee.imageUri = uris[currentIndex].uri;
+    drawee.aspectRatio = images[currentIndex].aspectRation;
+    drawee.imageUri = images[currentIndex].uri;
 
     currentIndex++;
-    if (currentIndex >= uris.length) {
+    if (currentIndex >= images.length) {
         currentIndex = 0;
     }
 }
