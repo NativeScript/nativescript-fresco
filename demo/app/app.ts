@@ -10,7 +10,7 @@ import * as frescoModule from "nativescript-fresco";
 
 if (app.android) {
     app.on("launch", () => {
-        frescoModule.initialize();
+        frescoModule.initialize({ isDownsampleEnabled: true });
     });
 }
 

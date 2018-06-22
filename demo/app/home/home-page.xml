@@ -15,6 +15,11 @@
             <examples:single />
         </TabViewItem.view>
       </TabViewItem>
+      <TabViewItem title="resizing">
+        <TabViewItem.view>
+            <examples:resizing />
+        </TabViewItem.view>
+      </TabViewItem>
       <TabViewItem title="multiple">
         <TabViewItem.view>
             <examples:multiple />

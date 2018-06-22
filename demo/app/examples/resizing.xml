@@ -1,0 +1,9 @@
+<GridLayout>
+    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                        verticalAlignment="center"
+                        placeholderImageUri="res://ns_logo"
+                        aspectRatio="1.49"
+                        decodeWidth="665"
+                        decodeHeight="500"
+                        imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/dessert1.jpg"/>
+</GridLayout>
