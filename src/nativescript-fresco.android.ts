@@ -313,7 +313,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         if (this._android) {
             this._android.setImageURI(null);
             if (this.imageUri) {
-                let uri;
+                let uri: android.net.Uri;
                 if (utils.isFileOrResourcePath(this.imageUri)) {
                     let res = utils.ad.getApplicationContext().getResources();
                     if (!res) {
@@ -334,9 +334,13 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     } else if (this.imageUri.indexOf("/") === 0) {
                         uri = android.net.Uri.parse(`file:${this.imageUri}`);
                     }
-                }
-                if (uri === undefined) {
+                } else {
                     uri = android.net.Uri.parse(this.imageUri);
+                }
+
+                if (!uri) {
+                  console.log(`Warning: uri not valid: ${uri}`);
+                  return;
                 }
 
                 let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;

@@ -1,5 +1,3 @@
-/// <reference path="references.d.ts" />
-
 import { View, Property, booleanConverter } from "tns-core-modules/ui/core/view";
 import * as observableModule from "tns-core-modules/data/observable";
 
