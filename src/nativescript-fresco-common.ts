@@ -31,6 +31,10 @@ export interface IError {
     toString(): string;
 }
 
+export interface ImagePipelineConfigSetting {
+  isDownsampleEnabled?: boolean;
+}
+
 export class EventData implements observableModule.EventData {
     private _eventName: string;
     private _object: any;
@@ -78,6 +82,8 @@ export class FrescoDrawee extends View {
     public autoPlayAnimations: boolean;
     public tapToRetryEnabled: boolean;
     public aspectRatio: number;
+    public decodeWidth: number;
+    public decodeHeight: number;
 
     public static imageUriProperty = new Property<FrescoDrawee, string>(
         {
@@ -262,6 +268,26 @@ export class FrescoDrawee extends View {
             },
         });
 
+    public static decodeWidthProperty = new Property<FrescoDrawee, number>(
+        {
+            name: "decodeWidth",
+            defaultValue: undefined,
+            valueConverter: (v) => parseFloat(v),
+            valueChanged: (target, oldValue, newValue) => {
+                target.onDecodeWidthPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static decodeHeightProperty = new Property<FrescoDrawee, number>(
+        {
+            name: "decodeHeight",
+            defaultValue: undefined,
+            valueConverter: (v) => parseFloat(v),
+            valueChanged: (target, oldValue, newValue) => {
+                target.onDecodeHeightPropertyChanged(oldValue, newValue);
+            },
+        });
+
     private onImageUriPropertyChanged(oldValue: string, newValue: string) {
         this.onImageUriChanged(oldValue, newValue);
     }
@@ -332,6 +358,14 @@ export class FrescoDrawee extends View {
 
     private onAspectRatioPropertyChanged(oldValue: number, newValue: number) {
         this.onAspectRatioChanged(oldValue, newValue);
+    }
+
+    private onDecodeWidthPropertyChanged(oldValue: number, newValue: number) {
+        this.onDecodeWidthChanged(oldValue, newValue);
+    }
+
+    private onDecodeHeightPropertyChanged(oldValue: number, newValue: number) {
+        this.onDecodeHeightChanged(oldValue, newValue);
     }
 
     protected onImageUriChanged(oldValue: string, newValue: string) {
@@ -405,6 +439,16 @@ export class FrescoDrawee extends View {
     protected onAspectRatioChanged(oldValue: number, newValue: number) {
 
     }
+
+    protected onDecodeWidthChanged(oldValue: number, newValue: number) {
+
+    }
+
+    protected onDecodeHeightChanged(oldValue: number, newValue: number) {
+
+    }
+
+
 }
 FrescoDrawee.imageUriProperty.register(FrescoDrawee);
 FrescoDrawee.placeholderImageUriProperty.register(FrescoDrawee);
@@ -424,3 +468,5 @@ FrescoDrawee.roundedCornerRadiusProperty.register(FrescoDrawee);
 FrescoDrawee.autoPlayAnimationsProperty.register(FrescoDrawee);
 FrescoDrawee.tapToRetryEnabledProperty.register(FrescoDrawee);
 FrescoDrawee.aspectRatioProperty.register(FrescoDrawee);
+FrescoDrawee.decodeWidthProperty.register(FrescoDrawee);
+FrescoDrawee.decodeHeightProperty.register(FrescoDrawee);

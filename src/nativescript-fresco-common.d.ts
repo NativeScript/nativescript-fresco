@@ -25,6 +25,9 @@ export interface IError {
     getErrorType(): string;
     toString(): string;
 }
+export interface ImagePipelineConfigSetting {
+    isDownsampleEnabled?: boolean;
+}
 export declare class EventData implements observableModule.EventData {
     private _eventName;
     private _object;
@@ -56,6 +59,8 @@ export declare class FrescoDrawee extends View {
     autoPlayAnimations: boolean;
     tapToRetryEnabled: boolean;
     aspectRatio: number;
+    decodeWidth: number;
+    decodeHeight: number;
     static imageUriProperty: Property<FrescoDrawee, string>;
     static placeholderImageUriProperty: Property<FrescoDrawee, string>;
     static failureImageUriProperty: Property<FrescoDrawee, string>;
@@ -74,6 +79,8 @@ export declare class FrescoDrawee extends View {
     static autoPlayAnimationsProperty: Property<FrescoDrawee, boolean>;
     static tapToRetryEnabledProperty: Property<FrescoDrawee, boolean>;
     static aspectRatioProperty: Property<FrescoDrawee, number>;
+    static decodeWidthProperty: Property<FrescoDrawee, number>;
+    static decodeHeightProperty: Property<FrescoDrawee, number>;
     private onImageUriPropertyChanged(oldValue, newValue);
     private onPlaceholderImageUriPropertyChanged(oldValue, newValue);
     private onFailureImageUriPropertyChanged(oldValue, newValue);
@@ -92,6 +99,8 @@ export declare class FrescoDrawee extends View {
     private onAutoPlayAnimationsPropertyChanged(oldValue, newValue);
     private onTapToRetryEnabledPropertyChanged(oldValue, newValue);
     private onAspectRatioPropertyChanged(oldValue, newValue);
+    private onDecodeWidthPropertyChanged(oldValue, newValue);
+    private onDecodeHeightPropertyChanged(oldValue, newValue);
     protected onImageUriChanged(oldValue: string, newValue: string): void;
     protected onPlaceholderImageUriChanged(oldValue: string, newValue: string): void;
     protected onFailureImageUriChanged(oldValue: string, newValue: string): void;
@@ -110,4 +119,6 @@ export declare class FrescoDrawee extends View {
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean): void;
     protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean): void;
     protected onAspectRatioChanged(oldValue: number, newValue: number): void;
+    protected onDecodeWidthChanged(oldValue: number, newValue: number): void;
+    protected onDecodeHeightChanged(oldValue: number, newValue: number): void;
 }

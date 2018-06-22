@@ -4,7 +4,7 @@ import * as viewModule from "tns-core-modules/ui/core/view";
  * When called, initializes the android Fresco library. Calling this method is required.
  * A good place to call it is at the application onLaunch() method.
  */
-declare function initialize(): void;
+declare function initialize(config?: ImagePipelineConfigSetting): void;
 
 /**
  * When called, initializes the android Fresco library. Calling this method is required.
@@ -148,6 +148,17 @@ export class FrescoDrawee extends viewModule.View {
      * Number value used as the aspect ratio of the image.
      */
     aspectRatio: number;
+
+    /**
+     * Number value used as the resized image width
+     */
+    decodeWidth: number;
+
+    /**
+     * Number value used as the resized image height
+     */
+    decodeHeight: number;
+
 }
 
 /**
@@ -413,4 +424,12 @@ export enum ScaleType {
     * Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
     */
     focusCrop
+}
+
+/**
+ * Advanced Configurations used for initializing Fresco
+ * For more details, see http://frescolib.org/docs/configure-image-pipeline.html
+ */
+export interface ImagePipelineConfigSetting {
+  isDownsampleEnabled?: boolean;
 }
