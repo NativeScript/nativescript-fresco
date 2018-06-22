@@ -1,6 +1,6 @@
 <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
                     verticalAlignment="center"
                     placeholderImageUri="res://ns_logo"
-                    aspectRatio="2"
+                    aspectRatio="1.49"
                     roundAsCircle="true"
-                    imageUri="http://lorempixel.com/400/200/"/>
+                    imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast2.jpg"/>

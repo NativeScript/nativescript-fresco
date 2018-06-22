@@ -1,7 +1,9 @@
-<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
-                    verticalAlignment="center"
-                    placeholderImageUri="res://ns_logo"
-                    width="100"
-                    aspectRatio="0.99"
-                    autoPlayAnimations="true"
-                    imageUri="res://animation"/>
+<GridLayout>
+    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                        verticalAlignment="center"
+                        placeholderImageUri="res://ns_logo"
+                        width="100"
+                        aspectRatio="0.99"
+                        autoPlayAnimations="true"
+                        imageUri="res://animation"/>
+</GridLayout>

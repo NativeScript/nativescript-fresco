@@ -6,7 +6,7 @@ import { Label } from "tns-core-modules/ui/label";
 import * as frescoModel from "nativescript-fresco";
 import { writeToOutputLabel } from "./appLogger";
 
-let imageUri = "http://lorempixel.com/400/200/";
+let imageUri = "https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast1.jpg";
 
 export function onCheckCache(args: EventData) {
     let button = args.object as Button;
