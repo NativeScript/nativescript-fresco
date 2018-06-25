@@ -1,0 +1,1 @@
+/// <reference path="./platforms/android/typings/fresco.d.ts" />

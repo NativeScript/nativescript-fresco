@@ -76,35 +76,6 @@ export class ImagePipeline {
     }
 }
 
-export interface AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable, commonModule.IAnimatedImage {
-    /*tslint:disable-next-line no-misused-new*/
-    new(): AnimatedImage;
-    start(): void;
-    stop(): void;
-    isRunning(): boolean;
-}
-export let AnimatedImage: AnimatedImage;
-function initializeAnimatedImage() {
-if (AnimatedImage) {
-    return;
-}
-class AnimatedImageImpl extends com.facebook.imagepipeline.animated.base.AnimatedDrawable implements commonModule.IAnimatedImage {
-    start(): void {
-        super.start();
-    }
-
-    stop(): void {
-        super.stop();
-    }
-
-    isRunning(): boolean {
-        return super.isRunning();
-    }
-}
-AnimatedImage = AnimatedImageImpl as any;
-}
-
-
 export class FrescoError implements commonModule.IError {
     private _stringValue;
     private _message;
@@ -160,7 +131,7 @@ export class ImageInfo implements commonModule.IImageInfo {
 
 export class FinalEventData extends commonModule.EventData {
     private _imageInfo: ImageInfo;
-    private _animatable: commonModule.IAnimatedImage;
+    private _animatable: android.graphics.drawable.Animatable;
 
     get imageInfo(): ImageInfo {
         return this._imageInfo;
@@ -170,11 +141,11 @@ export class FinalEventData extends commonModule.EventData {
         this._imageInfo = value;
     }
 
-    get animatable(): commonModule.IAnimatedImage {
+    get animatable(): android.graphics.drawable.Animatable {
         return this._animatable;
     }
 
-    set animatable(value: commonModule.IAnimatedImage) {
+    set animatable(value: android.graphics.drawable.Animatable) {
         this._animatable = value;
     }
 }
@@ -207,7 +178,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
 
     public createNativeView() {
-        initializeAnimatedImage();
+        // initializeAnimatedImage();
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
         return this._android;
     }
@@ -344,13 +315,13 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 let request: com.facebook.imagepipeline.request.ImageRequest;
                 if (this.decodeWidth && this.decodeHeight) {
                     request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                      .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                      .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
-                      .build();
+                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                        .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
+                        .build();
                 } else {
                     request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                      .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                      .build();
+                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                        .build();
                 }
 
                 let that: WeakRef<FrescoDrawee> = new WeakRef(this);

@@ -99,6 +99,11 @@ You can refer the [demo-angular](https://github.com/NativeScript/nativescript-fr
 
 ## Features
 
+### Native Fresco library typings
+If you find yourself in the need to access directly the native library of the nativescript-fresco plugin you can import the android.d.ts from the plugin in your `references.d.ts`:
+
+```/// <reference path="./node_modules/nativescript-fresco/android.d.ts" />```
+
 As documented by the Fresco library setting the **height and width** are **mandatory**, more details on this topic could be found [here](http://frescolib.org/docs/using-drawees-xml.html#height-and-width-mandatory). So the first this you should do when declaring the FrescoDrawee is set its *width* and *height* attributes or set only one of them and set the FrescoDrawee's **aspectRatio**. The width and height of the FrescoDrawee in your {N} application supports percentages which makes it possible to declare for example *width="50%"* and *aspectRatio="1.33"* achieving exactly 50% width with dynamically calculated height based on the aspect ration of the loaded image from the *imageUri*.
 
 ### Basic attributes

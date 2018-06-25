@@ -14,13 +14,6 @@ export declare class ImagePipeline {
     clearDiskCaches(): void;
     android: any;
 }
-export interface AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable, commonModule.IAnimatedImage {
-    new (): AnimatedImage;
-    start(): void;
-    stop(): void;
-    isRunning(): boolean;
-}
-export declare let AnimatedImage: AnimatedImage;
 export declare class FrescoError implements commonModule.IError {
     private _stringValue;
     private _message;
@@ -46,7 +39,7 @@ export declare class FinalEventData extends commonModule.EventData {
     private _imageInfo;
     private _animatable;
     imageInfo: ImageInfo;
-    animatable: commonModule.IAnimatedImage;
+    animatable: android.graphics.drawable.Animatable;
 }
 export declare class IntermediateEventData extends commonModule.EventData {
     private _imageInfo;

@@ -260,7 +260,7 @@ export class FinalEventData {
     /**
     * An object that renders an animated image.
     */
-    animatable: AnimatedImage;
+    animatable: IAnimatedImage;
 }
 
 /**
@@ -322,27 +322,6 @@ export interface IAnimatedImage {
      */
     isRunning(): boolean;
 }
-
-/**
- * Encapsulates the common abstraction behind a platform specific animated image object.
- */
-export class AnimatedImage {
-    /**
-     * Starts the AnimatedImage image.
-     */
-    start(): void;
-
-    /**
-     * Stops the AnimatedImage image.
-     */
-    stop(): void;
-
-    /**
-     * Returns boolean value representing the if the AnimatedImage's is being animated.
-     */
-    isRunning(): boolean;
-}
-
 /**
  * The entry point for the image pipeline..
  */
