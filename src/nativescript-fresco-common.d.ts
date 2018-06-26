@@ -1,4 +1,3 @@
-/// <reference path="references.d.ts" />
 import { View, Property } from "tns-core-modules/ui/core/view";
 import * as observableModule from "tns-core-modules/data/observable";
 export declare namespace ScaleType {

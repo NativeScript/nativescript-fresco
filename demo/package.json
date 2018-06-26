@@ -31,6 +31,7 @@
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.3.0",
     "typescript": "~2.7.2",
+    "tns-platform-declarations": "^4.1.0",
     "uglifyjs-webpack-plugin": "~1.2.4",
     "webpack": "~4.5.0",
     "webpack-bundle-analyzer": "^2.9.1",
