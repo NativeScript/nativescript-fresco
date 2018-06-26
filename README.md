@@ -97,6 +97,16 @@ Use `fresco` in the XML definition of the page as follows:
 ## Examples
 You can refer the [demo-angular](https://github.com/NativeScript/nativescript-fresco/tree/master/demo-angular) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
 
+## Migrating from 3.x.x to 4.x.x
+If you have been using the `AnimatedImage` class to cast the `animatable` property of  the `FinalEventData` simply cast it to `IAnimatedImage`:
+
+```
+import { IAnimatedImage } from "nativescript-fresco";
+
+let animatedImage = args.animatable as IAnimatedImage;
+```
+
+
 ## Features
 
 ### Native Fresco library typings
