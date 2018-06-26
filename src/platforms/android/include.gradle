@@ -1,5 +1,9 @@
 android {
-	
+	productFlavors {
+		"nativescript-fresco" {
+			dimension "nativescript-fresco"
+		}
+	}
 }
 
 dependencies {
