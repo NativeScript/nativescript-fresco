@@ -178,7 +178,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
 
     public createNativeView() {
-        // initializeAnimatedImage();
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
         return this._android;
     }
