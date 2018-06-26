@@ -39,7 +39,7 @@ export declare class FinalEventData extends commonModule.EventData {
     private _imageInfo;
     private _animatable;
     imageInfo: ImageInfo;
-    animatable: android.graphics.drawable.Animatable;
+    animatable: commonModule.IAnimatedImage;
 }
 export declare class IntermediateEventData extends commonModule.EventData {
     private _imageInfo;

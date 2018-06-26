@@ -12,6 +12,12 @@ export namespace ScaleType {
     export const FocusCrop = "focusCrop";
 }
 
+export interface IAnimatedImage {
+    start(): void;
+    stop(): void;
+    isRunning(): boolean;
+}
+
 export interface IImageInfo {
     getHeight(): number;
     getWidth(): number;
@@ -24,7 +30,7 @@ export interface IError {
 }
 
 export interface ImagePipelineConfigSetting {
-  isDownsampleEnabled?: boolean;
+    isDownsampleEnabled?: boolean;
 }
 
 export class EventData implements observableModule.EventData {

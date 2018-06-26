@@ -131,7 +131,7 @@ export class ImageInfo implements commonModule.IImageInfo {
 
 export class FinalEventData extends commonModule.EventData {
     private _imageInfo: ImageInfo;
-    private _animatable: android.graphics.drawable.Animatable;
+    private _animatable: commonModule.IAnimatedImage;
 
     get imageInfo(): ImageInfo {
         return this._imageInfo;
@@ -141,11 +141,11 @@ export class FinalEventData extends commonModule.EventData {
         this._imageInfo = value;
     }
 
-    get animatable(): android.graphics.drawable.Animatable {
+    get animatable(): commonModule.IAnimatedImage {
         return this._animatable;
     }
 
-    set animatable(value: android.graphics.drawable.Animatable) {
+    set animatable(value: commonModule.IAnimatedImage) {
         this._animatable = value;
     }
 }
