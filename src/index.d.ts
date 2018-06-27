@@ -186,7 +186,7 @@ export class ImageInfo {
 /**
 * Interface of the common abstraction behind a platform specific error object that is used by the FrescoDrawee's events.
 */
-export interface IError {
+export interface FrescoError {
     /**
     * Returns the message of the Error.
     */
@@ -306,7 +306,7 @@ export class FailureEventData {
 /**
 * Interface of the common abstraction behind a platform specific animated image object.
 */
-export interface IAnimatedImage {
+export interface AnimatedImage {
     /**
      * Starts the AnimatedDrawable image.
      */
@@ -322,27 +322,6 @@ export interface IAnimatedImage {
      */
     isRunning(): boolean;
 }
-
-/**
- * Encapsulates the common abstraction behind a platform specific animated image object.
- */
-export class AnimatedImage {
-    /**
-     * Starts the AnimatedImage image.
-     */
-    start(): void;
-
-    /**
-     * Stops the AnimatedImage image.
-     */
-    stop(): void;
-
-    /**
-     * Returns boolean value representing the if the AnimatedImage's is being animated.
-     */
-    isRunning(): boolean;
-}
-
 /**
  * The entry point for the image pipeline..
  */

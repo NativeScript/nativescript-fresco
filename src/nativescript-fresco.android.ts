@@ -76,36 +76,7 @@ export class ImagePipeline {
     }
 }
 
-export interface AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable, commonModule.IAnimatedImage {
-    /*tslint:disable-next-line no-misused-new*/
-    new(): AnimatedImage;
-    start(): void;
-    stop(): void;
-    isRunning(): boolean;
-}
-export let AnimatedImage: AnimatedImage;
-function initializeAnimatedImage() {
-if (AnimatedImage) {
-    return;
-}
-class AnimatedImageImpl extends com.facebook.imagepipeline.animated.base.AnimatedDrawable implements commonModule.IAnimatedImage {
-    start(): void {
-        super.start();
-    }
-
-    stop(): void {
-        super.stop();
-    }
-
-    isRunning(): boolean {
-        return super.isRunning();
-    }
-}
-AnimatedImage = AnimatedImageImpl as any;
-}
-
-
-export class FrescoError implements commonModule.IError {
+export class FrescoError implements commonModule.FrescoError {
     private _stringValue;
     private _message;
     private _errorType;
@@ -137,7 +108,7 @@ export interface QualityInfo {
     isOfGoodEnoughQuality();
 }
 
-export class ImageInfo implements commonModule.IImageInfo {
+export class ImageInfo implements commonModule.ImageInfo {
     private _nativeImageInfo: com.facebook.imagepipeline.image.ImageInfo;
 
     constructor(imageInfo) {
@@ -160,7 +131,7 @@ export class ImageInfo implements commonModule.IImageInfo {
 
 export class FinalEventData extends commonModule.EventData {
     private _imageInfo: ImageInfo;
-    private _animatable: commonModule.IAnimatedImage;
+    private _animatable: commonModule.AnimatedImage;
 
     get imageInfo(): ImageInfo {
         return this._imageInfo;
@@ -170,11 +141,11 @@ export class FinalEventData extends commonModule.EventData {
         this._imageInfo = value;
     }
 
-    get animatable(): commonModule.IAnimatedImage {
+    get animatable(): commonModule.AnimatedImage {
         return this._animatable;
     }
 
-    set animatable(value: commonModule.IAnimatedImage) {
+    set animatable(value: commonModule.AnimatedImage) {
         this._animatable = value;
     }
 }
@@ -207,7 +178,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
 
     public createNativeView() {
-        initializeAnimatedImage();
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
         return this._android;
     }
@@ -334,9 +304,13 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     } else if (this.imageUri.indexOf("/") === 0) {
                         uri = android.net.Uri.parse(`file:${this.imageUri}`);
                     }
-                }
-                if (uri === undefined) {
+                } else {
                     uri = android.net.Uri.parse(this.imageUri);
+                }
+
+                if (!uri) {
+                    console.log(`Error: 'imageUri' not valid: ${this.imageUri}`);
+                    return;
                 }
 
                 let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;
@@ -344,13 +318,13 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                 let request: com.facebook.imagepipeline.request.ImageRequest;
                 if (this.decodeWidth && this.decodeHeight) {
                     request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                      .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                      .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
-                      .build();
+                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                        .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
+                        .build();
                 } else {
                     request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                      .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                      .build();
+                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                        .build();
                 }
 
                 let that: WeakRef<FrescoDrawee> = new WeakRef(this);

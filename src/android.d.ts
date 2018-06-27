@@ -1,29 +1,3 @@
-declare namespace android {
-    namespace net {
-        class Uri {
-            static parse(orientation);
-        }
-
-        namespace Uri {
-            class Builder {
-                scheme(scheme: string);
-                path(path: string);
-            }
-        }
-    }
-
-    namespace graphics {
-        namespace drawable {
-            class BitmapDrawable {
-                constructor(resources, image);
-            }
-        }
-        class Color {
-            static parseColor(color: string);
-        }
-    }
-}
-
 declare namespace com {
     namespace facebook {
         namespace drawee {
@@ -172,11 +146,11 @@ declare namespace com {
 
             namespace core {
                 class ImagePipeline {
-                    isInBitmapMemoryCache(uri: string): boolean;
-                    isInDiskCacheSync(uri: string): boolean;
-                    evictFromMemoryCache(uri: string): void;
-                    evictFromDiskCache(uri: string): void;
-                    evictFromCache(uri: string): void;
+                    isInBitmapMemoryCache(uri: android.net.Uri): boolean;
+                    isInDiskCacheSync(uri: android.net.Uri): boolean;
+                    evictFromMemoryCache(uri: android.net.Uri): void;
+                    evictFromDiskCache(uri: android.net.Uri): void;
+                    evictFromCache(uri: android.net.Uri): void;
                     clearCaches(): void;
                     clearMemoryCaches(): void;
                     clearDiskCaches(): void;
@@ -194,23 +168,6 @@ declare namespace com {
                 }
 
             }
-        }
-    }
-}
-
-declare namespace java {
-    namespace lang {
-        class String {
-            static valueOf(identifier);
-        }
-
-        class Class {
-            getName(): string;
-        }
-
-        class Throwable {
-            getClass(): java.lang.Class;
-            getMessage(): string;
         }
     }
 }

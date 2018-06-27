@@ -1,5 +1,3 @@
-/// <reference path="references.d.ts" />
-
 import { View, Property, booleanConverter } from "tns-core-modules/ui/core/view";
 import * as observableModule from "tns-core-modules/data/observable";
 
@@ -14,25 +12,25 @@ export namespace ScaleType {
     export const FocusCrop = "focusCrop";
 }
 
-export interface IAnimatedImage {
+export interface AnimatedImage {
     start(): void;
     stop(): void;
     isRunning(): boolean;
 }
 
-export interface IImageInfo {
+export interface ImageInfo {
     getHeight(): number;
     getWidth(): number;
 }
 
-export interface IError {
+export interface FrescoError {
     getMessage(): string;
     getErrorType(): string;
     toString(): string;
 }
 
 export interface ImagePipelineConfigSetting {
-  isDownsampleEnabled?: boolean;
+    isDownsampleEnabled?: boolean;
 }
 
 export class EventData implements observableModule.EventData {

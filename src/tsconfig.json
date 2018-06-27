@@ -1,41 +1,30 @@
 {
     "compilerOptions": {
+        "noEmitHelpers": true,
         "target": "es5",
         "module": "commonjs",
         "declaration": true,
-        "removeComments": true,
-        "noLib": false,
-        "emitDecoratorMetadata": true,
+        "noImplicitAny": false,
         "experimentalDecorators": true,
-        "lib": ["es6", "dom"],
-        "sourceMap": false,
+        "diagnostics": true,
+        "sourceMap": true,
         "pretty": true,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "noEmitOnError": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
-        "noEmitHelpers": true,
-        "noEmitOnError": false,
-        "noImplicitAny": false,
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true
-    },
-    "filesGlob": [
-        "*.ts"
-    ],
-    "include": [
-        "./nativescript-fresco-common.ts",
-        "./nativescript-fresco.android.ts",
-        "./nativescript-fresco.ios.ts",
-        "./angular/nativescript-fresco-directives.ts",
-        "./angular/nativescript-fresco.module.ts",
-        "./angular/index.ts",
-        "references.d.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
+        "noFallthroughCasesInSwitch": true,
+        "removeComments": true,
+        "noLib": false,
+        "lib": [
+            "es6",
+            "dom"
+        ]
     },
     "angularCompilerOptions": {
         "genDir": ".",
@@ -43,5 +32,8 @@
         "skipTemplateCodegen": true,
         "debug": true
     },
-    "compileOnSave": false
+    "exclude": [
+        "node_modules",
+        "node_modules/tns-platform-declarations"
+    ]
 }
