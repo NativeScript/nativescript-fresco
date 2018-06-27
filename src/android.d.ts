@@ -134,16 +134,6 @@ declare namespace com {
                 }
             }
 
-            namespace animated {
-                namespace base {
-                    class AnimatedDrawable {
-                        start(): void;
-                        stop(): void;
-                        isRunning(): boolean;
-                    }
-                }
-            }
-
             namespace core {
                 class ImagePipeline {
                     isInBitmapMemoryCache(uri: android.net.Uri): boolean;

@@ -308,17 +308,17 @@ export class FailureEventData {
 */
 export interface AnimatedImage {
     /**
-     * Starts the AnimatedDrawable image.
+     * Starts the native Android Animatable image.
      */
     start(): void;
 
     /**
-     * Stops the AnimatedDrawable image.
+     * Stops the native Android Animatable image.
      */
     stop(): void;
 
     /**
-     * Returns boolean value representing the if the AnimatedDrawable's is being animated.
+     * Returns boolean value representing the if the native Android Animatable's is being animated.
      */
     isRunning(): boolean;
 }
