@@ -10,16 +10,16 @@ export declare namespace ScaleType {
     const FitXY = "fitXY";
     const FocusCrop = "focusCrop";
 }
-export interface IAnimatedImage {
+export interface AnimatedImage {
     start(): void;
     stop(): void;
     isRunning(): boolean;
 }
-export interface IImageInfo {
+export interface ImageInfo {
     getHeight(): number;
     getWidth(): number;
 }
-export interface IError {
+export interface FrescoError {
     getMessage(): string;
     getErrorType(): string;
     toString(): string;

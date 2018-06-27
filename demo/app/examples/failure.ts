@@ -5,7 +5,6 @@ import { writeToOutputLabel } from "./appLogger";
 
 export function onFailure(args: FailureEventData) {
     let drawee = args.object as FrescoDrawee;
-    let message = ">>>>> onFailure ";
-    console.log(message);
+    let message = ">>>>> onFailure " + args.error;
     writeToOutputLabel(drawee, message);
 }

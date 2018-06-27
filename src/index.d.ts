@@ -260,7 +260,7 @@ export class FinalEventData {
     /**
     * An object that renders an animated image.
     */
-    animatable: IAnimatedImage;
+    animatable: AnimatedImage;
 }
 
 /**
@@ -306,7 +306,7 @@ export class FailureEventData {
 /**
 * Interface of the common abstraction behind a platform specific animated image object.
 */
-export interface IAnimatedImage {
+export interface AnimatedImage {
     /**
      * Starts the AnimatedDrawable image.
      */

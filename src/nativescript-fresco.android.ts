@@ -76,7 +76,7 @@ export class ImagePipeline {
     }
 }
 
-export class FrescoError implements commonModule.IError {
+export class FrescoError implements commonModule.FrescoError {
     private _stringValue;
     private _message;
     private _errorType;
@@ -108,7 +108,7 @@ export interface QualityInfo {
     isOfGoodEnoughQuality();
 }
 
-export class ImageInfo implements commonModule.IImageInfo {
+export class ImageInfo implements commonModule.ImageInfo {
     private _nativeImageInfo: com.facebook.imagepipeline.image.ImageInfo;
 
     constructor(imageInfo) {
@@ -131,7 +131,7 @@ export class ImageInfo implements commonModule.IImageInfo {
 
 export class FinalEventData extends commonModule.EventData {
     private _imageInfo: ImageInfo;
-    private _animatable: commonModule.IAnimatedImage;
+    private _animatable: commonModule.AnimatedImage;
 
     get imageInfo(): ImageInfo {
         return this._imageInfo;
@@ -141,11 +141,11 @@ export class FinalEventData extends commonModule.EventData {
         this._imageInfo = value;
     }
 
-    get animatable(): commonModule.IAnimatedImage {
+    get animatable(): commonModule.AnimatedImage {
         return this._animatable;
     }
 
-    set animatable(value: commonModule.IAnimatedImage) {
+    set animatable(value: commonModule.AnimatedImage) {
         this._animatable = value;
     }
 }

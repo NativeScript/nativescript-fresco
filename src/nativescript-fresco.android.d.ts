@@ -14,7 +14,7 @@ export declare class ImagePipeline {
     clearDiskCaches(): void;
     android: any;
 }
-export declare class FrescoError implements commonModule.IError {
+export declare class FrescoError implements commonModule.FrescoError {
     private _stringValue;
     private _message;
     private _errorType;
@@ -28,7 +28,7 @@ export interface QualityInfo {
     isOfFullQuality(): any;
     isOfGoodEnoughQuality(): any;
 }
-export declare class ImageInfo implements commonModule.IImageInfo {
+export declare class ImageInfo implements commonModule.ImageInfo {
     private _nativeImageInfo;
     constructor(imageInfo: any);
     getHeight(): number;
@@ -39,7 +39,7 @@ export declare class FinalEventData extends commonModule.EventData {
     private _imageInfo;
     private _animatable;
     imageInfo: ImageInfo;
-    animatable: commonModule.IAnimatedImage;
+    animatable: commonModule.AnimatedImage;
 }
 export declare class IntermediateEventData extends commonModule.EventData {
     private _imageInfo;
