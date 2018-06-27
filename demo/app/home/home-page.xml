@@ -75,6 +75,11 @@
             <examples:autoplayanimations />
         </TabViewItem.view>
       </TabViewItem>
+      <TabViewItem title="animating">
+        <TabViewItem.view>
+            <examples:animating />
+        </TabViewItem.view>
+      </TabViewItem>
       <TabViewItem title="events">
         <TabViewItem.view>
             <examples:events />
