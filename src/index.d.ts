@@ -186,7 +186,7 @@ export class ImageInfo {
 /**
 * Interface of the common abstraction behind a platform specific error object that is used by the FrescoDrawee's events.
 */
-export interface IError {
+export interface FrescoError {
     /**
     * Returns the message of the Error.
     */
