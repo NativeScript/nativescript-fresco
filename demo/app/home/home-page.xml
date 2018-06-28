@@ -100,6 +100,11 @@
             <examples:opacity />
         </TabViewItem.view>
       </TabViewItem>
+      <TabViewItem title="colorfilter">
+        <TabViewItem.view>
+            <examples:nativecolerfilter />
+        </TabViewItem.view>
+      </TabViewItem>
     </TabView.items>
   </TabView>
 </Page>
