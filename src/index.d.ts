@@ -52,6 +52,11 @@ export class FrescoDrawee extends viewModule.View {
     updateImageUri(): void;
 
     /**
+     * The native 'com.facebook.drawee.view.SimpleDraweeView' object.
+     */
+    android: any;
+
+    /**
      * String value used for the image URI.
      */
     imageUri: string;
