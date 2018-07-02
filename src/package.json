@@ -10,14 +10,6 @@
   "bugs": {
     "url": "https://github.com/NativeScript/nativescript-fresco/issues"
   },
-  "files": [
-    "*.js*",
-    "platforms",
-    "*.d.ts",
-    "angular/*.js*",
-    "angular/*.d.ts",
-    "!tsconfig.json"
-  ],
   "nativescript": {
     "platforms": {
       "android": "3.0.0"
