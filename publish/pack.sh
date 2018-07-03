@@ -1,10 +1,12 @@
 #!/bin/bash
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SOURCE_DIR=../src;
 TO_SOURCE_DIR=src;
 PACK_DIR=package;
 ROOT_DIR=..;
 PUBLISH=--publish
+
 
 install(){
     npm i
@@ -15,6 +17,12 @@ pack() {
     echo 'Clearing /src and /package...'
     node_modules/.bin/rimraf "$TO_SOURCE_DIR"
     node_modules/.bin/rimraf "$PACK_DIR"
+
+    # npm i in original src
+    echo 'Installing npm packages in original src...'
+    cd $SOURCE_DIR
+    npm i
+    cd $CURRENT_DIR
 
     # copy src
     echo 'Copying src...'
