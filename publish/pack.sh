@@ -7,7 +7,6 @@ PACK_DIR=package;
 ROOT_DIR=..;
 PUBLISH=--publish
 
-
 install(){
     npm i
 }
