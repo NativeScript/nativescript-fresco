@@ -333,11 +333,11 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         if (that && that.get()) {
                             let info = new ImageInfo(imageInfo);
 
-                            let args: FinalEventData = <FinalEventData>{
+                            let args = <FinalEventData>{
                                 eventName: commonModule.FrescoDrawee.finalImageSetEvent,
                                 object: that.get(),
                                 imageInfo: info,
-                                animatable: animatable,
+                                animatable: <commonModule.AnimatedImage>animatable,
                             };
 
                             that.get().notify(args);
