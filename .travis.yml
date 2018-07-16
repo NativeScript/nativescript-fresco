@@ -22,7 +22,7 @@ matrix:
         - pack.sh
         - cp package/*.tgz ../demo-angular/package.tgz
         - cd ../demo-angular
-        - sed -i -e 's/\"..\/src\"/"package.tgz"'
+        - sed -i -e 's/\"..\/src\"/"package.tgz"/g' package.json
         - npm i
         - tns build ios --bundle --env.uglify --env.aot
     - language: android
@@ -37,9 +37,9 @@ matrix:
         - pack.sh
         - cp package/*.tgz ../demo-angular/package.tgz
         - cd ../demo-angular
-        - sed -i -e 's/\"..\/src\"/"package.tgz"'
+        - sed -i -e 's/\"..\/src\"/"package.tgz"/g' package.json
         - npm i
-        - tns build ios --bundle --env.uglify --env.aot
+        - tns build android --bundle --env.uglify --env.aot
     - language: android
       env: 
         - BuildAndroid="26"
