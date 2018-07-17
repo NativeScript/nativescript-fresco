@@ -1,19 +1,25 @@
 declare module bolts {
-	export class AggregateException {
+	export class AggregateException extends java.lang.Exception {
 		public static class: java.lang.Class<bolts.AggregateException>;
+		public constructor();
 		public constructor(param0: string, param1: java.util.List<any>);
-		public getInnerThrowables(): java.util.List<java.lang.Throwable>;
-		public constructor(param0: java.util.List<any>);
 		public printStackTrace(param0: java.io.PrintStream): void;
 		public printStackTrace(param0: java.io.PrintWriter): void;
+		public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 		public constructor(param0: string, param1: native.Array<java.lang.Throwable>);
 		public getErrors(): java.util.List<java.lang.Exception>;
+		public constructor(param0: java.lang.Throwable);
 		public getCauses(): native.Array<java.lang.Throwable>;
+		public constructor(param0: string, param1: java.lang.Throwable);
+		public getInnerThrowables(): java.util.List<java.lang.Throwable>;
+		public constructor(param0: java.util.List<any>);
+		public printStackTrace(): void;
+		public constructor(param0: string);
 	}
 }
 
 declare module bolts {
-	export class AndroidExecutors {
+	export class AndroidExecutors extends java.lang.Object {
 		public static class: java.lang.Class<bolts.AndroidExecutors>;
 		public static newCachedThreadPool(): java.util.concurrent.ExecutorService;
 		public static newCachedThreadPool(param0: java.util.concurrent.ThreadFactory): java.util.concurrent.ExecutorService;
@@ -21,7 +27,7 @@ declare module bolts {
 		public static uiThread(): java.util.concurrent.Executor;
 	}
 	export module AndroidExecutors {
-		export class UIThreadExecutor {
+		export class UIThreadExecutor extends java.lang.Object implements java.util.concurrent.Executor {
 			public static class: java.lang.Class<bolts.AndroidExecutors.UIThreadExecutor>;
 			public execute(param0: java.lang.Runnable): void;
 		}
@@ -29,12 +35,12 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class BoltsExecutors {
+	export class BoltsExecutors extends java.lang.Object {
 		public static class: java.lang.Class<bolts.BoltsExecutors>;
 		public static background(): java.util.concurrent.ExecutorService;
 	}
 	export module BoltsExecutors {
-		export class ImmediateExecutor {
+		export class ImmediateExecutor extends java.lang.Object implements java.util.concurrent.Executor {
 			public static class: java.lang.Class<bolts.BoltsExecutors.ImmediateExecutor>;
 			public execute(param0: java.lang.Runnable): void;
 		}
@@ -42,7 +48,7 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class CancellationToken {
+	export class CancellationToken extends java.lang.Object {
 		public static class: java.lang.Class<bolts.CancellationToken>;
 		public isCancellationRequested(): boolean;
 		public toString(): string;
@@ -52,14 +58,14 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class CancellationTokenRegistration {
+	export class CancellationTokenRegistration extends java.lang.Object implements java.io.Closeable {
 		public static class: java.lang.Class<bolts.CancellationTokenRegistration>;
 		public close(): void;
 	}
 }
 
 declare module bolts {
-	export class CancellationTokenSource {
+	export class CancellationTokenSource extends java.lang.Object implements java.io.Closeable {
 		public static class: java.lang.Class<bolts.CancellationTokenSource>;
 		public constructor();
 		public close(): void;
@@ -85,19 +91,25 @@ declare module bolts {
 	export class Continuation<TTaskResult, TContinuationResult>  extends java.lang.Object {
 		public static class: java.lang.Class<bolts.Continuation<any,any>>;
 		/**
-		 * Constructs a new instance of the bolts.Continuation<any,any> interface with the provided implementation.
+		 * Constructs a new instance of the bolts.Continuation<any,any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 		 */
 		public constructor(implementation: {
 			then(param0: bolts.Task<TTaskResult>): TContinuationResult;
 		});
+		public constructor();
 		public then(param0: bolts.Task<TTaskResult>): TContinuationResult;
 	}
 }
 
 declare module bolts {
-	export class ExecutorException {
+	export class ExecutorException extends java.lang.RuntimeException {
 		public static class: java.lang.Class<bolts.ExecutorException>;
+		public constructor();
+		public constructor(param0: string, param1: java.lang.Throwable);
+		public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+		public constructor(param0: java.lang.Throwable);
 		public constructor(param0: java.lang.Exception);
+		public constructor(param0: string);
 	}
 }
 
@@ -158,14 +170,15 @@ declare module bolts {
 		export class TaskCompletionSource extends bolts.TaskCompletionSource<any> {
 			public static class: java.lang.Class<bolts.Task.TaskCompletionSource>;
 		}
-		export class UnobservedExceptionHandler {
+		export class UnobservedExceptionHandler extends java.lang.Object {
 			public static class: java.lang.Class<bolts.Task.UnobservedExceptionHandler>;
 			/**
-			 * Constructs a new instance of the bolts.Task$UnobservedExceptionHandler interface with the provided implementation.
+			 * Constructs a new instance of the bolts.Task$UnobservedExceptionHandler interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 			 */
 			public constructor(implementation: {
 				unobservedException(param0: bolts.Task<any>, param1: bolts.UnobservedTaskException): void;
 			});
+			public constructor();
 			public unobservedException(param0: bolts.Task<any>, param1: bolts.UnobservedTaskException): void;
 		}
 	}
@@ -186,7 +199,7 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class UnobservedErrorNotifier {
+	export class UnobservedErrorNotifier extends java.lang.Object {
 		public static class: java.lang.Class<bolts.UnobservedErrorNotifier>;
 		public setObserved(): void;
 		public finalize(): void;
@@ -195,9 +208,13 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class UnobservedTaskException {
+	export class UnobservedTaskException extends java.lang.RuntimeException {
 		public static class: java.lang.Class<bolts.UnobservedTaskException>;
+		public constructor();
+		public constructor(param0: string, param1: java.lang.Throwable);
+		public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 		public constructor(param0: java.lang.Throwable);
+		public constructor(param0: string);
 	}
 }
 
@@ -205,7 +222,7 @@ declare module com {
 	export module facebook {
 		export module animated {
 			export module drawable {
-				export class BuildConfig {
+				export class BuildConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.animated.drawable.BuildConfig>;
 					public static DEBUG: boolean;
 					public static APPLICATION_ID: string;
@@ -224,7 +241,7 @@ declare module com {
 	export module facebook {
 		export module animated {
 			export module gif {
-				export class BuildConfig {
+				export class BuildConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.animated.gif.BuildConfig>;
 					public static DEBUG: boolean;
 					public static APPLICATION_ID: string;
@@ -243,7 +260,7 @@ declare module com {
 	export module facebook {
 		export module animated {
 			export module gif {
-				export class GifFrame extends com.facebook.imagepipeline.animated.base.AnimatedImageFrame {
+				export class GifFrame extends java.lang.Object implements com.facebook.imagepipeline.animated.base.AnimatedImageFrame {
 					public static class: java.lang.Class<com.facebook.animated.gif.GifFrame>;
 					public getYOffset(): number;
 					public getTransparentPixelColor(): number;
@@ -266,7 +283,7 @@ declare module com {
 	export module facebook {
 		export module animated {
 			export module gif {
-				export class GifImage implements com.facebook.imagepipeline.animated.base.AnimatedImage, com.facebook.imagepipeline.animated.factory.AnimatedImageDecoder {
+				export class GifImage extends java.lang.Object implements com.facebook.imagepipeline.animated.base.AnimatedImage, com.facebook.imagepipeline.animated.factory.AnimatedImageDecoder {
 					public static class: java.lang.Class<com.facebook.animated.gif.GifImage>;
 					public doesRenderSupportScaling(): boolean;
 					public static create(param0: number, param1: number): com.facebook.animated.gif.GifImage;
@@ -294,16 +311,17 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module binaryresource {
-			export class BinaryResource {
+			export class BinaryResource extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.binaryresource.BinaryResource>;
 				/**
-				 * Constructs a new instance of the com.facebook.binaryresource.BinaryResource interface with the provided implementation.
+				 * Constructs a new instance of the com.facebook.binaryresource.BinaryResource interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 				 */
 				public constructor(implementation: {
 					openStream(): java.io.InputStream;
 					read(): native.Array<number>;
 					size(): number;
 				});
+				public constructor();
 				public read(): native.Array<number>;
 				public openStream(): java.io.InputStream;
 				public size(): number;
@@ -315,7 +333,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module binaryresource {
-			export class ByteArrayBinaryResource extends com.facebook.binaryresource.BinaryResource {
+			export class ByteArrayBinaryResource extends java.lang.Object implements com.facebook.binaryresource.BinaryResource {
 				public static class: java.lang.Class<com.facebook.binaryresource.ByteArrayBinaryResource>;
 				public constructor(param0: native.Array<number>);
 				public read(): native.Array<number>;
@@ -329,7 +347,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module binaryresource {
-			export class FileBinaryResource extends com.facebook.binaryresource.BinaryResource {
+			export class FileBinaryResource extends java.lang.Object implements com.facebook.binaryresource.BinaryResource {
 				public static class: java.lang.Class<com.facebook.binaryresource.FileBinaryResource>;
 				public static createOrNull(param0: java.io.File): com.facebook.binaryresource.FileBinaryResource;
 				public read(): native.Array<number>;
@@ -347,7 +365,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class BaseCacheEventListener extends com.facebook.cache.common.CacheEventListener {
+				export class BaseCacheEventListener extends java.lang.Object implements com.facebook.cache.common.CacheEventListener {
 					public static class: java.lang.Class<com.facebook.cache.common.BaseCacheEventListener>;
 					public onWriteAttempt(param0: com.facebook.cache.common.CacheEvent): void;
 					public constructor();
@@ -368,14 +386,15 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class CacheErrorLogger {
+				export class CacheErrorLogger extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.common.CacheErrorLogger>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.common.CacheErrorLogger interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.common.CacheErrorLogger interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						logError(param0: com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory, param1: java.lang.Class<any>, param2: string, param3: java.lang.Throwable): void;
 					});
+					public constructor();
 					public logError(param0: com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory, param1: java.lang.Class<any>, param2: string, param3: java.lang.Throwable): void;
 				}
 				export module CacheErrorLogger {
@@ -398,6 +417,7 @@ declare module com {
 						public static EVICTION: com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory;
 						public static GENERIC_IO: com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory;
 						public static OTHER: com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static values(): native.Array<com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory>;
 						public static valueOf(param0: string): com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory;
 					}
@@ -411,10 +431,10 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class CacheEvent {
+				export class CacheEvent extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.common.CacheEvent>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.common.CacheEvent interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.common.CacheEvent interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getCacheKey(): com.facebook.cache.common.CacheKey;
@@ -425,6 +445,7 @@ declare module com {
 						getException(): java.io.IOException;
 						getEvictionReason(): com.facebook.cache.common.CacheEventListener.EvictionReason;
 					});
+					public constructor();
 					public getCacheLimit(): number;
 					public getCacheKey(): com.facebook.cache.common.CacheKey;
 					public getItemSize(): number;
@@ -442,10 +463,10 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class CacheEventListener {
+				export class CacheEventListener extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.common.CacheEventListener>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.common.CacheEventListener interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.common.CacheEventListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onHit(param0: com.facebook.cache.common.CacheEvent): void;
@@ -457,6 +478,7 @@ declare module com {
 						onEviction(param0: com.facebook.cache.common.CacheEvent): void;
 						onCleared(): void;
 					});
+					public constructor();
 					public onWriteAttempt(param0: com.facebook.cache.common.CacheEvent): void;
 					public onHit(param0: com.facebook.cache.common.CacheEvent): void;
 					public onCleared(): void;
@@ -474,6 +496,7 @@ declare module com {
 						public static USER_FORCED: com.facebook.cache.common.CacheEventListener.EvictionReason;
 						public static CACHE_MANAGER_TRIMMED: com.facebook.cache.common.CacheEventListener.EvictionReason;
 						public static values(): native.Array<com.facebook.cache.common.CacheEventListener.EvictionReason>;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static valueOf(param0: string): com.facebook.cache.common.CacheEventListener.EvictionReason;
 					}
 				}
@@ -486,10 +509,10 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class CacheKey {
+				export class CacheKey extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.common.CacheKey>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.common.CacheKey interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.common.CacheKey interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						toString(): string;
@@ -498,6 +521,7 @@ declare module com {
 						containsUri(param0: globalAndroid.net.Uri): boolean;
 						getUriString(): string;
 					});
+					public constructor();
 					public equals(param0: any): boolean;
 					public getUriString(): string;
 					public toString(): string;
@@ -513,7 +537,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class CacheKeyUtil {
+				export class CacheKeyUtil extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.common.CacheKeyUtil>;
 					public static getFirstResourceId(param0: com.facebook.cache.common.CacheKey): string;
 					public constructor();
@@ -549,7 +573,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class MultiCacheKey extends com.facebook.cache.common.CacheKey {
+				export class MultiCacheKey extends java.lang.Object implements com.facebook.cache.common.CacheKey {
 					public static class: java.lang.Class<com.facebook.cache.common.MultiCacheKey>;
 					public equals(param0: any): boolean;
 					public getUriString(): string;
@@ -568,7 +592,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class NoOpCacheErrorLogger extends com.facebook.cache.common.CacheErrorLogger {
+				export class NoOpCacheErrorLogger extends java.lang.Object implements com.facebook.cache.common.CacheErrorLogger {
 					public static class: java.lang.Class<com.facebook.cache.common.NoOpCacheErrorLogger>;
 					public logError(param0: com.facebook.cache.common.CacheErrorLogger.CacheErrorCategory, param1: java.lang.Class<any>, param2: string, param3: java.lang.Throwable): void;
 					public static getInstance(): com.facebook.cache.common.NoOpCacheErrorLogger;
@@ -582,7 +606,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class NoOpCacheEventListener extends com.facebook.cache.common.CacheEventListener {
+				export class NoOpCacheEventListener extends java.lang.Object implements com.facebook.cache.common.CacheEventListener {
 					public static class: java.lang.Class<com.facebook.cache.common.NoOpCacheEventListener>;
 					public onWriteAttempt(param0: com.facebook.cache.common.CacheEvent): void;
 					public static getInstance(): com.facebook.cache.common.NoOpCacheEventListener;
@@ -603,7 +627,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class SimpleCacheKey extends com.facebook.cache.common.CacheKey {
+				export class SimpleCacheKey extends java.lang.Object implements com.facebook.cache.common.CacheKey {
 					public static class: java.lang.Class<com.facebook.cache.common.SimpleCacheKey>;
 					public equals(param0: any): boolean;
 					public getUriString(): string;
@@ -621,14 +645,15 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class WriterCallback {
+				export class WriterCallback extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.common.WriterCallback>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.common.WriterCallback interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.common.WriterCallback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						write(param0: java.io.OutputStream): void;
 					});
+					public constructor();
 					public write(param0: java.io.OutputStream): void;
 				}
 			}
@@ -640,7 +665,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module common {
-				export class WriterCallbacks {
+				export class WriterCallbacks extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.common.WriterCallbacks>;
 					public static from(param0: native.Array<number>): com.facebook.cache.common.WriterCallback;
 					public constructor();
@@ -655,7 +680,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class DefaultDiskStorage extends com.facebook.cache.disk.DiskStorage {
+				export class DefaultDiskStorage extends java.lang.Object implements com.facebook.cache.disk.DiskStorage {
 					public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage>;
 					public getStorageName(): string;
 					public purgeUnexpectedResources(): void;
@@ -674,14 +699,14 @@ declare module com {
 					public getEntries(): java.util.List<com.facebook.cache.disk.DiskStorage.Entry>;
 				}
 				export module DefaultDiskStorage {
-					export class EntriesCollector extends com.facebook.common.file.FileTreeVisitor {
+					export class EntriesCollector extends java.lang.Object implements com.facebook.common.file.FileTreeVisitor {
 						public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage.EntriesCollector>;
 						public visitFile(param0: java.io.File): void;
 						public getEntries(): java.util.List<com.facebook.cache.disk.DiskStorage.Entry>;
 						public postVisitDirectory(param0: java.io.File): void;
 						public preVisitDirectory(param0: java.io.File): void;
 					}
-					export class EntryImpl extends com.facebook.cache.disk.DiskStorage.Entry {
+					export class EntryImpl extends java.lang.Object implements com.facebook.cache.disk.DiskStorage.Entry {
 						public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage.EntryImpl>;
 						public getSize(): number;
 						public getTimestamp(): number;
@@ -689,7 +714,7 @@ declare module com {
 						public getId(): string;
 						public getResource(): com.facebook.binaryresource.FileBinaryResource;
 					}
-					export class FileInfo {
+					export class FileInfo extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage.FileInfo>;
 						public type: string;
 						public resourceId: string;
@@ -698,30 +723,44 @@ declare module com {
 						public createTempFile(param0: java.io.File): java.io.File;
 						public toString(): string;
 					}
-					export class FileType {
+					export class FileType extends java.lang.Object implements java.lang.annotation.Annotation {
 						public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage.FileType>;
 						/**
-						 * Constructs a new instance of the com.facebook.cache.disk.DefaultDiskStorage$FileType interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.cache.disk.DefaultDiskStorage$FileType interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
+							annotationType(): java.lang.Class<any>;
+							equals(param0: any): boolean;
+							hashCode(): number;
+							toString(): string;
 						});
+						public constructor();
 						public static TEMP: string;
 						public static CONTENT: string;
+						public equals(param0: any): boolean;
+						public hashCode(): number;
+						public toString(): string;
+						public annotationType(): java.lang.Class<any>;
 					}
-					export class IncompleteFileException {
+					export class IncompleteFileException extends java.io.IOException {
 						public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage.IncompleteFileException>;
 						public expected: number;
 						public actual: number;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: number, param1: number);
+						public constructor(param0: string);
 					}
-					export class InserterImpl extends com.facebook.cache.disk.DiskStorage.Inserter {
+					export class InserterImpl extends java.lang.Object implements com.facebook.cache.disk.DiskStorage.Inserter {
 						public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage.InserterImpl>;
 						public constructor(param0: com.facebook.cache.disk.DefaultDiskStorage, param1: string, param2: java.io.File);
 						public commit(param0: any): com.facebook.binaryresource.BinaryResource;
 						public writeData(param0: com.facebook.cache.common.WriterCallback, param1: any): void;
 						public cleanUp(): boolean;
 					}
-					export class PurgingVisitor extends com.facebook.common.file.FileTreeVisitor {
+					export class PurgingVisitor extends java.lang.Object implements com.facebook.common.file.FileTreeVisitor {
 						public static class: java.lang.Class<com.facebook.cache.disk.DefaultDiskStorage.PurgingVisitor>;
 						public visitFile(param0: java.io.File): void;
 						public postVisitDirectory(param0: java.io.File): void;
@@ -737,7 +776,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class DefaultEntryEvictionComparatorSupplier extends com.facebook.cache.disk.EntryEvictionComparatorSupplier {
+				export class DefaultEntryEvictionComparatorSupplier extends java.lang.Object implements com.facebook.cache.disk.EntryEvictionComparatorSupplier {
 					public static class: java.lang.Class<com.facebook.cache.disk.DefaultEntryEvictionComparatorSupplier>;
 					public constructor();
 					public get(): com.facebook.cache.disk.EntryEvictionComparator;
@@ -751,7 +790,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class DiskCacheConfig {
+				export class DiskCacheConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.disk.DiskCacheConfig>;
 					public getIndexPopulateAtStartupEnabled(): boolean;
 					public static newBuilder(param0: globalAndroid.content.Context): com.facebook.cache.disk.DiskCacheConfig.Builder;
@@ -768,7 +807,7 @@ declare module com {
 					public getContext(): globalAndroid.content.Context;
 				}
 				export module DiskCacheConfig {
-					export class Builder {
+					export class Builder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskCacheConfig.Builder>;
 						public setMaxCacheSize(param0: number): com.facebook.cache.disk.DiskCacheConfig.Builder;
 						public setBaseDirectoryName(param0: string): com.facebook.cache.disk.DiskCacheConfig.Builder;
@@ -794,10 +833,10 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class DiskStorage {
+				export class DiskStorage extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.disk.DiskStorage>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.disk.DiskStorage interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.disk.DiskStorage interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						isEnabled(): boolean;
@@ -814,6 +853,7 @@ declare module com {
 						getDumpInfo(): com.facebook.cache.disk.DiskStorage.DiskDumpInfo;
 						getStorageName(): string;
 					});
+					public constructor();
 					public purgeUnexpectedResources(): void;
 					public insert(param0: string, param1: any): com.facebook.cache.disk.DiskStorage.Inserter;
 					public getDumpInfo(): com.facebook.cache.disk.DiskStorage.DiskDumpInfo;
@@ -829,13 +869,13 @@ declare module com {
 					public isEnabled(): boolean;
 				}
 				export module DiskStorage {
-					export class DiskDumpInfo {
+					export class DiskDumpInfo extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskStorage.DiskDumpInfo>;
 						public entries: java.util.List<com.facebook.cache.disk.DiskStorage.DiskDumpInfoEntry>;
 						public typeCounts: java.util.Map<string,java.lang.Integer>;
 						public constructor();
 					}
-					export class DiskDumpInfoEntry {
+					export class DiskDumpInfoEntry extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskStorage.DiskDumpInfoEntry>;
 						public path: string;
 						public type: string;
@@ -843,10 +883,10 @@ declare module com {
 						public firstBits: string;
 						public constructor(param0: string, param1: string, param2: number, param3: string);
 					}
-					export class Entry {
+					export class Entry extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskStorage.Entry>;
 						/**
-						 * Constructs a new instance of the com.facebook.cache.disk.DiskStorage$Entry interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.cache.disk.DiskStorage$Entry interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getId(): string;
@@ -854,21 +894,23 @@ declare module com {
 							getSize(): number;
 							getResource(): com.facebook.binaryresource.BinaryResource;
 						});
+						public constructor();
 						public getSize(): number;
 						public getTimestamp(): number;
 						public getResource(): com.facebook.binaryresource.BinaryResource;
 						public getId(): string;
 					}
-					export class Inserter {
+					export class Inserter extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskStorage.Inserter>;
 						/**
-						 * Constructs a new instance of the com.facebook.cache.disk.DiskStorage$Inserter interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.cache.disk.DiskStorage$Inserter interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							writeData(param0: com.facebook.cache.common.WriterCallback, param1: any): void;
 							commit(param0: any): com.facebook.binaryresource.BinaryResource;
 							cleanUp(): boolean;
 						});
+						public constructor();
 						public commit(param0: any): com.facebook.binaryresource.BinaryResource;
 						public writeData(param0: com.facebook.cache.common.WriterCallback, param1: any): void;
 						public cleanUp(): boolean;
@@ -883,7 +925,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class DiskStorageCache implements com.facebook.cache.disk.FileCache, com.facebook.common.disk.DiskTrimmable {
+				export class DiskStorageCache extends java.lang.Object implements com.facebook.cache.disk.FileCache, com.facebook.common.disk.DiskTrimmable {
 					public static class: java.lang.Class<com.facebook.cache.disk.DiskStorageCache>;
 					public static START_OF_VERSIONING: number;
 					public hasKey(param0: com.facebook.cache.common.CacheKey): boolean;
@@ -905,7 +947,7 @@ declare module com {
 					public isEnabled(): boolean;
 				}
 				export module DiskStorageCache {
-					export class CacheStats {
+					export class CacheStats extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskStorageCache.CacheStats>;
 						public increment(param0: number, param1: number): void;
 						public getSize(): number;
@@ -914,7 +956,7 @@ declare module com {
 						public reset(): void;
 						public isInitialized(): boolean;
 					}
-					export class Params {
+					export class Params extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskStorageCache.Params>;
 						public mCacheSizeLimitMinimum: number;
 						public mLowDiskSpaceCacheSizeLimit: number;
@@ -931,7 +973,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class DynamicDefaultDiskStorage extends com.facebook.cache.disk.DiskStorage {
+				export class DynamicDefaultDiskStorage extends java.lang.Object implements com.facebook.cache.disk.DiskStorage {
 					public static class: java.lang.Class<com.facebook.cache.disk.DynamicDefaultDiskStorage>;
 					public getStorageName(): string;
 					public purgeUnexpectedResources(): void;
@@ -949,7 +991,7 @@ declare module com {
 					public constructor(param0: number, param1: com.facebook.common.internal.Supplier<java.io.File>, param2: string, param3: com.facebook.cache.common.CacheErrorLogger);
 				}
 				export module DynamicDefaultDiskStorage {
-					export class State {
+					export class State extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DynamicDefaultDiskStorage.State>;
 						public delegate: com.facebook.cache.disk.DiskStorage;
 						public rootDirectory: java.io.File;
@@ -967,10 +1009,15 @@ declare module com {
 				export class EntryEvictionComparator extends java.util.Comparator<com.facebook.cache.disk.DiskStorage.Entry> {
 					public static class: java.lang.Class<com.facebook.cache.disk.EntryEvictionComparator>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.disk.EntryEvictionComparator interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.disk.EntryEvictionComparator interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
+						compare(param0: any, param1: any): number;
+						equals(param0: any): boolean;
 					});
+					public constructor();
+					public equals(param0: any): boolean;
+					public compare(param0: any, param1: any): number;
 				}
 			}
 		}
@@ -981,14 +1028,15 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class EntryEvictionComparatorSupplier {
+				export class EntryEvictionComparatorSupplier extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.cache.disk.EntryEvictionComparatorSupplier>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.disk.EntryEvictionComparatorSupplier interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.disk.EntryEvictionComparatorSupplier interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						get(): com.facebook.cache.disk.EntryEvictionComparator;
 					});
+					public constructor();
 					public get(): com.facebook.cache.disk.EntryEvictionComparator;
 				}
 			}
@@ -1000,10 +1048,10 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class FileCache extends com.facebook.common.disk.DiskTrimmable {
+				export class FileCache extends java.lang.Object implements com.facebook.common.disk.DiskTrimmable {
 					public static class: java.lang.Class<com.facebook.cache.disk.FileCache>;
 					/**
-					 * Constructs a new instance of the com.facebook.cache.disk.FileCache interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.cache.disk.FileCache interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						isEnabled(): boolean;
@@ -1021,6 +1069,7 @@ declare module com {
 						trimToMinimum(): void;
 						trimToNothing(): void;
 					});
+					public constructor();
 					public hasKey(param0: com.facebook.cache.common.CacheKey): boolean;
 					public getDumpInfo(): com.facebook.cache.disk.DiskStorage.DiskDumpInfo;
 					public probe(param0: com.facebook.cache.common.CacheKey): boolean;
@@ -1045,7 +1094,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class ScoreBasedEvictionComparatorSupplier extends com.facebook.cache.disk.EntryEvictionComparatorSupplier {
+				export class ScoreBasedEvictionComparatorSupplier extends java.lang.Object implements com.facebook.cache.disk.EntryEvictionComparatorSupplier {
 					public static class: java.lang.Class<com.facebook.cache.disk.ScoreBasedEvictionComparatorSupplier>;
 					public get(): com.facebook.cache.disk.EntryEvictionComparator;
 					public constructor(param0: number, param1: number);
@@ -1059,7 +1108,7 @@ declare module com {
 	export module facebook {
 		export module cache {
 			export module disk {
-				export class SettableCacheEvent extends com.facebook.cache.common.CacheEvent {
+				export class SettableCacheEvent extends java.lang.Object implements com.facebook.cache.common.CacheEvent {
 					public static class: java.lang.Class<com.facebook.cache.disk.SettableCacheEvent>;
 					public getCacheLimit(): number;
 					public getItemSize(): number;
@@ -1087,10 +1136,10 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module activitylistener {
-				export class ActivityListener {
+				export class ActivityListener extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.activitylistener.ActivityListener>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.activitylistener.ActivityListener interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.activitylistener.ActivityListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onActivityCreate(param0: globalAndroid.app.Activity): void;
@@ -1101,6 +1150,7 @@ declare module com {
 						onDestroy(param0: globalAndroid.app.Activity): void;
 						getPriority(): number;
 					});
+					public constructor();
 					public static MIN_PRIORITY: number;
 					public static MAX_PRIORITY: number;
 					public getPriority(): number;
@@ -1120,7 +1170,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module activitylistener {
-				export class ActivityListenerManager {
+				export class ActivityListenerManager extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.activitylistener.ActivityListenerManager>;
 					public constructor();
 					public static register(param0: com.facebook.common.activitylistener.ActivityListener, param1: globalAndroid.content.Context): void;
@@ -1148,7 +1198,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module activitylistener {
-				export class BaseActivityListener extends com.facebook.common.activitylistener.ActivityListener {
+				export class BaseActivityListener extends java.lang.Object implements com.facebook.common.activitylistener.ActivityListener {
 					public static class: java.lang.Class<com.facebook.common.activitylistener.BaseActivityListener>;
 					public getPriority(): number;
 					public onStop(param0: globalAndroid.app.Activity): void;
@@ -1168,15 +1218,16 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module activitylistener {
-				export class ListenableActivity {
+				export class ListenableActivity extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.activitylistener.ListenableActivity>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.activitylistener.ListenableActivity interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.activitylistener.ListenableActivity interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						addActivityListener(param0: com.facebook.common.activitylistener.ActivityListener): void;
 						removeActivityListener(param0: com.facebook.common.activitylistener.ActivityListener): void;
 					});
+					public constructor();
 					public addActivityListener(param0: com.facebook.common.activitylistener.ActivityListener): void;
 					public removeActivityListener(param0: com.facebook.common.activitylistener.ActivityListener): void;
 				}
@@ -1189,15 +1240,16 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module disk {
-				export class DiskTrimmable {
+				export class DiskTrimmable extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.disk.DiskTrimmable>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.disk.DiskTrimmable interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.disk.DiskTrimmable interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						trimToMinimum(): void;
 						trimToNothing(): void;
 					});
+					public constructor();
 					public trimToMinimum(): void;
 					public trimToNothing(): void;
 				}
@@ -1210,15 +1262,16 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module disk {
-				export class DiskTrimmableRegistry {
+				export class DiskTrimmableRegistry extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.disk.DiskTrimmableRegistry>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.disk.DiskTrimmableRegistry interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.disk.DiskTrimmableRegistry interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						registerDiskTrimmable(param0: com.facebook.common.disk.DiskTrimmable): void;
 						unregisterDiskTrimmable(param0: com.facebook.common.disk.DiskTrimmable): void;
 					});
+					public constructor();
 					public unregisterDiskTrimmable(param0: com.facebook.common.disk.DiskTrimmable): void;
 					public registerDiskTrimmable(param0: com.facebook.common.disk.DiskTrimmable): void;
 				}
@@ -1231,7 +1284,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module disk {
-				export class NoOpDiskTrimmableRegistry extends com.facebook.common.disk.DiskTrimmableRegistry {
+				export class NoOpDiskTrimmableRegistry extends java.lang.Object implements com.facebook.common.disk.DiskTrimmableRegistry {
 					public static class: java.lang.Class<com.facebook.common.disk.NoOpDiskTrimmableRegistry>;
 					public unregisterDiskTrimmable(param0: com.facebook.common.disk.DiskTrimmable): void;
 					public static getInstance(): com.facebook.common.disk.NoOpDiskTrimmableRegistry;
@@ -1246,15 +1299,22 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module executors {
-				export class CallerThreadExecutor {
+				export class CallerThreadExecutor extends java.util.concurrent.AbstractExecutorService {
 					public static class: java.lang.Class<com.facebook.common.executors.CallerThreadExecutor>;
+					public invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
 					public isTerminated(): boolean;
+					public invokeAny(param0: java.util.Collection<any>): any;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
+					public static getInstance(): com.facebook.common.executors.CallerThreadExecutor;
+					public invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+					public isShutdown(): boolean;
+					public shutdownNow(): java.util.List<java.lang.Runnable>;
 					public execute(param0: java.lang.Runnable): void;
 					public shutdown(): void;
 					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
-					public static getInstance(): com.facebook.common.executors.CallerThreadExecutor;
-					public isShutdown(): boolean;
-					public shutdownNow(): java.util.List<java.lang.Runnable>;
+					public invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
 				}
 			}
 		}
@@ -1265,20 +1325,28 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module executors {
-				export class ConstrainedExecutorService {
+				export class ConstrainedExecutorService extends java.util.concurrent.AbstractExecutorService {
 					public static class: java.lang.Class<com.facebook.common.executors.ConstrainedExecutorService>;
+					public invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
 					public isTerminated(): boolean;
-					public execute(param0: java.lang.Runnable): void;
-					public shutdown(): void;
-					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
-					public static newConstrainedExecutor(param0: string, param1: number, param2: number, param3: java.util.concurrent.Executor): com.facebook.common.executors.ConstrainedExecutorService;
-					public isIdle(): boolean;
+					public invokeAny(param0: java.util.Collection<any>): any;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
+					public invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
 					public constructor(param0: string, param1: number, param2: java.util.concurrent.Executor, param3: java.util.concurrent.BlockingQueue<java.lang.Runnable>);
 					public isShutdown(): boolean;
 					public shutdownNow(): java.util.List<java.lang.Runnable>;
+					public execute(param0: java.lang.Runnable): void;
+					public shutdown(): void;
+					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+					public constructor();
+					public static newConstrainedExecutor(param0: string, param1: number, param2: number, param3: java.util.concurrent.Executor): com.facebook.common.executors.ConstrainedExecutorService;
+					public isIdle(): boolean;
+					public invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
 				}
 				export module ConstrainedExecutorService {
-					export class Worker {
+					export class Worker extends java.lang.Object implements java.lang.Runnable {
 						public static class: java.lang.Class<com.facebook.common.executors.ConstrainedExecutorService.Worker>;
 						public run(): void;
 					}
@@ -1294,9 +1362,22 @@ declare module com {
 			export module executors {
 				export class DefaultSerialExecutorService extends com.facebook.common.executors.ConstrainedExecutorService implements com.facebook.common.executors.SerialExecutorService {
 					public static class: java.lang.Class<com.facebook.common.executors.DefaultSerialExecutorService>;
+					public invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
+					public isTerminated(): boolean;
+					public invokeAny(param0: java.util.Collection<any>): any;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
+					public invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+					public constructor(param0: string, param1: number, param2: java.util.concurrent.Executor, param3: java.util.concurrent.BlockingQueue<java.lang.Runnable>);
+					public isShutdown(): boolean;
+					public shutdownNow(): java.util.List<java.lang.Runnable>;
 					public execute(param0: java.lang.Runnable): void;
 					public constructor(param0: java.util.concurrent.Executor);
-					public constructor(param0: string, param1: number, param2: java.util.concurrent.Executor, param3: java.util.concurrent.BlockingQueue<java.lang.Runnable>);
+					public shutdown(): void;
+					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+					public constructor();
+					public invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
 				}
 			}
 		}
@@ -1307,17 +1388,52 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module executors {
-				export class HandlerExecutorService {
+				export class HandlerExecutorService extends java.lang.Object implements java.util.concurrent.ScheduledExecutorService {
 					public static class: java.lang.Class<com.facebook.common.executors.HandlerExecutorService>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.executors.HandlerExecutorService interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.executors.HandlerExecutorService interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						quit(): void;
 						isHandlerThread(): boolean;
+						schedule(param0: java.lang.Runnable, param1: number, param2: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+						schedule(param0: java.util.concurrent.Callable<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+						scheduleAtFixedRate(param0: java.lang.Runnable, param1: number, param2: number, param3: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+						scheduleWithFixedDelay(param0: java.lang.Runnable, param1: number, param2: number, param3: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+						shutdown(): void;
+						shutdownNow(): java.util.List<java.lang.Runnable>;
+						isShutdown(): boolean;
+						isTerminated(): boolean;
+						awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+						submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
+						submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
+						submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
+						invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+						invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
+						invokeAny(param0: java.util.Collection<any>): any;
+						invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+						execute(param0: java.lang.Runnable): void;
 					});
+					public constructor();
+					public invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
+					public isTerminated(): boolean;
+					public invokeAny(param0: java.util.Collection<any>): any;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
 					public isHandlerThread(): boolean;
+					public schedule(param0: java.lang.Runnable, param1: number, param2: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+					public invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+					public isShutdown(): boolean;
+					public shutdownNow(): java.util.List<java.lang.Runnable>;
+					public execute(param0: java.lang.Runnable): void;
+					public schedule(param0: java.util.concurrent.Callable<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+					public shutdown(): void;
+					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+					public scheduleAtFixedRate(param0: java.lang.Runnable, param1: number, param2: number, param3: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+					public invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
 					public quit(): void;
+					public scheduleWithFixedDelay(param0: java.lang.Runnable, param1: number, param2: number, param3: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
 				}
 			}
 		}
@@ -1328,24 +1444,34 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module executors {
-				export class HandlerExecutorServiceImpl implements com.facebook.common.executors.HandlerExecutorService {
+				export class HandlerExecutorServiceImpl extends java.util.concurrent.AbstractExecutorService implements com.facebook.common.executors.HandlerExecutorService {
 					public static class: java.lang.Class<com.facebook.common.executors.HandlerExecutorServiceImpl>;
-					public isTerminated(): boolean;
+					public invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
+					public invokeAny(param0: java.util.Collection<any>): any;
 					public newTaskFor(param0: java.lang.Runnable, param1: any): com.facebook.common.executors.ScheduledFutureImpl<any>;
-					public isHandlerThread(): boolean;
 					public newTaskFor(param0: java.util.concurrent.Callable<any>): com.facebook.common.executors.ScheduledFutureImpl<any>;
-					public submit(param0: java.lang.Runnable): java.util.concurrent.ScheduledFuture<any>;
 					public schedule(param0: java.lang.Runnable, param1: number, param2: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
 					public isShutdown(): boolean;
-					public shutdownNow(): java.util.List<java.lang.Runnable>;
 					public execute(param0: java.lang.Runnable): void;
 					public shutdown(): void;
+					public schedule(param0: java.util.concurrent.Callable<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
+					public constructor();
+					public invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
+					public constructor(param0: globalAndroid.os.Handler);
+					public isTerminated(): boolean;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
+					public isHandlerThread(): boolean;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.ScheduledFuture<any>;
+					public invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+					public shutdownNow(): java.util.List<java.lang.Runnable>;
 					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
 					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.ScheduledFuture<any>;
-					public schedule(param0: java.util.concurrent.Callable<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
 					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.ScheduledFuture<any>;
 					public scheduleAtFixedRate(param0: java.lang.Runnable, param1: number, param2: number, param3: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
-					public constructor(param0: globalAndroid.os.Handler);
+					public newTaskFor(param0: java.lang.Runnable, param1: any): java.util.concurrent.RunnableFuture<any>;
+					public newTaskFor(param0: java.util.concurrent.Callable<any>): java.util.concurrent.RunnableFuture<any>;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
 					public scheduleWithFixedDelay(param0: java.lang.Runnable, param1: number, param2: number, param3: java.util.concurrent.TimeUnit): java.util.concurrent.ScheduledFuture<any>;
 					public quit(): void;
 				}
@@ -1380,13 +1506,40 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module executors {
-				export class SerialExecutorService {
+				export class SerialExecutorService extends java.lang.Object implements java.util.concurrent.ExecutorService {
 					public static class: java.lang.Class<com.facebook.common.executors.SerialExecutorService>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.executors.SerialExecutorService interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.executors.SerialExecutorService interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
+						shutdown(): void;
+						shutdownNow(): java.util.List<java.lang.Runnable>;
+						isShutdown(): boolean;
+						isTerminated(): boolean;
+						awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+						submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
+						submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
+						submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
+						invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+						invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
+						invokeAny(param0: java.util.Collection<any>): any;
+						invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+						execute(param0: java.lang.Runnable): void;
 					});
+					public constructor();
+					public invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
+					public isTerminated(): boolean;
+					public invokeAny(param0: java.util.Collection<any>): any;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
+					public invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+					public isShutdown(): boolean;
+					public shutdownNow(): java.util.List<java.lang.Runnable>;
+					public execute(param0: java.lang.Runnable): void;
+					public shutdown(): void;
+					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+					public invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
 				}
 			}
 		}
@@ -1425,9 +1578,24 @@ declare module com {
 			export module executors {
 				export class UiThreadImmediateExecutorService extends com.facebook.common.executors.HandlerExecutorServiceImpl {
 					public static class: java.lang.Class<com.facebook.common.executors.UiThreadImmediateExecutorService>;
+					public invokeAll(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): java.util.List<any>;
 					public static getInstance(): com.facebook.common.executors.UiThreadImmediateExecutorService;
-					public execute(param0: java.lang.Runnable): void;
+					public isTerminated(): boolean;
+					public invokeAny(param0: java.util.Collection<any>): any;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.Future<any>;
 					public isHandlerThread(): boolean;
+					public submit(param0: java.lang.Runnable): java.util.concurrent.ScheduledFuture<any>;
+					public invokeAll(param0: java.util.Collection<any>): java.util.List<any>;
+					public isShutdown(): boolean;
+					public shutdownNow(): java.util.List<java.lang.Runnable>;
+					public execute(param0: java.lang.Runnable): void;
+					public shutdown(): void;
+					public awaitTermination(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.ScheduledFuture<any>;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.ScheduledFuture<any>;
+					public invokeAny(param0: java.util.Collection<any>, param1: number, param2: java.util.concurrent.TimeUnit): any;
+					public submit(param0: java.lang.Runnable, param1: any): java.util.concurrent.Future<any>;
+					public submit(param0: java.util.concurrent.Callable<any>): java.util.concurrent.Future<any>;
 					public quit(): void;
 				}
 			}
@@ -1439,7 +1607,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module file {
-				export class FileTree {
+				export class FileTree extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.file.FileTree>;
 					public static deleteContents(param0: java.io.File): boolean;
 					public constructor();
@@ -1455,16 +1623,17 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module file {
-				export class FileTreeVisitor {
+				export class FileTreeVisitor extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.file.FileTreeVisitor>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.file.FileTreeVisitor interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.file.FileTreeVisitor interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						preVisitDirectory(param0: java.io.File): void;
 						visitFile(param0: java.io.File): void;
 						postVisitDirectory(param0: java.io.File): void;
 					});
+					public constructor();
 					public preVisitDirectory(param0: java.io.File): void;
 					public postVisitDirectory(param0: java.io.File): void;
 					public visitFile(param0: java.io.File): void;
@@ -1478,29 +1647,43 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module file {
-				export class FileUtils {
+				export class FileUtils extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.file.FileUtils>;
 					public constructor();
 					public static mkdirs(param0: java.io.File): void;
 					public static rename(param0: java.io.File, param1: java.io.File): void;
 				}
 				export module FileUtils {
-					export class CreateDirectoryException {
+					export class CreateDirectoryException extends java.io.IOException {
 						public static class: java.lang.Class<com.facebook.common.file.FileUtils.CreateDirectoryException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
-					export class FileDeleteException {
+					export class FileDeleteException extends java.io.IOException {
 						public static class: java.lang.Class<com.facebook.common.file.FileUtils.FileDeleteException>;
-						public constructor(param0: string);
-					}
-					export class ParentDirNotFoundException {
-						public static class: java.lang.Class<com.facebook.common.file.FileUtils.ParentDirNotFoundException>;
-						public constructor(param0: string);
-					}
-					export class RenameException {
-						public static class: java.lang.Class<com.facebook.common.file.FileUtils.RenameException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
+					}
+					export class ParentDirNotFoundException extends java.io.FileNotFoundException {
+						public static class: java.lang.Class<com.facebook.common.file.FileUtils.ParentDirNotFoundException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
+					}
+					export class RenameException extends java.io.IOException {
+						public static class: java.lang.Class<com.facebook.common.file.FileUtils.RenameException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
@@ -1513,7 +1696,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class AndroidPredicates {
+				export class AndroidPredicates extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.AndroidPredicates>;
 					public static True(): com.android.internal.util.Predicate<any>;
 					public static False(): com.android.internal.util.Predicate<any>;
@@ -1527,7 +1710,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class ByteStreams {
+				export class ByteStreams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.ByteStreams>;
 					public static toByteArray(param0: java.io.InputStream): native.Array<number>;
 					public static read(param0: java.io.InputStream, param1: native.Array<number>, param2: number, param3: number): number;
@@ -1536,8 +1719,10 @@ declare module com {
 					public static readFully(param0: java.io.InputStream, param1: native.Array<number>, param2: number, param3: number): void;
 				}
 				export module ByteStreams {
-					export class FastByteArrayOutputStream {
+					export class FastByteArrayOutputStream extends java.io.ByteArrayOutputStream {
 						public static class: java.lang.Class<com.facebook.common.internal.ByteStreams.FastByteArrayOutputStream>;
+						public close(): void;
+						public flush(): void;
 					}
 				}
 			}
@@ -1549,7 +1734,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Closeables {
+				export class Closeables extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Closeables>;
 					public static closeQuietly(param0: java.io.InputStream): void;
 					public static close(param0: java.io.Closeable, param1: boolean): void;
@@ -1564,13 +1749,16 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class CountingOutputStream {
+				export class CountingOutputStream extends java.io.FilterOutputStream {
 					public static class: java.lang.Class<com.facebook.common.internal.CountingOutputStream>;
 					public write(param0: native.Array<number>, param1: number, param2: number): void;
 					public constructor(param0: java.io.OutputStream);
+					public write(param0: native.Array<number>): void;
 					public getCount(): number;
+					public constructor();
 					public close(): void;
 					public write(param0: number): void;
+					public flush(): void;
 				}
 			}
 		}
@@ -1581,13 +1769,22 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class DoNotStrip {
+				export class DoNotStrip extends java.lang.Object implements java.lang.annotation.Annotation {
 					public static class: java.lang.Class<com.facebook.common.internal.DoNotStrip>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.internal.DoNotStrip interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.internal.DoNotStrip interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
+						annotationType(): java.lang.Class<any>;
+						equals(param0: any): boolean;
+						hashCode(): number;
+						toString(): string;
 					});
+					public constructor();
+					public equals(param0: any): boolean;
+					public toString(): string;
+					public annotationType(): java.lang.Class<any>;
+					public hashCode(): number;
 				}
 			}
 		}
@@ -1598,7 +1795,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Files {
+				export class Files extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Files>;
 					public static toByteArray(param0: java.io.File): native.Array<number>;
 				}
@@ -1613,8 +1810,33 @@ declare module com {
 			export module internal {
 				export class ImmutableList<E>  extends java.util.ArrayList<any> {
 					public static class: java.lang.Class<com.facebook.common.internal.ImmutableList<any>>;
+					public addAll(param0: java.util.Collection<any>): boolean;
+					public isEmpty(): boolean;
+					public add(param0: any): boolean;
+					public containsAll(param0: java.util.Collection<any>): boolean;
+					public size(): number;
+					public lastIndexOf(param0: any): number;
 					public static of(param0: native.Array<any>): com.facebook.common.internal.ImmutableList<any>;
+					public remove(param0: number): any;
+					public iterator(): java.util.Iterator<any>;
+					public toArray(param0: native.Array<any>): native.Array<any>;
+					public toArray(): native.Array<any>;
+					public clear(): void;
+					public get(param0: number): any;
+					public subList(param0: number, param1: number): java.util.List<any>;
+					public listIterator(param0: number): java.util.ListIterator<any>;
+					public hashCode(): number;
+					public contains(param0: any): boolean;
 					public static copyOf(param0: java.util.List<any>): com.facebook.common.internal.ImmutableList<any>;
+					public remove(param0: any): boolean;
+					public removeAll(param0: java.util.Collection<any>): boolean;
+					public add(param0: number, param1: any): void;
+					public addAll(param0: number, param1: java.util.Collection<any>): boolean;
+					public retainAll(param0: java.util.Collection<any>): boolean;
+					public indexOf(param0: any): number;
+					public equals(param0: any): boolean;
+					public set(param0: number, param1: any): any;
+					public listIterator(): java.util.ListIterator<any>;
 				}
 			}
 		}
@@ -1628,13 +1850,27 @@ declare module com {
 				export class ImmutableMap<K, V>  extends java.util.HashMap<any,any> {
 					public static class: java.lang.Class<com.facebook.common.internal.ImmutableMap<any,any>>;
 					public static of(param0: any, param1: any): java.util.Map<any,any>;
-					public static of(param0: any, param1: any, param2: any, param3: any): java.util.Map<any,any>;
 					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any): java.util.Map<any,any>;
-					public static copyOf(param0: java.util.Map<any,any>): com.facebook.common.internal.ImmutableMap<any,any>;
-					public static of(): java.util.Map<any,any>;
+					public isEmpty(): boolean;
+					public size(): number;
 					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any): java.util.Map<any,any>;
+					public values(): java.util.Collection<any>;
 					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any, param8: any, param9: any, param10: any, param11: any): java.util.Map<any,any>;
+					public put(param0: any, param1: any): any;
 					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any, param8: any, param9: any): java.util.Map<any,any>;
+					public equals(param0: any): boolean;
+					public putAll(param0: java.util.Map<any,any>): void;
+					public static of(param0: any, param1: any, param2: any, param3: any): java.util.Map<any,any>;
+					public containsKey(param0: any): boolean;
+					public containsValue(param0: any): boolean;
+					public remove(param0: any): any;
+					public entrySet(): java.util.Set<java.util.Map.Entry<any,any>>;
+					public static copyOf(param0: java.util.Map<any,any>): com.facebook.common.internal.ImmutableMap<any,any>;
+					public keySet(): java.util.Set<any>;
+					public clear(): void;
+					public static of(): java.util.Map<any,any>;
+					public hashCode(): number;
+					public get(param0: any): any;
 				}
 			}
 		}
@@ -1647,8 +1883,23 @@ declare module com {
 			export module internal {
 				export class ImmutableSet<E>  extends java.util.HashSet<any> {
 					public static class: java.lang.Class<com.facebook.common.internal.ImmutableSet<any>>;
+					public addAll(param0: java.util.Collection<any>): boolean;
+					public remove(param0: any): boolean;
+					public removeAll(param0: java.util.Collection<any>): boolean;
 					public static copyOf(param0: java.util.Set<any>): com.facebook.common.internal.ImmutableSet<any>;
+					public isEmpty(): boolean;
+					public add(param0: any): boolean;
+					public containsAll(param0: java.util.Collection<any>): boolean;
+					public retainAll(param0: java.util.Collection<any>): boolean;
+					public size(): number;
+					public equals(param0: any): boolean;
+					public iterator(): java.util.Iterator<any>;
 					public static of(param0: native.Array<any>): com.facebook.common.internal.ImmutableSet<any>;
+					public toArray(param0: native.Array<any>): native.Array<any>;
+					public toArray(): native.Array<any>;
+					public clear(): void;
+					public hashCode(): number;
+					public contains(param0: any): boolean;
 				}
 			}
 		}
@@ -1659,7 +1910,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Ints {
+				export class Ints extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Ints>;
 					public static max(param0: native.Array<number>): number;
 				}
@@ -1672,17 +1923,18 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Objects {
+				export class Objects extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Objects>;
 					public static toStringHelper(param0: string): com.facebook.common.internal.Objects.ToStringHelper;
 					public static toStringHelper(param0: java.lang.Class<any>): com.facebook.common.internal.Objects.ToStringHelper;
 					public static firstNonNull(param0: any, param1: any): any;
 					public static hashCode(param0: native.Array<any>): number;
 					public static equal(param0: any, param1: any): boolean;
+					public hashCode(): number;
 					public static toStringHelper(param0: any): com.facebook.common.internal.Objects.ToStringHelper;
 				}
 				export module Objects {
-					export class ToStringHelper {
+					export class ToStringHelper extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.common.internal.Objects.ToStringHelper>;
 						public omitNullValues(): com.facebook.common.internal.Objects.ToStringHelper;
 						public add(param0: string, param1: any): com.facebook.common.internal.Objects.ToStringHelper;
@@ -1696,7 +1948,7 @@ declare module com {
 						public toString(): string;
 					}
 					export module ToStringHelper {
-						export class ValueHolder {
+						export class ValueHolder extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.common.internal.Objects.ToStringHelper.ValueHolder>;
 						}
 					}
@@ -1710,7 +1962,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Preconditions {
+				export class Preconditions extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Preconditions>;
 					public static checkElementIndex(param0: number, param1: number, param2: string): number;
 					public static checkState(param0: boolean, param1: any): void;
@@ -1736,7 +1988,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Sets {
+				export class Sets extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Sets>;
 					public static newHashSet(): java.util.HashSet<any>;
 					public static newHashSetWithCapacity(param0: number): java.util.HashSet<any>;
@@ -1760,11 +2012,12 @@ declare module com {
 				export class Supplier<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Supplier<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.internal.Supplier<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.internal.Supplier<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						get(): T;
 					});
+					public constructor();
 					public get(): T;
 				}
 			}
@@ -1776,7 +2029,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Suppliers {
+				export class Suppliers extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Suppliers>;
 					public static BOOLEAN_TRUE: com.facebook.common.internal.Supplier<java.lang.Boolean>;
 					public static BOOLEAN_FALSE: com.facebook.common.internal.Supplier<java.lang.Boolean>;
@@ -1792,7 +2045,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Throwables {
+				export class Throwables extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Throwables>;
 					public static getCausalChain(param0: java.lang.Throwable): java.util.List<java.lang.Throwable>;
 					public static propagateIfPossible(param0: java.lang.Throwable): void;
@@ -1812,13 +2065,22 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class VisibleForTesting {
+				export class VisibleForTesting extends java.lang.Object implements java.lang.annotation.Annotation {
 					public static class: java.lang.Class<com.facebook.common.internal.VisibleForTesting>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.internal.VisibleForTesting interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.internal.VisibleForTesting interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
+						annotationType(): java.lang.Class<any>;
+						equals(param0: any): boolean;
+						hashCode(): number;
+						toString(): string;
 					});
+					public constructor();
+					public equals(param0: any): boolean;
+					public toString(): string;
+					public annotationType(): java.lang.Class<any>;
+					public hashCode(): number;
 				}
 			}
 		}
@@ -1829,15 +2091,16 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module lifecycle {
-				export class AttachDetachListener {
+				export class AttachDetachListener extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.lifecycle.AttachDetachListener>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.lifecycle.AttachDetachListener interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.lifecycle.AttachDetachListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onAttachToView(param0: globalAndroid.view.View): void;
 						onDetachFromView(param0: globalAndroid.view.View): void;
 					});
+					public constructor();
 					public onAttachToView(param0: globalAndroid.view.View): void;
 					public onDetachFromView(param0: globalAndroid.view.View): void;
 				}
@@ -1850,7 +2113,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module logging {
-				export class FLog {
+				export class FLog extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.logging.FLog>;
 					public static VERBOSE: number;
 					public static DEBUG: number;
@@ -1945,7 +2208,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module logging {
-				export class FLogDefaultLoggingDelegate extends com.facebook.common.logging.LoggingDelegate {
+				export class FLogDefaultLoggingDelegate extends java.lang.Object implements com.facebook.common.logging.LoggingDelegate {
 					public static class: java.lang.Class<com.facebook.common.logging.FLogDefaultLoggingDelegate>;
 					public static sInstance: com.facebook.common.logging.FLogDefaultLoggingDelegate;
 					public i(param0: string, param1: string, param2: java.lang.Throwable): void;
@@ -1976,10 +2239,10 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module logging {
-				export class LoggingDelegate {
+				export class LoggingDelegate extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.logging.LoggingDelegate>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.logging.LoggingDelegate interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.logging.LoggingDelegate interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setMinimumLoggingLevel(param0: number): void;
@@ -1999,6 +2262,7 @@ declare module com {
 						wtf(param0: string, param1: string, param2: java.lang.Throwable): void;
 						log(param0: number, param1: string, param2: string): void;
 					});
+					public constructor();
 					public i(param0: string, param1: string, param2: java.lang.Throwable): void;
 					public getMinimumLoggingLevel(): number;
 					public v(param0: string, param1: string, param2: java.lang.Throwable): void;
@@ -2025,7 +2289,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module media {
-				export class MediaUtils {
+				export class MediaUtils extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.media.MediaUtils>;
 					public static ADDITIONAL_ALLOWED_MIME_TYPES: java.util.Map<string,string>;
 					public static isVideo(param0: string): boolean;
@@ -2047,7 +2311,7 @@ declare module com {
 				export class ByteArrayPool extends com.facebook.common.memory.Pool<native.Array<number>> {
 					public static class: java.lang.Class<com.facebook.common.memory.ByteArrayPool>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.memory.ByteArrayPool interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.memory.ByteArrayPool interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						get(param0: number): any;
@@ -2055,6 +2319,7 @@ declare module com {
 						release(param0: any): void;
 						trim(param0: com.facebook.common.memory.MemoryTrimType): void;
 					});
+					public constructor();
 					public release(param0: any): void;
 					public trim(param0: com.facebook.common.memory.MemoryTrimType): void;
 					public get(param0: number): any;
@@ -2077,6 +2342,7 @@ declare module com {
 					public getSuggestedTrimRatio(): number;
 					public static valueOf(param0: string): com.facebook.common.memory.MemoryTrimType;
 					public static values(): native.Array<com.facebook.common.memory.MemoryTrimType>;
+					public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 				}
 			}
 		}
@@ -2087,14 +2353,15 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class MemoryTrimmable {
+				export class MemoryTrimmable extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.memory.MemoryTrimmable>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.memory.MemoryTrimmable interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.memory.MemoryTrimmable interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						trim(param0: com.facebook.common.memory.MemoryTrimType): void;
 					});
+					public constructor();
 					public trim(param0: com.facebook.common.memory.MemoryTrimType): void;
 				}
 			}
@@ -2106,15 +2373,16 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class MemoryTrimmableRegistry {
+				export class MemoryTrimmableRegistry extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.memory.MemoryTrimmableRegistry>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.memory.MemoryTrimmableRegistry interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.memory.MemoryTrimmableRegistry interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						registerMemoryTrimmable(param0: com.facebook.common.memory.MemoryTrimmable): void;
 						unregisterMemoryTrimmable(param0: com.facebook.common.memory.MemoryTrimmable): void;
 					});
+					public constructor();
 					public unregisterMemoryTrimmable(param0: com.facebook.common.memory.MemoryTrimmable): void;
 					public registerMemoryTrimmable(param0: com.facebook.common.memory.MemoryTrimmable): void;
 				}
@@ -2127,7 +2395,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class NoOpMemoryTrimmableRegistry extends com.facebook.common.memory.MemoryTrimmableRegistry {
+				export class NoOpMemoryTrimmableRegistry extends java.lang.Object implements com.facebook.common.memory.MemoryTrimmableRegistry {
 					public static class: java.lang.Class<com.facebook.common.memory.NoOpMemoryTrimmableRegistry>;
 					public constructor();
 					public unregisterMemoryTrimmable(param0: com.facebook.common.memory.MemoryTrimmable): void;
@@ -2146,7 +2414,7 @@ declare module com {
 				export class Pool<V>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.memory.Pool<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.memory.Pool<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.memory.Pool<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						get(param0: number): V;
@@ -2154,6 +2422,7 @@ declare module com {
 						release(param0: any): void;
 						trim(param0: com.facebook.common.memory.MemoryTrimType): void;
 					});
+					public constructor();
 					public release(param0: any): void;
 					public get(param0: number): V;
 					public trim(param0: com.facebook.common.memory.MemoryTrimType): void;
@@ -2168,11 +2437,13 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class PooledByteArrayBufferedInputStream {
+				export class PooledByteArrayBufferedInputStream extends java.io.InputStream {
 					public static class: java.lang.Class<com.facebook.common.memory.PooledByteArrayBufferedInputStream>;
 					public available(): number;
 					public read(): number;
 					public read(param0: native.Array<number>, param1: number, param2: number): number;
+					public constructor();
+					public read(param0: native.Array<number>): number;
 					public finalize(): void;
 					public close(): void;
 					public skip(param0: number): number;
@@ -2187,10 +2458,10 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class PooledByteBuffer {
+				export class PooledByteBuffer extends java.lang.Object implements java.io.Closeable {
 					public static class: java.lang.Class<com.facebook.common.memory.PooledByteBuffer>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.memory.PooledByteBuffer interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.memory.PooledByteBuffer interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						size(): number;
@@ -2199,7 +2470,10 @@ declare module com {
 						getNativePtr(): number;
 						close(): void;
 						isClosed(): boolean;
+						close(): void;
+						close(): void;
 					});
+					public constructor();
 					public read(param0: number): number;
 					public close(): void;
 					public read(param0: number, param1: native.Array<number>, param2: number, param3: number): void;
@@ -2208,9 +2482,13 @@ declare module com {
 					public isClosed(): boolean;
 				}
 				export module PooledByteBuffer {
-					export class ClosedException {
+					export class ClosedException extends java.lang.RuntimeException {
 						public static class: java.lang.Class<com.facebook.common.memory.PooledByteBuffer.ClosedException>;
 						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
 					}
 				}
 			}
@@ -2222,10 +2500,10 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class PooledByteBufferFactory {
+				export class PooledByteBufferFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.memory.PooledByteBufferFactory>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.memory.PooledByteBufferFactory interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.memory.PooledByteBufferFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						newByteBuffer(param0: number): com.facebook.common.memory.PooledByteBuffer;
@@ -2235,6 +2513,7 @@ declare module com {
 						newOutputStream(): com.facebook.common.memory.PooledByteBufferOutputStream;
 						newOutputStream(param0: number): com.facebook.common.memory.PooledByteBufferOutputStream;
 					});
+					public constructor();
 					public newByteBuffer(param0: native.Array<number>): com.facebook.common.memory.PooledByteBuffer;
 					public newOutputStream(param0: number): com.facebook.common.memory.PooledByteBufferOutputStream;
 					public newByteBuffer(param0: number): com.facebook.common.memory.PooledByteBuffer;
@@ -2251,16 +2530,18 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class PooledByteBufferInputStream {
+				export class PooledByteBufferInputStream extends java.io.InputStream {
 					public static class: java.lang.Class<com.facebook.common.memory.PooledByteBufferInputStream>;
 					public available(): number;
 					public read(): number;
 					public read(param0: native.Array<number>, param1: number, param2: number): number;
 					public constructor(param0: com.facebook.common.memory.PooledByteBuffer);
 					public reset(): void;
+					public constructor();
 					public markSupported(): boolean;
 					public read(param0: native.Array<number>): number;
 					public skip(param0: number): number;
+					public close(): void;
 					public mark(param0: number): void;
 				}
 			}
@@ -2272,12 +2553,13 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export abstract class PooledByteBufferOutputStream {
+				export abstract class PooledByteBufferOutputStream extends java.io.OutputStream {
 					public static class: java.lang.Class<com.facebook.common.memory.PooledByteBufferOutputStream>;
 					public constructor();
 					public toByteBuffer(): com.facebook.common.memory.PooledByteBuffer;
 					public close(): void;
 					public size(): number;
+					public flush(): void;
 				}
 			}
 		}
@@ -2288,7 +2570,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class PooledByteStreams {
+				export class PooledByteStreams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.memory.PooledByteStreams>;
 					public constructor(param0: com.facebook.common.memory.ByteArrayPool, param1: number);
 					public constructor(param0: com.facebook.common.memory.ByteArrayPool);
@@ -2314,6 +2596,7 @@ declare module com {
 					public get(): T;
 					public getValueHash(): number;
 					public static isValid(param0: com.facebook.common.references.CloseableReference<any>): boolean;
+					public clone(): any;
 					public static of(param0: any, param1: com.facebook.common.references.ResourceReleaser<any>): com.facebook.common.references.CloseableReference<any>;
 					public cloneOrNull(): com.facebook.common.references.CloseableReference<T>;
 					public isValid(): boolean;
@@ -2350,11 +2633,12 @@ declare module com {
 				export class ResourceReleaser<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.references.ResourceReleaser<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.references.ResourceReleaser<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.references.ResourceReleaser<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						release(param0: T): void;
 					});
+					public constructor();
 					public release(param0: T): void;
 				}
 			}
@@ -2377,9 +2661,13 @@ declare module com {
 					public deleteReference(): void;
 				}
 				export module SharedReference {
-					export class NullReferenceException {
+					export class NullReferenceException extends java.lang.RuntimeException {
 						public static class: java.lang.Class<com.facebook.common.references.SharedReference.NullReferenceException>;
 						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
 					}
 				}
 			}
@@ -2391,7 +2679,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module statfs {
-				export class StatFsHelper {
+				export class StatFsHelper extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.statfs.StatFsHelper>;
 					public static getInstance(): com.facebook.common.statfs.StatFsHelper;
 					public constructor();
@@ -2408,6 +2696,7 @@ declare module com {
 						public static INTERNAL: com.facebook.common.statfs.StatFsHelper.StorageType;
 						public static EXTERNAL: com.facebook.common.statfs.StatFsHelper.StorageType;
 						public static values(): native.Array<com.facebook.common.statfs.StatFsHelper.StorageType>;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static valueOf(param0: string): com.facebook.common.statfs.StatFsHelper.StorageType;
 					}
 				}
@@ -2420,13 +2709,17 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module streams {
-				export class LimitedInputStream {
+				export class LimitedInputStream extends java.io.FilterInputStream {
 					public static class: java.lang.Class<com.facebook.common.streams.LimitedInputStream>;
 					public available(): number;
 					public read(): number;
 					public read(param0: native.Array<number>, param1: number, param2: number): number;
 					public reset(): void;
+					public constructor(param0: java.io.InputStream);
+					public constructor();
+					public read(param0: native.Array<number>): number;
 					public skip(param0: number): number;
+					public close(): void;
 					public constructor(param0: java.io.InputStream, param1: number);
 					public mark(param0: number): void;
 				}
@@ -2439,12 +2732,15 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module streams {
-				export class TailAppendingInputStream {
+				export class TailAppendingInputStream extends java.io.FilterInputStream {
 					public static class: java.lang.Class<com.facebook.common.streams.TailAppendingInputStream>;
 					public read(): number;
 					public read(param0: native.Array<number>, param1: number, param2: number): number;
 					public reset(): void;
+					public constructor(param0: java.io.InputStream);
+					public constructor();
 					public read(param0: native.Array<number>): number;
+					public close(): void;
 					public constructor(param0: java.io.InputStream, param1: native.Array<number>);
 					public mark(param0: number): void;
 				}
@@ -2457,7 +2753,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module time {
-				export class AwakeTimeSinceBootClock extends com.facebook.common.time.MonotonicClock {
+				export class AwakeTimeSinceBootClock extends java.lang.Object implements com.facebook.common.time.MonotonicClock {
 					public static class: java.lang.Class<com.facebook.common.time.AwakeTimeSinceBootClock>;
 					public static get(): com.facebook.common.time.AwakeTimeSinceBootClock;
 					public now(): number;
@@ -2471,14 +2767,15 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module time {
-				export class Clock {
+				export class Clock extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.time.Clock>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.time.Clock interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.time.Clock interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						now(): number;
 					});
+					public constructor();
 					public static MAX_TIME: number;
 					public now(): number;
 				}
@@ -2491,7 +2788,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module time {
-				export class CurrentThreadTimeClock extends com.facebook.common.time.Clock {
+				export class CurrentThreadTimeClock extends java.lang.Object implements com.facebook.common.time.Clock {
 					public static class: java.lang.Class<com.facebook.common.time.CurrentThreadTimeClock>;
 					public constructor();
 					public now(): number;
@@ -2505,14 +2802,15 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module time {
-				export class MonotonicClock {
+				export class MonotonicClock extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.time.MonotonicClock>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.time.MonotonicClock interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.time.MonotonicClock interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						now(): number;
 					});
+					public constructor();
 					public now(): number;
 				}
 			}
@@ -2524,7 +2822,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module time {
-				export class RealtimeSinceBootClock extends com.facebook.common.time.MonotonicClock {
+				export class RealtimeSinceBootClock extends java.lang.Object implements com.facebook.common.time.MonotonicClock {
 					public static class: java.lang.Class<com.facebook.common.time.RealtimeSinceBootClock>;
 					public now(): number;
 					public static get(): com.facebook.common.time.RealtimeSinceBootClock;
@@ -2538,7 +2836,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module time {
-				export class SystemClock extends com.facebook.common.time.Clock {
+				export class SystemClock extends java.lang.Object implements com.facebook.common.time.Clock {
 					public static class: java.lang.Class<com.facebook.common.time.SystemClock>;
 					public static get(): com.facebook.common.time.SystemClock;
 					public now(): number;
@@ -2552,7 +2850,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module util {
-				export class ByteConstants {
+				export class ByteConstants extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.util.ByteConstants>;
 					public static KB: number;
 					public static MB: number;
@@ -2566,10 +2864,14 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module util {
-				export class ExceptionWithNoStacktrace {
+				export class ExceptionWithNoStacktrace extends java.lang.Exception {
 					public static class: java.lang.Class<com.facebook.common.util.ExceptionWithNoStacktrace>;
+					public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+					public constructor(param0: string, param1: java.lang.Throwable);
 					public fillInStackTrace(): java.lang.Throwable;
 					public constructor(param0: string);
+					public constructor(param0: java.lang.Throwable);
+					public constructor();
 				}
 			}
 		}
@@ -2580,7 +2882,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module util {
-				export class HashCodeUtil {
+				export class HashCodeUtil extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.util.HashCodeUtil>;
 					public static hashCode(param0: any, param1: any, param2: any, param3: any): number;
 					public static hashCode(param0: number, param1: number, param2: number): number;
@@ -2594,6 +2896,7 @@ declare module com {
 					public static hashCode(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any): number;
 					public static hashCode(param0: number, param1: number): number;
 					public static hashCode(param0: number): number;
+					public hashCode(): number;
 					public static hashCode(param0: any, param1: any): number;
 				}
 			}
@@ -2605,7 +2908,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module util {
-				export class Hex {
+				export class Hex extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.util.Hex>;
 					public static byte2Hex(param0: number): string;
 					public static decodeHex(param0: string): native.Array<number>;
@@ -2622,7 +2925,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module util {
-				export class SecureHashUtil {
+				export class SecureHashUtil extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.util.SecureHashUtil>;
 					public static makeSHA1Hash(param0: native.Array<number>): string;
 					public static makeMD5Hash(param0: java.io.InputStream): string;
@@ -2643,7 +2946,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module util {
-				export class StreamUtil {
+				export class StreamUtil extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.util.StreamUtil>;
 					public static getBytesFromStream(param0: java.io.InputStream, param1: number): native.Array<number>;
 					public constructor();
@@ -2673,6 +2976,7 @@ declare module com {
 					public getDbValue(): number;
 					public static valueOf(param0: string): com.facebook.common.util.TriState;
 					public static valueOf(param0: java.lang.Boolean): com.facebook.common.util.TriState;
+					public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 					public asBoolean(param0: boolean): boolean;
 				}
 			}
@@ -2684,7 +2988,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module util {
-				export class UriUtil {
+				export class UriUtil extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.util.UriUtil>;
 					public static HTTP_SCHEME: string;
 					public static HTTPS_SCHEME: string;
@@ -2721,14 +3025,15 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module webp {
-				export class BitmapCreator {
+				export class BitmapCreator extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.webp.BitmapCreator>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.webp.BitmapCreator interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.webp.BitmapCreator interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						createNakedBitmap(param0: number, param1: number, param2: globalAndroid.graphics.Bitmap.Config): globalAndroid.graphics.Bitmap;
 					});
+					public constructor();
 					public createNakedBitmap(param0: number, param1: number, param2: globalAndroid.graphics.Bitmap.Config): globalAndroid.graphics.Bitmap;
 				}
 			}
@@ -2740,10 +3045,10 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module webp {
-				export class WebpBitmapFactory {
+				export class WebpBitmapFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.webp.WebpBitmapFactory>;
 					/**
-					 * Constructs a new instance of the com.facebook.common.webp.WebpBitmapFactory interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.common.webp.WebpBitmapFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setWebpErrorLogger(param0: com.facebook.common.webp.WebpBitmapFactory.WebpErrorLogger): void;
@@ -2753,6 +3058,7 @@ declare module com {
 						decodeFile(param0: string, param1: globalAndroid.graphics.BitmapFactory.Options): globalAndroid.graphics.Bitmap;
 						decodeByteArray(param0: native.Array<number>, param1: number, param2: number, param3: globalAndroid.graphics.BitmapFactory.Options): globalAndroid.graphics.Bitmap;
 					});
+					public constructor();
 					public decodeByteArray(param0: native.Array<number>, param1: number, param2: number, param3: globalAndroid.graphics.BitmapFactory.Options): globalAndroid.graphics.Bitmap;
 					public setBitmapCreator(param0: com.facebook.common.webp.BitmapCreator): void;
 					public decodeFile(param0: string, param1: globalAndroid.graphics.BitmapFactory.Options): globalAndroid.graphics.Bitmap;
@@ -2761,14 +3067,15 @@ declare module com {
 					public setWebpErrorLogger(param0: com.facebook.common.webp.WebpBitmapFactory.WebpErrorLogger): void;
 				}
 				export module WebpBitmapFactory {
-					export class WebpErrorLogger {
+					export class WebpErrorLogger extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.common.webp.WebpBitmapFactory.WebpErrorLogger>;
 						/**
-						 * Constructs a new instance of the com.facebook.common.webp.WebpBitmapFactory$WebpErrorLogger interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.common.webp.WebpBitmapFactory$WebpErrorLogger interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							onWebpErrorLog(param0: string, param1: string): void;
 						});
+						public constructor();
 						public onWebpErrorLog(param0: string, param1: string): void;
 					}
 				}
@@ -2781,7 +3088,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module webp {
-				export class WebpSupportStatus {
+				export class WebpSupportStatus extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.webp.WebpSupportStatus>;
 					public static sIsWebpSupportRequired: boolean;
 					public static sIsSimpleWebpSupported: boolean;
@@ -2831,6 +3138,7 @@ declare module com {
 					public static FAILURE: com.facebook.datasource.AbstractDataSource.DataSourceStatus;
 					public static valueOf(param0: string): com.facebook.datasource.AbstractDataSource.DataSourceStatus;
 					public static values(): native.Array<com.facebook.datasource.AbstractDataSource.DataSourceStatus>;
+					public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 				}
 			}
 		}
@@ -2881,7 +3189,7 @@ declare module com {
 			export class DataSource<T>  extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.datasource.DataSource<any>>;
 				/**
-				 * Constructs a new instance of the com.facebook.datasource.DataSource<any> interface with the provided implementation.
+				 * Constructs a new instance of the com.facebook.datasource.DataSource<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 				 */
 				public constructor(implementation: {
 					isClosed(): boolean;
@@ -2894,6 +3202,7 @@ declare module com {
 					close(): boolean;
 					subscribe(param0: com.facebook.datasource.DataSubscriber<T>, param1: java.util.concurrent.Executor): void;
 				});
+				public constructor();
 				public hasFailed(): boolean;
 				public getFailureCause(): java.lang.Throwable;
 				public getProgress(): number;
@@ -2911,7 +3220,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export class DataSources {
+			export class DataSources extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.datasource.DataSources>;
 				public static waitForFinalResult(param0: com.facebook.datasource.DataSource<any>): any;
 				public static getFailedDataSourceSupplier(param0: java.lang.Throwable): com.facebook.common.internal.Supplier<any>;
@@ -2934,7 +3243,7 @@ declare module com {
 			export class DataSubscriber<T>  extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.datasource.DataSubscriber<any>>;
 				/**
-				 * Constructs a new instance of the com.facebook.datasource.DataSubscriber<any> interface with the provided implementation.
+				 * Constructs a new instance of the com.facebook.datasource.DataSubscriber<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 				 */
 				public constructor(implementation: {
 					onNewResult(param0: com.facebook.datasource.DataSource<T>): void;
@@ -2942,6 +3251,7 @@ declare module com {
 					onCancellation(param0: com.facebook.datasource.DataSource<T>): void;
 					onProgressUpdate(param0: com.facebook.datasource.DataSource<T>): void;
 				});
+				public constructor();
 				public onNewResult(param0: com.facebook.datasource.DataSource<T>): void;
 				public onCancellation(param0: com.facebook.datasource.DataSource<T>): void;
 				public onProgressUpdate(param0: com.facebook.datasource.DataSource<T>): void;
@@ -3100,14 +3410,15 @@ declare module com {
 	export module facebook {
 		export module drawable {
 			export module base {
-				export class DrawableWithCaches {
+				export class DrawableWithCaches extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawable.base.DrawableWithCaches>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawable.base.DrawableWithCaches interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawable.base.DrawableWithCaches interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						dropCaches(): void;
 					});
+					public constructor();
 					public dropCaches(): void;
 				}
 			}
@@ -3118,7 +3429,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module drawee {
-			export class BuildConfig {
+			export class BuildConfig extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.drawee.BuildConfig>;
 				public static DEBUG: boolean;
 				public static APPLICATION_ID: string;
@@ -3137,7 +3448,7 @@ declare module com {
 		export module drawee {
 			export module backends {
 				export module pipeline {
-					export class BuildConfig {
+					export class BuildConfig extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.BuildConfig>;
 						public static DEBUG: boolean;
 						public static APPLICATION_ID: string;
@@ -3158,7 +3469,7 @@ declare module com {
 		export module drawee {
 			export module backends {
 				export module pipeline {
-					export class DraweeConfig {
+					export class DraweeConfig extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.DraweeConfig>;
 						public getDebugOverlayEnabledSupplier(): com.facebook.common.internal.Supplier<java.lang.Boolean>;
 						public getCustomDrawableFactories(): com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>;
@@ -3166,7 +3477,7 @@ declare module com {
 						public getPipelineDraweeControllerFactory(): com.facebook.drawee.backends.pipeline.PipelineDraweeControllerFactory;
 					}
 					export module DraweeConfig {
-						export class Builder {
+						export class Builder extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.DraweeConfig.Builder>;
 							public constructor();
 							public setDrawDebugOverlay(param0: boolean): com.facebook.drawee.backends.pipeline.DraweeConfig.Builder;
@@ -3187,7 +3498,7 @@ declare module com {
 		export module drawee {
 			export module backends {
 				export module pipeline {
-					export class Fresco {
+					export class Fresco extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.Fresco>;
 						public static newDraweeControllerBuilder(): com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 						public static getImagePipelineFactory(): com.facebook.imagepipeline.core.ImagePipelineFactory;
@@ -3317,7 +3628,7 @@ declare module com {
 		export module drawee {
 			export module backends {
 				export module pipeline {
-					export class PipelineDraweeControllerFactory {
+					export class PipelineDraweeControllerFactory extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.PipelineDraweeControllerFactory>;
 						public constructor();
 						public newController(param0: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param1: string, param2: com.facebook.cache.common.CacheKey, param3: any): com.facebook.drawee.backends.pipeline.PipelineDraweeController;
@@ -3337,18 +3648,27 @@ declare module com {
 			export module backends {
 				export module pipeline {
 					export module info {
-						export class ImageOrigin {
+						export class ImageOrigin extends java.lang.Object implements java.lang.annotation.Annotation {
 							public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.info.ImageOrigin>;
 							/**
-							 * Constructs a new instance of the com.facebook.drawee.backends.pipeline.info.ImageOrigin interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.drawee.backends.pipeline.info.ImageOrigin interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
+								annotationType(): java.lang.Class<any>;
+								equals(param0: any): boolean;
+								hashCode(): number;
+								toString(): string;
 							});
+							public constructor();
 							public static UNKNOWN: number;
 							public static DISK: number;
 							public static MEMORY_BITMAP: number;
 							public static NETWORK: number;
 							public static MEMORY_ENCODED: number;
+							public hashCode(): number;
+							public annotationType(): java.lang.Class<any>;
+							public toString(): string;
+							public equals(param0: any): boolean;
 						}
 					}
 				}
@@ -3363,14 +3683,15 @@ declare module com {
 			export module backends {
 				export module pipeline {
 					export module info {
-						export class ImageOriginListener {
+						export class ImageOriginListener extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.info.ImageOriginListener>;
 							/**
-							 * Constructs a new instance of the com.facebook.drawee.backends.pipeline.info.ImageOriginListener interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.drawee.backends.pipeline.info.ImageOriginListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								onImageLoaded(param0: string, param1: number, param2: boolean): void;
 							});
+							public constructor();
 							public onImageLoaded(param0: string, param1: number, param2: boolean): void;
 						}
 					}
@@ -3384,7 +3705,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module components {
-				export class DeferredReleaser {
+				export class DeferredReleaser extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.components.DeferredReleaser>;
 					public constructor();
 					public scheduleDeferredRelease(param0: com.facebook.drawee.components.DeferredReleaser.Releasable): void;
@@ -3392,14 +3713,15 @@ declare module com {
 					public cancelDeferredRelease(param0: com.facebook.drawee.components.DeferredReleaser.Releasable): void;
 				}
 				export module DeferredReleaser {
-					export class Releasable {
+					export class Releasable extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.components.DeferredReleaser.Releasable>;
 						/**
-						 * Constructs a new instance of the com.facebook.drawee.components.DeferredReleaser$Releasable interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.drawee.components.DeferredReleaser$Releasable interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							release(): void;
 						});
+						public constructor();
 						public release(): void;
 					}
 				}
@@ -3412,7 +3734,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module components {
-				export class DraweeEventTracker {
+				export class DraweeEventTracker extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.components.DraweeEventTracker>;
 					public toString(): string;
 					public static newInstance(): com.facebook.drawee.components.DraweeEventTracker;
@@ -3447,6 +3769,7 @@ declare module com {
 						public static ON_SAME_CONTROLLER_SKIPPED: com.facebook.drawee.components.DraweeEventTracker.Event;
 						public static ON_SUBMIT_CACHE_HIT: com.facebook.drawee.components.DraweeEventTracker.Event;
 						public static values(): native.Array<com.facebook.drawee.components.DraweeEventTracker.Event>;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static valueOf(param0: string): com.facebook.drawee.components.DraweeEventTracker.Event;
 					}
 				}
@@ -3459,7 +3782,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module components {
-				export class RetryManager {
+				export class RetryManager extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.components.RetryManager>;
 					public reset(): void;
 					public static newInstance(): com.facebook.drawee.components.RetryManager;
@@ -3599,6 +3922,7 @@ declare module com {
 						public static DISK_CACHE: com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel;
 						public static BITMAP_MEMORY_CACHE: com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel;
 						public static valueOf(param0: string): com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static values(): native.Array<com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel>;
 					}
 				}
@@ -3634,7 +3958,7 @@ declare module com {
 				export class ControllerListener<INFO>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.controller.ControllerListener<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.controller.ControllerListener<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.controller.ControllerListener<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onSubmit(param0: string, param1: any): void;
@@ -3644,6 +3968,7 @@ declare module com {
 						onFailure(param0: string, param1: java.lang.Throwable): void;
 						onRelease(param0: string): void;
 					});
+					public constructor();
 					public onRelease(param0: string): void;
 					public onIntermediateImageFailed(param0: string, param1: java.lang.Throwable): void;
 					public onFailure(param0: string, param1: java.lang.Throwable): void;
@@ -3660,15 +3985,16 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module controller {
-				export class ControllerViewportVisibilityListener {
+				export class ControllerViewportVisibilityListener extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.controller.ControllerViewportVisibilityListener>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.controller.ControllerViewportVisibilityListener interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.controller.ControllerViewportVisibilityListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onDraweeViewportEntry(param0: string): void;
 						onDraweeViewportExit(param0: string): void;
 					});
+					public constructor();
 					public onDraweeViewportEntry(param0: string): void;
 					public onDraweeViewportExit(param0: string): void;
 				}
@@ -3706,7 +4032,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module debug {
-				export class DebugControllerOverlayDrawable implements com.facebook.drawee.debug.listener.ImageLoadingTimeListener {
+				export class DebugControllerOverlayDrawable extends globalAndroid.graphics.drawable.Drawable implements com.facebook.drawee.debug.listener.ImageLoadingTimeListener {
 					public static class: java.lang.Class<com.facebook.drawee.debug.DebugControllerOverlayDrawable>;
 					public setImageSize(param0: number): void;
 					public reset(): void;
@@ -3722,6 +4048,7 @@ declare module com {
 					public onBoundsChange(param0: globalAndroid.graphics.Rect): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public setControllerId(param0: string): void;
+					public setColorFilter(param0: number, param1: globalAndroid.graphics.PorterDuff.Mode): void;
 					public setAnimationInfo(param0: number, param1: number): void;
 					public setScaleType(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType): void;
 					public getOpacity(): number;
@@ -3758,14 +4085,15 @@ declare module com {
 		export module drawee {
 			export module debug {
 				export module listener {
-					export class ImageLoadingTimeListener {
+					export class ImageLoadingTimeListener extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.debug.listener.ImageLoadingTimeListener>;
 						/**
-						 * Constructs a new instance of the com.facebook.drawee.debug.listener.ImageLoadingTimeListener interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.drawee.debug.listener.ImageLoadingTimeListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							onFinalImageSet(param0: number): void;
 						});
+						public constructor();
 						public onFinalImageSet(param0: number): void;
 					}
 				}
@@ -3778,7 +4106,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class ArrayDrawable implements com.facebook.drawee.drawable.TransformCallback, com.facebook.drawee.drawable.TransformAwareDrawable {
+				export class ArrayDrawable extends globalAndroid.graphics.drawable.Drawable implements globalAndroid.graphics.drawable.Drawable.Callback, com.facebook.drawee.drawable.TransformCallback, com.facebook.drawee.drawable.TransformAwareDrawable {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.ArrayDrawable>;
 					public getDrawable(param0: number): globalAndroid.graphics.drawable.Drawable;
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
@@ -3792,7 +4120,9 @@ declare module com {
 					public constructor(param0: native.Array<globalAndroid.graphics.drawable.Drawable>);
 					public setHotspot(param0: number, param1: number): void;
 					public setFilterBitmap(param0: boolean): void;
+					public constructor();
 					public getPadding(param0: globalAndroid.graphics.Rect): boolean;
+					public setColorFilter(param0: number, param1: globalAndroid.graphics.PorterDuff.Mode): void;
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 					public getOpacity(): number;
 					public getDrawableParentForIndex(param0: number): com.facebook.drawee.drawable.DrawableParent;
@@ -3817,7 +4147,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class AutoRotateDrawable extends com.facebook.drawee.drawable.ForwardingDrawable implements com.facebook.drawee.drawable.CloneableDrawable {
+				export class AutoRotateDrawable extends com.facebook.drawee.drawable.ForwardingDrawable implements java.lang.Runnable, com.facebook.drawee.drawable.CloneableDrawable {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.AutoRotateDrawable>;
 					public reset(): void;
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
@@ -3827,11 +4157,15 @@ declare module com {
 					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
 					public setClockwise(param0: boolean): void;
 					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
 					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
+					public constructor();
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public constructor(param0: globalAndroid.graphics.drawable.Drawable, param1: number);
 					public constructor(param0: globalAndroid.graphics.drawable.Drawable, param1: number, param2: boolean);
 					public getTransform(param0: globalAndroid.graphics.Matrix): void;
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 				}
 			}
@@ -3843,14 +4177,15 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class CloneableDrawable {
+				export class CloneableDrawable extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.CloneableDrawable>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.drawable.CloneableDrawable interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.drawable.CloneableDrawable interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						cloneDrawable(): globalAndroid.graphics.drawable.Drawable;
 					});
+					public constructor();
 					public cloneDrawable(): globalAndroid.graphics.drawable.Drawable;
 				}
 			}
@@ -3862,15 +4197,16 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class DrawableParent {
+				export class DrawableParent extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.DrawableParent>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.drawable.DrawableParent interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.drawable.DrawableParent interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
 						getDrawable(): globalAndroid.graphics.drawable.Drawable;
 					});
+					public constructor();
 					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
 					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
 				}
@@ -3883,7 +4219,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class DrawableProperties {
+				export class DrawableProperties extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.DrawableProperties>;
 					public setDither(param0: boolean): void;
 					public setFilterBitmap(param0: boolean): void;
@@ -3901,7 +4237,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class DrawableUtils {
+				export class DrawableUtils extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.DrawableUtils>;
 					public constructor();
 					public static cloneDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
@@ -3926,28 +4262,32 @@ declare module com {
 					public static TRANSITION_RUNNING: number;
 					public static TRANSITION_NONE: number;
 					public invalidateSelf(): void;
-					public getAlpha(): number;
-					public reset(): void;
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
-					public fadeToLayer(param0: number): void;
 					public beginBatchMode(): void;
-					public isLayerOn(param0: number): boolean;
 					public setTransitionDuration(param0: number): void;
-					public setAlpha(param0: number): void;
 					public constructor(param0: native.Array<globalAndroid.graphics.drawable.Drawable>);
-					public endBatchMode(): void;
-					public fadeOutAllLayers(): void;
 					public getCurrentTimeMs(): number;
 					public getTransitionState(): number;
+					public constructor();
 					public getTransitionDuration(): number;
-					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public fadeInLayer(param0: number): void;
 					public fadeOutLayer(param0: number): void;
 					public finishTransitionImmediately(): void;
-					public getTransform(param0: globalAndroid.graphics.Matrix): void;
 					public fadeUpToLayer(param0: number): void;
-					public fadeInAllLayers(): void;
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
+					public getAlpha(): number;
+					public reset(): void;
+					public fadeToLayer(param0: number): void;
+					public isLayerOn(param0: number): boolean;
+					public setAlpha(param0: number): void;
+					public endBatchMode(): void;
+					public fadeOutAllLayers(): void;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
+					public draw(param0: globalAndroid.graphics.Canvas): void;
+					public getTransform(param0: globalAndroid.graphics.Matrix): void;
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
+					public fadeInAllLayers(): void;
 				}
 			}
 		}
@@ -3958,7 +4298,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class ForwardingDrawable implements com.facebook.drawee.drawable.TransformCallback, com.facebook.drawee.drawable.TransformAwareDrawable, com.facebook.drawee.drawable.DrawableParent {
+				export class ForwardingDrawable extends globalAndroid.graphics.drawable.Drawable implements globalAndroid.graphics.drawable.Drawable.Callback, com.facebook.drawee.drawable.TransformCallback, com.facebook.drawee.drawable.TransformAwareDrawable, com.facebook.drawee.drawable.DrawableParent {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.ForwardingDrawable>;
 					public mTransformCallback: com.facebook.drawee.drawable.TransformCallback;
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
@@ -3973,7 +4313,9 @@ declare module com {
 					public setCurrent(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
 					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
 					public setFilterBitmap(param0: boolean): void;
+					public constructor();
 					public getPadding(param0: globalAndroid.graphics.Rect): boolean;
+					public setColorFilter(param0: number, param1: globalAndroid.graphics.PorterDuff.Mode): void;
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 					public getOpacity(): number;
 					public getConstantState(): globalAndroid.graphics.drawable.Drawable.ConstantState;
@@ -4004,18 +4346,22 @@ declare module com {
 			export module drawable {
 				export class MatrixDrawable extends com.facebook.drawee.drawable.ForwardingDrawable {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.MatrixDrawable>;
-					public setCurrent(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
-					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
 					public getMatrix(): globalAndroid.graphics.Matrix;
+					public constructor(param0: globalAndroid.graphics.drawable.Drawable, param1: globalAndroid.graphics.Matrix);
+					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
+					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
+					public setCurrent(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
+					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
+					public constructor();
 					public onBoundsChange(param0: globalAndroid.graphics.Rect): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
-					public constructor(param0: globalAndroid.graphics.drawable.Drawable, param1: globalAndroid.graphics.Matrix);
 					public setMatrix(param0: globalAndroid.graphics.Matrix): void;
 					public getTransform(param0: globalAndroid.graphics.Matrix): void;
-					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
-					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
 				}
 			}
 		}
@@ -4030,16 +4376,20 @@ declare module com {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.OrientedDrawable>;
 					public constructor(param0: globalAndroid.graphics.drawable.Drawable, param1: number, param2: number);
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
+					public getIntrinsicHeight(): number;
+					public getIntrinsicWidth(): number;
+					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
+					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
 					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
+					public constructor();
 					public onBoundsChange(param0: globalAndroid.graphics.Rect): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public constructor(param0: globalAndroid.graphics.drawable.Drawable, param1: number);
-					public getIntrinsicHeight(): number;
 					public getTransform(param0: globalAndroid.graphics.Matrix): void;
-					public getIntrinsicWidth(): number;
-					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
-					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
 				}
 			}
 		}
@@ -4050,7 +4400,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class ProgressBarDrawable implements com.facebook.drawee.drawable.CloneableDrawable {
+				export class ProgressBarDrawable extends globalAndroid.graphics.drawable.Drawable implements com.facebook.drawee.drawable.CloneableDrawable {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.ProgressBarDrawable>;
 					public getBarWidth(): number;
 					public setHideWhenZero(param0: boolean): void;
@@ -4071,6 +4421,7 @@ declare module com {
 					public setPadding(param0: number): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public setRadius(param0: number): void;
+					public setColorFilter(param0: number, param1: globalAndroid.graphics.PorterDuff.Mode): void;
 					public getBackgroundColor(): number;
 					public getOpacity(): number;
 				}
@@ -4083,10 +4434,10 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class Rounded {
+				export class Rounded extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.Rounded>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.drawable.Rounded interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.drawable.Rounded interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setCircle(param0: boolean): void;
@@ -4102,6 +4453,7 @@ declare module com {
 						setScaleDownInsideBorders(param0: boolean): void;
 						getScaleDownInsideBorders(): boolean;
 					});
+					public constructor();
 					public setScaleDownInsideBorders(param0: boolean): void;
 					public setBorder(param0: number, param1: number): void;
 					public getBorderWidth(): number;
@@ -4124,26 +4476,35 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class RoundedBitmapDrawable implements com.facebook.drawee.drawable.TransformAwareDrawable, com.facebook.drawee.drawable.Rounded {
+				export class RoundedBitmapDrawable extends globalAndroid.graphics.drawable.BitmapDrawable implements com.facebook.drawee.drawable.TransformAwareDrawable, com.facebook.drawee.drawable.Rounded {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.RoundedBitmapDrawable>;
-					public setScaleDownInsideBorders(param0: boolean): void;
-					public setBorder(param0: number, param1: number): void;
+					public constructor(param0: string);
 					public getBorderColor(): number;
-					public getRadii(): native.Array<number>;
+					public constructor(param0: globalAndroid.content.res.Resources);
 					public constructor(param0: globalAndroid.content.res.Resources, param1: globalAndroid.graphics.Bitmap, param2: globalAndroid.graphics.Paint);
 					public setRadii(param0: native.Array<number>): void;
 					public setColorFilter(param0: globalAndroid.graphics.ColorFilter): void;
+					public getBorderWidth(): number;
+					public constructor(param0: java.io.InputStream);
+					public constructor();
+					public setCircle(param0: boolean): void;
+					public getPadding(param0: globalAndroid.graphics.Rect): boolean;
+					public setColorFilter(param0: number, param1: globalAndroid.graphics.PorterDuff.Mode): void;
+					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
+					public setScaleDownInsideBorders(param0: boolean): void;
+					public setBorder(param0: number, param1: number): void;
+					public constructor(param0: globalAndroid.graphics.Bitmap);
+					public constructor(param0: globalAndroid.content.res.Resources, param1: string);
+					public getRadii(): native.Array<number>;
 					public setAlpha(param0: number): void;
 					public static fromBitmapDrawable(param0: globalAndroid.content.res.Resources, param1: globalAndroid.graphics.drawable.BitmapDrawable): com.facebook.drawee.drawable.RoundedBitmapDrawable;
-					public getBorderWidth(): number;
 					public isCircle(): boolean;
 					public getPadding(): number;
-					public setCircle(param0: boolean): void;
 					public setPadding(param0: number): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public setRadius(param0: number): void;
 					public constructor(param0: globalAndroid.content.res.Resources, param1: globalAndroid.graphics.Bitmap);
-					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
+					public constructor(param0: globalAndroid.content.res.Resources, param1: java.io.InputStream);
 					public getScaleDownInsideBorders(): boolean;
 				}
 			}
@@ -4155,32 +4516,35 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class RoundedColorDrawable implements com.facebook.drawee.drawable.Rounded {
+				export class RoundedColorDrawable extends globalAndroid.graphics.drawable.Drawable implements com.facebook.drawee.drawable.Rounded {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.RoundedColorDrawable>;
+					public getBorderColor(): number;
+					public setRadii(param0: native.Array<number>): void;
+					public setColorFilter(param0: globalAndroid.graphics.ColorFilter): void;
+					public getBorderWidth(): number;
+					public constructor();
+					public setCircle(param0: boolean): void;
+					public getPadding(param0: globalAndroid.graphics.Rect): boolean;
+					public setColorFilter(param0: number, param1: globalAndroid.graphics.PorterDuff.Mode): void;
+					public static fromColorDrawable(param0: globalAndroid.graphics.drawable.ColorDrawable): com.facebook.drawee.drawable.RoundedColorDrawable;
+					public constructor(param0: number);
+					public constructor(param0: number, param1: number);
+					public getOpacity(): number;
 					public setScaleDownInsideBorders(param0: boolean): void;
 					public getAlpha(): number;
 					public setBorder(param0: number, param1: number): void;
 					public setColor(param0: number): void;
 					public getColor(): number;
-					public getBorderColor(): number;
 					public getRadii(): native.Array<number>;
-					public setRadii(param0: native.Array<number>): void;
-					public setColorFilter(param0: globalAndroid.graphics.ColorFilter): void;
 					public setAlpha(param0: number): void;
 					public constructor(param0: native.Array<number>, param1: number);
-					public getBorderWidth(): number;
 					public isCircle(): boolean;
 					public getPadding(): number;
 					public onBoundsChange(param0: globalAndroid.graphics.Rect): void;
-					public setCircle(param0: boolean): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public setPadding(param0: number): void;
 					public setRadius(param0: number): void;
-					public static fromColorDrawable(param0: globalAndroid.graphics.drawable.ColorDrawable): com.facebook.drawee.drawable.RoundedColorDrawable;
-					public constructor(param0: number);
-					public constructor(param0: number, param1: number);
 					public getScaleDownInsideBorders(): boolean;
-					public getOpacity(): number;
 				}
 			}
 		}
@@ -4193,29 +4557,33 @@ declare module com {
 			export module drawable {
 				export class RoundedCornersDrawable extends com.facebook.drawee.drawable.ForwardingDrawable implements com.facebook.drawee.drawable.Rounded {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.RoundedCornersDrawable>;
-					public setScaleDownInsideBorders(param0: boolean): void;
-					public setBorder(param0: number, param1: number): void;
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
 					public getBorderColor(): number;
-					public getRadii(): native.Array<number>;
 					public setRadii(param0: native.Array<number>): void;
-					public getOverlayColor(): number;
-					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
 					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
 					public getBorderWidth(): number;
 					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
+					public constructor();
+					public setCircle(param0: boolean): void;
+					public getPadding(param0: globalAndroid.graphics.Rect): boolean;
+					public setOverlayColor(param0: number): void;
+					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
+					public setScaleDownInsideBorders(param0: boolean): void;
+					public setBorder(param0: number, param1: number): void;
+					public getRadii(): native.Array<number>;
+					public getOverlayColor(): number;
+					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
 					public setType(param0: com.facebook.drawee.drawable.RoundedCornersDrawable.Type): void;
 					public isCircle(): boolean;
 					public getPadding(): number;
-					public setCircle(param0: boolean): void;
-					public getPadding(param0: globalAndroid.graphics.Rect): boolean;
 					public onBoundsChange(param0: globalAndroid.graphics.Rect): void;
 					public setPadding(param0: number): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public setRadius(param0: number): void;
-					public setOverlayColor(param0: number): void;
 					public getTransform(param0: globalAndroid.graphics.Matrix): void;
-					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
 					public getScaleDownInsideBorders(): boolean;
 				}
 				export module RoundedCornersDrawable {
@@ -4224,6 +4592,7 @@ declare module com {
 						public static OVERLAY_COLOR: com.facebook.drawee.drawable.RoundedCornersDrawable.Type;
 						public static CLIPPING: com.facebook.drawee.drawable.RoundedCornersDrawable.Type;
 						public static valueOf(param0: string): com.facebook.drawee.drawable.RoundedCornersDrawable.Type;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static values(): native.Array<com.facebook.drawee.drawable.RoundedCornersDrawable.Type>;
 					}
 				}
@@ -4246,11 +4615,15 @@ declare module com {
 					public setCurrent(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
 					public getScaleType(): com.facebook.drawee.drawable.ScalingUtils.ScaleType;
 					public getFocusPoint(): globalAndroid.graphics.PointF;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
 					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
+					public constructor();
 					public onBoundsChange(param0: globalAndroid.graphics.Rect): void;
 					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public getTransform(param0: globalAndroid.graphics.Matrix): void;
 					public setScaleType(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType): void;
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 				}
 			}
@@ -4262,19 +4635,19 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class ScalingUtils {
+				export class ScalingUtils extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.ScalingUtils>;
 					public static getActiveScaleTypeDrawable(param0: globalAndroid.graphics.drawable.Drawable): com.facebook.drawee.drawable.ScaleTypeDrawable;
 					public constructor();
 				}
 				export module ScalingUtils {
-					export abstract class AbstractScaleType extends com.facebook.drawee.drawable.ScalingUtils.ScaleType {
+					export abstract class AbstractScaleType extends java.lang.Object implements com.facebook.drawee.drawable.ScalingUtils.ScaleType {
 						public static class: java.lang.Class<com.facebook.drawee.drawable.ScalingUtils.AbstractScaleType>;
 						public constructor();
 						public getTransform(param0: globalAndroid.graphics.Matrix, param1: globalAndroid.graphics.Rect, param2: number, param3: number, param4: number, param5: number): globalAndroid.graphics.Matrix;
 						public getTransformImpl(param0: globalAndroid.graphics.Matrix, param1: globalAndroid.graphics.Rect, param2: number, param3: number, param4: number, param5: number, param6: number, param7: number): void;
 					}
-					export class InterpolatingScaleType implements com.facebook.drawee.drawable.ScalingUtils.ScaleType, com.facebook.drawee.drawable.ScalingUtils.StatefulScaleType {
+					export class InterpolatingScaleType extends java.lang.Object implements com.facebook.drawee.drawable.ScalingUtils.ScaleType, com.facebook.drawee.drawable.ScalingUtils.StatefulScaleType {
 						public static class: java.lang.Class<com.facebook.drawee.drawable.ScalingUtils.InterpolatingScaleType>;
 						public constructor(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType);
 						public getScaleTypeFrom(): com.facebook.drawee.drawable.ScalingUtils.ScaleType;
@@ -4291,15 +4664,16 @@ declare module com {
 						public getState(): any;
 						public getValue(): number;
 					}
-					export class ScaleType {
+					export class ScaleType extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.drawable.ScalingUtils.ScaleType>;
 						/**
-						 * Constructs a new instance of the com.facebook.drawee.drawable.ScalingUtils$ScaleType interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.drawee.drawable.ScalingUtils$ScaleType interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getTransform(param0: globalAndroid.graphics.Matrix, param1: globalAndroid.graphics.Rect, param2: number, param3: number, param4: number, param5: number): globalAndroid.graphics.Matrix;
 							<clinit>(): void;
 						});
+						public constructor();
 						public static FIT_CENTER: com.facebook.drawee.drawable.ScalingUtils.ScaleType;
 						public static CENTER_CROP: com.facebook.drawee.drawable.ScalingUtils.ScaleType;
 						public static FIT_XY: com.facebook.drawee.drawable.ScalingUtils.ScaleType;
@@ -4374,14 +4748,15 @@ declare module com {
 						public getTransformImpl(param0: globalAndroid.graphics.Matrix, param1: globalAndroid.graphics.Rect, param2: number, param3: number, param4: number, param5: number, param6: number, param7: number): void;
 						public toString(): string;
 					}
-					export class StatefulScaleType {
+					export class StatefulScaleType extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.drawable.ScalingUtils.StatefulScaleType>;
 						/**
-						 * Constructs a new instance of the com.facebook.drawee.drawable.ScalingUtils$StatefulScaleType interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.drawee.drawable.ScalingUtils$StatefulScaleType interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getState(): any;
 						});
+						public constructor();
 						public getState(): any;
 					}
 				}
@@ -4394,14 +4769,15 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class TransformAwareDrawable {
+				export class TransformAwareDrawable extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.TransformAwareDrawable>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.drawable.TransformAwareDrawable interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.drawable.TransformAwareDrawable interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 					});
+					public constructor();
 					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 				}
 			}
@@ -4413,15 +4789,16 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class TransformCallback {
+				export class TransformCallback extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.TransformCallback>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.drawable.TransformCallback interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.drawable.TransformCallback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getTransform(param0: globalAndroid.graphics.Matrix): void;
 						getRootBounds(param0: globalAndroid.graphics.RectF): void;
 					});
+					public constructor();
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
 					public getTransform(param0: globalAndroid.graphics.Matrix): void;
 				}
@@ -4434,14 +4811,15 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class VisibilityAwareDrawable {
+				export class VisibilityAwareDrawable extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.VisibilityAwareDrawable>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.drawable.VisibilityAwareDrawable interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.drawable.VisibilityAwareDrawable interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setVisibilityCallback(param0: com.facebook.drawee.drawable.VisibilityCallback): void;
 					});
+					public constructor();
 					public setVisibilityCallback(param0: com.facebook.drawee.drawable.VisibilityCallback): void;
 				}
 			}
@@ -4453,15 +4831,16 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module drawable {
-				export class VisibilityCallback {
+				export class VisibilityCallback extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.drawable.VisibilityCallback>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.drawable.VisibilityCallback interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.drawable.VisibilityCallback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onVisibilityChange(param0: boolean): void;
 						onDraw(): void;
 					});
+					public constructor();
 					public onDraw(): void;
 					public onVisibilityChange(param0: boolean): void;
 				}
@@ -4474,7 +4853,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module generic {
-				export class GenericDraweeHierarchy extends com.facebook.drawee.interfaces.SettableDraweeHierarchy {
+				export class GenericDraweeHierarchy extends java.lang.Object implements com.facebook.drawee.interfaces.SettableDraweeHierarchy {
 					public static class: java.lang.Class<com.facebook.drawee.generic.GenericDraweeHierarchy>;
 					public setPlaceholderImage(param0: number, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType): void;
 					public setImage(param0: globalAndroid.graphics.drawable.Drawable, param1: number, param2: boolean): void;
@@ -4523,7 +4902,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module generic {
-				export class GenericDraweeHierarchyBuilder {
+				export class GenericDraweeHierarchyBuilder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.generic.GenericDraweeHierarchyBuilder>;
 					public static DEFAULT_FADE_DURATION: number;
 					public static DEFAULT_SCALE_TYPE: com.facebook.drawee.drawable.ScalingUtils.ScaleType;
@@ -4590,7 +4969,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module generic {
-				export class GenericDraweeHierarchyInflater {
+				export class GenericDraweeHierarchyInflater extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.generic.GenericDraweeHierarchyInflater>;
 					public static updateBuilder(param0: com.facebook.drawee.generic.GenericDraweeHierarchyBuilder, param1: globalAndroid.content.Context, param2: globalAndroid.util.AttributeSet): com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
 					public static inflateBuilder(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet): com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
@@ -4609,17 +4988,21 @@ declare module com {
 				export class RootDrawable extends com.facebook.drawee.drawable.ForwardingDrawable implements com.facebook.drawee.drawable.VisibilityAwareDrawable {
 					public static class: java.lang.Class<com.facebook.drawee.generic.RootDrawable>;
 					public getRootBounds(param0: globalAndroid.graphics.RectF): void;
-					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
-					public setVisible(param0: boolean, param1: boolean): boolean;
 					public setVisibilityCallback(param0: com.facebook.drawee.drawable.VisibilityCallback): void;
-					public draw(param0: globalAndroid.graphics.Canvas): void;
 					public setControllerOverlay(param0: globalAndroid.graphics.drawable.Drawable): void;
 					public getIntrinsicHeight(): number;
-					public getTransform(param0: globalAndroid.graphics.Matrix): void;
 					public getIntrinsicWidth(): number;
 					public constructor(param0: globalAndroid.graphics.drawable.Drawable);
-					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 					public getDrawable(): globalAndroid.graphics.drawable.Drawable;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
+					public setDrawable(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.graphics.drawable.Drawable;
+					public constructor();
+					public setVisible(param0: boolean, param1: boolean): boolean;
+					public draw(param0: globalAndroid.graphics.Canvas): void;
+					public getTransform(param0: globalAndroid.graphics.Matrix): void;
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
+					public setTransformCallback(param0: com.facebook.drawee.drawable.TransformCallback): void;
 				}
 			}
 		}
@@ -4630,7 +5013,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module generic {
-				export class RoundingParams {
+				export class RoundingParams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.generic.RoundingParams>;
 					public setPadding(param0: number): com.facebook.drawee.generic.RoundingParams;
 					public getBorderColor(): number;
@@ -4664,6 +5047,7 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.drawee.generic.RoundingParams.RoundingMethod>;
 						public static OVERLAY_COLOR: com.facebook.drawee.generic.RoundingParams.RoundingMethod;
 						public static BITMAP_ONLY: com.facebook.drawee.generic.RoundingParams.RoundingMethod;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static values(): native.Array<com.facebook.drawee.generic.RoundingParams.RoundingMethod>;
 						public static valueOf(param0: string): com.facebook.drawee.generic.RoundingParams.RoundingMethod;
 					}
@@ -4677,7 +5061,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module generic {
-				export class WrappingUtils {
+				export class WrappingUtils extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.generic.WrappingUtils>;
 					public constructor();
 				}
@@ -4690,7 +5074,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module gestures {
-				export class GestureDetector {
+				export class GestureDetector extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.gestures.GestureDetector>;
 					public constructor(param0: globalAndroid.content.Context);
 					public reset(): void;
@@ -4701,14 +5085,15 @@ declare module com {
 					public setClickListener(param0: com.facebook.drawee.gestures.GestureDetector.ClickListener): void;
 				}
 				export module GestureDetector {
-					export class ClickListener {
+					export class ClickListener extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.gestures.GestureDetector.ClickListener>;
 						/**
-						 * Constructs a new instance of the com.facebook.drawee.gestures.GestureDetector$ClickListener interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.drawee.gestures.GestureDetector$ClickListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							onClick(): boolean;
 						});
+						public constructor();
 						public onClick(): boolean;
 					}
 				}
@@ -4721,10 +5106,10 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module interfaces {
-				export class DraweeController {
+				export class DraweeController extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.interfaces.DraweeController>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.interfaces.DraweeController interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.interfaces.DraweeController interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getHierarchy(): com.facebook.drawee.interfaces.DraweeHierarchy;
@@ -4738,6 +5123,7 @@ declare module com {
 						getContentDescription(): string;
 						isSameImageRequest(param0: com.facebook.drawee.interfaces.DraweeController): boolean;
 					});
+					public constructor();
 					public setHierarchy(param0: com.facebook.drawee.interfaces.DraweeHierarchy): void;
 					public setContentDescription(param0: string): void;
 					public onDetach(): void;
@@ -4758,14 +5144,15 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module interfaces {
-				export class DraweeHierarchy {
+				export class DraweeHierarchy extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.interfaces.DraweeHierarchy>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.interfaces.DraweeHierarchy interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.interfaces.DraweeHierarchy interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getTopLevelDrawable(): globalAndroid.graphics.drawable.Drawable;
 					});
+					public constructor();
 					public getTopLevelDrawable(): globalAndroid.graphics.drawable.Drawable;
 				}
 			}
@@ -4777,10 +5164,10 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module interfaces {
-				export class SettableDraweeHierarchy extends com.facebook.drawee.interfaces.DraweeHierarchy {
+				export class SettableDraweeHierarchy extends java.lang.Object implements com.facebook.drawee.interfaces.DraweeHierarchy {
 					public static class: java.lang.Class<com.facebook.drawee.interfaces.SettableDraweeHierarchy>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.interfaces.SettableDraweeHierarchy interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.interfaces.SettableDraweeHierarchy interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						reset(): void;
@@ -4791,6 +5178,7 @@ declare module com {
 						setControllerOverlay(param0: globalAndroid.graphics.drawable.Drawable): void;
 						getTopLevelDrawable(): globalAndroid.graphics.drawable.Drawable;
 					});
+					public constructor();
 					public reset(): void;
 					public setProgress(param0: number, param1: boolean): void;
 					public setImage(param0: globalAndroid.graphics.drawable.Drawable, param1: number, param2: boolean): void;
@@ -4808,10 +5196,10 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module interfaces {
-				export class SimpleDraweeControllerBuilder {
+				export class SimpleDraweeControllerBuilder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder>;
 					/**
-					 * Constructs a new instance of the com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setCallerContext(param0: any): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
@@ -4820,6 +5208,7 @@ declare module com {
 						setOldController(param0: com.facebook.drawee.interfaces.DraweeController): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
 						build(): com.facebook.drawee.interfaces.DraweeController;
 					});
+					public constructor();
 					public setOldController(param0: com.facebook.drawee.interfaces.DraweeController): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
 					public setUri(param0: string): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
 					public setCallerContext(param0: any): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
@@ -4835,13 +5224,13 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module view {
-				export class AspectRatioMeasure {
+				export class AspectRatioMeasure extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.view.AspectRatioMeasure>;
 					public constructor();
 					public static updateMeasureSpec(param0: com.facebook.drawee.view.AspectRatioMeasure.Spec, param1: number, param2: globalAndroid.view.ViewGroup.LayoutParams, param3: number, param4: number): void;
 				}
 				export module AspectRatioMeasure {
-					export class Spec {
+					export class Spec extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.drawee.view.AspectRatioMeasure.Spec>;
 						public width: number;
 						public height: number;
@@ -4886,10 +5275,12 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module view {
-				export class DraweeTransition {
+				export class DraweeTransition extends globalAndroid.transition.Transition {
 					public static class: java.lang.Class<com.facebook.drawee.view.DraweeTransition>;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
 					public captureStartValues(param0: globalAndroid.transition.TransitionValues): void;
 					public constructor(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType);
+					public constructor();
 					public createAnimator(param0: globalAndroid.view.ViewGroup, param1: globalAndroid.transition.TransitionValues, param2: globalAndroid.transition.TransitionValues): globalAndroid.animation.Animator;
 					public constructor(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param2: globalAndroid.graphics.PointF, param3: globalAndroid.graphics.PointF);
 					public captureEndValues(param0: globalAndroid.transition.TransitionValues): void;
@@ -4922,22 +5313,32 @@ declare module com {
 					public toString(): string;
 					public onFinishTemporaryDetach(): void;
 					public setLegacyVisibilityHandlingEnabled(param0: boolean): void;
+					public onKeyUp(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
 					public onDetach(): void;
 					public setImageResource(param0: number): void;
+					public sendAccessibilityEvent(param0: number): void;
 					public onDetachedFromWindow(): void;
 					public onMeasure(param0: number, param1: number): void;
+					public onKeyDown(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
 					public hasHierarchy(): boolean;
 					public hasController(): boolean;
 					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
 					public doAttach(): void;
+					public sendAccessibilityEventUnchecked(param0: globalAndroid.view.accessibility.AccessibilityEvent): void;
 					public onStartTemporaryDetach(): void;
+					public onKeyMultiple(param0: number, param1: number, param2: globalAndroid.view.KeyEvent): boolean;
 					public constructor(param0: globalAndroid.content.Context);
 					public setController(param0: com.facebook.drawee.interfaces.DraweeController): void;
 					public setImageBitmap(param0: globalAndroid.graphics.Bitmap): void;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
 					public setHierarchy(param0: any): void;
+					public onKeyLongPress(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
 					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number);
 					public onTouchEvent(param0: globalAndroid.view.MotionEvent): boolean;
 					public getController(): com.facebook.drawee.interfaces.DraweeController;
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
 				}
 			}
 		}
@@ -4950,12 +5351,22 @@ declare module com {
 			export module view {
 				export class GenericDraweeView extends com.facebook.drawee.view.DraweeView<com.facebook.drawee.generic.GenericDraweeHierarchy> {
 					public static class: java.lang.Class<com.facebook.drawee.view.GenericDraweeView>;
-					public constructor(param0: globalAndroid.content.Context);
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
-					public inflateHierarchy(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number);
+					public onKeyDown(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
 					public constructor(param0: globalAndroid.content.Context, param1: com.facebook.drawee.generic.GenericDraweeHierarchy);
 					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
+					public sendAccessibilityEventUnchecked(param0: globalAndroid.view.accessibility.AccessibilityEvent): void;
+					public onKeyMultiple(param0: number, param1: number, param2: globalAndroid.view.KeyEvent): boolean;
+					public constructor(param0: globalAndroid.content.Context);
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
+					public inflateHierarchy(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet): void;
+					public onKeyLongPress(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
+					public onKeyUp(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number);
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
+					public sendAccessibilityEvent(param0: number): void;
 				}
 			}
 		}
@@ -4993,21 +5404,31 @@ declare module com {
 				export class SimpleDraweeView extends com.facebook.drawee.view.GenericDraweeView {
 					public static class: java.lang.Class<com.facebook.drawee.view.SimpleDraweeView>;
 					public getControllerBuilder(): com.facebook.drawee.controller.AbstractDraweeControllerBuilder<any,any,any,any>;
-					public static shutDown(): void;
 					public constructor(param0: globalAndroid.content.Context, param1: com.facebook.drawee.generic.GenericDraweeHierarchy);
-					public setImageRequest(param0: com.facebook.imagepipeline.request.ImageRequest): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
-					public setActualImageResource(param0: number): void;
 					public static initialize(param0: com.facebook.common.internal.Supplier<any>): void;
-					public constructor(param0: globalAndroid.content.Context);
 					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
 					public setImageURI(param0: globalAndroid.net.Uri): void;
 					public setImageURI(param0: string): void;
-					public setImageURI(param0: globalAndroid.net.Uri, param1: any): void;
 					public setImageURI(param0: string, param1: any): void;
-					public setActualImageResource(param0: number, param1: any): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number);
+					public onKeyUp(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
 					public setImageResource(param0: number): void;
+					public sendAccessibilityEvent(param0: number): void;
+					public onKeyDown(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
+					public static shutDown(): void;
+					public setImageRequest(param0: com.facebook.imagepipeline.request.ImageRequest): void;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
+					public sendAccessibilityEventUnchecked(param0: globalAndroid.view.accessibility.AccessibilityEvent): void;
+					public onKeyMultiple(param0: number, param1: number, param2: globalAndroid.view.KeyEvent): boolean;
+					public setActualImageResource(param0: number): void;
+					public constructor(param0: globalAndroid.content.Context);
+					public setImageURI(param0: globalAndroid.net.Uri, param1: any): void;
+					public unscheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable): void;
+					public setActualImageResource(param0: number, param1: any): void;
+					public onKeyLongPress(param0: number, param1: globalAndroid.view.KeyEvent): boolean;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number);
+					public invalidateDrawable(param0: globalAndroid.graphics.drawable.Drawable): void;
+					public scheduleDrawable(param0: globalAndroid.graphics.drawable.Drawable, param1: java.lang.Runnable, param2: number): void;
 				}
 			}
 		}
@@ -5017,7 +5438,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module fbcore {
-			export class BuildConfig {
+			export class BuildConfig extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.fbcore.BuildConfig>;
 				public static DEBUG: boolean;
 				public static APPLICATION_ID: string;
@@ -5036,10 +5457,10 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module backend {
-					export class AnimationBackend extends com.facebook.fresco.animation.backend.AnimationInformation {
+					export class AnimationBackend extends java.lang.Object implements com.facebook.fresco.animation.backend.AnimationInformation {
 						public static class: java.lang.Class<com.facebook.fresco.animation.backend.AnimationBackend>;
 						/**
-						 * Constructs a new instance of the com.facebook.fresco.animation.backend.AnimationBackend interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.fresco.animation.backend.AnimationBackend interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							drawFrame(param0: globalAndroid.graphics.drawable.Drawable, param1: globalAndroid.graphics.Canvas, param2: number): boolean;
@@ -5054,6 +5475,7 @@ declare module com {
 							getFrameDurationMs(param0: number): number;
 							getLoopCount(): number;
 						});
+						public constructor();
 						public static INTRINSIC_DIMENSION_UNSET: number;
 						public static LOOP_COUNT_INFINITE: number;
 						public getIntrinsicWidth(): number;
@@ -5126,14 +5548,15 @@ declare module com {
 						public static createForBackend(param0: com.facebook.fresco.animation.backend.AnimationBackend, param1: com.facebook.common.time.MonotonicClock, param2: java.util.concurrent.ScheduledExecutorService): com.facebook.fresco.animation.backend.AnimationBackendDelegate<any>;
 					}
 					export module AnimationBackendDelegateWithInactivityCheck {
-						export class InactivityListener {
+						export class InactivityListener extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.backend.AnimationBackendDelegateWithInactivityCheck.InactivityListener>;
 							/**
-							 * Constructs a new instance of the com.facebook.fresco.animation.backend.AnimationBackendDelegateWithInactivityCheck$InactivityListener interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.fresco.animation.backend.AnimationBackendDelegateWithInactivityCheck$InactivityListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								onInactive(): void;
 							});
+							public constructor();
 							public onInactive(): void;
 						}
 					}
@@ -5148,16 +5571,17 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module backend {
-					export class AnimationInformation {
+					export class AnimationInformation extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.fresco.animation.backend.AnimationInformation>;
 						/**
-						 * Constructs a new instance of the com.facebook.fresco.animation.backend.AnimationInformation interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.fresco.animation.backend.AnimationInformation interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getFrameCount(): number;
 							getFrameDurationMs(param0: number): number;
 							getLoopCount(): number;
 						});
+						public constructor();
 						public static LOOP_COUNT_INFINITE: number;
 						public getLoopCount(): number;
 						public getFrameCount(): number;
@@ -5174,7 +5598,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module bitmap {
-					export class BitmapAnimationBackend implements com.facebook.fresco.animation.backend.AnimationBackend, com.facebook.fresco.animation.backend.AnimationBackendDelegateWithInactivityCheck.InactivityListener {
+					export class BitmapAnimationBackend extends java.lang.Object implements com.facebook.fresco.animation.backend.AnimationBackend, com.facebook.fresco.animation.backend.AnimationBackendDelegateWithInactivityCheck.InactivityListener {
 						public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.BitmapAnimationBackend>;
 						public static FRAME_TYPE_UNKNOWN: number;
 						public static FRAME_TYPE_CACHED: number;
@@ -5198,27 +5622,37 @@ declare module com {
 						public setFrameListener(param0: com.facebook.fresco.animation.bitmap.BitmapAnimationBackend.FrameListener): void;
 					}
 					export module BitmapAnimationBackend {
-						export class FrameListener {
+						export class FrameListener extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.BitmapAnimationBackend.FrameListener>;
 							/**
-							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapAnimationBackend$FrameListener interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapAnimationBackend$FrameListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								onDrawFrameStart(param0: com.facebook.fresco.animation.bitmap.BitmapAnimationBackend, param1: number): void;
 								onFrameDrawn(param0: com.facebook.fresco.animation.bitmap.BitmapAnimationBackend, param1: number, param2: number): void;
 								onFrameDropped(param0: com.facebook.fresco.animation.bitmap.BitmapAnimationBackend, param1: number): void;
 							});
+							public constructor();
 							public onFrameDrawn(param0: com.facebook.fresco.animation.bitmap.BitmapAnimationBackend, param1: number, param2: number): void;
 							public onDrawFrameStart(param0: com.facebook.fresco.animation.bitmap.BitmapAnimationBackend, param1: number): void;
 							public onFrameDropped(param0: com.facebook.fresco.animation.bitmap.BitmapAnimationBackend, param1: number): void;
 						}
-						export class FrameType {
+						export class FrameType extends java.lang.Object implements java.lang.annotation.Annotation {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.BitmapAnimationBackend.FrameType>;
 							/**
-							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapAnimationBackend$FrameType interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapAnimationBackend$FrameType interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
+								annotationType(): java.lang.Class<any>;
+								equals(param0: any): boolean;
+								hashCode(): number;
+								toString(): string;
 							});
+							public constructor();
+							public hashCode(): number;
+							public annotationType(): java.lang.Class<any>;
+							public toString(): string;
+							public equals(param0: any): boolean;
 						}
 					}
 				}
@@ -5232,10 +5666,10 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module bitmap {
-					export class BitmapFrameCache {
+					export class BitmapFrameCache extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.BitmapFrameCache>;
 						/**
-						 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapFrameCache interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapFrameCache interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getCachedFrame(param0: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
@@ -5248,6 +5682,7 @@ declare module com {
 							onFramePrepared(param0: number, param1: com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>, param2: number): void;
 							setFrameCacheListener(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache.FrameCacheListener): void;
 						});
+						public constructor();
 						public contains(param0: number): boolean;
 						public getCachedFrame(param0: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 						public getFallbackFrame(param0: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
@@ -5259,15 +5694,16 @@ declare module com {
 						public onFrameRendered(param0: number, param1: com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>, param2: number): void;
 					}
 					export module BitmapFrameCache {
-						export class FrameCacheListener {
+						export class FrameCacheListener extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.BitmapFrameCache.FrameCacheListener>;
 							/**
-							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapFrameCache$FrameCacheListener interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapFrameCache$FrameCacheListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								onFrameCached(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: number): void;
 								onFrameEvicted(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: number): void;
 							});
+							public constructor();
 							public onFrameCached(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: number): void;
 							public onFrameEvicted(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: number): void;
 						}
@@ -5283,10 +5719,10 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module bitmap {
-					export class BitmapFrameRenderer {
+					export class BitmapFrameRenderer extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.BitmapFrameRenderer>;
 						/**
-						 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapFrameRenderer interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.BitmapFrameRenderer interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							renderFrame(param0: number, param1: globalAndroid.graphics.Bitmap): boolean;
@@ -5294,6 +5730,7 @@ declare module com {
 							getIntrinsicWidth(): number;
 							getIntrinsicHeight(): number;
 						});
+						public constructor();
 						public getIntrinsicWidth(): number;
 						public getIntrinsicHeight(): number;
 						public setBounds(param0: globalAndroid.graphics.Rect): void;
@@ -5311,7 +5748,7 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module cache {
-						export class FrescoFrameCache extends com.facebook.fresco.animation.bitmap.BitmapFrameCache {
+						export class FrescoFrameCache extends java.lang.Object implements com.facebook.fresco.animation.bitmap.BitmapFrameCache {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.cache.FrescoFrameCache>;
 							public setFrameCacheListener(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache.FrameCacheListener): void;
 							public onFrameRendered(param0: number, param1: com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>, param2: number): void;
@@ -5337,7 +5774,7 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module cache {
-						export class KeepLastFrameCache extends com.facebook.fresco.animation.bitmap.BitmapFrameCache {
+						export class KeepLastFrameCache extends java.lang.Object implements com.facebook.fresco.animation.bitmap.BitmapFrameCache {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.cache.KeepLastFrameCache>;
 							public constructor();
 							public setFrameCacheListener(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache.FrameCacheListener): void;
@@ -5363,7 +5800,7 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module cache {
-						export class NoOpCache extends com.facebook.fresco.animation.bitmap.BitmapFrameCache {
+						export class NoOpCache extends java.lang.Object implements com.facebook.fresco.animation.bitmap.BitmapFrameCache {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.cache.NoOpCache>;
 							public constructor();
 							public setFrameCacheListener(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache.FrameCacheListener): void;
@@ -5389,14 +5826,15 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module preparation {
-						export class BitmapFramePreparationStrategy {
+						export class BitmapFramePreparationStrategy extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparationStrategy>;
 							/**
-							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparationStrategy interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparationStrategy interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								prepareFrames(param0: com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer, param1: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param2: com.facebook.fresco.animation.backend.AnimationBackend, param3: number): void;
 							});
+							public constructor();
 							public prepareFrames(param0: com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer, param1: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param2: com.facebook.fresco.animation.backend.AnimationBackend, param3: number): void;
 						}
 					}
@@ -5412,14 +5850,15 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module preparation {
-						export class BitmapFramePreparer {
+						export class BitmapFramePreparer extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer>;
 							/**
-							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								prepareFrame(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: com.facebook.fresco.animation.backend.AnimationBackend, param2: number): boolean;
 							});
+							public constructor();
 							public prepareFrame(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: com.facebook.fresco.animation.backend.AnimationBackend, param2: number): boolean;
 						}
 					}
@@ -5435,13 +5874,13 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module preparation {
-						export class DefaultBitmapFramePreparer extends com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer {
+						export class DefaultBitmapFramePreparer extends java.lang.Object implements com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.preparation.DefaultBitmapFramePreparer>;
 							public prepareFrame(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: com.facebook.fresco.animation.backend.AnimationBackend, param2: number): boolean;
 							public constructor(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param1: com.facebook.fresco.animation.bitmap.BitmapFrameRenderer, param2: globalAndroid.graphics.Bitmap.Config, param3: java.util.concurrent.ExecutorService);
 						}
 						export module DefaultBitmapFramePreparer {
-							export class FrameDecodeRunnable {
+							export class FrameDecodeRunnable extends java.lang.Object implements java.lang.Runnable {
 								public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.preparation.DefaultBitmapFramePreparer.FrameDecodeRunnable>;
 								public constructor(param0: com.facebook.fresco.animation.bitmap.preparation.DefaultBitmapFramePreparer, param1: com.facebook.fresco.animation.backend.AnimationBackend, param2: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param3: number, param4: number);
 								public run(): void;
@@ -5460,7 +5899,7 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module preparation {
-						export class FixedNumberBitmapFramePreparationStrategy extends com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparationStrategy {
+						export class FixedNumberBitmapFramePreparationStrategy extends java.lang.Object implements com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparationStrategy {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.preparation.FixedNumberBitmapFramePreparationStrategy>;
 							public constructor();
 							public prepareFrames(param0: com.facebook.fresco.animation.bitmap.preparation.BitmapFramePreparer, param1: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param2: com.facebook.fresco.animation.backend.AnimationBackend, param3: number): void;
@@ -5479,7 +5918,7 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module wrapper {
-						export class AnimatedDrawableBackendAnimationInformation extends com.facebook.fresco.animation.backend.AnimationInformation {
+						export class AnimatedDrawableBackendAnimationInformation extends java.lang.Object implements com.facebook.fresco.animation.backend.AnimationInformation {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.wrapper.AnimatedDrawableBackendAnimationInformation>;
 							public constructor(param0: com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend);
 							public getFrameCount(): number;
@@ -5499,7 +5938,7 @@ declare module com {
 			export module animation {
 				export module bitmap {
 					export module wrapper {
-						export class AnimatedDrawableBackendFrameRenderer extends com.facebook.fresco.animation.bitmap.BitmapFrameRenderer {
+						export class AnimatedDrawableBackendFrameRenderer extends java.lang.Object implements com.facebook.fresco.animation.bitmap.BitmapFrameRenderer {
 							public static class: java.lang.Class<com.facebook.fresco.animation.bitmap.wrapper.AnimatedDrawableBackendFrameRenderer>;
 							public constructor(param0: com.facebook.fresco.animation.bitmap.BitmapFrameCache, param1: com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend);
 							public renderFrame(param0: number, param1: globalAndroid.graphics.Bitmap): boolean;
@@ -5519,9 +5958,10 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module drawable {
-					export class AnimatedDrawable2 implements com.facebook.drawable.base.DrawableWithCaches {
+					export class AnimatedDrawable2 extends globalAndroid.graphics.drawable.Drawable implements globalAndroid.graphics.drawable.Animatable, com.facebook.drawable.base.DrawableWithCaches {
 						public static class: java.lang.Class<com.facebook.fresco.animation.drawable.AnimatedDrawable2>;
 						public onLevelChange(param0: number): boolean;
+						public setColorFilter(param0: number, param1: globalAndroid.graphics.PorterDuff.Mode): void;
 						public getAnimationBackend(): com.facebook.fresco.animation.backend.AnimationBackend;
 						public getStartTimeMs(): number;
 						public setAnimationBackend(param0: com.facebook.fresco.animation.backend.AnimationBackend): void;
@@ -5550,14 +5990,15 @@ declare module com {
 						public setAnimationListener(param0: com.facebook.fresco.animation.drawable.AnimationListener): void;
 					}
 					export module AnimatedDrawable2 {
-						export class DrawListener {
+						export class DrawListener extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.drawable.AnimatedDrawable2.DrawListener>;
 							/**
-							 * Constructs a new instance of the com.facebook.fresco.animation.drawable.AnimatedDrawable2$DrawListener interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.fresco.animation.drawable.AnimatedDrawable2$DrawListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								onDraw(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2, param1: com.facebook.fresco.animation.frame.FrameScheduler, param2: number, param3: boolean, param4: boolean, param5: number, param6: number, param7: number, param8: number, param9: number, param10: number, param11: number): void;
 							});
+							public constructor();
 							public onDraw(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2, param1: com.facebook.fresco.animation.frame.FrameScheduler, param2: number, param3: boolean, param4: boolean, param5: number, param6: number, param7: number, param8: number, param9: number, param10: number, param11: number): void;
 						}
 					}
@@ -5572,7 +6013,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module drawable {
-					export class AnimatedDrawable2DebugDrawListener extends com.facebook.fresco.animation.drawable.AnimatedDrawable2.DrawListener {
+					export class AnimatedDrawable2DebugDrawListener extends java.lang.Object implements com.facebook.fresco.animation.drawable.AnimatedDrawable2.DrawListener {
 						public static class: java.lang.Class<com.facebook.fresco.animation.drawable.AnimatedDrawable2DebugDrawListener>;
 						public onDraw(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2, param1: com.facebook.fresco.animation.frame.FrameScheduler, param2: number, param3: boolean, param4: boolean, param5: number, param6: number, param7: number, param8: number, param9: number, param10: number, param11: number): void;
 						public constructor();
@@ -5588,10 +6029,10 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module drawable {
-					export class AnimationListener {
+					export class AnimationListener extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.fresco.animation.drawable.AnimationListener>;
 						/**
-						 * Constructs a new instance of the com.facebook.fresco.animation.drawable.AnimationListener interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.fresco.animation.drawable.AnimationListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							onAnimationStart(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2): void;
@@ -5600,6 +6041,7 @@ declare module com {
 							onAnimationRepeat(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2): void;
 							onAnimationFrame(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2, param1: number): void;
 						});
+						public constructor();
 						public onAnimationStart(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2): void;
 						public onAnimationReset(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2): void;
 						public onAnimationFrame(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2, param1: number): void;
@@ -5617,7 +6059,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module drawable {
-					export class BaseAnimationListener extends com.facebook.fresco.animation.drawable.AnimationListener {
+					export class BaseAnimationListener extends java.lang.Object implements com.facebook.fresco.animation.drawable.AnimationListener {
 						public static class: java.lang.Class<com.facebook.fresco.animation.drawable.BaseAnimationListener>;
 						public constructor();
 						public onAnimationStart(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2): void;
@@ -5638,7 +6080,7 @@ declare module com {
 			export module animation {
 				export module drawable {
 					export module animator {
-						export class AnimatedDrawable2ValueAnimatorHelper {
+						export class AnimatedDrawable2ValueAnimatorHelper extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.drawable.animator.AnimatedDrawable2ValueAnimatorHelper>;
 							public static createValueAnimator(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2): globalAndroid.animation.ValueAnimator;
 							public static createAnimatorUpdateListener(param0: com.facebook.fresco.animation.drawable.AnimatedDrawable2): globalAndroid.animation.ValueAnimator.AnimatorUpdateListener;
@@ -5657,7 +6099,7 @@ declare module com {
 			export module animation {
 				export module drawable {
 					export module animator {
-						export class AnimatedDrawableValueAnimatorHelper {
+						export class AnimatedDrawableValueAnimatorHelper extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.fresco.animation.drawable.animator.AnimatedDrawableValueAnimatorHelper>;
 							public static createValueAnimator(param0: globalAndroid.graphics.drawable.Drawable, param1: number): globalAndroid.animation.ValueAnimator;
 							public static createValueAnimator(param0: globalAndroid.graphics.drawable.Drawable): globalAndroid.animation.ValueAnimator;
@@ -5675,7 +6117,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module factory {
-					export class AnimatedFactoryV2Impl extends com.facebook.imagepipeline.animated.factory.AnimatedFactory {
+					export class AnimatedFactoryV2Impl extends java.lang.Object implements com.facebook.imagepipeline.animated.factory.AnimatedFactory {
 						public static class: java.lang.Class<com.facebook.fresco.animation.factory.AnimatedFactoryV2Impl>;
 						public getAnimatedDrawableFactory(param0: globalAndroid.content.Context): com.facebook.imagepipeline.drawable.DrawableFactory;
 						public constructor(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param1: com.facebook.imagepipeline.core.ExecutorSupplier, param2: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>);
@@ -5693,7 +6135,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module factory {
-					export class ExperimentalBitmapAnimationDrawableFactory extends com.facebook.imagepipeline.drawable.DrawableFactory {
+					export class ExperimentalBitmapAnimationDrawableFactory extends java.lang.Object implements com.facebook.imagepipeline.drawable.DrawableFactory {
 						public static class: java.lang.Class<com.facebook.fresco.animation.factory.ExperimentalBitmapAnimationDrawableFactory>;
 						public static CACHING_STRATEGY_NO_CACHE: number;
 						public static CACHING_STRATEGY_FRESCO_CACHE: number;
@@ -5705,7 +6147,7 @@ declare module com {
 						public constructor(param0: com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendProvider, param1: java.util.concurrent.ScheduledExecutorService, param2: java.util.concurrent.ExecutorService, param3: com.facebook.common.time.MonotonicClock, param4: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param5: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param6: com.facebook.common.internal.Supplier<java.lang.Integer>, param7: com.facebook.common.internal.Supplier<java.lang.Integer>);
 					}
 					export module ExperimentalBitmapAnimationDrawableFactory {
-						export class AnimationFrameCacheKey extends com.facebook.cache.common.CacheKey {
+						export class AnimationFrameCacheKey extends java.lang.Object implements com.facebook.cache.common.CacheKey {
 							public static class: java.lang.Class<com.facebook.fresco.animation.factory.ExperimentalBitmapAnimationDrawableFactory.AnimationFrameCacheKey>;
 							public getUriString(): string;
 							public hashCode(): number;
@@ -5726,7 +6168,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module frame {
-					export class DropFramesFrameScheduler extends com.facebook.fresco.animation.frame.FrameScheduler {
+					export class DropFramesFrameScheduler extends java.lang.Object implements com.facebook.fresco.animation.frame.FrameScheduler {
 						public static class: java.lang.Class<com.facebook.fresco.animation.frame.DropFramesFrameScheduler>;
 						public getFrameNumberToRender(param0: number, param1: number): number;
 						public constructor(param0: com.facebook.fresco.animation.backend.AnimationInformation);
@@ -5746,10 +6188,10 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module frame {
-					export class FrameScheduler {
+					export class FrameScheduler extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.fresco.animation.frame.FrameScheduler>;
 						/**
-						 * Constructs a new instance of the com.facebook.fresco.animation.frame.FrameScheduler interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.fresco.animation.frame.FrameScheduler interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getFrameNumberToRender(param0: number, param1: number): number;
@@ -5758,6 +6200,7 @@ declare module com {
 							getTargetRenderTimeForNextFrameMs(param0: number): number;
 							isInfiniteAnimation(): boolean;
 						});
+						public constructor();
 						public static FRAME_NUMBER_DONE: number;
 						public static NO_NEXT_TARGET_RENDER_TIME: number;
 						public getFrameNumberToRender(param0: number, param1: number): number;
@@ -5775,7 +6218,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageformat {
-			export class DefaultImageFormatChecker extends com.facebook.imageformat.ImageFormat.FormatChecker {
+			export class DefaultImageFormatChecker extends java.lang.Object implements com.facebook.imageformat.ImageFormat.FormatChecker {
 				public static class: java.lang.Class<com.facebook.imageformat.DefaultImageFormatChecker>;
 				public getHeaderSize(): number;
 				public determineFormat(param0: native.Array<number>, param1: number): com.facebook.imageformat.ImageFormat;
@@ -5788,7 +6231,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageformat {
-			export class DefaultImageFormats {
+			export class DefaultImageFormats extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageformat.DefaultImageFormats>;
 				public static JPEG: com.facebook.imageformat.ImageFormat;
 				public static PNG: com.facebook.imageformat.ImageFormat;
@@ -5810,7 +6253,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageformat {
-			export class ImageFormat {
+			export class ImageFormat extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageformat.ImageFormat>;
 				public static UNKNOWN: com.facebook.imageformat.ImageFormat;
 				public getName(): string;
@@ -5819,15 +6262,16 @@ declare module com {
 				public constructor(param0: string, param1: string);
 			}
 			export module ImageFormat {
-				export class FormatChecker {
+				export class FormatChecker extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imageformat.ImageFormat.FormatChecker>;
 					/**
-					 * Constructs a new instance of the com.facebook.imageformat.ImageFormat$FormatChecker interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imageformat.ImageFormat$FormatChecker interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getHeaderSize(): number;
 						determineFormat(param0: native.Array<number>, param1: number): com.facebook.imageformat.ImageFormat;
 					});
+					public constructor();
 					public getHeaderSize(): number;
 					public determineFormat(param0: native.Array<number>, param1: number): com.facebook.imageformat.ImageFormat;
 				}
@@ -5839,7 +6283,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageformat {
-			export class ImageFormatChecker {
+			export class ImageFormatChecker extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageformat.ImageFormatChecker>;
 				public static getImageFormat_WrapIOException(param0: java.io.InputStream): com.facebook.imageformat.ImageFormat;
 				public static getImageFormat(param0: java.io.InputStream): com.facebook.imageformat.ImageFormat;
@@ -5855,7 +6299,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageformat {
-			export class ImageFormatCheckerUtils {
+			export class ImageFormatCheckerUtils extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageformat.ImageFormatCheckerUtils>;
 				public static asciiBytes(param0: string): native.Array<number>;
 				public static startsWithPattern(param0: native.Array<number>, param1: native.Array<number>): boolean;
@@ -5868,7 +6312,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imagepipeline {
-			export class BuildConfig {
+			export class BuildConfig extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imagepipeline.BuildConfig>;
 				public static DEBUG: boolean;
 				public static APPLICATION_ID: string;
@@ -5886,7 +6330,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module animated {
-				export class BuildConfig {
+				export class BuildConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.animated.BuildConfig>;
 					public static DEBUG: boolean;
 					public static APPLICATION_ID: string;
@@ -5906,10 +6350,10 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedDrawableBackend {
+					export class AnimatedDrawableBackend extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getAnimatedImageResult(): com.facebook.imagepipeline.animated.base.AnimatedImageResult;
@@ -5932,6 +6376,7 @@ declare module com {
 							hasPreDecodedFrame(param0: number): boolean;
 							dropCaches(): void;
 						});
+						public constructor();
 						public getLoopCount(): number;
 						public getDurationMsForFrame(param0: number): number;
 						public getFrameCount(): number;
@@ -5963,7 +6408,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedDrawableFrameInfo {
+					export class AnimatedDrawableFrameInfo extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo>;
 						public frameNumber: number;
 						public xOffset: number;
@@ -5979,6 +6424,7 @@ declare module com {
 							public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.BlendOperation>;
 							public static BLEND_WITH_PREVIOUS: com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.BlendOperation;
 							public static NO_BLEND: com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.BlendOperation;
+							public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 							public static valueOf(param0: string): com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.BlendOperation;
 							public static values(): native.Array<com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.BlendOperation>;
 						}
@@ -5987,6 +6433,7 @@ declare module com {
 							public static DISPOSE_DO_NOT: com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.DisposalMethod;
 							public static DISPOSE_TO_BACKGROUND: com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.DisposalMethod;
 							public static DISPOSE_TO_PREVIOUS: com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.DisposalMethod;
+							public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 							public static valueOf(param0: string): com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.DisposalMethod;
 							public static values(): native.Array<com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo.DisposalMethod>;
 						}
@@ -6002,7 +6449,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedDrawableOptions {
+					export class AnimatedDrawableOptions extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedDrawableOptions>;
 						public static DEFAULTS: com.facebook.imagepipeline.animated.base.AnimatedDrawableOptions;
 						public forceKeepAllFramesInMemory: boolean;
@@ -6023,7 +6470,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedDrawableOptionsBuilder {
+					export class AnimatedDrawableOptionsBuilder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedDrawableOptionsBuilder>;
 						public build(): com.facebook.imagepipeline.animated.base.AnimatedDrawableOptions;
 						public setEnableDebugging(param0: boolean): com.facebook.imagepipeline.animated.base.AnimatedDrawableOptionsBuilder;
@@ -6047,10 +6494,10 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedImage {
+					export class AnimatedImage extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedImage>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.animated.base.AnimatedImage interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.animated.base.AnimatedImage interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							dispose(): void;
@@ -6065,6 +6512,7 @@ declare module com {
 							getSizeInBytes(): number;
 							getFrameInfo(param0: number): com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo;
 						});
+						public constructor();
 						public static LOOP_COUNT_INFINITE: number;
 						public getFrameInfo(param0: number): com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo;
 						public getWidth(): number;
@@ -6089,10 +6537,10 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedImageFrame {
+					export class AnimatedImageFrame extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedImageFrame>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.animated.base.AnimatedImageFrame interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.animated.base.AnimatedImageFrame interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							dispose(): void;
@@ -6103,6 +6551,7 @@ declare module com {
 							getXOffset(): number;
 							getYOffset(): number;
 						});
+						public constructor();
 						public getDurationMs(): number;
 						public getWidth(): number;
 						public renderFrame(param0: number, param1: number, param2: globalAndroid.graphics.Bitmap): void;
@@ -6122,7 +6571,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedImageResult {
+					export class AnimatedImageResult extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedImageResult>;
 						public static newBuilder(param0: com.facebook.imagepipeline.animated.base.AnimatedImage): com.facebook.imagepipeline.animated.base.AnimatedImageResultBuilder;
 						public getFrameForPreview(): number;
@@ -6144,7 +6593,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export class AnimatedImageResultBuilder {
+					export class AnimatedImageResultBuilder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.AnimatedImageResultBuilder>;
 						public setDecodedFrames(param0: java.util.List<com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>>): com.facebook.imagepipeline.animated.base.AnimatedImageResultBuilder;
 						public getFrameForPreview(): number;
@@ -6166,7 +6615,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module base {
-					export abstract class DelegatingAnimatedDrawableBackend extends com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend {
+					export abstract class DelegatingAnimatedDrawableBackend extends java.lang.Object implements com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.base.DelegatingAnimatedDrawableBackend>;
 						public getLoopCount(): number;
 						public getDurationMsForFrame(param0: number): number;
@@ -6201,16 +6650,17 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module factory {
-					export class AnimatedFactory {
+					export class AnimatedFactory extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.factory.AnimatedFactory>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.animated.factory.AnimatedFactory interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.animated.factory.AnimatedFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getAnimatedDrawableFactory(param0: globalAndroid.content.Context): com.facebook.imagepipeline.drawable.DrawableFactory;
 							getGifDecoder(param0: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.decoder.ImageDecoder;
 							getWebPDecoder(param0: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.decoder.ImageDecoder;
 						});
+						public constructor();
 						public getAnimatedDrawableFactory(param0: globalAndroid.content.Context): com.facebook.imagepipeline.drawable.DrawableFactory;
 						public getGifDecoder(param0: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.decoder.ImageDecoder;
 						public getWebPDecoder(param0: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.decoder.ImageDecoder;
@@ -6226,7 +6676,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module factory {
-					export class AnimatedFactoryProvider {
+					export class AnimatedFactoryProvider extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.factory.AnimatedFactoryProvider>;
 						public constructor();
 						public static getAnimatedFactory(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param1: com.facebook.imagepipeline.core.ExecutorSupplier, param2: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>): com.facebook.imagepipeline.animated.factory.AnimatedFactory;
@@ -6242,14 +6692,15 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module factory {
-					export class AnimatedImageDecoder {
+					export class AnimatedImageDecoder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.factory.AnimatedImageDecoder>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.animated.factory.AnimatedImageDecoder interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.animated.factory.AnimatedImageDecoder interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							decode(param0: number, param1: number): com.facebook.imagepipeline.animated.base.AnimatedImage;
 						});
+						public constructor();
 						public decode(param0: number, param1: number): com.facebook.imagepipeline.animated.base.AnimatedImage;
 					}
 				}
@@ -6263,15 +6714,16 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module factory {
-					export class AnimatedImageFactory {
+					export class AnimatedImageFactory extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.factory.AnimatedImageFactory>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.animated.factory.AnimatedImageFactory interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.animated.factory.AnimatedImageFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							decodeGif(param0: com.facebook.imagepipeline.image.EncodedImage, param1: com.facebook.imagepipeline.common.ImageDecodeOptions, param2: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.image.CloseableImage;
 							decodeWebP(param0: com.facebook.imagepipeline.image.EncodedImage, param1: com.facebook.imagepipeline.common.ImageDecodeOptions, param2: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.image.CloseableImage;
 						});
+						public constructor();
 						public decodeGif(param0: com.facebook.imagepipeline.image.EncodedImage, param1: com.facebook.imagepipeline.common.ImageDecodeOptions, param2: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.image.CloseableImage;
 						public decodeWebP(param0: com.facebook.imagepipeline.image.EncodedImage, param1: com.facebook.imagepipeline.common.ImageDecodeOptions, param2: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.image.CloseableImage;
 					}
@@ -6286,7 +6738,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module factory {
-					export class AnimatedImageFactoryImpl extends com.facebook.imagepipeline.animated.factory.AnimatedImageFactory {
+					export class AnimatedImageFactoryImpl extends java.lang.Object implements com.facebook.imagepipeline.animated.factory.AnimatedImageFactory {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.factory.AnimatedImageFactoryImpl>;
 						public decodeGif(param0: com.facebook.imagepipeline.image.EncodedImage, param1: com.facebook.imagepipeline.common.ImageDecodeOptions, param2: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.image.CloseableImage;
 						public constructor(param0: com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendProvider, param1: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory);
@@ -6303,7 +6755,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module impl {
-					export class AnimatedDrawableBackendImpl extends com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend {
+					export class AnimatedDrawableBackendImpl extends java.lang.Object implements com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendImpl>;
 						public getLoopCount(): number;
 						public getDurationMsForFrame(param0: number): number;
@@ -6337,14 +6789,15 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module impl {
-					export class AnimatedDrawableBackendProvider {
+					export class AnimatedDrawableBackendProvider extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendProvider>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendProvider interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendProvider interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							get(param0: com.facebook.imagepipeline.animated.base.AnimatedImageResult, param1: globalAndroid.graphics.Rect): com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend;
 						});
+						public constructor();
 						public get(param0: com.facebook.imagepipeline.animated.base.AnimatedImageResult, param1: globalAndroid.graphics.Rect): com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend;
 					}
 				}
@@ -6358,7 +6811,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module impl {
-					export class AnimatedFrameCache {
+					export class AnimatedFrameCache extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.impl.AnimatedFrameCache>;
 						public cache(param0: number, param1: com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>): com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>;
 						public contains(param0: number): boolean;
@@ -6368,7 +6821,7 @@ declare module com {
 						public constructor(param0: com.facebook.cache.common.CacheKey, param1: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>);
 					}
 					export module AnimatedFrameCache {
-						export class FrameKey extends com.facebook.cache.common.CacheKey {
+						export class FrameKey extends java.lang.Object implements com.facebook.cache.common.CacheKey {
 							public static class: java.lang.Class<com.facebook.imagepipeline.animated.impl.AnimatedFrameCache.FrameKey>;
 							public getUriString(): string;
 							public hashCode(): number;
@@ -6389,21 +6842,22 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module impl {
-					export class AnimatedImageCompositor {
+					export class AnimatedImageCompositor extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor>;
 						public constructor(param0: com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend, param1: com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor.Callback);
 						public renderFrame(param0: number, param1: globalAndroid.graphics.Bitmap): void;
 					}
 					export module AnimatedImageCompositor {
-						export class Callback {
+						export class Callback extends java.lang.Object {
 							public static class: java.lang.Class<com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor.Callback>;
 							/**
-							 * Constructs a new instance of the com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor$Callback interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor$Callback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
 								onIntermediateResult(param0: number, param1: globalAndroid.graphics.Bitmap): void;
 								getCachedBitmap(param0: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 							});
+							public constructor();
 							public getCachedBitmap(param0: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 							public onIntermediateResult(param0: number, param1: globalAndroid.graphics.Bitmap): void;
 						}
@@ -6413,6 +6867,7 @@ declare module com {
 							public static NOT_REQUIRED: com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor.FrameNeededResult;
 							public static SKIP: com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor.FrameNeededResult;
 							public static ABORT: com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor.FrameNeededResult;
+							public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 							public static valueOf(param0: string): com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor.FrameNeededResult;
 							public static values(): native.Array<com.facebook.imagepipeline.animated.impl.AnimatedImageCompositor.FrameNeededResult>;
 						}
@@ -6428,7 +6883,7 @@ declare module com {
 		export module imagepipeline {
 			export module animated {
 				export module util {
-					export class AnimatedDrawableUtil {
+					export class AnimatedDrawableUtil extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.util.AnimatedDrawableUtil>;
 						public constructor();
 						public fixFrameDurations(param0: native.Array<number>): void;
@@ -6463,7 +6918,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module bitmaps {
-				export class EmptyJpegGenerator {
+				export class EmptyJpegGenerator extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.bitmaps.EmptyJpegGenerator>;
 					public constructor(param0: com.facebook.common.memory.PooledByteBufferFactory);
 					public generate(param0: number, param1: number): com.facebook.common.references.CloseableReference<com.facebook.common.memory.PooledByteBuffer>;
@@ -6491,7 +6946,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module bitmaps {
-				export class HoneycombBitmapCreator extends com.facebook.common.webp.BitmapCreator {
+				export class HoneycombBitmapCreator extends java.lang.Object implements com.facebook.common.webp.BitmapCreator {
 					public static class: java.lang.Class<com.facebook.imagepipeline.bitmaps.HoneycombBitmapCreator>;
 					public createNakedBitmap(param0: number, param1: number, param2: globalAndroid.graphics.Bitmap.Config): globalAndroid.graphics.Bitmap;
 					public constructor(param0: com.facebook.imagepipeline.memory.PoolFactory);
@@ -6520,7 +6975,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module bitmaps {
-				export abstract class PlatformBitmapFactory {
+				export abstract class PlatformBitmapFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory>;
 					public createBitmap(param0: globalAndroid.util.DisplayMetrics, param1: native.Array<number>, param2: number, param3: number, param4: number, param5: number, param6: globalAndroid.graphics.Bitmap.Config, param7: any): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 					public createBitmapInternal(param0: number, param1: number, param2: globalAndroid.graphics.Bitmap.Config): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
@@ -6548,14 +7003,15 @@ declare module com {
 					public setCreationListener(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory.BitmapCreationObserver): void;
 				}
 				export module PlatformBitmapFactory {
-					export class BitmapCreationObserver {
+					export class BitmapCreationObserver extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory.BitmapCreationObserver>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory$BitmapCreationObserver interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory$BitmapCreationObserver interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							onBitmapCreated(param0: globalAndroid.graphics.Bitmap, param1: any): void;
 						});
+						public constructor();
 						public onBitmapCreated(param0: globalAndroid.graphics.Bitmap, param1: any): void;
 					}
 				}
@@ -6583,7 +7039,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class BitmapCountingMemoryCacheFactory {
+				export class BitmapCountingMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.BitmapCountingMemoryCacheFactory>;
 					public constructor();
 					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param3: boolean): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
@@ -6598,7 +7054,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class BitmapMemoryCacheFactory {
+				export class BitmapMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.BitmapMemoryCacheFactory>;
 					public constructor();
 					public static get(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.ImageCacheStatsTracker): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
@@ -6612,7 +7068,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class BitmapMemoryCacheKey extends com.facebook.cache.common.CacheKey {
+				export class BitmapMemoryCacheKey extends java.lang.Object implements com.facebook.cache.common.CacheKey {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.BitmapMemoryCacheKey>;
 					public equals(param0: any): boolean;
 					public getUriString(): string;
@@ -6633,7 +7089,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class BitmapMemoryCacheTrimStrategy extends com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy {
+				export class BitmapMemoryCacheTrimStrategy extends java.lang.Object implements com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.BitmapMemoryCacheTrimStrategy>;
 					public constructor();
 					public getTrimRatio(param0: com.facebook.common.memory.MemoryTrimType): number;
@@ -6647,7 +7103,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class BufferedDiskCache {
+				export class BufferedDiskCache extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.BufferedDiskCache>;
 					public get(param0: com.facebook.cache.common.CacheKey, param1: java.util.concurrent.atomic.AtomicBoolean): bolts.Task<com.facebook.imagepipeline.image.EncodedImage>;
 					public contains(param0: com.facebook.cache.common.CacheKey): bolts.Task<java.lang.Boolean>;
@@ -6667,10 +7123,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class CacheKeyFactory {
+				export class CacheKeyFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.CacheKeyFactory>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.cache.CacheKeyFactory interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.cache.CacheKeyFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getBitmapCacheKey(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.cache.common.CacheKey;
@@ -6678,6 +7134,7 @@ declare module com {
 						getEncodedCacheKey(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.cache.common.CacheKey;
 						getEncodedCacheKey(param0: com.facebook.imagepipeline.request.ImageRequest, param1: globalAndroid.net.Uri, param2: any): com.facebook.cache.common.CacheKey;
 					});
+					public constructor();
 					public getPostprocessedBitmapCacheKey(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.cache.common.CacheKey;
 					public getEncodedCacheKey(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.cache.common.CacheKey;
 					public getEncodedCacheKey(param0: com.facebook.imagepipeline.request.ImageRequest, param1: globalAndroid.net.Uri, param2: any): com.facebook.cache.common.CacheKey;
@@ -6736,14 +7193,15 @@ declare module com {
 					public getEvictionQueueSizeInBytes(): number;
 				}
 				export module CountingMemoryCache {
-					export class CacheTrimStrategy {
+					export class CacheTrimStrategy extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.cache.CountingMemoryCache$CacheTrimStrategy interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.cache.CountingMemoryCache$CacheTrimStrategy interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getTrimRatio(param0: com.facebook.common.memory.MemoryTrimType): number;
 						});
+						public constructor();
 						public getTrimRatio(param0: com.facebook.common.memory.MemoryTrimType): number;
 					}
 					export class Entry<K, V>  extends java.lang.Object {
@@ -6757,11 +7215,12 @@ declare module com {
 					export class EntryStateObserver<K>  extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingMemoryCache.EntryStateObserver<any>>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.cache.CountingMemoryCache$EntryStateObserver interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.cache.CountingMemoryCache$EntryStateObserver interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							onExclusivityChanged(param0: K, param1: boolean): void;
 						});
+						public constructor();
 						public onExclusivityChanged(param0: K, param1: boolean): void;
 					}
 				}
@@ -6789,7 +7248,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class DefaultCacheKeyFactory extends com.facebook.imagepipeline.cache.CacheKeyFactory {
+				export class DefaultCacheKeyFactory extends java.lang.Object implements com.facebook.imagepipeline.cache.CacheKeyFactory {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.DefaultCacheKeyFactory>;
 					public constructor();
 					public getPostprocessedBitmapCacheKey(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.cache.common.CacheKey;
@@ -6823,7 +7282,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class EncodedCountingMemoryCacheFactory {
+				export class EncodedCountingMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.EncodedCountingMemoryCacheFactory>;
 					public constructor();
 					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>;
@@ -6837,7 +7296,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class EncodedMemoryCacheFactory {
+				export class EncodedMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.EncodedMemoryCacheFactory>;
 					public constructor();
 					public static get(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param1: com.facebook.imagepipeline.cache.ImageCacheStatsTracker): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>;
@@ -6851,10 +7310,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class ImageCacheStatsTracker {
+				export class ImageCacheStatsTracker extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.ImageCacheStatsTracker>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.cache.ImageCacheStatsTracker interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.cache.ImageCacheStatsTracker interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onBitmapCachePut(): void;
@@ -6871,6 +7330,7 @@ declare module com {
 						registerBitmapMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
 						registerEncodedMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
 					});
+					public constructor();
 					public onStagingAreaHit(param0: com.facebook.cache.common.CacheKey): void;
 					public onMemoryCacheMiss(): void;
 					public onStagingAreaMiss(): void;
@@ -6911,15 +7371,16 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class MediaVariationsIndex {
+				export class MediaVariationsIndex extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MediaVariationsIndex>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MediaVariationsIndex interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MediaVariationsIndex interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getCachedVariants(param0: string, param1: com.facebook.imagepipeline.request.MediaVariations.Builder): bolts.Task<com.facebook.imagepipeline.request.MediaVariations>;
 						saveCachedVariant(param0: string, param1: com.facebook.imagepipeline.request.ImageRequest.CacheChoice, param2: com.facebook.cache.common.CacheKey, param3: com.facebook.imagepipeline.image.EncodedImage): void;
 					});
+					public constructor();
 					public getCachedVariants(param0: string, param1: com.facebook.imagepipeline.request.MediaVariations.Builder): bolts.Task<com.facebook.imagepipeline.request.MediaVariations>;
 					public saveCachedVariant(param0: string, param1: com.facebook.imagepipeline.request.ImageRequest.CacheChoice, param2: com.facebook.cache.common.CacheKey, param3: com.facebook.imagepipeline.image.EncodedImage): void;
 				}
@@ -6932,7 +7393,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class MediaVariationsIndexDatabase extends com.facebook.imagepipeline.cache.MediaVariationsIndex {
+				export class MediaVariationsIndexDatabase extends java.lang.Object implements com.facebook.imagepipeline.cache.MediaVariationsIndex {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MediaVariationsIndexDatabase>;
 					public getCachedVariantsSync(param0: string, param1: com.facebook.imagepipeline.request.MediaVariations.Builder): com.facebook.imagepipeline.request.MediaVariations;
 					public getCachedVariants(param0: string, param1: com.facebook.imagepipeline.request.MediaVariations.Builder): bolts.Task<com.facebook.imagepipeline.request.MediaVariations>;
@@ -6941,16 +7402,18 @@ declare module com {
 					public constructor(param0: globalAndroid.content.Context, param1: java.util.concurrent.Executor, param2: java.util.concurrent.Executor, param3: com.facebook.common.time.Clock);
 				}
 				export module MediaVariationsIndexDatabase {
-					export class IndexDbOpenHelper {
+					export class IndexDbOpenHelper extends globalAndroid.database.sqlite.SQLiteOpenHelper {
 						public static class: java.lang.Class<com.facebook.imagepipeline.cache.MediaVariationsIndexDatabase.IndexDbOpenHelper>;
 						public static DATABASE_VERSION: number;
 						public static DATABASE_NAME: string;
 						public constructor(param0: globalAndroid.content.Context);
 						public onUpgrade(param0: globalAndroid.database.sqlite.SQLiteDatabase, param1: number, param2: number): void;
 						public onDowngrade(param0: globalAndroid.database.sqlite.SQLiteDatabase, param1: number, param2: number): void;
+						public constructor(param0: globalAndroid.content.Context, param1: string, param2: globalAndroid.database.sqlite.SQLiteDatabase.CursorFactory, param3: number);
+						public constructor(param0: globalAndroid.content.Context, param1: string, param2: globalAndroid.database.sqlite.SQLiteDatabase.CursorFactory, param3: number, param4: globalAndroid.database.DatabaseErrorHandler);
 						public onCreate(param0: globalAndroid.database.sqlite.SQLiteDatabase): void;
 					}
-					export class IndexEntry {
+					export class IndexEntry extends java.lang.Object implements globalAndroid.provider.BaseColumns {
 						public static class: java.lang.Class<com.facebook.imagepipeline.cache.MediaVariationsIndexDatabase.IndexEntry>;
 						public static TABLE_NAME: string;
 						public static COLUMN_NAME_MEDIA_ID: string;
@@ -6961,7 +7424,7 @@ declare module com {
 						public static COLUMN_NAME_RESOURCE_ID: string;
 						public static COLUMN_NAME_DATE: string;
 					}
-					export class LazyIndexDbOpenHelper {
+					export class LazyIndexDbOpenHelper extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.cache.MediaVariationsIndexDatabase.LazyIndexDbOpenHelper>;
 						public getWritableDatabase(): globalAndroid.database.sqlite.SQLiteDatabase;
 					}
@@ -6978,7 +7441,7 @@ declare module com {
 				export class MemoryCache<K, V>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MemoryCache<any,any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MemoryCache<any,any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MemoryCache<any,any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						cache(param0: K, param1: com.facebook.common.references.CloseableReference<V>): com.facebook.common.references.CloseableReference<V>;
@@ -6986,6 +7449,7 @@ declare module com {
 						removeAll(param0: com.android.internal.util.Predicate<K>): number;
 						contains(param0: com.android.internal.util.Predicate<K>): boolean;
 					});
+					public constructor();
 					public removeAll(param0: com.android.internal.util.Predicate<K>): number;
 					public cache(param0: K, param1: com.facebook.common.references.CloseableReference<V>): com.facebook.common.references.CloseableReference<V>;
 					public get(param0: K): com.facebook.common.references.CloseableReference<V>;
@@ -7000,7 +7464,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class MemoryCacheParams {
+				export class MemoryCacheParams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MemoryCacheParams>;
 					public maxCacheSize: number;
 					public maxCacheEntries: number;
@@ -7021,13 +7485,14 @@ declare module com {
 				export class MemoryCacheTracker<K>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MemoryCacheTracker<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MemoryCacheTracker<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MemoryCacheTracker<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onCacheHit(param0: K): void;
 						onCacheMiss(): void;
 						onCachePut(): void;
 					});
+					public constructor();
 					public onCacheHit(param0: K): void;
 					public onCacheMiss(): void;
 					public onCachePut(): void;
@@ -7041,7 +7506,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class NativeMemoryCacheTrimStrategy extends com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy {
+				export class NativeMemoryCacheTrimStrategy extends java.lang.Object implements com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.NativeMemoryCacheTrimStrategy>;
 					public constructor();
 					public getTrimRatio(param0: com.facebook.common.memory.MemoryTrimType): number;
@@ -7055,7 +7520,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class NoOpImageCacheStatsTracker extends com.facebook.imagepipeline.cache.ImageCacheStatsTracker {
+				export class NoOpImageCacheStatsTracker extends java.lang.Object implements com.facebook.imagepipeline.cache.ImageCacheStatsTracker {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.NoOpImageCacheStatsTracker>;
 					public onStagingAreaHit(param0: com.facebook.cache.common.CacheKey): void;
 					public onMemoryCacheMiss(): void;
@@ -7081,7 +7546,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class NoOpMediaVariationsIndex extends com.facebook.imagepipeline.cache.MediaVariationsIndex {
+				export class NoOpMediaVariationsIndex extends java.lang.Object implements com.facebook.imagepipeline.cache.MediaVariationsIndex {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.NoOpMediaVariationsIndex>;
 					public constructor();
 					public getCachedVariants(param0: string, param1: com.facebook.imagepipeline.request.MediaVariations.Builder): bolts.Task<com.facebook.imagepipeline.request.MediaVariations>;
@@ -7096,7 +7561,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class StagingArea {
+				export class StagingArea extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.StagingArea>;
 					public static getInstance(): com.facebook.imagepipeline.cache.StagingArea;
 					public remove(param0: com.facebook.cache.common.CacheKey, param1: com.facebook.imagepipeline.image.EncodedImage): boolean;
@@ -7118,11 +7583,12 @@ declare module com {
 				export class ValueDescriptor<V>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.ValueDescriptor<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.cache.ValueDescriptor<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.cache.ValueDescriptor<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getSizeInBytes(param0: V): number;
 					});
+					public constructor();
 					public getSizeInBytes(param0: V): number;
 				}
 			}
@@ -7134,7 +7600,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module common {
-				export class BytesRange {
+				export class BytesRange extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.BytesRange>;
 					public static TO_END_OF_CONTENT: number;
 					public to: number;
@@ -7157,7 +7623,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module common {
-				export class ImageDecodeOptions {
+				export class ImageDecodeOptions extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.ImageDecodeOptions>;
 					public minDecodeIntervalMs: number;
 					public decodePreviewFrame: boolean;
@@ -7182,7 +7648,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module common {
-				export class ImageDecodeOptionsBuilder {
+				export class ImageDecodeOptionsBuilder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.ImageDecodeOptionsBuilder>;
 					public setCustomImageDecoder(param0: com.facebook.imagepipeline.decoder.ImageDecoder): com.facebook.imagepipeline.common.ImageDecodeOptionsBuilder;
 					public getDecodePreviewFrame(): boolean;
@@ -7218,6 +7684,7 @@ declare module com {
 					public static HIGH: com.facebook.imagepipeline.common.Priority;
 					public static values(): native.Array<com.facebook.imagepipeline.common.Priority>;
 					public static getHigherPriority(param0: com.facebook.imagepipeline.common.Priority, param1: com.facebook.imagepipeline.common.Priority): com.facebook.imagepipeline.common.Priority;
+					public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 					public static valueOf(param0: string): com.facebook.imagepipeline.common.Priority;
 				}
 			}
@@ -7229,7 +7696,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module common {
-				export class ResizeOptions {
+				export class ResizeOptions extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.ResizeOptions>;
 					public static DEFAULT_ROUNDUP_FRACTION: number;
 					public width: number;
@@ -7254,7 +7721,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module common {
-				export class RotationOptions {
+				export class RotationOptions extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.RotationOptions>;
 					public static NO_ROTATION: number;
 					public static ROTATE_90: number;
@@ -7273,13 +7740,22 @@ declare module com {
 					public static autoRotateAtRenderTime(): com.facebook.imagepipeline.common.RotationOptions;
 				}
 				export module RotationOptions {
-					export class RotationAngle {
+					export class RotationAngle extends java.lang.Object implements java.lang.annotation.Annotation {
 						public static class: java.lang.Class<com.facebook.imagepipeline.common.RotationOptions.RotationAngle>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.common.RotationOptions$RotationAngle interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.common.RotationOptions$RotationAngle interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
+							annotationType(): java.lang.Class<any>;
+							equals(param0: any): boolean;
+							hashCode(): number;
+							toString(): string;
 						});
+						public constructor();
+						public equals(param0: any): boolean;
+						public hashCode(): number;
+						public toString(): string;
+						public annotationType(): java.lang.Class<any>;
 					}
 				}
 			}
@@ -7291,13 +7767,18 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module common {
-				export class SourceUriType {
+				export class SourceUriType extends java.lang.Object implements java.lang.annotation.Annotation {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.SourceUriType>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.common.SourceUriType interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.common.SourceUriType interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
+						annotationType(): java.lang.Class<any>;
+						equals(param0: any): boolean;
+						hashCode(): number;
+						toString(): string;
 					});
+					public constructor();
 					public static SOURCE_TYPE_NETWORK: number;
 					public static SOURCE_TYPE_LOCAL_ASSET: number;
 					public static SOURCE_TYPE_LOCAL_RESOURCE: number;
@@ -7308,6 +7789,10 @@ declare module com {
 					public static SOURCE_TYPE_DATA: number;
 					public static SOURCE_TYPE_LOCAL_VIDEO_FILE: number;
 					public static SOURCE_TYPE_LOCAL_CONTENT: number;
+					public equals(param0: any): boolean;
+					public toString(): string;
+					public annotationType(): java.lang.Class<any>;
+					public hashCode(): number;
 				}
 			}
 		}
@@ -7318,9 +7803,12 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module common {
-				export class TooManyBitmapsException {
+				export class TooManyBitmapsException extends java.lang.RuntimeException {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.TooManyBitmapsException>;
+					public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+					public constructor(param0: string, param1: java.lang.Throwable);
 					public constructor(param0: string);
+					public constructor(param0: java.lang.Throwable);
 					public constructor();
 				}
 			}
@@ -7332,7 +7820,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class DefaultExecutorSupplier extends com.facebook.imagepipeline.core.ExecutorSupplier {
+				export class DefaultExecutorSupplier extends java.lang.Object implements com.facebook.imagepipeline.core.ExecutorSupplier {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.DefaultExecutorSupplier>;
 					public forLocalStorageRead(): java.util.concurrent.Executor;
 					public forLightweightBackgroundTasks(): java.util.concurrent.Executor;
@@ -7350,7 +7838,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class DiskStorageCacheFactory extends com.facebook.imagepipeline.core.FileCacheFactory {
+				export class DiskStorageCacheFactory extends java.lang.Object implements com.facebook.imagepipeline.core.FileCacheFactory {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.DiskStorageCacheFactory>;
 					public static buildDiskStorageCache(param0: com.facebook.cache.disk.DiskCacheConfig, param1: com.facebook.cache.disk.DiskStorage): com.facebook.cache.disk.DiskStorageCache;
 					public static buildDiskStorageCache(param0: com.facebook.cache.disk.DiskCacheConfig, param1: com.facebook.cache.disk.DiskStorage, param2: java.util.concurrent.Executor): com.facebook.cache.disk.DiskStorageCache;
@@ -7366,14 +7854,15 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class DiskStorageFactory {
+				export class DiskStorageFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.DiskStorageFactory>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.core.DiskStorageFactory interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.core.DiskStorageFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						get(param0: com.facebook.cache.disk.DiskCacheConfig): com.facebook.cache.disk.DiskStorage;
 					});
+					public constructor();
 					public get(param0: com.facebook.cache.disk.DiskCacheConfig): com.facebook.cache.disk.DiskStorage;
 				}
 			}
@@ -7385,7 +7874,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class DynamicDefaultDiskStorageFactory extends com.facebook.imagepipeline.core.DiskStorageFactory {
+				export class DynamicDefaultDiskStorageFactory extends java.lang.Object implements com.facebook.imagepipeline.core.DiskStorageFactory {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.DynamicDefaultDiskStorageFactory>;
 					public constructor();
 					public get(param0: com.facebook.cache.disk.DiskCacheConfig): com.facebook.cache.disk.DiskStorage;
@@ -7399,10 +7888,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class ExecutorSupplier {
+				export class ExecutorSupplier extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.ExecutorSupplier>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.core.ExecutorSupplier interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.core.ExecutorSupplier interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						forLocalStorageRead(): java.util.concurrent.Executor;
@@ -7411,6 +7900,7 @@ declare module com {
 						forBackgroundTasks(): java.util.concurrent.Executor;
 						forLightweightBackgroundTasks(): java.util.concurrent.Executor;
 					});
+					public constructor();
 					public forLocalStorageRead(): java.util.concurrent.Executor;
 					public forLightweightBackgroundTasks(): java.util.concurrent.Executor;
 					public forDecode(): java.util.concurrent.Executor;
@@ -7426,14 +7916,15 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class FileCacheFactory {
+				export class FileCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.FileCacheFactory>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.core.FileCacheFactory interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.core.FileCacheFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						get(param0: com.facebook.cache.disk.DiskCacheConfig): com.facebook.cache.disk.FileCache;
 					});
+					public constructor();
 					public get(param0: com.facebook.cache.disk.DiskCacheConfig): com.facebook.cache.disk.FileCache;
 				}
 			}
@@ -7445,7 +7936,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class ImagePipeline {
+				export class ImagePipeline extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipeline>;
 					public isInDiskCache(param0: globalAndroid.net.Uri): com.facebook.datasource.DataSource<java.lang.Boolean>;
 					public fetchDecodedImage(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>;
@@ -7486,7 +7977,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class ImagePipelineConfig {
+				export class ImagePipelineConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineConfig>;
 					public getImageDecoder(): com.facebook.imagepipeline.decoder.ImageDecoder;
 					public getPoolFactory(): com.facebook.imagepipeline.memory.PoolFactory;
@@ -7515,7 +8006,7 @@ declare module com {
 					public getPlatformBitmapFactory(): com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory;
 				}
 				export module ImagePipelineConfig {
-					export class Builder {
+					export class Builder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineConfig.Builder>;
 						public setBitmapMemoryCacheTrimStrategy(param0: com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy): com.facebook.imagepipeline.core.ImagePipelineConfig.Builder;
 						public setHttpConnectionTimeout(param0: number): com.facebook.imagepipeline.core.ImagePipelineConfig.Builder;
@@ -7543,7 +8034,7 @@ declare module com {
 						public isDownsampleEnabled(): boolean;
 						public build(): com.facebook.imagepipeline.core.ImagePipelineConfig;
 					}
-					export class DefaultImageRequestConfig {
+					export class DefaultImageRequestConfig extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineConfig.DefaultImageRequestConfig>;
 						public setProgressiveRenderingEnabled(param0: boolean): void;
 						public isProgressiveRenderingEnabled(): boolean;
@@ -7558,7 +8049,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class ImagePipelineExperiments {
+				export class ImagePipelineExperiments extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineExperiments>;
 					public getWebpErrorLogger(): com.facebook.common.webp.WebpBitmapFactory.WebpErrorLogger;
 					public getMediaVariationsIndexEnabled(): boolean;
@@ -7577,7 +8068,7 @@ declare module com {
 					public getUseBitmapPrepareToDraw(): boolean;
 				}
 				export module ImagePipelineExperiments {
-					export class Builder {
+					export class Builder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineExperiments.Builder>;
 						public mBitmapPrepareToDrawForPrefetch: boolean;
 						public constructor(param0: com.facebook.imagepipeline.core.ImagePipelineConfig.Builder);
@@ -7596,19 +8087,20 @@ declare module com {
 						public setUseDownsampligRatioForResizing(param0: boolean): com.facebook.imagepipeline.core.ImagePipelineConfig.Builder;
 						public isPartialImageCachingEnabled(): boolean;
 					}
-					export class DefaultProducerFactoryMethod extends com.facebook.imagepipeline.core.ImagePipelineExperiments.ProducerFactoryMethod {
+					export class DefaultProducerFactoryMethod extends java.lang.Object implements com.facebook.imagepipeline.core.ImagePipelineExperiments.ProducerFactoryMethod {
 						public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineExperiments.DefaultProducerFactoryMethod>;
 						public constructor();
 						public createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
 					}
-					export class ProducerFactoryMethod {
+					export class ProducerFactoryMethod extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineExperiments.ProducerFactoryMethod>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.core.ImagePipelineExperiments$ProducerFactoryMethod interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.core.ImagePipelineExperiments$ProducerFactoryMethod interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
 						});
+						public constructor();
 						public createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
 					}
 				}
@@ -7621,7 +8113,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class ImagePipelineFactory {
+				export class ImagePipelineFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineFactory>;
 					public static shutDown(): void;
 					public static initialize(param0: globalAndroid.content.Context): void;
@@ -7652,7 +8144,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class PriorityThreadFactory {
+				export class PriorityThreadFactory extends java.lang.Object implements java.util.concurrent.ThreadFactory {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.PriorityThreadFactory>;
 					public newThread(param0: java.lang.Runnable): java.lang.Thread;
 					public constructor(param0: number);
@@ -7667,7 +8159,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class ProducerFactory {
+				export class ProducerFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.ProducerFactory>;
 					public newBitmapPrepareProducer(param0: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>): com.facebook.imagepipeline.producers.BitmapPrepareProducer;
 					public newDiskCacheWriteProducer(param0: com.facebook.imagepipeline.producers.Producer<com.facebook.imagepipeline.image.EncodedImage>): com.facebook.imagepipeline.producers.DiskCacheWriteProducer;
@@ -7712,7 +8204,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module core {
-				export class ProducerSequenceFactory {
+				export class ProducerSequenceFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.core.ProducerSequenceFactory>;
 					public getDecodedImagePrefetchProducerSequence(param0: com.facebook.imagepipeline.request.ImageRequest): com.facebook.imagepipeline.producers.Producer<java.lang.Void>;
 					public constructor(param0: globalAndroid.content.ContentResolver, param1: com.facebook.imagepipeline.core.ProducerFactory, param2: com.facebook.imagepipeline.producers.NetworkFetcher<any>, param3: boolean, param4: boolean, param5: com.facebook.imagepipeline.producers.ThreadHandoffProducerQueue, param6: boolean, param7: boolean, param8: boolean);
@@ -7913,8 +8405,13 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module decoder {
-				export class DecodeException {
+				export class DecodeException extends java.lang.RuntimeException {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.DecodeException>;
+					public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+					public constructor(param0: string, param1: java.lang.Throwable);
+					public constructor(param0: string);
+					public constructor(param0: java.lang.Throwable);
+					public constructor();
 					public constructor(param0: string, param1: com.facebook.imagepipeline.image.EncodedImage);
 					public getEncodedImage(): com.facebook.imagepipeline.image.EncodedImage;
 					public constructor(param0: string, param1: java.lang.Throwable, param2: com.facebook.imagepipeline.image.EncodedImage);
@@ -7928,7 +8425,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module decoder {
-				export class DefaultImageDecoder extends com.facebook.imagepipeline.decoder.ImageDecoder {
+				export class DefaultImageDecoder extends java.lang.Object implements com.facebook.imagepipeline.decoder.ImageDecoder {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.DefaultImageDecoder>;
 					public constructor(param0: com.facebook.imagepipeline.decoder.ImageDecoder, param1: com.facebook.imagepipeline.decoder.ImageDecoder, param2: com.facebook.imagepipeline.platform.PlatformDecoder, param3: java.util.Map<com.facebook.imageformat.ImageFormat,com.facebook.imagepipeline.decoder.ImageDecoder>);
 					public decodeGif(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number, param2: com.facebook.imagepipeline.image.QualityInfo, param3: com.facebook.imagepipeline.common.ImageDecodeOptions): com.facebook.imagepipeline.image.CloseableImage;
@@ -7947,14 +8444,15 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module decoder {
-				export class ImageDecoder {
+				export class ImageDecoder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.ImageDecoder>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.decoder.ImageDecoder interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.decoder.ImageDecoder interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						decode(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number, param2: com.facebook.imagepipeline.image.QualityInfo, param3: com.facebook.imagepipeline.common.ImageDecodeOptions): com.facebook.imagepipeline.image.CloseableImage;
 					});
+					public constructor();
 					public decode(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number, param2: com.facebook.imagepipeline.image.QualityInfo, param3: com.facebook.imagepipeline.common.ImageDecodeOptions): com.facebook.imagepipeline.image.CloseableImage;
 				}
 			}
@@ -7966,14 +8464,14 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module decoder {
-				export class ImageDecoderConfig {
+				export class ImageDecoderConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.ImageDecoderConfig>;
 					public static newBuilder(): com.facebook.imagepipeline.decoder.ImageDecoderConfig.Builder;
 					public getCustomImageDecoders(): java.util.Map<com.facebook.imageformat.ImageFormat,com.facebook.imagepipeline.decoder.ImageDecoder>;
 					public getCustomImageFormats(): java.util.List<com.facebook.imageformat.ImageFormat.FormatChecker>;
 				}
 				export module ImageDecoderConfig {
-					export class Builder {
+					export class Builder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.decoder.ImageDecoderConfig.Builder>;
 						public constructor();
 						public build(): com.facebook.imagepipeline.decoder.ImageDecoderConfig;
@@ -7990,15 +8488,16 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module decoder {
-				export class ProgressiveJpegConfig {
+				export class ProgressiveJpegConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.ProgressiveJpegConfig>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.decoder.ProgressiveJpegConfig interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.decoder.ProgressiveJpegConfig interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getNextScanNumberToDecode(param0: number): number;
 						getQualityInfo(param0: number): com.facebook.imagepipeline.image.QualityInfo;
 					});
+					public constructor();
 					public getNextScanNumberToDecode(param0: number): number;
 					public getQualityInfo(param0: number): com.facebook.imagepipeline.image.QualityInfo;
 				}
@@ -8011,7 +8510,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module decoder {
-				export class ProgressiveJpegParser {
+				export class ProgressiveJpegParser extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.ProgressiveJpegParser>;
 					public getBestScanEndOffset(): number;
 					public parseMoreData(param0: com.facebook.imagepipeline.image.EncodedImage): boolean;
@@ -8029,7 +8528,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module decoder {
-				export class SimpleProgressiveJpegConfig extends com.facebook.imagepipeline.decoder.ProgressiveJpegConfig {
+				export class SimpleProgressiveJpegConfig extends java.lang.Object implements com.facebook.imagepipeline.decoder.ProgressiveJpegConfig {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig>;
 					public getNextScanNumberToDecode(param0: number): number;
 					public getQualityInfo(param0: number): com.facebook.imagepipeline.image.QualityInfo;
@@ -8037,20 +8536,21 @@ declare module com {
 					public constructor(param0: com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig.DynamicValueConfig);
 				}
 				export module SimpleProgressiveJpegConfig {
-					export class DefaultDynamicValueConfig extends com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig.DynamicValueConfig {
+					export class DefaultDynamicValueConfig extends java.lang.Object implements com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig.DynamicValueConfig {
 						public static class: java.lang.Class<com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig.DefaultDynamicValueConfig>;
 						public getScansToDecode(): java.util.List<java.lang.Integer>;
 						public getGoodEnoughScanNumber(): number;
 					}
-					export class DynamicValueConfig {
+					export class DynamicValueConfig extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig.DynamicValueConfig>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig$DynamicValueConfig interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig$DynamicValueConfig interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							getScansToDecode(): java.util.List<java.lang.Integer>;
 							getGoodEnoughScanNumber(): number;
 						});
+						public constructor();
 						public getScansToDecode(): java.util.List<java.lang.Integer>;
 						public getGoodEnoughScanNumber(): number;
 					}
@@ -8064,15 +8564,16 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module drawable {
-				export class DrawableFactory {
+				export class DrawableFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.drawable.DrawableFactory>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.drawable.DrawableFactory interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.drawable.DrawableFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						supportsImageType(param0: com.facebook.imagepipeline.image.CloseableImage): boolean;
 						createDrawable(param0: com.facebook.imagepipeline.image.CloseableImage): globalAndroid.graphics.drawable.Drawable;
 					});
+					public constructor();
 					public createDrawable(param0: com.facebook.imagepipeline.image.CloseableImage): globalAndroid.graphics.drawable.Drawable;
 					public supportsImageType(param0: com.facebook.imagepipeline.image.CloseableImage): boolean;
 				}
@@ -8113,6 +8614,7 @@ declare module com {
 					public getUnderlyingBitmap(): globalAndroid.graphics.Bitmap;
 					public constructor();
 					public getHeight(): number;
+					public close(): void;
 					public getWidth(): number;
 					public getQualityInfo(): com.facebook.imagepipeline.image.QualityInfo;
 				}
@@ -8125,7 +8627,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module image {
-				export abstract class CloseableImage extends com.facebook.imagepipeline.image.ImageInfo {
+				export abstract class CloseableImage extends java.lang.Object implements java.io.Closeable, com.facebook.imagepipeline.image.ImageInfo {
 					public static class: java.lang.Class<com.facebook.imagepipeline.image.CloseableImage>;
 					public constructor();
 					public getHeight(): number;
@@ -8174,7 +8676,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module image {
-				export class EncodedImage {
+				export class EncodedImage extends java.lang.Object implements java.io.Closeable {
 					public static class: java.lang.Class<com.facebook.imagepipeline.image.EncodedImage>;
 					public static UNKNOWN_ROTATION_ANGLE: number;
 					public static UNKNOWN_WIDTH: number;
@@ -8224,16 +8726,17 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module image {
-				export class ImageInfo {
+				export class ImageInfo extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.image.ImageInfo>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.image.ImageInfo interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.image.ImageInfo interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getWidth(): number;
 						getHeight(): number;
 						getQualityInfo(): com.facebook.imagepipeline.image.QualityInfo;
 					});
+					public constructor();
 					public getHeight(): number;
 					public getWidth(): number;
 					public getQualityInfo(): com.facebook.imagepipeline.image.QualityInfo;
@@ -8247,7 +8750,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module image {
-				export class ImmutableQualityInfo extends com.facebook.imagepipeline.image.QualityInfo {
+				export class ImmutableQualityInfo extends java.lang.Object implements com.facebook.imagepipeline.image.QualityInfo {
 					public static class: java.lang.Class<com.facebook.imagepipeline.image.ImmutableQualityInfo>;
 					public static FULL_QUALITY: com.facebook.imagepipeline.image.QualityInfo;
 					public equals(param0: any): boolean;
@@ -8266,16 +8769,17 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module image {
-				export class QualityInfo {
+				export class QualityInfo extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.image.QualityInfo>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.image.QualityInfo interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.image.QualityInfo interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getQuality(): number;
 						isOfGoodEnoughQuality(): boolean;
 						isOfFullQuality(): boolean;
 					});
+					public constructor();
 					public isOfGoodEnoughQuality(): boolean;
 					public getQuality(): number;
 					public isOfFullQuality(): boolean;
@@ -8289,7 +8793,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module listener {
-				export class BaseRequestListener extends com.facebook.imagepipeline.listener.RequestListener {
+				export class BaseRequestListener extends java.lang.Object implements com.facebook.imagepipeline.listener.RequestListener {
 					public static class: java.lang.Class<com.facebook.imagepipeline.listener.BaseRequestListener>;
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
@@ -8313,7 +8817,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module listener {
-				export class ForwardingRequestListener extends com.facebook.imagepipeline.listener.RequestListener {
+				export class ForwardingRequestListener extends java.lang.Object implements com.facebook.imagepipeline.listener.RequestListener {
 					public static class: java.lang.Class<com.facebook.imagepipeline.listener.ForwardingRequestListener>;
 					public constructor(param0: native.Array<com.facebook.imagepipeline.listener.RequestListener>);
 					public onProducerStart(param0: string, param1: string): void;
@@ -8338,10 +8842,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module listener {
-				export class RequestListener extends com.facebook.imagepipeline.producers.ProducerListener {
+				export class RequestListener extends java.lang.Object implements com.facebook.imagepipeline.producers.ProducerListener {
 					public static class: java.lang.Class<com.facebook.imagepipeline.listener.RequestListener>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.listener.RequestListener interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.listener.RequestListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onRequestStart(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any, param2: string, param3: boolean): void;
@@ -8356,6 +8860,7 @@ declare module com {
 						onUltimateProducerReached(param0: string, param1: string, param2: boolean): void;
 						requiresExtraMap(param0: string): boolean;
 					});
+					public constructor();
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
 					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
@@ -8377,7 +8882,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module listener {
-				export class RequestLoggingListener extends com.facebook.imagepipeline.listener.RequestListener {
+				export class RequestLoggingListener extends java.lang.Object implements com.facebook.imagepipeline.listener.RequestListener {
 					public static class: java.lang.Class<com.facebook.imagepipeline.listener.RequestLoggingListener>;
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
@@ -8418,27 +8923,47 @@ declare module com {
 					public initialize(): void;
 				}
 				export module BasePool {
-					export class Counter {
+					export class Counter extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.memory.BasePool.Counter>;
 						public increment(param0: number): void;
 						public decrement(param0: number): void;
 						public reset(): void;
 					}
-					export class InvalidSizeException {
+					export class InvalidSizeException extends java.lang.RuntimeException {
 						public static class: java.lang.Class<com.facebook.imagepipeline.memory.BasePool.InvalidSizeException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: any);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
 					}
-					export class InvalidValueException {
+					export class InvalidValueException extends java.lang.RuntimeException {
 						public static class: java.lang.Class<com.facebook.imagepipeline.memory.BasePool.InvalidValueException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: any);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
 					}
-					export class PoolSizeViolationException {
+					export class PoolSizeViolationException extends java.lang.RuntimeException {
 						public static class: java.lang.Class<com.facebook.imagepipeline.memory.BasePool.PoolSizeViolationException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
 						public constructor(param0: number, param1: number, param2: number, param3: number);
 					}
 					export class SizeTooLargeException extends com.facebook.imagepipeline.memory.BasePool.InvalidSizeException {
 						public static class: java.lang.Class<com.facebook.imagepipeline.memory.BasePool.SizeTooLargeException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: any);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
 					}
 				}
 			}
@@ -8450,7 +8975,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class BitmapCounter {
+				export class BitmapCounter extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.BitmapCounter>;
 					public increase(param0: globalAndroid.graphics.Bitmap): boolean;
 					public getMaxCount(): number;
@@ -8471,7 +8996,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class BitmapCounterProvider {
+				export class BitmapCounterProvider extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.BitmapCounterProvider>;
 					public static MAX_BITMAP_TOTAL_SIZE: number;
 					public static MAX_BITMAP_COUNT: number;
@@ -8534,7 +9059,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class DefaultBitmapPoolParams {
+				export class DefaultBitmapPoolParams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.DefaultBitmapPoolParams>;
 					public static get(): com.facebook.imagepipeline.memory.PoolParams;
 				}
@@ -8547,7 +9072,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class DefaultByteArrayPoolParams {
+				export class DefaultByteArrayPoolParams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.DefaultByteArrayPoolParams>;
 					public static get(): com.facebook.imagepipeline.memory.PoolParams;
 					public constructor();
@@ -8561,7 +9086,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class DefaultFlexByteArrayPoolParams {
+				export class DefaultFlexByteArrayPoolParams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.DefaultFlexByteArrayPoolParams>;
 					public static DEFAULT_MAX_BYTE_ARRAY_SIZE: number;
 					public static DEFAULT_MAX_NUM_THREADS: number;
@@ -8577,7 +9102,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class DefaultNativeMemoryChunkPoolParams {
+				export class DefaultNativeMemoryChunkPoolParams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.DefaultNativeMemoryChunkPoolParams>;
 					public static get(): com.facebook.imagepipeline.memory.PoolParams;
 					public constructor();
@@ -8591,7 +9116,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class FlexByteArrayPool {
+				export class FlexByteArrayPool extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.FlexByteArrayPool>;
 					public getStats(): java.util.Map<string,java.lang.Integer>;
 					public getMinBufferSize(): number;
@@ -8641,7 +9166,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class NativeMemoryChunk {
+				export class NativeMemoryChunk extends java.lang.Object implements java.io.Closeable {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.NativeMemoryChunk>;
 					public read(param0: number): number;
 					public constructor();
@@ -8690,7 +9215,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class NativePooledByteBuffer extends com.facebook.common.memory.PooledByteBuffer {
+				export class NativePooledByteBuffer extends java.lang.Object implements com.facebook.common.memory.PooledByteBuffer {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.NativePooledByteBuffer>;
 					public read(param0: number): number;
 					public close(): void;
@@ -8709,7 +9234,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class NativePooledByteBufferFactory extends com.facebook.common.memory.PooledByteBufferFactory {
+				export class NativePooledByteBufferFactory extends java.lang.Object implements com.facebook.common.memory.PooledByteBufferFactory {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.NativePooledByteBufferFactory>;
 					public newOutputStream(param0: number): com.facebook.common.memory.PooledByteBufferOutputStream;
 					public newByteBuffer(param0: number): com.facebook.common.memory.PooledByteBuffer;
@@ -8737,19 +9262,25 @@ declare module com {
 				export class NativePooledByteBufferOutputStream extends com.facebook.common.memory.PooledByteBufferOutputStream {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.NativePooledByteBufferOutputStream>;
 					public write(param0: native.Array<number>, param1: number, param2: number): void;
+					public write(param0: native.Array<number>): void;
 					public constructor();
 					public toByteBuffer(): com.facebook.common.memory.PooledByteBuffer;
 					public close(): void;
 					public size(): number;
 					public write(param0: number): void;
+					public flush(): void;
 					public constructor(param0: com.facebook.imagepipeline.memory.NativeMemoryChunkPool, param1: number);
 					public toByteBuffer(): com.facebook.imagepipeline.memory.NativePooledByteBuffer;
 					public constructor(param0: com.facebook.imagepipeline.memory.NativeMemoryChunkPool);
 				}
 				export module NativePooledByteBufferOutputStream {
-					export class InvalidStreamException {
+					export class InvalidStreamException extends java.lang.RuntimeException {
 						public static class: java.lang.Class<com.facebook.imagepipeline.memory.NativePooledByteBufferOutputStream.InvalidStreamException>;
 						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
+						public constructor(param0: string);
 					}
 				}
 			}
@@ -8761,7 +9292,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class NoOpPoolStatsTracker extends com.facebook.imagepipeline.memory.PoolStatsTracker {
+				export class NoOpPoolStatsTracker extends java.lang.Object implements com.facebook.imagepipeline.memory.PoolStatsTracker {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.NoOpPoolStatsTracker>;
 					public setBasePool(param0: com.facebook.imagepipeline.memory.BasePool<any>): void;
 					public onValueReuse(param0: number): void;
@@ -8795,7 +9326,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class PoolConfig {
+				export class PoolConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.PoolConfig>;
 					public getBitmapPoolStatsTracker(): com.facebook.imagepipeline.memory.PoolStatsTracker;
 					public getNativeMemoryChunkPoolParams(): com.facebook.imagepipeline.memory.PoolParams;
@@ -8808,7 +9339,7 @@ declare module com {
 					public getSmallByteArrayPoolStatsTracker(): com.facebook.imagepipeline.memory.PoolStatsTracker;
 				}
 				export module PoolConfig {
-					export class Builder {
+					export class Builder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.memory.PoolConfig.Builder>;
 						public setBitmapPoolStatsTracker(param0: com.facebook.imagepipeline.memory.PoolStatsTracker): com.facebook.imagepipeline.memory.PoolConfig.Builder;
 						public setBitmapPoolParams(param0: com.facebook.imagepipeline.memory.PoolParams): com.facebook.imagepipeline.memory.PoolConfig.Builder;
@@ -8830,7 +9361,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class PoolFactory {
+				export class PoolFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.PoolFactory>;
 					public constructor(param0: com.facebook.imagepipeline.memory.PoolConfig);
 					public getFlexByteArrayPool(): com.facebook.imagepipeline.memory.FlexByteArrayPool;
@@ -8851,7 +9382,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class PoolParams {
+				export class PoolParams extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.PoolParams>;
 					public static IGNORE_THREADS: number;
 					public maxSizeHardCap: number;
@@ -8873,10 +9404,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class PoolStatsTracker {
+				export class PoolStatsTracker extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.PoolStatsTracker>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.memory.PoolStatsTracker interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.memory.PoolStatsTracker interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setBasePool(param0: com.facebook.imagepipeline.memory.BasePool<any>): void;
@@ -8887,6 +9418,7 @@ declare module com {
 						onFree(param0: number): void;
 						onValueRelease(param0: number): void;
 					});
+					public constructor();
 					public static SOFT_CAP: string;
 					public static USED_COUNT: string;
 					public static BUCKETS_USED_PREFIX: string;
@@ -8911,7 +9443,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class SharedByteArray extends com.facebook.common.memory.MemoryTrimmable {
+				export class SharedByteArray extends java.lang.Object implements com.facebook.common.memory.MemoryTrimmable {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.SharedByteArray>;
 					public get(param0: number): com.facebook.common.references.CloseableReference<native.Array<number>>;
 					public trim(param0: com.facebook.common.memory.MemoryTrimType): void;
@@ -8926,7 +9458,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module nativecode {
-				export class Bitmaps {
+				export class Bitmaps extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.nativecode.Bitmaps>;
 					public static releaseByteBuffer(param0: globalAndroid.graphics.Bitmap): void;
 					public constructor();
@@ -8944,7 +9476,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module nativecode {
-				export class ImagePipelineNativeLoader {
+				export class ImagePipelineNativeLoader extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.nativecode.ImagePipelineNativeLoader>;
 					public static DSO_NAME: string;
 					public static DEPENDENCIES: java.util.List<string>;
@@ -8960,7 +9492,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module nativecode {
-				export class JpegTranscoder {
+				export class JpegTranscoder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.nativecode.JpegTranscoder>;
 					public static MIN_QUALITY: number;
 					public static MAX_QUALITY: number;
@@ -8982,7 +9514,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module nativecode {
-				export class NativeBlurFilter {
+				export class NativeBlurFilter extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.nativecode.NativeBlurFilter>;
 					public constructor();
 					public static iterativeBoxBlur(param0: globalAndroid.graphics.Bitmap, param1: number, param2: number): void;
@@ -8996,7 +9528,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module nativecode {
-				export class NativeRoundingFilter {
+				export class NativeRoundingFilter extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.nativecode.NativeRoundingFilter>;
 					public constructor();
 					public static toCircle(param0: globalAndroid.graphics.Bitmap): void;
@@ -9010,16 +9542,17 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module nativecode {
-				export class WebpTranscoder {
+				export class WebpTranscoder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.nativecode.WebpTranscoder>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.nativecode.WebpTranscoder interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.nativecode.WebpTranscoder interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						isWebpNativelySupported(param0: com.facebook.imageformat.ImageFormat): boolean;
 						transcodeWebpToJpeg(param0: java.io.InputStream, param1: java.io.OutputStream, param2: number): void;
 						transcodeWebpToPng(param0: java.io.InputStream, param1: java.io.OutputStream): void;
 					});
+					public constructor();
 					public transcodeWebpToPng(param0: java.io.InputStream, param1: java.io.OutputStream): void;
 					public isWebpNativelySupported(param0: com.facebook.imageformat.ImageFormat): boolean;
 					public transcodeWebpToJpeg(param0: java.io.InputStream, param1: java.io.OutputStream, param2: number): void;
@@ -9033,7 +9566,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module nativecode {
-				export class WebpTranscoderFactory {
+				export class WebpTranscoderFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.nativecode.WebpTranscoderFactory>;
 					public static sWebpTranscoderPresent: boolean;
 					public constructor();
@@ -9048,7 +9581,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module platform {
-				export class ArtDecoder extends com.facebook.imagepipeline.platform.PlatformDecoder {
+				export class ArtDecoder extends java.lang.Object implements com.facebook.imagepipeline.platform.PlatformDecoder {
 					public static class: java.lang.Class<com.facebook.imagepipeline.platform.ArtDecoder>;
 					public constructor(param0: com.facebook.imagepipeline.memory.BitmapPool, param1: number, param2: globalAndroid.support.v4.util.Pools.SynchronizedPool<any>);
 					public decodeJPEGFromEncodedImage(param0: com.facebook.imagepipeline.image.EncodedImage, param1: globalAndroid.graphics.Bitmap.Config, param2: globalAndroid.graphics.Rect, param3: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
@@ -9064,7 +9597,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module platform {
-				export abstract class DalvikPurgeableDecoder extends com.facebook.imagepipeline.platform.PlatformDecoder {
+				export abstract class DalvikPurgeableDecoder extends java.lang.Object implements com.facebook.imagepipeline.platform.PlatformDecoder {
 					public static class: java.lang.Class<com.facebook.imagepipeline.platform.DalvikPurgeableDecoder>;
 					public static EOI: native.Array<number>;
 					public decodeJPEGFromEncodedImage(param0: com.facebook.imagepipeline.image.EncodedImage, param1: globalAndroid.graphics.Bitmap.Config, param2: globalAndroid.graphics.Rect, param3: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
@@ -9116,15 +9649,16 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module platform {
-				export class PlatformDecoder {
+				export class PlatformDecoder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.platform.PlatformDecoder>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.platform.PlatformDecoder interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.platform.PlatformDecoder interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						decodeFromEncodedImage(param0: com.facebook.imagepipeline.image.EncodedImage, param1: globalAndroid.graphics.Bitmap.Config, param2: globalAndroid.graphics.Rect): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 						decodeJPEGFromEncodedImage(param0: com.facebook.imagepipeline.image.EncodedImage, param1: globalAndroid.graphics.Bitmap.Config, param2: globalAndroid.graphics.Rect, param3: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 					});
+					public constructor();
 					public decodeJPEGFromEncodedImage(param0: com.facebook.imagepipeline.image.EncodedImage, param1: globalAndroid.graphics.Bitmap.Config, param2: globalAndroid.graphics.Rect, param3: number): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 					public decodeFromEncodedImage(param0: com.facebook.imagepipeline.image.EncodedImage, param1: globalAndroid.graphics.Bitmap.Config, param2: globalAndroid.graphics.Rect): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 				}
@@ -9248,7 +9782,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class BaseProducerContext extends com.facebook.imagepipeline.producers.ProducerContext {
+				export class BaseProducerContext extends java.lang.Object implements com.facebook.imagepipeline.producers.ProducerContext {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.BaseProducerContext>;
 					public getPriority(): com.facebook.imagepipeline.common.Priority;
 					public constructor(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: com.facebook.imagepipeline.producers.ProducerListener, param3: any, param4: com.facebook.imagepipeline.request.ImageRequest.RequestLevel, param5: boolean, param6: boolean, param7: com.facebook.imagepipeline.common.Priority);
@@ -9280,7 +9814,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class BaseProducerContextCallbacks extends com.facebook.imagepipeline.producers.ProducerContextCallbacks {
+				export class BaseProducerContextCallbacks extends java.lang.Object implements com.facebook.imagepipeline.producers.ProducerContextCallbacks {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.BaseProducerContextCallbacks>;
 					public onIsPrefetchChanged(): void;
 					public constructor();
@@ -9410,7 +9944,7 @@ declare module com {
 				export class Consumer<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.Consumer<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.producers.Consumer<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.producers.Consumer<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onNewResult(param0: T, param1: number): void;
@@ -9418,6 +9952,7 @@ declare module com {
 						onCancellation(): void;
 						onProgressUpdate(param0: number): void;
 					});
+					public constructor();
 					public static IS_PARTIAL_RESULT: number;
 					public static NO_FLAGS: number;
 					public static DO_NOT_CACHE_ENCODED: number;
@@ -9430,13 +9965,22 @@ declare module com {
 					public onProgressUpdate(param0: number): void;
 				}
 				export module Consumer {
-					export class Status {
+					export class Status extends java.lang.Object implements java.lang.annotation.Annotation {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.Consumer.Status>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.producers.Consumer$Status interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.producers.Consumer$Status interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
+							annotationType(): java.lang.Class<any>;
+							equals(param0: any): boolean;
+							hashCode(): number;
+							toString(): string;
 						});
+						public constructor();
+						public equals(param0: any): boolean;
+						public hashCode(): number;
+						public toString(): string;
+						public annotationType(): java.lang.Class<any>;
 					}
 				}
 			}
@@ -9604,7 +10148,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class DownsampleUtil {
+				export class DownsampleUtil extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.DownsampleUtil>;
 					public static DEFAULT_SAMPLE_SIZE: number;
 					public static determineSampleSize(param0: com.facebook.imagepipeline.request.ImageRequest, param1: com.facebook.imagepipeline.image.EncodedImage): number;
@@ -9668,7 +10212,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class FetchState {
+				export class FetchState extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.FetchState>;
 					public getLastIntermediateResultTimeMs(): number;
 					public setLastIntermediateResultTimeMs(param0: number): void;
@@ -9716,7 +10260,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class JobScheduler {
+				export class JobScheduler extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.JobScheduler>;
 					public getQueuedTime(): number;
 					public clearJob(): void;
@@ -9725,17 +10269,18 @@ declare module com {
 					public scheduleJob(): boolean;
 				}
 				export module JobScheduler {
-					export class JobRunnable {
+					export class JobRunnable extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.JobScheduler.JobRunnable>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.producers.JobScheduler$JobRunnable interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.producers.JobScheduler$JobRunnable interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							run(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number): void;
 						});
+						public constructor();
 						public run(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number): void;
 					}
-					export class JobStartExecutorSupplier {
+					export class JobStartExecutorSupplier extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.JobScheduler.JobStartExecutorSupplier>;
 					}
 					export class JobState {
@@ -9744,6 +10289,7 @@ declare module com {
 						public static QUEUED: com.facebook.imagepipeline.producers.JobScheduler.JobState;
 						public static RUNNING: com.facebook.imagepipeline.producers.JobScheduler.JobState;
 						public static RUNNING_AND_PENDING: com.facebook.imagepipeline.producers.JobScheduler.JobState;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static valueOf(param0: string): com.facebook.imagepipeline.producers.JobScheduler.JobState;
 						public static values(): native.Array<com.facebook.imagepipeline.producers.JobScheduler.JobState>;
 					}
@@ -9935,7 +10481,9 @@ declare module com {
 					}
 					export class VariantComparator extends java.util.Comparator<com.facebook.imagepipeline.request.MediaVariations.Variant> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.MediaVariationsFallbackProducer.VariantComparator>;
+						public equals(param0: any): boolean;
 						public compare(param0: com.facebook.imagepipeline.request.MediaVariations.Variant, param1: com.facebook.imagepipeline.request.MediaVariations.Variant): number;
+						public compare(param0: any, param1: any): number;
 					}
 				}
 			}
@@ -9955,7 +10503,7 @@ declare module com {
 					public cloneOrNull(param0: any): any;
 				}
 				export module MultiplexProducer {
-					export class Multiplexer {
+					export class Multiplexer extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.MultiplexProducer.Multiplexer>;
 						public onCancelled(param0: com.facebook.imagepipeline.producers.MultiplexProducer.Multiplexer.ForwardingConsumer): void;
 						public onNextResult(param0: com.facebook.imagepipeline.producers.MultiplexProducer.Multiplexer.ForwardingConsumer, param1: any, param2: number): void;
@@ -10011,7 +10559,7 @@ declare module com {
 				export class NetworkFetcher<FETCH_STATE>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.NetworkFetcher<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.producers.NetworkFetcher<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.producers.NetworkFetcher<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						createFetchState(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): FETCH_STATE;
@@ -10020,6 +10568,7 @@ declare module com {
 						onFetchCompletion(param0: FETCH_STATE, param1: number): void;
 						getExtraMap(param0: FETCH_STATE, param1: number): java.util.Map<string,string>;
 					});
+					public constructor();
 					public createFetchState(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): FETCH_STATE;
 					public getExtraMap(param0: FETCH_STATE, param1: number): java.util.Map<string,string>;
 					public fetch(param0: FETCH_STATE, param1: com.facebook.imagepipeline.producers.NetworkFetcher.Callback): void;
@@ -10027,16 +10576,17 @@ declare module com {
 					public onFetchCompletion(param0: FETCH_STATE, param1: number): void;
 				}
 				export module NetworkFetcher {
-					export class Callback {
+					export class Callback extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.NetworkFetcher.Callback>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.producers.NetworkFetcher$Callback interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.producers.NetworkFetcher$Callback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
 							onResponse(param0: java.io.InputStream, param1: number): void;
 							onFailure(param0: java.lang.Throwable): void;
 							onCancellation(): void;
 						});
+						public constructor();
 						public onFailure(param0: java.lang.Throwable): void;
 						public onCancellation(): void;
 						public onResponse(param0: java.io.InputStream, param1: number): void;
@@ -10181,11 +10731,12 @@ declare module com {
 				export class Producer<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.Producer<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.producers.Producer<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.producers.Producer<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						produceResults(param0: com.facebook.imagepipeline.producers.Consumer<T>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					});
+					public constructor();
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<T>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 			}
@@ -10197,7 +10748,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ProducerConstants {
+				export class ProducerConstants extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ProducerConstants>;
 				}
 			}
@@ -10209,10 +10760,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ProducerContext {
+				export class ProducerContext extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ProducerContext>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ProducerContext interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ProducerContext interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getImageRequest(): com.facebook.imagepipeline.request.ImageRequest;
@@ -10225,6 +10776,7 @@ declare module com {
 						isIntermediateResultExpected(): boolean;
 						addCallbacks(param0: com.facebook.imagepipeline.producers.ProducerContextCallbacks): void;
 					});
+					public constructor();
 					public getPriority(): com.facebook.imagepipeline.common.Priority;
 					public getId(): string;
 					public getListener(): com.facebook.imagepipeline.producers.ProducerListener;
@@ -10244,10 +10796,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ProducerContextCallbacks {
+				export class ProducerContextCallbacks extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ProducerContextCallbacks>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ProducerContextCallbacks interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ProducerContextCallbacks interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onCancellationRequested(): void;
@@ -10255,6 +10807,7 @@ declare module com {
 						onIsIntermediateResultExpectedChanged(): void;
 						onPriorityChanged(): void;
 					});
+					public constructor();
 					public onIsPrefetchChanged(): void;
 					public onIsIntermediateResultExpectedChanged(): void;
 					public onPriorityChanged(): void;
@@ -10269,10 +10822,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ProducerListener {
+				export class ProducerListener extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ProducerListener>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ProducerListener interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ProducerListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						onProducerStart(param0: string, param1: string): void;
@@ -10283,6 +10836,7 @@ declare module com {
 						onUltimateProducerReached(param0: string, param1: string, param2: boolean): void;
 						requiresExtraMap(param0: string): boolean;
 					});
+					public constructor();
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
 					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
@@ -10409,6 +10963,7 @@ declare module com {
 					public onCancellation(): void;
 					public constructor();
 					public getExtraMapOnSuccess(param0: any): java.util.Map<string,string>;
+					public run(): void;
 					public getExtraMapOnFailure(param0: java.lang.Exception): java.util.Map<string,string>;
 					public disposeResult(param0: any): void;
 					public getExtraMapOnCancellation(): java.util.Map<string,string>;
@@ -10454,7 +11009,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ThreadHandoffProducerQueue {
+				export class ThreadHandoffProducerQueue extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThreadHandoffProducerQueue>;
 					public addToQueueOrExecute(param0: java.lang.Runnable): void;
 					public isQueueing(): boolean;
@@ -10532,12 +11087,13 @@ declare module com {
 				export class ThumbnailProducer<T>  extends com.facebook.imagepipeline.producers.Producer<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThumbnailProducer<any>>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ThumbnailProducer<any> interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ThumbnailProducer<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						canProvideImageForSize(param0: com.facebook.imagepipeline.common.ResizeOptions): boolean;
 						produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					});
+					public constructor();
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public canProvideImageForSize(param0: com.facebook.imagepipeline.common.ResizeOptions): boolean;
 				}
@@ -10550,7 +11106,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ThumbnailSizeChecker {
+				export class ThumbnailSizeChecker extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThumbnailSizeChecker>;
 					public static ACCEPTABLE_REQUESTED_TO_ACTUAL_SIZE_RATIO: number;
 					public static isImageBigEnough(param0: com.facebook.imagepipeline.image.EncodedImage, param1: com.facebook.imagepipeline.common.ResizeOptions): boolean;
@@ -10597,7 +11153,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export abstract class BasePostprocessor extends com.facebook.imagepipeline.request.Postprocessor {
+				export abstract class BasePostprocessor extends java.lang.Object implements com.facebook.imagepipeline.request.Postprocessor {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.BasePostprocessor>;
 					public static FALLBACK_BITMAP_CONFIGURATION: globalAndroid.graphics.Bitmap.Config;
 					public process(param0: globalAndroid.graphics.Bitmap, param1: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
@@ -10636,14 +11192,15 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export class HasImageRequest {
+				export class HasImageRequest extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.HasImageRequest>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.request.HasImageRequest interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.request.HasImageRequest interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						getImageRequest(): com.facebook.imagepipeline.request.ImageRequest;
 					});
+					public constructor();
 					public getImageRequest(): com.facebook.imagepipeline.request.ImageRequest;
 				}
 			}
@@ -10655,7 +11212,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export class ImageRequest {
+				export class ImageRequest extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.ImageRequest>;
 					public getPreferredHeight(): number;
 					public getSourceUriType(): number;
@@ -10690,6 +11247,7 @@ declare module com {
 						public static SMALL: com.facebook.imagepipeline.request.ImageRequest.CacheChoice;
 						public static DEFAULT: com.facebook.imagepipeline.request.ImageRequest.CacheChoice;
 						public static values(): native.Array<com.facebook.imagepipeline.request.ImageRequest.CacheChoice>;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static valueOf(param0: string): com.facebook.imagepipeline.request.ImageRequest.CacheChoice;
 					}
 					export class RequestLevel {
@@ -10699,6 +11257,7 @@ declare module com {
 						public static ENCODED_MEMORY_CACHE: com.facebook.imagepipeline.request.ImageRequest.RequestLevel;
 						public static BITMAP_MEMORY_CACHE: com.facebook.imagepipeline.request.ImageRequest.RequestLevel;
 						public static values(): native.Array<com.facebook.imagepipeline.request.ImageRequest.RequestLevel>;
+						public static valueOf(param0: java.lang.Class<any>, param1: string): java.lang.Enum<any>;
 						public static valueOf(param0: string): com.facebook.imagepipeline.request.ImageRequest.RequestLevel;
 						public getValue(): number;
 						public static getMax(param0: com.facebook.imagepipeline.request.ImageRequest.RequestLevel, param1: com.facebook.imagepipeline.request.ImageRequest.RequestLevel): com.facebook.imagepipeline.request.ImageRequest.RequestLevel;
@@ -10713,7 +11272,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export class ImageRequestBuilder {
+				export class ImageRequestBuilder extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.ImageRequestBuilder>;
 					public setResizeOptions(param0: com.facebook.imagepipeline.common.ResizeOptions): com.facebook.imagepipeline.request.ImageRequestBuilder;
 					public setSource(param0: globalAndroid.net.Uri): com.facebook.imagepipeline.request.ImageRequestBuilder;
@@ -10752,8 +11311,12 @@ declare module com {
 					public setAutoRotateEnabled(param0: boolean): com.facebook.imagepipeline.request.ImageRequestBuilder;
 				}
 				export module ImageRequestBuilder {
-					export class BuilderException {
+					export class BuilderException extends java.lang.RuntimeException {
 						public static class: java.lang.Class<com.facebook.imagepipeline.request.ImageRequestBuilder.BuilderException>;
+						public constructor();
+						public constructor(param0: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable);
+						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
@@ -10766,7 +11329,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export class MediaVariations {
+				export class MediaVariations extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.MediaVariations>;
 					public static SOURCE_IMAGE_REQUEST: string;
 					public static SOURCE_INDEX_DB: string;
@@ -10784,7 +11347,7 @@ declare module com {
 					public getMediaId(): string;
 				}
 				export module MediaVariations {
-					export class Builder {
+					export class Builder extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.request.MediaVariations.Builder>;
 						public addVariant(param0: globalAndroid.net.Uri, param1: number, param2: number): com.facebook.imagepipeline.request.MediaVariations.Builder;
 						public addVariant(param0: globalAndroid.net.Uri, param1: number, param2: number, param3: com.facebook.imagepipeline.request.ImageRequest.CacheChoice): com.facebook.imagepipeline.request.MediaVariations.Builder;
@@ -10792,15 +11355,24 @@ declare module com {
 						public setForceRequestForSpecifiedUri(param0: boolean): com.facebook.imagepipeline.request.MediaVariations.Builder;
 						public setSource(param0: string): com.facebook.imagepipeline.request.MediaVariations.Builder;
 					}
-					export class Source {
+					export class Source extends java.lang.Object implements java.lang.annotation.Annotation {
 						public static class: java.lang.Class<com.facebook.imagepipeline.request.MediaVariations.Source>;
 						/**
-						 * Constructs a new instance of the com.facebook.imagepipeline.request.MediaVariations$Source interface with the provided implementation.
+						 * Constructs a new instance of the com.facebook.imagepipeline.request.MediaVariations$Source interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
+							annotationType(): java.lang.Class<any>;
+							equals(param0: any): boolean;
+							hashCode(): number;
+							toString(): string;
 						});
+						public constructor();
+						public equals(param0: any): boolean;
+						public hashCode(): number;
+						public toString(): string;
+						public annotationType(): java.lang.Class<any>;
 					}
-					export class Variant {
+					export class Variant extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.request.MediaVariations.Variant>;
 						public getWidth(): number;
 						public getCacheChoice(): com.facebook.imagepipeline.request.ImageRequest.CacheChoice;
@@ -10822,16 +11394,17 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export class Postprocessor {
+				export class Postprocessor extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.Postprocessor>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.request.Postprocessor interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.request.Postprocessor interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						process(param0: globalAndroid.graphics.Bitmap, param1: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 						getName(): string;
 						getPostprocessorCacheKey(): com.facebook.cache.common.CacheKey;
 					});
+					public constructor();
 					public process(param0: globalAndroid.graphics.Bitmap, param1: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 					public getName(): string;
 					public getPostprocessorCacheKey(): com.facebook.cache.common.CacheKey;
@@ -10845,10 +11418,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export class RepeatedPostprocessor extends com.facebook.imagepipeline.request.Postprocessor {
+				export class RepeatedPostprocessor extends java.lang.Object implements com.facebook.imagepipeline.request.Postprocessor {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.RepeatedPostprocessor>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.request.RepeatedPostprocessor interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.request.RepeatedPostprocessor interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						setCallback(param0: com.facebook.imagepipeline.request.RepeatedPostprocessorRunner): void;
@@ -10856,6 +11429,7 @@ declare module com {
 						getName(): string;
 						getPostprocessorCacheKey(): com.facebook.cache.common.CacheKey;
 					});
+					public constructor();
 					public process(param0: globalAndroid.graphics.Bitmap, param1: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory): com.facebook.common.references.CloseableReference<globalAndroid.graphics.Bitmap>;
 					public getName(): string;
 					public setCallback(param0: com.facebook.imagepipeline.request.RepeatedPostprocessorRunner): void;
@@ -10870,14 +11444,15 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module request {
-				export class RepeatedPostprocessorRunner {
+				export class RepeatedPostprocessorRunner extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.request.RepeatedPostprocessorRunner>;
 					/**
-					 * Constructs a new instance of the com.facebook.imagepipeline.request.RepeatedPostprocessorRunner interface with the provided implementation.
+					 * Constructs a new instance of the com.facebook.imagepipeline.request.RepeatedPostprocessorRunner interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: {
 						update(): void;
 					});
+					public constructor();
 					public update(): void;
 				}
 			}
@@ -10888,7 +11463,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imagepipelinebase {
-			export class BuildConfig {
+			export class BuildConfig extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imagepipelinebase.BuildConfig>;
 				public static DEBUG: boolean;
 				public static APPLICATION_ID: string;
@@ -10905,7 +11480,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageutils {
-			export class BitmapUtil {
+			export class BitmapUtil extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageutils.BitmapUtil>;
 				public static ALPHA_8_BYTES_PER_PIXEL: number;
 				public static ARGB_4444_BYTES_PER_PIXEL: number;
@@ -10926,7 +11501,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageutils {
-			export class JfifUtil {
+			export class JfifUtil extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageutils.JfifUtil>;
 				public static MARKER_FIRST_BYTE: number;
 				public static MARKER_ESCAPE_BYTE: number;
@@ -10951,7 +11526,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageutils {
-			export class StreamProcessor {
+			export class StreamProcessor extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageutils.StreamProcessor>;
 				public static readPackedInt(param0: java.io.InputStream, param1: number, param2: boolean): number;
 			}
@@ -10962,7 +11537,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageutils {
-			export class TiffUtil {
+			export class TiffUtil extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageutils.TiffUtil>;
 				public static TIFF_BYTE_ORDER_BIG_END: number;
 				public static TIFF_BYTE_ORDER_LITTLE_END: number;
@@ -10972,7 +11547,7 @@ declare module com {
 				public static readOrientationFromTIFF(param0: java.io.InputStream, param1: number): number;
 			}
 			export module TiffUtil {
-				export class TiffHeader {
+				export class TiffHeader extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imageutils.TiffUtil.TiffHeader>;
 				}
 			}
@@ -10983,7 +11558,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module imageutils {
-			export class WebpUtil {
+			export class WebpUtil extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageutils.WebpUtil>;
 				public static getSize(param0: java.io.InputStream): globalAndroid.util.Pair<java.lang.Integer,java.lang.Integer>;
 				public static get2BytesAsInt(param0: java.io.InputStream): number;
@@ -10995,7 +11570,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Api18TraceUtils {
+			export class Api18TraceUtils extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Api18TraceUtils>;
 				public static beginTraceSection(param0: string): void;
 				public static endSection(): void;
@@ -11023,6 +11598,7 @@ declare module com {
 			export module ApkSoSource {
 				export class ApkUnpacker extends com.facebook.soloader.ExtractFromZipSoSource.ZipUnpacker {
 					public static class: java.lang.Class<com.facebook.soloader.ApkSoSource.ApkUnpacker>;
+					public close(): void;
 					public shouldExtract(param0: java.util.zip.ZipEntry, param1: string): boolean;
 				}
 			}
@@ -11054,13 +11630,22 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class DoNotOptimize {
+			export class DoNotOptimize extends java.lang.Object implements java.lang.annotation.Annotation {
 				public static class: java.lang.Class<com.facebook.soloader.DoNotOptimize>;
 				/**
-				 * Constructs a new instance of the com.facebook.soloader.DoNotOptimize interface with the provided implementation.
+				 * Constructs a new instance of the com.facebook.soloader.DoNotOptimize interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 				 */
 				public constructor(implementation: {
+					annotationType(): java.lang.Class<any>;
+					equals(param0: any): boolean;
+					hashCode(): number;
+					toString(): string;
 				});
+				public constructor();
+				public hashCode(): number;
+				public equals(param0: any): boolean;
+				public annotationType(): java.lang.Class<any>;
+				public toString(): string;
 			}
 		}
 	}
@@ -11069,7 +11654,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf32_Dyn {
+			export class Elf32_Dyn extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf32_Dyn>;
 				public static d_tag: number;
 				public static d_un: number;
@@ -11081,7 +11666,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf32_Ehdr {
+			export class Elf32_Ehdr extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf32_Ehdr>;
 				public static e_ident: number;
 				public static e_type: number;
@@ -11105,7 +11690,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf32_Phdr {
+			export class Elf32_Phdr extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf32_Phdr>;
 				public static p_type: number;
 				public static p_offset: number;
@@ -11123,7 +11708,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf32_Shdr {
+			export class Elf32_Shdr extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf32_Shdr>;
 				public static sh_name: number;
 				public static sh_type: number;
@@ -11143,7 +11728,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf64_Dyn {
+			export class Elf64_Dyn extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf64_Dyn>;
 				public static d_tag: number;
 				public static d_un: number;
@@ -11155,7 +11740,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf64_Ehdr {
+			export class Elf64_Ehdr extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf64_Ehdr>;
 				public static e_ident: number;
 				public static e_type: number;
@@ -11179,7 +11764,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf64_Phdr {
+			export class Elf64_Phdr extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf64_Phdr>;
 				public static p_type: number;
 				public static p_flags: number;
@@ -11197,7 +11782,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class Elf64_Shdr {
+			export class Elf64_Shdr extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.Elf64_Shdr>;
 				public static sh_name: number;
 				public static sh_type: number;
@@ -11229,12 +11814,14 @@ declare module com {
 				export class ExoUnpacker extends com.facebook.soloader.UnpackingSoSource.Unpacker {
 					public static class: java.lang.Class<com.facebook.soloader.ExoSoSource.ExoUnpacker>;
 					public openDsoIterator(): com.facebook.soloader.UnpackingSoSource.InputDsoIterator;
+					public close(): void;
 					public getDsoManifest(): com.facebook.soloader.UnpackingSoSource.DsoManifest;
 				}
 				export module ExoUnpacker {
 					export class FileBackedInputDsoIterator extends com.facebook.soloader.UnpackingSoSource.InputDsoIterator {
 						public static class: java.lang.Class<com.facebook.soloader.ExoSoSource.ExoUnpacker.FileBackedInputDsoIterator>;
 						public next(): com.facebook.soloader.UnpackingSoSource.InputDso;
+						public close(): void;
 						public hasNext(): boolean;
 					}
 				}
@@ -11277,6 +11864,7 @@ declare module com {
 					export class ZipBackedInputDsoIterator extends com.facebook.soloader.UnpackingSoSource.InputDsoIterator {
 						public static class: java.lang.Class<com.facebook.soloader.ExtractFromZipSoSource.ZipUnpacker.ZipBackedInputDsoIterator>;
 						public next(): com.facebook.soloader.UnpackingSoSource.InputDso;
+						public close(): void;
 						public hasNext(): boolean;
 					}
 				}
@@ -11288,7 +11876,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class FileLocker {
+			export class FileLocker extends java.lang.Object implements java.io.Closeable {
 				public static class: java.lang.Class<com.facebook.soloader.FileLocker>;
 				public close(): void;
 				public static lock(param0: java.io.File): com.facebook.soloader.FileLocker;
@@ -11300,7 +11888,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class MergedSoMapping {
+			export class MergedSoMapping extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.MergedSoMapping>;
 			}
 		}
@@ -11310,7 +11898,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class MinElf {
+			export class MinElf extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.MinElf>;
 				public static ELF_MAGIC: number;
 				public static DT_NULL: number;
@@ -11324,7 +11912,7 @@ declare module com {
 				public constructor();
 			}
 			export module MinElf {
-				export class ElfError {
+				export class ElfError extends java.lang.RuntimeException {
 					public static class: java.lang.Class<com.facebook.soloader.MinElf.ElfError>;
 				}
 			}
@@ -11335,7 +11923,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export abstract class NativeLibrary {
+			export abstract class NativeLibrary extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.NativeLibrary>;
 				public getError(): java.lang.UnsatisfiedLinkError;
 				public ensureLoaded(): void;
@@ -11363,14 +11951,15 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class SoFileLoader {
+			export class SoFileLoader extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.SoFileLoader>;
 				/**
-				 * Constructs a new instance of the com.facebook.soloader.SoFileLoader interface with the provided implementation.
+				 * Constructs a new instance of the com.facebook.soloader.SoFileLoader interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 				 */
 				public constructor(implementation: {
 					load(param0: string, param1: number): void;
 				});
+				public constructor();
 				public load(param0: string, param1: number): void;
 			}
 		}
@@ -11380,7 +11969,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class SoLoader {
+			export class SoLoader extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.SoLoader>;
 				public static SOLOADER_ENABLE_EXOPACKAGE: number;
 				public static SOLOADER_ALLOW_ASYNC_INIT: number;
@@ -11405,11 +11994,11 @@ declare module com {
 				public static prependSoSource(param0: com.facebook.soloader.SoSource): void;
 			}
 			export module SoLoader {
-				export class Api14Utils {
+				export class Api14Utils extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.soloader.SoLoader.Api14Utils>;
 					public static getClassLoaderLdLoadLibrary(): string;
 				}
-				export class WrongAbiError {
+				export class WrongAbiError extends java.lang.UnsatisfiedLinkError {
 					public static class: java.lang.Class<com.facebook.soloader.SoLoader.WrongAbiError>;
 				}
 			}
@@ -11420,7 +12009,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export abstract class SoSource {
+			export abstract class SoSource extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.SoSource>;
 				public static LOAD_RESULT_NOT_FOUND: number;
 				public static LOAD_RESULT_LOADED: number;
@@ -11443,7 +12032,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class SysUtil {
+			export class SysUtil extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.SysUtil>;
 				public static getSupportedAbis(): native.Array<string>;
 				public static deleteOrThrow(param0: java.io.File): void;
@@ -11455,7 +12044,7 @@ declare module com {
 				public constructor();
 			}
 			export module SysUtil {
-				export class LollipopSysdeps {
+				export class LollipopSysdeps extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.soloader.SysUtil.LollipopSysdeps>;
 					public static fallocateIfSupported(param0: java.io.FileDescriptor, param1: number): void;
 					public static getSupportedAbis(): native.Array<string>;
@@ -11468,14 +12057,15 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module soloader {
-			export class SystemLoadLibraryWrapper {
+			export class SystemLoadLibraryWrapper extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.soloader.SystemLoadLibraryWrapper>;
 				/**
-				 * Constructs a new instance of the com.facebook.soloader.SystemLoadLibraryWrapper interface with the provided implementation.
+				 * Constructs a new instance of the com.facebook.soloader.SystemLoadLibraryWrapper interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 				 */
 				public constructor(implementation: {
 					loadLibrary(param0: string): void;
 				});
+				public constructor();
 				public loadLibrary(param0: string): void;
 			}
 		}
@@ -11500,33 +12090,33 @@ declare module com {
 				public constructor();
 			}
 			export module UnpackingSoSource {
-				export class Dso {
+				export class Dso extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.soloader.UnpackingSoSource.Dso>;
 					public name: string;
 					public hash: string;
 					public constructor(param0: string, param1: string);
 				}
-				export class DsoManifest {
+				export class DsoManifest extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.soloader.UnpackingSoSource.DsoManifest>;
 					public dsos: native.Array<com.facebook.soloader.UnpackingSoSource.Dso>;
 					public write(param0: java.io.DataOutput): void;
 					public constructor(param0: native.Array<com.facebook.soloader.UnpackingSoSource.Dso>);
 				}
-				export class InputDso {
+				export class InputDso extends java.lang.Object implements java.io.Closeable {
 					public static class: java.lang.Class<com.facebook.soloader.UnpackingSoSource.InputDso>;
 					public dso: com.facebook.soloader.UnpackingSoSource.Dso;
 					public content: java.io.InputStream;
 					public close(): void;
 					public constructor(param0: com.facebook.soloader.UnpackingSoSource.Dso, param1: java.io.InputStream);
 				}
-				export abstract class InputDsoIterator {
+				export abstract class InputDsoIterator extends java.lang.Object implements java.io.Closeable {
 					public static class: java.lang.Class<com.facebook.soloader.UnpackingSoSource.InputDsoIterator>;
 					public constructor();
 					public close(): void;
 					public next(): com.facebook.soloader.UnpackingSoSource.InputDso;
 					public hasNext(): boolean;
 				}
-				export abstract class Unpacker {
+				export abstract class Unpacker extends java.lang.Object implements java.io.Closeable {
 					public static class: java.lang.Class<com.facebook.soloader.UnpackingSoSource.Unpacker>;
 					public constructor();
 					public openDsoIterator(): com.facebook.soloader.UnpackingSoSource.InputDsoIterator;
@@ -11543,11 +12133,12 @@ declare module com {
 		export module widget {
 			export module text {
 				export module span {
-					export class BetterImageSpan {
+					export class BetterImageSpan extends globalAndroid.text.style.ReplacementSpan {
 						public static class: java.lang.Class<com.facebook.widget.text.span.BetterImageSpan>;
 						public static ALIGN_BOTTOM: number;
 						public static ALIGN_BASELINE: number;
 						public static ALIGN_CENTER: number;
+						public constructor();
 						public draw(param0: globalAndroid.graphics.Canvas, param1: string, param2: number, param3: number, param4: number, param5: number, param6: number, param7: number, param8: globalAndroid.graphics.Paint): void;
 						public constructor(param0: globalAndroid.graphics.drawable.Drawable, param1: number);
 						public getDrawable(): globalAndroid.graphics.drawable.Drawable;
@@ -11557,13 +12148,22 @@ declare module com {
 						public getSize(param0: globalAndroid.graphics.Paint, param1: string, param2: number, param3: number, param4: globalAndroid.graphics.Paint.FontMetricsInt): number;
 					}
 					export module BetterImageSpan {
-						export class BetterImageSpanAlignment {
+						export class BetterImageSpanAlignment extends java.lang.Object implements java.lang.annotation.Annotation {
 							public static class: java.lang.Class<com.facebook.widget.text.span.BetterImageSpan.BetterImageSpanAlignment>;
 							/**
-							 * Constructs a new instance of the com.facebook.widget.text.span.BetterImageSpan$BetterImageSpanAlignment interface with the provided implementation.
+							 * Constructs a new instance of the com.facebook.widget.text.span.BetterImageSpan$BetterImageSpanAlignment interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 							 */
 							public constructor(implementation: {
+								annotationType(): java.lang.Class<any>;
+								equals(param0: any): boolean;
+								hashCode(): number;
+								toString(): string;
 							});
+							public constructor();
+							public hashCode(): number;
+							public annotationType(): java.lang.Class<any>;
+							public toString(): string;
+							public equals(param0: any): boolean;
 						}
 					}
 				}
