@@ -33,6 +33,7 @@ export function getImagePipeline(): ImagePipeline {
 
 export function shutDown(): void {
     com.facebook.drawee.view.SimpleDraweeView.shutDown();
+    com.facebook.drawee.backends.pipeline.Fresco.shutDown();
 }
 
 export class ImagePipeline {
