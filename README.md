@@ -74,7 +74,7 @@ if (application.android) {
 > When working with "downsampling" you will need to pass a configuration to the `initialize` function:
 
 ```javascript
-frescoModule.initialize({ isDownsampleEnabled: true });
+fresco.initialize({ isDownsampleEnabled: true });
 ```
 
 
@@ -592,6 +592,20 @@ imagePipeLine.evictFromMemoryCache("<uri-to-a-photo-from-the-web>");
 
 ```
 imagePipeLine.evictFromDiskCache("<uri-to-a-photo-from-the-web>");
+```
+
+#### Manually shut down the native Fresco library
+In very very rare occasions the native Android Fresco library may experience strange memory leak issues, in such scenarios as a last resort you may want to "shut down" the library forcing all of the managed memory to possibly be released. You can do that by calling the `shutDown` function exposed by the nativescript-fresco module, one good application lifecycle event to call it inside may be in the `exit` event of the application:
+
+```javascript
+import * as app from "application";
+import * as frescoModule from "nativescript-fresco";
+
+if (app.android) {
+    app.on(app.exitEvent, (args) => {
+        frescoModule.shutDown();
+    });
+}
 ```
 
 ## Sample Screenshots
