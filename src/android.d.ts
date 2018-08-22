@@ -1,29 +1,3 @@
-declare namespace android {
-    namespace net {
-        class Uri {
-            static parse(orientation);
-        }
-
-        namespace Uri {
-            class Builder {
-                scheme(scheme: string);
-                path(path: string);
-            }
-        }
-    }
-
-    namespace graphics {
-        namespace drawable {
-            class BitmapDrawable {
-                constructor(resources, image);
-            }
-        }
-        class Color {
-            static parseColor(color: string);
-        }
-    }
-}
-
 declare namespace com {
     namespace facebook {
         namespace drawee {
@@ -51,6 +25,7 @@ declare namespace com {
                 namespace pipeline {
                     class Fresco {
                         static initialize(context);
+                        static initialize(context, config);
 
                         static newDraweeControllerBuilder(): PipelineDraweeControllerBuilder;
 
@@ -124,9 +99,18 @@ declare namespace com {
         }
 
         namespace imagepipeline {
+
+            namespace common {
+              class ResizeOptions {
+                constructor(decodeWidth: number, decodeHeight: number);
+              }
+            }
+
             namespace request {
                 class ImageRequestBuilder {
                     static newBuilderWithSource(url);
+                }
+                class ImageRequest {
                 }
             }
 
@@ -150,45 +134,30 @@ declare namespace com {
                 }
             }
 
-            namespace animated {
-                namespace base {
-                    class AnimatedDrawable {
-                        start(): void;
-                        stop(): void;
-                        isRunning(): boolean;
-                    }
-                }
-            }
-
             namespace core {
                 class ImagePipeline {
-                    isInBitmapMemoryCache(uri: string): boolean;
-                    isInDiskCacheSync(uri: string): boolean;
-                    evictFromMemoryCache(uri: string): void;
-                    evictFromDiskCache(uri: string): void;
-                    evictFromCache(uri: string): void;
+                    isInBitmapMemoryCache(uri: globalAndroid.net.Uri): boolean;
+                    isInDiskCacheSync(uri: globalAndroid.net.Uri): boolean;
+                    evictFromMemoryCache(uri: globalAndroid.net.Uri): void;
+                    evictFromDiskCache(uri: globalAndroid.net.Uri): void;
+                    evictFromCache(uri: globalAndroid.net.Uri): void;
                     clearCaches(): void;
                     clearMemoryCaches(): void;
                     clearDiskCaches(): void;
                 }
+
+                class ImagePipelineConfig {
+                    static newBuilder(context): ImagePipelineConfig.Builder;
+                }
+
+                namespace ImagePipelineConfig {
+                    class Builder {
+                      setDownsampleEnabled(value: boolean): ImagePipelineConfig.Builder;
+                      build(): ImagePipelineConfig;
+                    }
+                }
+
             }
-        }
-    }
-}
-
-declare namespace java {
-    namespace lang {
-        class String {
-            static valueOf(identifier);
-        }
-
-        class Class {
-            getName(): string;
-        }
-
-        class Throwable {
-            getClass(): java.lang.Class;
-            getMessage(): string;
         }
     }
 }

@@ -1,6 +1,6 @@
 export * from "./nativescript-fresco-common";
 import * as commonModule from "./nativescript-fresco-common";
-export declare function initialize(): void;
+export declare function initialize(config?: commonModule.ImagePipelineConfigSetting): void;
 export declare function getImagePipeline(): ImagePipeline;
 export declare class ImagePipeline {
     private _android;
@@ -14,14 +14,7 @@ export declare class ImagePipeline {
     clearDiskCaches(): void;
     android: any;
 }
-export interface AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable, commonModule.IAnimatedImage {
-    new (): AnimatedImage;
-    start(): void;
-    stop(): void;
-    isRunning(): boolean;
-}
-export declare let AnimatedImage: AnimatedImage;
-export declare class FrescoError implements commonModule.IError {
+export declare class FrescoError implements commonModule.FrescoError {
     private _stringValue;
     private _message;
     private _errorType;
@@ -35,7 +28,7 @@ export interface QualityInfo {
     isOfFullQuality(): any;
     isOfGoodEnoughQuality(): any;
 }
-export declare class ImageInfo implements commonModule.IImageInfo {
+export declare class ImageInfo implements commonModule.ImageInfo {
     private _nativeImageInfo;
     constructor(imageInfo: any);
     getHeight(): number;
@@ -46,7 +39,7 @@ export declare class FinalEventData extends commonModule.EventData {
     private _imageInfo;
     private _animatable;
     imageInfo: ImageInfo;
-    animatable: commonModule.IAnimatedImage;
+    animatable: commonModule.AnimatedImage;
 }
 export declare class IntermediateEventData extends commonModule.EventData {
     private _imageInfo;

@@ -4,7 +4,7 @@
                         height="200" width="400"
                         placeholderImageUri="res://ns_logo"            
                         failureImageUri="res://ns_logo_black"
-                        aspectRatio="2"
+                        aspectRatio="1.49"
                         showProgressBar="true"
                         failure="onFailure"
                         imageUri="http://error.jpgerror"/>

@@ -4,7 +4,7 @@ import * as viewModule from "tns-core-modules/ui/core/view";
  * When called, initializes the android Fresco library. Calling this method is required.
  * A good place to call it is at the application onLaunch() method.
  */
-declare function initialize(): void;
+declare function initialize(config?: ImagePipelineConfigSetting): void;
 
 /**
  * When called, initializes the android Fresco library. Calling this method is required.
@@ -50,6 +50,11 @@ export class FrescoDrawee extends viewModule.View {
      * Removes all images with the specified Uri from the memory or/and disk and reinitialize the 'imageUri'.
      */
     updateImageUri(): void;
+
+    /**
+     * The native 'com.facebook.drawee.view.SimpleDraweeView' object.
+     */
+    android: any;
 
     /**
      * String value used for the image URI.
@@ -148,6 +153,17 @@ export class FrescoDrawee extends viewModule.View {
      * Number value used as the aspect ratio of the image.
      */
     aspectRatio: number;
+
+    /**
+     * Number value used as the resized image width
+     */
+    decodeWidth: number;
+
+    /**
+     * Number value used as the resized image height
+     */
+    decodeHeight: number;
+
 }
 
 /**
@@ -175,7 +191,7 @@ export class ImageInfo {
 /**
 * Interface of the common abstraction behind a platform specific error object that is used by the FrescoDrawee's events.
 */
-export interface IError {
+export interface FrescoError {
     /**
     * Returns the message of the Error.
     */
@@ -295,43 +311,22 @@ export class FailureEventData {
 /**
 * Interface of the common abstraction behind a platform specific animated image object.
 */
-export interface IAnimatedImage {
+export interface AnimatedImage {
     /**
-     * Starts the AnimatedDrawable image.
+     * Starts the native Android Animatable image.
      */
     start(): void;
 
     /**
-     * Stops the AnimatedDrawable image.
+     * Stops the native Android Animatable image.
      */
     stop(): void;
 
     /**
-     * Returns boolean value representing the if the AnimatedDrawable's is being animated.
+     * Returns boolean value representing the if the native Android Animatable's is being animated.
      */
     isRunning(): boolean;
 }
-
-/**
- * Encapsulates the common abstraction behind a platform specific animated image object.
- */
-export class AnimatedImage {
-    /**
-     * Starts the AnimatedImage image.
-     */
-    start(): void;
-
-    /**
-     * Stops the AnimatedImage image.
-     */
-    stop(): void;
-
-    /**
-     * Returns boolean value representing the if the AnimatedImage's is being animated.
-     */
-    isRunning(): boolean;
-}
-
 /**
  * The entry point for the image pipeline..
  */
@@ -413,4 +408,12 @@ export enum ScaleType {
     * Scales the child so that both dimensions will be greater than or equal to the corresponding dimension of the parent.
     */
     focusCrop
+}
+
+/**
+ * Advanced Configurations used for initializing Fresco
+ * For more details, see http://frescolib.org/docs/configure-image-pipeline.html
+ */
+export interface ImagePipelineConfigSetting {
+  isDownsampleEnabled?: boolean;
 }

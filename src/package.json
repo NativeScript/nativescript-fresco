@@ -1,6 +1,6 @@
 {
   "name": "nativescript-fresco",
-  "version": "3.0.7",
+  "version": "4.0.0",
   "description": "This is a NativeScript plugin wrapping the popular Fresco library for managing images on Android.",
   "main": "nativescript-fresco",
   "repository": {
@@ -10,37 +10,29 @@
   "bugs": {
     "url": "https://github.com/NativeScript/nativescript-fresco/issues"
   },
-  "files": [
-    "*.js*",
-    "platforms",
-    "*.d.ts",
-    "angular/*.js*",
-    "angular/*.d.ts",
-    "!tsconfig.json"
-  ],
   "nativescript": {
     "platforms": {
       "android": "3.0.0"
     }
   },
   "devDependencies": {
-    "@angular/common": "~6.0.0",
-    "@angular/compiler": "~6.0.0",
-    "@angular/compiler-cli": "~6.0.0",
-    "@angular/core": "~6.0.0",
-    "@angular/forms": "~6.0.0",
-    "@angular/http": "~6.0.0",
-    "@angular/platform-browser": "~6.0.0",
-    "@angular/platform-browser-dynamic": "~6.0.0",
+    "@angular/common": "~6.1.0",
+    "@angular/compiler": "~6.1.0",
+    "@angular/compiler-cli": "~6.1.0",
+    "@angular/core": "~6.1.0",
+    "@angular/forms": "~6.1.0",
+    "@angular/http": "~6.1.0",
+    "@angular/platform-browser": "~6.1.0",
+    "@angular/platform-browser-dynamic": "~6.1.0",
     "@angular/router": "~6.0.0",
-    "nativescript-angular": "^6.0.0",
-    "rxjs": "~6.1.0",
+    "nativescript-angular": "~6.1.0",
+    "rxjs": "~6.2.0",
     "rimraf": "^2.5.0",
-    "tns-core-modules": "4.1.0",
-    "tns-platform-declarations": "4.1.0",
-    "typescript": "~2.7.2",
-    "zone.js": "0.8.4",
-    "tslint": "^5.0.0"
+    "tns-core-modules": "4.2.0",
+    "tns-platform-declarations": "4.2.0",
+    "typescript": "~2.8.2",
+    "zone.js": "~0.8.26",
+    "tslint": "^5.11.0"
   },
   "scripts": {
     "ngc": "node --max-old-space-size=8192 ./node_modules/.bin/ngc",
@@ -48,9 +40,11 @@
     "build": "npm i && tsc && npm run ngc",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\"",
     "plugin.tscwatch": "npm run tsc -- -w",
+    "demo.android": "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
+    "demo.reset": "cd ../demo && rimraf platforms",
     "demo.ng.android": "npm i && npm run tsc && cd ../demo-angular && tns run android --syncAllFiles",
     "demo.ng.reset": "cd ../demo-angular && rimraf platforms",
-    "plugin.prepare": "npm run tsc && cd ../demo-angular && tns plugin remove nativescript-fresco && tns plugin add ../src",
+    "plugin.prepare": "npm run tsc && cd ../demo-angular && tns plugin remove nativescript-fresco && tns plugin add ../src && cd ../demo && tns plugin remove nativescript-fresco && tns plugin add ../src",
     "clean": "cd ../demo-angular && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'"
   },
@@ -62,12 +56,8 @@
   "author": "NativeScript Team",
   "contributors": [
     {
-      "name": "Deyan Ginev",
-      "email": "Deyan.Ginev@telerik.com"
-    },
-    {
       "name": "Vladimir Amiorkov",
-      "email": "Vladimir.Amiorkov@telerik.com"
+      "email": "Vladimir.Amiorkov@progress.com"
     }
   ],
   "license": "Apache-2.0"

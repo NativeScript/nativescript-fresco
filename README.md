@@ -71,6 +71,13 @@ if (application.android) {
 }
 ```
 
+> When working with "downsampling" you will need to pass a configuration to the `initialize` function:
+
+```javascript
+frescoModule.initialize({ isDownsampleEnabled: true });
+```
+
+
 Use `fresco` in the XML definition of the page as follows:
 
 ```xml
@@ -90,7 +97,18 @@ Use `fresco` in the XML definition of the page as follows:
 ## Examples
 You can refer the [demo-angular](https://github.com/NativeScript/nativescript-fresco/tree/master/demo-angular) folder of the repo for runnable {N} project that demonstrates the nativescript-fresco plugin with all of its features in action.
 
+## Migrating from 3.x.x to 4.x.x
+- If you are using the `AnimatedImage` class you can continue to cast to this type just note that it is now an interface rather than a class
+- If you are using the `IAnimatedImage` interface simply change all of your references to be `AnimatedImage`
+- If you are using the `IImageInfo` interface simply change all of your references to be `ImageInfo`
+- If you are using the `IError` interface simply change all of your references to be `FrescoError`
+
 ## Features
+
+### Native Fresco library typings
+If you find yourself in the need to access directly the native library of the nativescript-fresco plugin you can import the android.d.ts from the plugin in your `references.d.ts`:
+
+```/// <reference path="./node_modules/nativescript-fresco/android.d.ts" />```
 
 As documented by the Fresco library setting the **height and width** are **mandatory**, more details on this topic could be found [here](http://frescolib.org/docs/using-drawees-xml.html#height-and-width-mandatory). So the first this you should do when declaring the FrescoDrawee is set its *width* and *height* attributes or set only one of them and set the FrescoDrawee's **aspectRatio**. The width and height of the FrescoDrawee in your {N} application supports percentages which makes it possible to declare for example *width="50%"* and *aspectRatio="1.33"* achieving exactly 50% width with dynamically calculated height based on the aspect ration of the loaded image from the *imageUri*.
 
@@ -178,6 +196,23 @@ Number value used as the aspect ratio of the image. This property is useful when
 ```xml
 <nativescript-fresco:FrescoDrawee aspectRatio="1.33" verticalAlignment="top"/>
 ```
+
+- **decodeWidth** (downsampling) - make sure to enable downsample (**isDownsampleEnabled**) in the initialize function of the plugin otherwise this property is disregarded.
+
+Number value used as the downsampled width of the fresco drawable.
+
+```xml
+<nativescript-fresco:FrescoDrawee decodeWidth="100"/>
+```
+
+- **decodeHeight** (downsampling) - make sure to enable downsample (**isDownsampleEnabled**) in the initialize function of the plugin otherwise this property is disregarded.
+
+Number value used as the downsampled width of the fresco drawable.
+
+```xml
+<nativescript-fresco:FrescoDrawee decodeHeight="100"/>
+```
+
 
 - **progressiveRenderingEnabled**
 

@@ -1,4 +1,3 @@
-/// <reference path="references.d.ts" />
 import { View, Property } from "tns-core-modules/ui/core/view";
 import * as observableModule from "tns-core-modules/data/observable";
 export declare namespace ScaleType {
@@ -11,19 +10,22 @@ export declare namespace ScaleType {
     const FitXY = "fitXY";
     const FocusCrop = "focusCrop";
 }
-export interface IAnimatedImage {
+export interface AnimatedImage {
     start(): void;
     stop(): void;
     isRunning(): boolean;
 }
-export interface IImageInfo {
+export interface ImageInfo {
     getHeight(): number;
     getWidth(): number;
 }
-export interface IError {
+export interface FrescoError {
     getMessage(): string;
     getErrorType(): string;
     toString(): string;
+}
+export interface ImagePipelineConfigSetting {
+    isDownsampleEnabled?: boolean;
 }
 export declare class EventData implements observableModule.EventData {
     private _eventName;
@@ -56,6 +58,8 @@ export declare class FrescoDrawee extends View {
     autoPlayAnimations: boolean;
     tapToRetryEnabled: boolean;
     aspectRatio: number;
+    decodeWidth: number;
+    decodeHeight: number;
     static imageUriProperty: Property<FrescoDrawee, string>;
     static placeholderImageUriProperty: Property<FrescoDrawee, string>;
     static failureImageUriProperty: Property<FrescoDrawee, string>;
@@ -74,6 +78,8 @@ export declare class FrescoDrawee extends View {
     static autoPlayAnimationsProperty: Property<FrescoDrawee, boolean>;
     static tapToRetryEnabledProperty: Property<FrescoDrawee, boolean>;
     static aspectRatioProperty: Property<FrescoDrawee, number>;
+    static decodeWidthProperty: Property<FrescoDrawee, number>;
+    static decodeHeightProperty: Property<FrescoDrawee, number>;
     private onImageUriPropertyChanged(oldValue, newValue);
     private onPlaceholderImageUriPropertyChanged(oldValue, newValue);
     private onFailureImageUriPropertyChanged(oldValue, newValue);
@@ -92,6 +98,8 @@ export declare class FrescoDrawee extends View {
     private onAutoPlayAnimationsPropertyChanged(oldValue, newValue);
     private onTapToRetryEnabledPropertyChanged(oldValue, newValue);
     private onAspectRatioPropertyChanged(oldValue, newValue);
+    private onDecodeWidthPropertyChanged(oldValue, newValue);
+    private onDecodeHeightPropertyChanged(oldValue, newValue);
     protected onImageUriChanged(oldValue: string, newValue: string): void;
     protected onPlaceholderImageUriChanged(oldValue: string, newValue: string): void;
     protected onFailureImageUriChanged(oldValue: string, newValue: string): void;
@@ -110,4 +118,6 @@ export declare class FrescoDrawee extends View {
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean): void;
     protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean): void;
     protected onAspectRatioChanged(oldValue: number, newValue: number): void;
+    protected onDecodeWidthChanged(oldValue: number, newValue: number): void;
+    protected onDecodeHeightChanged(oldValue: number, newValue: number): void;
 }

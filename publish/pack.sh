@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SOURCE_DIR=../src;
 TO_SOURCE_DIR=src;
 PACK_DIR=package;
@@ -16,6 +17,12 @@ pack() {
     node_modules/.bin/rimraf "$TO_SOURCE_DIR"
     node_modules/.bin/rimraf "$PACK_DIR"
 
+    # npm i in original src
+    echo 'Installing npm packages in original src...'
+    cd $SOURCE_DIR
+    npm i
+    cd $CURRENT_DIR
+
     # copy src
     echo 'Copying src...'
     node_modules/.bin/ncp "$SOURCE_DIR" "$TO_SOURCE_DIR"
@@ -28,7 +35,7 @@ pack() {
     # compile package and copy files required by npm
     echo 'Building /src...'
     cd "$TO_SOURCE_DIR"
-    node_modules/.bin/tsc
+    npm run build
     cd ..
 
     echo 'Creating package...'

@@ -1,6 +1,8 @@
-<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
-                    verticalAlignment="center"
-                    placeholderImageUri="res://ns_logo"
-                    aspectRatio="0.754"
-                    progressiveRenderingEnabled="true"
-                    imageUri="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"/>
+<GridLayout>
+    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                        verticalAlignment="center"
+                        placeholderImageUri="res://ns_logo"
+                        aspectRatio="0.754"
+                        progressiveRenderingEnabled="true"
+                        imageUri="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"/>
+</GridLayout>
