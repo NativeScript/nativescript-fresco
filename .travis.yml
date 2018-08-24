@@ -12,6 +12,7 @@ matrix:
       node_js: "8"
       jdk: oraclejdk8
       before_script:
+        - pip install six
         - cd ../demo && tns platform add ios@next
         - cd ../demo-angular && tns platform add ios@next
       script: cd ../demo && npm run build.plugin && npm i && tns build ios --bundle --env.uglify && cd ../demo-angular && npm i && tns build ios --bundle --env.uglify --env.aot
@@ -45,6 +46,7 @@ matrix:
       node_js: "8"
       jdk: oraclejdk8
       before_script:
+        - pip install six
         - cd ../demo && tns platform add ios@next
         - cd ../demo-angular && tns platform add ios@next
       script: 
@@ -63,18 +65,17 @@ install:
     - echo no | npm install -g nativescript@next
     - tns usage-reporting disable
     - tns error-reporting disable
-    - pip install six
     - cd src
     - npm uninstall tns-core-modules -D && npm install tns-core-modules@next -D
     - npm uninstall nativescript-angular -D && npm install nativescript-angular@next -D
     - cd ../demo
-    - npm uninstall tns-core-modules -P && npm install tns-core-modules@next -P
     - npm uninstall nativescript-dev-webpack -D && npm install nativescript-dev-webpack@next -D
     - ./node_modules/.bin/update-ns-webpack --deps --configs
+    - npm uninstall tns-core-modules -P && npm install tns-core-modules@next -P
     - npm uninstall nativescript-dev-typescript -D && npm install nativescript-dev-typescript@next -D
     - cd ../demo-angular
-    - npm uninstall tns-core-modules -P && npm install tns-core-modules@next -P
-    - npm uninstall nativescript-angular -P && npm install nativescript-angular@next -P
     - npm uninstall nativescript-dev-webpack -D && npm install nativescript-dev-webpack@next -D
     - ./node_modules/.bin/update-ns-webpack --deps --configs
+    - npm uninstall tns-core-modules -P && npm install tns-core-modules@next -P
+    - npm uninstall nativescript-angular -P && npm install nativescript-angular@next -P
     - npm uninstall nativescript-dev-typescript -D && npm install nativescript-dev-typescript@next -D
