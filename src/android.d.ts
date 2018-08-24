@@ -5,7 +5,6 @@ declare module bolts {
 		public constructor(param0: string, param1: java.util.List<any>);
 		public printStackTrace(param0: java.io.PrintStream): void;
 		public printStackTrace(param0: java.io.PrintWriter): void;
-		public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 		public constructor(param0: string, param1: native.Array<java.lang.Throwable>);
 		public getErrors(): java.util.List<java.lang.Exception>;
 		public constructor(param0: java.lang.Throwable);
@@ -106,7 +105,6 @@ declare module bolts {
 		public static class: java.lang.Class<bolts.ExecutorException>;
 		public constructor();
 		public constructor(param0: string, param1: java.lang.Throwable);
-		public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 		public constructor(param0: java.lang.Throwable);
 		public constructor(param0: java.lang.Exception);
 		public constructor(param0: string);
@@ -212,7 +210,6 @@ declare module bolts {
 		public static class: java.lang.Class<bolts.UnobservedTaskException>;
 		public constructor();
 		public constructor(param0: string, param1: java.lang.Throwable);
-		public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 		public constructor(param0: java.lang.Throwable);
 		public constructor(param0: string);
 	}
@@ -749,7 +746,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: number, param1: number);
 						public constructor(param0: string);
 					}
@@ -1659,7 +1655,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 					export class FileDeleteException extends java.io.IOException {
@@ -1667,7 +1662,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 					export class ParentDirNotFoundException extends java.io.FileNotFoundException {
@@ -1675,7 +1669,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 					export class RenameException extends java.io.IOException {
@@ -1683,7 +1676,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
@@ -2471,7 +2463,6 @@ declare module com {
 						close(): void;
 						isClosed(): boolean;
 						close(): void;
-						close(): void;
 					});
 					public constructor();
 					public read(param0: number): number;
@@ -2487,7 +2478,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
@@ -2666,7 +2656,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
@@ -2866,7 +2855,6 @@ declare module com {
 			export module util {
 				export class ExceptionWithNoStacktrace extends java.lang.Exception {
 					public static class: java.lang.Class<com.facebook.common.util.ExceptionWithNoStacktrace>;
-					public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 					public constructor(param0: string, param1: java.lang.Throwable);
 					public fillInStackTrace(): java.lang.Throwable;
 					public constructor(param0: string);
@@ -5275,12 +5263,10 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module view {
-				export class DraweeTransition extends globalAndroid.transition.Transition {
+				export class DraweeTransition {
 					public static class: java.lang.Class<com.facebook.drawee.view.DraweeTransition>;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
 					public captureStartValues(param0: globalAndroid.transition.TransitionValues): void;
 					public constructor(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType);
-					public constructor();
 					public createAnimator(param0: globalAndroid.view.ViewGroup, param1: globalAndroid.transition.TransitionValues, param2: globalAndroid.transition.TransitionValues): globalAndroid.animation.Animator;
 					public constructor(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param2: globalAndroid.graphics.PointF, param3: globalAndroid.graphics.PointF);
 					public captureEndValues(param0: globalAndroid.transition.TransitionValues): void;
@@ -7805,7 +7791,6 @@ declare module com {
 			export module common {
 				export class TooManyBitmapsException extends java.lang.RuntimeException {
 					public static class: java.lang.Class<com.facebook.imagepipeline.common.TooManyBitmapsException>;
-					public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 					public constructor(param0: string, param1: java.lang.Throwable);
 					public constructor(param0: string);
 					public constructor(param0: java.lang.Throwable);
@@ -8407,7 +8392,6 @@ declare module com {
 			export module decoder {
 				export class DecodeException extends java.lang.RuntimeException {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.DecodeException>;
-					public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 					public constructor(param0: string, param1: java.lang.Throwable);
 					public constructor(param0: string);
 					public constructor(param0: java.lang.Throwable);
@@ -8935,7 +8919,6 @@ declare module com {
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: any);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 					export class InvalidValueException extends java.lang.RuntimeException {
@@ -8944,7 +8927,6 @@ declare module com {
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: any);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 					export class PoolSizeViolationException extends java.lang.RuntimeException {
@@ -8952,7 +8934,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 						public constructor(param0: number, param1: number, param2: number, param3: number);
 					}
@@ -8962,7 +8943,6 @@ declare module com {
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: any);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
@@ -9279,7 +9259,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
@@ -11316,7 +11295,6 @@ declare module com {
 						public constructor();
 						public constructor(param0: java.lang.Throwable);
 						public constructor(param0: string, param1: java.lang.Throwable);
-						public constructor(param0: string, param1: java.lang.Throwable, param2: boolean, param3: boolean);
 						public constructor(param0: string);
 					}
 				}
