@@ -77,7 +77,7 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class Capture<T> xtends java.lang.Object {
+	export class Capture<T>  extends java.lang.Object {
 		public static class: java.lang.Class<bolts.Capture<any>>;
 		public constructor();
 		public get(): T;
@@ -87,8 +87,8 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class Continuation<TTaskResult, TContinuationResult> xtends java.lang.Object {
-		public static class: java.lang.Class<bolts.Continuation<any,  any>>;
+	export class Continuation<TTaskResult, TContinuationResult>  extends java.lang.Object {
+		public static class: java.lang.Class<bolts.Continuation<any,any>>;
 		/**
 		 * Constructs a new instance of the bolts.Continuation<any,any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 		 */
@@ -112,11 +112,11 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class Task<TResult> xtends java.lang.Object {
+	export class Task<TResult>  extends java.lang.Object {
 		public static class: java.lang.Class<bolts.Task<any>>;
 		public static BACKGROUND_EXECUTOR: java.util.concurrent.ExecutorService;
 		public static UI_THREAD_EXECUTOR: java.util.concurrent.Executor;
-		public continueWith(param0: bolts.Continuation<any,  any>, param1: bolts.CancellationToken): bolts.Task<any>;
+		public continueWith(param0: bolts.Continuation<any,any>, param1: bolts.CancellationToken): bolts.Task<any>;
 		public getResult(): TResult;
 		public static whenAllResult(param0: java.util.Collection<any>): bolts.Task<any>;
 		public static forError(param0: java.lang.Exception): bolts.Task<any>;
@@ -127,42 +127,42 @@ declare module bolts {
 		public static forResult(param0: any): bolts.Task<any>;
 		public static call(param0: java.util.concurrent.Callable<any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
 		public static call(param0: java.util.concurrent.Callable<any>): bolts.Task<any>;
-		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,  bolts.Task<java.lang.Void>>, param2: bolts.CancellationToken): bolts.Task<java.lang.Void>;
-		public continueWithTask(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
+		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,bolts.Task<java.lang.Void>>, param2: bolts.CancellationToken): bolts.Task<java.lang.Void>;
+		public continueWithTask(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
 		public static delay(param0: number): bolts.Task<java.lang.Void>;
 		public static delay(param0: number, param1: bolts.CancellationToken): bolts.Task<java.lang.Void>;
-		public onSuccessTask(param0: bolts.Continuation<any,  any>): bolts.Task<any>;
+		public onSuccessTask(param0: bolts.Continuation<any,any>): bolts.Task<any>;
 		public static create(): bolts.Task.TaskCompletionSource;
 		public static callInBackground(param0: java.util.concurrent.Callable<any>): bolts.Task<any>;
-		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,  bolts.Task<java.lang.Void>>, param2: java.util.concurrent.Executor, param3: bolts.CancellationToken): bolts.Task<java.lang.Void>;
+		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,bolts.Task<java.lang.Void>>, param2: java.util.concurrent.Executor, param3: bolts.CancellationToken): bolts.Task<java.lang.Void>;
 		public static setUnobservedExceptionHandler(param0: bolts.Task.UnobservedExceptionHandler): void;
-		public continueWithTask(param0: bolts.Continuation<any,  any>): bolts.Task<any>;
-		public onSuccessTask(param0: bolts.Continuation<any,  any>, param1: bolts.CancellationToken): bolts.Task<any>;
-		public onSuccess(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
-		public onSuccess(param0: bolts.Continuation<any,  any>, param1: bolts.CancellationToken): bolts.Task<any>;
-		public continueWith(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
+		public continueWithTask(param0: bolts.Continuation<any,any>): bolts.Task<any>;
+		public onSuccessTask(param0: bolts.Continuation<any,any>, param1: bolts.CancellationToken): bolts.Task<any>;
+		public onSuccess(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
+		public onSuccess(param0: bolts.Continuation<any,any>, param1: bolts.CancellationToken): bolts.Task<any>;
+		public continueWith(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
 		public makeVoid(): bolts.Task<java.lang.Void>;
-		public continueWith(param0: bolts.Continuation<any,  any>): bolts.Task<any>;
-		public continueWith(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
+		public continueWith(param0: bolts.Continuation<any,any>): bolts.Task<any>;
+		public continueWith(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
 		public cast(): bolts.Task<any>;
 		public static call(param0: java.util.concurrent.Callable<any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
-		public onSuccess(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
+		public onSuccess(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
 		public isFaulted(): boolean;
 		public isCancelled(): boolean;
-		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,  bolts.Task<java.lang.Void>>, param2: java.util.concurrent.Executor): bolts.Task<java.lang.Void>;
-		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,  bolts.Task<java.lang.Void>>): bolts.Task<java.lang.Void>;
+		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,bolts.Task<java.lang.Void>>, param2: java.util.concurrent.Executor): bolts.Task<java.lang.Void>;
+		public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: bolts.Continuation<java.lang.Void,bolts.Task<java.lang.Void>>): bolts.Task<java.lang.Void>;
 		public static whenAny(param0: java.util.Collection<any>): bolts.Task<bolts.Task<any>>;
 		public static callInBackground(param0: java.util.concurrent.Callable<any>, param1: bolts.CancellationToken): bolts.Task<any>;
 		public static whenAll(param0: java.util.Collection<any>): bolts.Task<java.lang.Void>;
 		public waitForCompletion(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
-		public onSuccessTask(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
+		public onSuccessTask(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
 		public waitForCompletion(): void;
 		public isCompleted(): boolean;
-		public onSuccess(param0: bolts.Continuation<any,  any>): bolts.Task<any>;
-		public onSuccessTask(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
+		public onSuccess(param0: bolts.Continuation<any,any>): bolts.Task<any>;
+		public onSuccessTask(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor, param2: bolts.CancellationToken): bolts.Task<any>;
 		public static whenAnyResult(param0: java.util.Collection<any>): bolts.Task<any>;
-		public continueWithTask(param0: bolts.Continuation<any,  any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
-		public continueWithTask(param0: bolts.Continuation<any,  any>, param1: bolts.CancellationToken): bolts.Task<any>;
+		public continueWithTask(param0: bolts.Continuation<any,any>, param1: java.util.concurrent.Executor): bolts.Task<any>;
+		public continueWithTask(param0: bolts.Continuation<any,any>, param1: bolts.CancellationToken): bolts.Task<any>;
 	}
 	export module Task {
 		export class TaskCompletionSource extends bolts.TaskCompletionSource<any> {
@@ -183,7 +183,7 @@ declare module bolts {
 }
 
 declare module bolts {
-	export class TaskCompletionSource<TResult> xtends java.lang.Object {
+	export class TaskCompletionSource<TResult>  extends java.lang.Object {
 		public static class: java.lang.Class<bolts.TaskCompletionSource<any>>;
 		public constructor();
 		public getTask(): bolts.Task<TResult>;
@@ -868,7 +868,7 @@ declare module com {
 					export class DiskDumpInfo extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.cache.disk.DiskStorage.DiskDumpInfo>;
 						public entries: java.util.List<com.facebook.cache.disk.DiskStorage.DiskDumpInfoEntry>;
-						public typeCounts: java.util.Map<string,  java.lang.Integer>;
+						public typeCounts: java.util.Map<string,java.lang.Integer>;
 						public constructor();
 					}
 					export class DiskDumpInfoEntry extends java.lang.Object {
@@ -1480,7 +1480,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module executors {
-				export class ScheduledFutureImpl<V> xtends java.lang.Object {
+				export class ScheduledFutureImpl<V>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.executors.ScheduledFutureImpl<any>>;
 					public compareTo(param0: java.util.concurrent.Delayed): number;
 					public get(param0: number, param1: java.util.concurrent.TimeUnit): V;
@@ -1546,7 +1546,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module executors {
-				export abstract class StatefulRunnable<T> xtends java.lang.Runnable {
+				export abstract class StatefulRunnable<T>  extends java.lang.Runnable {
 					public static class: java.lang.Class<com.facebook.common.executors.StatefulRunnable<any>>;
 					public static STATE_CREATED: number;
 					public static STATE_STARTED: number;
@@ -1800,7 +1800,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class ImmutableList<E> xtends java.util.ArrayList<any> {
+				export class ImmutableList<E>  extends java.util.ArrayList<any> {
 					public static class: java.lang.Class<com.facebook.common.internal.ImmutableList<any>>;
 					public addAll(param0: java.util.Collection<any>): boolean;
 					public isEmpty(): boolean;
@@ -1839,28 +1839,28 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class ImmutableMap<K, V> xtends java.util.HashMap<any,  any> {
-					public static class: java.lang.Class<com.facebook.common.internal.ImmutableMap<any,  any>>;
-					public static of(param0: any, param1: any): java.util.Map<any,  any>;
-					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any): java.util.Map<any,  any>;
+				export class ImmutableMap<K, V>  extends java.util.HashMap<any,any> {
+					public static class: java.lang.Class<com.facebook.common.internal.ImmutableMap<any,any>>;
+					public static of(param0: any, param1: any): java.util.Map<any,any>;
+					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any): java.util.Map<any,any>;
 					public isEmpty(): boolean;
 					public size(): number;
-					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any): java.util.Map<any,  any>;
+					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any): java.util.Map<any,any>;
 					public values(): java.util.Collection<any>;
-					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any, param8: any, param9: any, param10: any, param11: any): java.util.Map<any,  any>;
+					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any, param8: any, param9: any, param10: any, param11: any): java.util.Map<any,any>;
 					public put(param0: any, param1: any): any;
-					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any, param8: any, param9: any): java.util.Map<any,  any>;
+					public static of(param0: any, param1: any, param2: any, param3: any, param4: any, param5: any, param6: any, param7: any, param8: any, param9: any): java.util.Map<any,any>;
 					public equals(param0: any): boolean;
-					public putAll(param0: java.util.Map<any,  any>): void;
-					public static of(param0: any, param1: any, param2: any, param3: any): java.util.Map<any,  any>;
+					public putAll(param0: java.util.Map<any,any>): void;
+					public static of(param0: any, param1: any, param2: any, param3: any): java.util.Map<any,any>;
 					public containsKey(param0: any): boolean;
 					public containsValue(param0: any): boolean;
 					public remove(param0: any): any;
-					public entrySet(): java.util.Set<java.util.Map.Entry<any,  any>>;
-					public static copyOf(param0: java.util.Map<any,  any>): com.facebook.common.internal.ImmutableMap<any , any>;
+					public entrySet(): java.util.Set<java.util.Map.Entry<any,any>>;
+					public static copyOf(param0: java.util.Map<any,any>): com.facebook.common.internal.ImmutableMap<any,any>;
 					public keySet(): java.util.Set<any>;
 					public clear(): void;
-					public static of(): java.util.Map<any,  any>;
+					public static of(): java.util.Map<any,any>;
 					public hashCode(): number;
 					public get(param0: any): any;
 				}
@@ -1873,7 +1873,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class ImmutableSet<E> xtends java.util.HashSet<any> {
+				export class ImmutableSet<E>  extends java.util.HashSet<any> {
 					public static class: java.lang.Class<com.facebook.common.internal.ImmutableSet<any>>;
 					public addAll(param0: java.util.Collection<any>): boolean;
 					public remove(param0: any): boolean;
@@ -1990,7 +1990,7 @@ declare module com {
 					public static newHashSet(param0: java.util.Iterator<any>): java.util.HashSet<any>;
 					public static newCopyOnWriteArraySet(): java.util.concurrent.CopyOnWriteArraySet<any>;
 					public static newLinkedHashSet(): java.util.LinkedHashSet<any>;
-					public static newSetFromMap(param0: java.util.Map<any,  any>): java.util.Set<any>;
+					public static newSetFromMap(param0: java.util.Map<any,any>): java.util.Set<any>;
 				}
 			}
 		}
@@ -2001,7 +2001,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module internal {
-				export class Supplier<T> xtends java.lang.Object {
+				export class Supplier<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.internal.Supplier<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.common.internal.Supplier<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -2283,7 +2283,7 @@ declare module com {
 			export module media {
 				export class MediaUtils extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.media.MediaUtils>;
-					public static ADDITIONAL_ALLOWED_MIME_TYPES: java.util.Map<string,  string>;
+					public static ADDITIONAL_ALLOWED_MIME_TYPES: java.util.Map<string,string>;
 					public static isVideo(param0: string): boolean;
 					public static extractMime(param0: string): string;
 					public constructor();
@@ -2403,7 +2403,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module memory {
-				export class Pool<V> xtends java.lang.Object {
+				export class Pool<V>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.memory.Pool<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.common.memory.Pool<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -2576,7 +2576,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module references {
-				export class CloseableReference<T> xtends java.lang.Object {
+				export class CloseableReference<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.references.CloseableReference<any>>;
 					public static closeSafely(param0: java.lang.Iterable<any>): void;
 					public static closeSafely(param0: com.facebook.common.references.CloseableReference<any>): void;
@@ -2604,7 +2604,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module references {
-				export class OOMSoftReference<T> xtends java.lang.Object {
+				export class OOMSoftReference<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.references.OOMSoftReference<any>>;
 					public set(param0: T): void;
 					public constructor();
@@ -2620,7 +2620,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module references {
-				export class ResourceReleaser<T> xtends java.lang.Object {
+				export class ResourceReleaser<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.references.ResourceReleaser<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.common.references.ResourceReleaser<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -2640,7 +2640,7 @@ declare module com {
 	export module facebook {
 		export module common {
 			export module references {
-				export class SharedReference<T> xtends java.lang.Object {
+				export class SharedReference<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.common.references.SharedReference<any>>;
 					public static isValid(param0: com.facebook.common.references.SharedReference<any>): boolean;
 					public addReference(): void;
@@ -3100,7 +3100,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export abstract class AbstractDataSource<T> xtends com.facebook.datasource.DataSource<any> {
+			export abstract class AbstractDataSource<T>  extends com.facebook.datasource.DataSource<any> {
 				public static class: java.lang.Class<com.facebook.datasource.AbstractDataSource<any>>;
 				public getResult(): any;
 				public hasFailed(): boolean;
@@ -3157,7 +3157,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export abstract class BaseDataSubscriber<T> xtends com.facebook.datasource.DataSubscriber<any> {
+			export abstract class BaseDataSubscriber<T>  extends com.facebook.datasource.DataSubscriber<any> {
 				public static class: java.lang.Class<com.facebook.datasource.BaseDataSubscriber<any>>;
 				public onFailure(param0: com.facebook.datasource.DataSource<any>): void;
 				public onNewResult(param0: com.facebook.datasource.DataSource<any>): void;
@@ -3174,7 +3174,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export class DataSource<T> xtends java.lang.Object {
+			export class DataSource<T>  extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.datasource.DataSource<any>>;
 				/**
 				 * Constructs a new instance of the com.facebook.datasource.DataSource<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -3216,7 +3216,7 @@ declare module com {
 				public static immediateDataSource(param0: any): com.facebook.datasource.DataSource<any>;
 			}
 			export module DataSources {
-				export class ValueHolder<T> xtends java.lang.Object {
+				export class ValueHolder<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.datasource.DataSources.ValueHolder<any>>;
 					public value: T;
 				}
@@ -3228,7 +3228,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export class DataSubscriber<T> xtends java.lang.Object {
+			export class DataSubscriber<T>  extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.datasource.DataSubscriber<any>>;
 				/**
 				 * Constructs a new instance of the com.facebook.datasource.DataSubscriber<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -3252,7 +3252,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export class FirstAvailableDataSourceSupplier<T> xtends com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>> {
+			export class FirstAvailableDataSourceSupplier<T>  extends com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>> {
 				public static class: java.lang.Class<com.facebook.datasource.FirstAvailableDataSourceSupplier<any>>;
 				public hashCode(): number;
 				public equals(param0: any): boolean;
@@ -3293,7 +3293,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export class IncreasingQualityDataSourceSupplier<T> xtends com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>> {
+			export class IncreasingQualityDataSourceSupplier<T>  extends com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>> {
 				public static class: java.lang.Class<com.facebook.datasource.IncreasingQualityDataSourceSupplier<any>>;
 				public static create(param0: java.util.List<any>): com.facebook.datasource.IncreasingQualityDataSourceSupplier<any>;
 				public hashCode(): number;
@@ -3335,7 +3335,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export class RetainingDataSourceSupplier<T> xtends com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>> {
+			export class RetainingDataSourceSupplier<T>  extends com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>> {
 				public static class: java.lang.Class<com.facebook.datasource.RetainingDataSourceSupplier<any>>;
 				public get(): any;
 				public replaceSupplier(param0: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>>): void;
@@ -3343,7 +3343,7 @@ declare module com {
 				public constructor();
 			}
 			export module RetainingDataSourceSupplier {
-				export class RetainingDataSource<T> xtends com.facebook.datasource.AbstractDataSource<any> {
+				export class RetainingDataSource<T>  extends com.facebook.datasource.AbstractDataSource<any> {
 					public static class: java.lang.Class<com.facebook.datasource.RetainingDataSourceSupplier.RetainingDataSource<any>>;
 					public isFinished(): boolean;
 					public getProgress(): number;
@@ -3373,7 +3373,7 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module datasource {
-			export class SimpleDataSource<T> xtends com.facebook.datasource.AbstractDataSource<any> {
+			export class SimpleDataSource<T>  extends com.facebook.datasource.AbstractDataSource<any> {
 				public static class: java.lang.Class<com.facebook.datasource.SimpleDataSource<any>>;
 				public getResult(): any;
 				public static create(): com.facebook.datasource.SimpleDataSource<any>;
@@ -3509,12 +3509,12 @@ declare module com {
 		export module drawee {
 			export module backends {
 				export module pipeline {
-					export class PipelineDraweeController extends com.facebook.drawee.controller.AbstractDraweeController<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,  com.facebook.imagepipeline.image.ImageInfo> {
+					export class PipelineDraweeController extends com.facebook.drawee.controller.AbstractDraweeController<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,com.facebook.imagepipeline.image.ImageInfo> {
 						public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.PipelineDraweeController>;
 						public getImageInfo(param0: com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>): com.facebook.imagepipeline.image.ImageInfo;
 						public constructor(param0: com.facebook.drawee.components.DeferredReleaser, param1: java.util.concurrent.Executor, param2: string, param3: any);
 						public setCustomDrawableFactories(param0: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>): void;
-						public constructor(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param6: string, param7: com.facebook.cache.common.CacheKey, param8: any);
+						public constructor(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param6: string, param7: com.facebook.cache.common.CacheKey, param8: any);
 						public createDrawable(param0: com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>): globalAndroid.graphics.drawable.Drawable;
 						public releaseImage(param0: com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>): void;
 						public onViewportVisibilityHint(param0: boolean): void;
@@ -3546,7 +3546,7 @@ declare module com {
 						public getResources(): globalAndroid.content.res.Resources;
 						public setContentDescription(param0: string): void;
 						public createDrawable(param0: any): globalAndroid.graphics.drawable.Drawable;
-						public constructor(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param6: string, param7: com.facebook.cache.common.CacheKey, param8: any, param9: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>);
+						public constructor(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param6: string, param7: com.facebook.cache.common.CacheKey, param8: any, param9: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>);
 						public isSameImageRequest(param0: com.facebook.drawee.interfaces.DraweeController): boolean;
 						public onDetach(): void;
 					}
@@ -3561,7 +3561,7 @@ declare module com {
 		export module drawee {
 			export module backends {
 				export module pipeline {
-					export class PipelineDraweeControllerBuilder extends com.facebook.drawee.controller.AbstractDraweeControllerBuilder<com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder,  com.facebook.imagepipeline.request.ImageRequest , com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage >, com.facebook.imagepipeline.image.ImageInfo> {
+					export class PipelineDraweeControllerBuilder extends com.facebook.drawee.controller.AbstractDraweeControllerBuilder<com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder,com.facebook.imagepipeline.request.ImageRequest,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,com.facebook.imagepipeline.image.ImageInfo> {
 						public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder>;
 						public setCustomDrawableFactory(param0: com.facebook.imagepipeline.drawable.DrawableFactory): com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 						public setCallerContext(param0: any): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
@@ -3572,14 +3572,14 @@ declare module com {
 						public build(): com.facebook.drawee.interfaces.DraweeController;
 						public getDataSourceForRequest(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any, param2: com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel): com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>;
 						public constructor(param0: globalAndroid.content.Context, param1: java.util.Set<com.facebook.drawee.controller.ControllerListener<any>>);
-						public build(): com.facebook.drawee.controller.AbstractDraweeController<any,  any>;
+						public build(): com.facebook.drawee.controller.AbstractDraweeController<any,any>;
 						public static convertCacheLevelToRequestLevel(param0: com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel): com.facebook.imagepipeline.request.ImageRequest.RequestLevel;
 						public setCallerContext(param0: any): any;
 						public setImageOriginListener(param0: com.facebook.drawee.backends.pipeline.info.ImageOriginListener): com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 						public setCustomDrawableFactories(param0: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>): com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 						public setUri(param0: globalAndroid.net.Uri): com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 						public constructor(param0: globalAndroid.content.Context, param1: com.facebook.drawee.backends.pipeline.PipelineDraweeControllerFactory, param2: com.facebook.imagepipeline.core.ImagePipeline, param3: java.util.Set<com.facebook.drawee.controller.ControllerListener<any>>);
-						public obtainController(): com.facebook.drawee.controller.AbstractDraweeController<any,  any>;
+						public obtainController(): com.facebook.drawee.controller.AbstractDraweeController<any,any>;
 						public getDataSourceForRequest(param0: any, param1: any, param2: com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel): com.facebook.datasource.DataSource<any>;
 						public setOldController(param0: com.facebook.drawee.interfaces.DraweeController): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
 						public setOldController(param0: com.facebook.drawee.interfaces.DraweeController): any;
@@ -3620,9 +3620,9 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.drawee.backends.pipeline.PipelineDraweeControllerFactory>;
 						public constructor();
 						public newController(param0: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param1: string, param2: com.facebook.cache.common.CacheKey, param3: any): com.facebook.drawee.backends.pipeline.PipelineDraweeController;
-						public internalCreateController(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>, param6: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>, param7: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param8: string, param9: com.facebook.cache.common.CacheKey, param10: any): com.facebook.drawee.backends.pipeline.PipelineDraweeController;
+						public internalCreateController(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>, param6: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>, param7: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param8: string, param9: com.facebook.cache.common.CacheKey, param10: any): com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 						public newController(param0: com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>, param1: string, param2: com.facebook.cache.common.CacheKey, param3: any, param4: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>, param5: com.facebook.drawee.backends.pipeline.info.ImageOriginListener): com.facebook.drawee.backends.pipeline.PipelineDraweeController;
-						public init(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>, param6: com.facebook.common.internal.Supplier<java.lang.Boolean>): void;
+						public init(param0: globalAndroid.content.res.Resources, param1: com.facebook.drawee.components.DeferredReleaser, param2: com.facebook.imagepipeline.drawable.DrawableFactory, param3: java.util.concurrent.Executor, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param5: com.facebook.common.internal.ImmutableList<com.facebook.imagepipeline.drawable.DrawableFactory>, param6: com.facebook.common.internal.Supplier<java.lang.Boolean>): void;
 					}
 				}
 			}
@@ -3791,8 +3791,8 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module controller {
-				export abstract class AbstractDraweeController<T, INFO> xtends java.lang.Object {
-					public static class: java.lang.Class<com.facebook.drawee.controller.AbstractDraweeController<any,  any>>;
+				export abstract class AbstractDraweeController<T, INFO>  extends java.lang.Object {
+					public static class: java.lang.Class<com.facebook.drawee.controller.AbstractDraweeController<any,any>>;
 					public setHierarchy(param0: com.facebook.drawee.interfaces.DraweeHierarchy): void;
 					public setControllerViewportVisibilityListener(param0: com.facebook.drawee.controller.ControllerViewportVisibilityListener): void;
 					public getId(): string;
@@ -3833,7 +3833,7 @@ declare module com {
 					public getImageClass(param0: T): string;
 				}
 				export module AbstractDraweeController {
-					export class InternalForwardingListener<INFO> xtends com.facebook.drawee.controller.ForwardingControllerListener<any> {
+					export class InternalForwardingListener<INFO>  extends com.facebook.drawee.controller.ForwardingControllerListener<any> {
 						public static class: java.lang.Class<com.facebook.drawee.controller.AbstractDraweeController.InternalForwardingListener<any>>;
 						public onFinalImageSet(param0: string, param1: any, param2: globalAndroid.graphics.drawable.Animatable): void;
 						public onRelease(param0: string): void;
@@ -3853,8 +3853,8 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module controller {
-				export abstract class AbstractDraweeControllerBuilder<BUILDER, REQUEST, IMAGE, INFO> xtends com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder {
-					public static class: java.lang.Class<com.facebook.drawee.controller.AbstractDraweeControllerBuilder<any,  any , an y, any>>;
+				export abstract class AbstractDraweeControllerBuilder<BUILDER, REQUEST, IMAGE, INFO>  extends com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder {
+					public static class: java.lang.Class<com.facebook.drawee.controller.AbstractDraweeControllerBuilder<any,any,any,any>>;
 					public getRetainImageOnFailure(): boolean;
 					public setAutoPlayAnimations(param0: boolean): any;
 					public getFirstAvailableDataSourceSupplier(param0: native.Array<any>, param1: boolean): com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>>;
@@ -3864,21 +3864,21 @@ declare module com {
 					public setOldController(param0: com.facebook.drawee.interfaces.DraweeController): any;
 					public getAutoPlayAnimations(): boolean;
 					public validate(): void;
-					public maybeAttachListeners(param0: com.facebook.drawee.controller.AbstractDraweeController<any,  any>): void;
-					public maybeBuildAndSetRetryManager(param0: com.facebook.drawee.controller.AbstractDraweeController<any,  any>): void;
+					public maybeAttachListeners(param0: com.facebook.drawee.controller.AbstractDraweeController<any,any>): void;
+					public maybeBuildAndSetRetryManager(param0: com.facebook.drawee.controller.AbstractDraweeController<any,any>): void;
 					public getContentDescription(): string;
 					public getImageRequest(): any;
 					public getDataSourceSupplierForRequest(param0: any, param1: com.facebook.drawee.controller.AbstractDraweeControllerBuilder.CacheLevel): com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<any>>;
 					public setControllerViewportVisibilityListener(param0: com.facebook.drawee.controller.ControllerViewportVisibilityListener): any;
-					public build(): com.facebook.drawee.controller.AbstractDraweeController<any,  any>;
+					public build(): com.facebook.drawee.controller.AbstractDraweeController<any,any>;
 					public getControllerListener(): com.facebook.drawee.controller.ControllerListener<any>;
 					public setFirstAvailableImageRequests(param0: native.Array<any>, param1: boolean): any;
 					public getContext(): globalAndroid.content.Context;
 					public setImageRequest(param0: any): any;
 					public reset(): any;
-					public maybeBuildAndSetGestureDetector(param0: com.facebook.drawee.controller.AbstractDraweeController<any,  any>): void;
+					public maybeBuildAndSetGestureDetector(param0: com.facebook.drawee.controller.AbstractDraweeController<any,any>): void;
 					public setOldController(param0: com.facebook.drawee.interfaces.DraweeController): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
-					public obtainController(): com.facebook.drawee.controller.AbstractDraweeController<any,  any>;
+					public obtainController(): com.facebook.drawee.controller.AbstractDraweeController<any,any>;
 					public setUri(param0: string): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
 					public setCallerContext(param0: any): com.facebook.drawee.interfaces.SimpleDraweeControllerBuilder;
 					public build(): com.facebook.drawee.interfaces.DraweeController;
@@ -3894,7 +3894,7 @@ declare module com {
 					public getThis(): any;
 					public setControllerListener(param0: com.facebook.drawee.controller.ControllerListener<any>): any;
 					public setContentDescription(param0: string): any;
-					public buildController(): com.facebook.drawee.controller.AbstractDraweeController<any,  any>;
+					public buildController(): com.facebook.drawee.controller.AbstractDraweeController<any,any>;
 					public getControllerViewportVisibilityListener(): com.facebook.drawee.controller.ControllerViewportVisibilityListener;
 					public static generateUniqueControllerId(): string;
 					public getCallerContext(): any;
@@ -3923,7 +3923,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module controller {
-				export class BaseControllerListener<INFO> xtends com.facebook.drawee.controller.ControllerListener<any> {
+				export class BaseControllerListener<INFO>  extends com.facebook.drawee.controller.ControllerListener<any> {
 					public static class: java.lang.Class<com.facebook.drawee.controller.BaseControllerListener<any>>;
 					public onFinalImageSet(param0: string, param1: any, param2: globalAndroid.graphics.drawable.Animatable): void;
 					public onIntermediateImageSet(param0: string, param1: any): void;
@@ -3943,7 +3943,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module controller {
-				export class ControllerListener<INFO> xtends java.lang.Object {
+				export class ControllerListener<INFO>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.controller.ControllerListener<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.drawee.controller.ControllerListener<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -3995,7 +3995,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module controller {
-				export class ForwardingControllerListener<INFO> xtends com.facebook.drawee.controller.ControllerListener<any> {
+				export class ForwardingControllerListener<INFO>  extends com.facebook.drawee.controller.ControllerListener<any> {
 					public static class: java.lang.Class<com.facebook.drawee.controller.ForwardingControllerListener<any>>;
 					public clearListeners(): void;
 					public onFinalImageSet(param0: string, param1: any, param2: globalAndroid.graphics.drawable.Animatable): void;
@@ -5234,7 +5234,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module view {
-				export class DraweeHolder<DH> xtends com.facebook.drawee.drawable.VisibilityCallback {
+				export class DraweeHolder<DH>  extends com.facebook.drawee.drawable.VisibilityCallback {
 					public static class: java.lang.Class<com.facebook.drawee.view.DraweeHolder<any>>;
 					public static create(param0: com.facebook.drawee.interfaces.DraweeHierarchy, param1: globalAndroid.content.Context): com.facebook.drawee.view.DraweeHolder<any>;
 					public hasHierarchy(): boolean;
@@ -5282,7 +5282,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module view {
-				export class DraweeView<DH> xtends globalAndroid.widget.ImageView {
+				export class DraweeView<DH>  extends globalAndroid.widget.ImageView {
 					public static class: java.lang.Class<com.facebook.drawee.view.DraweeView<any>>;
 					public static setGlobalLegacyVisibilityHandlingEnabled(param0: boolean): void;
 					public setAspectRatio(param0: number): void;
@@ -5363,7 +5363,7 @@ declare module com {
 	export module facebook {
 		export module drawee {
 			export module view {
-				export class MultiDraweeHolder<DH> xtends java.lang.Object {
+				export class MultiDraweeHolder<DH>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.drawee.view.MultiDraweeHolder<any>>;
 					public add(param0: number, param1: com.facebook.drawee.view.DraweeHolder<DH>): void;
 					public constructor();
@@ -5389,7 +5389,7 @@ declare module com {
 			export module view {
 				export class SimpleDraweeView extends com.facebook.drawee.view.GenericDraweeView {
 					public static class: java.lang.Class<com.facebook.drawee.view.SimpleDraweeView>;
-					public getControllerBuilder(): com.facebook.drawee.controller.AbstractDraweeControllerBuilder<any,  any , an y, any>;
+					public getControllerBuilder(): com.facebook.drawee.controller.AbstractDraweeControllerBuilder<any,any,any,any>;
 					public constructor(param0: globalAndroid.content.Context, param1: com.facebook.drawee.generic.GenericDraweeHierarchy);
 					public static initialize(param0: com.facebook.common.internal.Supplier<any>): void;
 					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
@@ -5487,7 +5487,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module backend {
-					export class AnimationBackendDelegate<T> xtends com.facebook.fresco.animation.backend.AnimationBackend {
+					export class AnimationBackendDelegate<T>  extends com.facebook.fresco.animation.backend.AnimationBackend {
 						public static class: java.lang.Class<com.facebook.fresco.animation.backend.AnimationBackendDelegate<any>>;
 						public getIntrinsicWidth(): number;
 						public getIntrinsicHeight(): number;
@@ -5515,7 +5515,7 @@ declare module com {
 		export module fresco {
 			export module animation {
 				export module backend {
-					export class AnimationBackendDelegateWithInactivityCheck<T> xtends com.facebook.fresco.animation.backend.AnimationBackendDelegate<any> {
+					export class AnimationBackendDelegateWithInactivityCheck<T>  extends com.facebook.fresco.animation.backend.AnimationBackendDelegate<any> {
 						public static class: java.lang.Class<com.facebook.fresco.animation.backend.AnimationBackendDelegateWithInactivityCheck<any>>;
 						public getIntrinsicWidth(): number;
 						public setInactivityCheckPollingTimeMs(param0: number): void;
@@ -6106,7 +6106,7 @@ declare module com {
 					export class AnimatedFactoryV2Impl extends java.lang.Object implements com.facebook.imagepipeline.animated.factory.AnimatedFactory {
 						public static class: java.lang.Class<com.facebook.fresco.animation.factory.AnimatedFactoryV2Impl>;
 						public getAnimatedDrawableFactory(param0: globalAndroid.content.Context): com.facebook.imagepipeline.drawable.DrawableFactory;
-						public constructor(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param1: com.facebook.imagepipeline.core.ExecutorSupplier, param2: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>);
+						public constructor(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param1: com.facebook.imagepipeline.core.ExecutorSupplier, param2: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>);
 						public getGifDecoder(param0: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.decoder.ImageDecoder;
 						public getWebPDecoder(param0: globalAndroid.graphics.Bitmap.Config): com.facebook.imagepipeline.decoder.ImageDecoder;
 					}
@@ -6130,7 +6130,7 @@ declare module com {
 						public createDrawable(param0: com.facebook.imagepipeline.image.CloseableImage): com.facebook.fresco.animation.drawable.AnimatedDrawable2;
 						public supportsImageType(param0: com.facebook.imagepipeline.image.CloseableImage): boolean;
 						public createDrawable(param0: com.facebook.imagepipeline.image.CloseableImage): globalAndroid.graphics.drawable.Drawable;
-						public constructor(param0: com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendProvider, param1: java.util.concurrent.ScheduledExecutorService, param2: java.util.concurrent.ExecutorService, param3: com.facebook.common.time.MonotonicClock, param4: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param5: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param6: com.facebook.common.internal.Supplier<java.lang.Integer>, param7: com.facebook.common.internal.Supplier<java.lang.Integer>);
+						public constructor(param0: com.facebook.imagepipeline.animated.impl.AnimatedDrawableBackendProvider, param1: java.util.concurrent.ScheduledExecutorService, param2: java.util.concurrent.ExecutorService, param3: com.facebook.common.time.MonotonicClock, param4: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param5: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param6: com.facebook.common.internal.Supplier<java.lang.Integer>, param7: com.facebook.common.internal.Supplier<java.lang.Integer>);
 					}
 					export module ExperimentalBitmapAnimationDrawableFactory {
 						export class AnimationFrameCacheKey extends java.lang.Object implements com.facebook.cache.common.CacheKey {
@@ -6665,7 +6665,7 @@ declare module com {
 					export class AnimatedFactoryProvider extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.animated.factory.AnimatedFactoryProvider>;
 						public constructor();
-						public static getAnimatedFactory(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param1: com.facebook.imagepipeline.core.ExecutorSupplier, param2: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>): com.facebook.imagepipeline.animated.factory.AnimatedFactory;
+						public static getAnimatedFactory(param0: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param1: com.facebook.imagepipeline.core.ExecutorSupplier, param2: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>): com.facebook.imagepipeline.animated.factory.AnimatedFactory;
 					}
 				}
 			}
@@ -6804,7 +6804,7 @@ declare module com {
 						public getForReuse(): com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>;
 						public onReusabilityChange(param0: com.facebook.cache.common.CacheKey, param1: boolean): void;
 						public get(param0: number): com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>;
-						public constructor(param0: com.facebook.cache.common.CacheKey, param1: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>);
+						public constructor(param0: com.facebook.cache.common.CacheKey, param1: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>);
 					}
 					export module AnimatedFrameCache {
 						export class FrameKey extends java.lang.Object implements com.facebook.cache.common.CacheKey {
@@ -7028,8 +7028,8 @@ declare module com {
 				export class BitmapCountingMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.BitmapCountingMemoryCacheFactory>;
 					public constructor();
-					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param3: boolean): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>;
-					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param3: boolean, param4: com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>;
+					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param3: boolean): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
+					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param3: boolean, param4: com.facebook.imagepipeline.cache.CountingMemoryCache.CacheTrimStrategy): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
 				}
 			}
 		}
@@ -7043,7 +7043,7 @@ declare module com {
 				export class BitmapMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.BitmapMemoryCacheFactory>;
 					public constructor();
-					public static get(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.ImageCacheStatsTracker): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey , com.facebook.imagepipeline.image.CloseableImage>;
+					public static get(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.ImageCacheStatsTracker): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
 				}
 			}
 		}
@@ -7135,8 +7135,8 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class CountingLruMap<K, V> xtends java.lang.Object {
-					public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingLruMap<any,  any>>;
+				export class CountingLruMap<K, V>  extends java.lang.Object {
+					public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingLruMap<any,any>>;
 					public getCount(): number;
 					public contains(param0: K): boolean;
 					public constructor(param0: com.facebook.imagepipeline.cache.ValueDescriptor<V>);
@@ -7145,7 +7145,7 @@ declare module com {
 					public getFirstKey(): K;
 					public removeAll(param0: com.android.internal.util.Predicate<K>): java.util.ArrayList<V>;
 					public getSizeInBytes(): number;
-					public getMatchingEntries(param0: com.android.internal.util.Predicate<K>): java.util.ArrayList<java.util.Map.Entry<K,  V>>;
+					public getMatchingEntries(param0: com.android.internal.util.Predicate<K>): java.util.ArrayList<java.util.Map.Entry<K,V>>;
 					public get(param0: K): V;
 					public remove(param0: K): V;
 				}
@@ -7158,8 +7158,8 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class CountingMemoryCache<K, V> xtends java.lang.Object {
-					public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingMemoryCache<any,  any>>;
+				export class CountingMemoryCache<K, V>  extends java.lang.Object {
+					public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>>;
 					public mMemoryCacheParams: com.facebook.imagepipeline.cache.MemoryCacheParams;
 					public cache(param0: K, param1: com.facebook.common.references.CloseableReference<V>, param2: com.facebook.imagepipeline.cache.CountingMemoryCache.EntryStateObserver<K>): com.facebook.common.references.CloseableReference<V>;
 					public contains(param0: K): boolean;
@@ -7190,15 +7190,15 @@ declare module com {
 						public constructor();
 						public getTrimRatio(param0: com.facebook.common.memory.MemoryTrimType): number;
 					}
-					export class Entry<K, V> xtends java.lang.Object {
-						public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingMemoryCache.Entry<any,  any>>;
+					export class Entry<K, V>  extends java.lang.Object {
+						public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingMemoryCache.Entry<any,any>>;
 						public key: K;
 						public valueRef: com.facebook.common.references.CloseableReference<V>;
 						public clientCount: number;
 						public isOrphan: boolean;
 						public observer: com.facebook.imagepipeline.cache.CountingMemoryCache.EntryStateObserver<K>;
 					}
-					export class EntryStateObserver<K> xtends java.lang.Object {
+					export class EntryStateObserver<K>  extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.cache.CountingMemoryCache.EntryStateObserver<any>>;
 						/**
 						 * Constructs a new instance of the com.facebook.imagepipeline.cache.CountingMemoryCache$EntryStateObserver interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -7271,7 +7271,7 @@ declare module com {
 				export class EncodedCountingMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.EncodedCountingMemoryCacheFactory>;
 					public constructor();
-					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.common.memory.PooledByteBuffer>;
+					public static get(param0: com.facebook.common.internal.Supplier<com.facebook.imagepipeline.cache.MemoryCacheParams>, param1: com.facebook.common.memory.MemoryTrimmableRegistry, param2: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>;
 				}
 			}
 		}
@@ -7285,7 +7285,7 @@ declare module com {
 				export class EncodedMemoryCacheFactory extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.EncodedMemoryCacheFactory>;
 					public constructor();
-					public static get(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.common.memory.PooledByteBuffer>, param1: com.facebook.imagepipeline.cache.ImageCacheStatsTracker): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey , com.facebook.common.memory.PooledByteBuffer>;
+					public static get(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param1: com.facebook.imagepipeline.cache.ImageCacheStatsTracker): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>;
 				}
 			}
 		}
@@ -7313,14 +7313,14 @@ declare module com {
 						onDiskCacheHit(): void;
 						onDiskCacheMiss(): void;
 						onDiskCacheGetFail(): void;
-						registerBitmapMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,  any>): void;
-						registerEncodedMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,  any>): void;
+						registerBitmapMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
+						registerEncodedMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
 					});
 					public constructor();
 					public onStagingAreaHit(param0: com.facebook.cache.common.CacheKey): void;
 					public onMemoryCacheMiss(): void;
 					public onStagingAreaMiss(): void;
-					public registerBitmapMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,  any>): void;
+					public registerBitmapMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
 					public onBitmapCacheHit(param0: com.facebook.cache.common.CacheKey): void;
 					public onMemoryCacheHit(param0: com.facebook.cache.common.CacheKey): void;
 					public onDiskCacheGetFail(): void;
@@ -7328,7 +7328,7 @@ declare module com {
 					public onMemoryCachePut(): void;
 					public onBitmapCacheMiss(): void;
 					public onDiskCacheHit(): void;
-					public registerEncodedMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,  any>): void;
+					public registerEncodedMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
 					public onDiskCacheMiss(): void;
 				}
 			}
@@ -7340,9 +7340,9 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class InstrumentedMemoryCache<K, V> xtends com.facebook.imagepipeline.cache.MemoryCache<any,  any> {
-					public static class: java.lang.Class<com.facebook.imagepipeline.cache.InstrumentedMemoryCache<any,  any>>;
-					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<any,  any>, param1: com.facebook.imagepipeline.cache.MemoryCacheTracker<any>);
+				export class InstrumentedMemoryCache<K, V>  extends com.facebook.imagepipeline.cache.MemoryCache<any,any> {
+					public static class: java.lang.Class<com.facebook.imagepipeline.cache.InstrumentedMemoryCache<any,any>>;
+					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<any,any>, param1: com.facebook.imagepipeline.cache.MemoryCacheTracker<any>);
 					public get(param0: any): com.facebook.common.references.CloseableReference<any>;
 					public contains(param0: com.android.internal.util.Predicate<any>): boolean;
 					public removeAll(param0: com.android.internal.util.Predicate<any>): number;
@@ -7424,8 +7424,8 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class MemoryCache<K, V> xtends java.lang.Object {
-					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MemoryCache<any,  any>>;
+				export class MemoryCache<K, V>  extends java.lang.Object {
+					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MemoryCache<any,any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MemoryCache<any,any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
@@ -7468,7 +7468,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class MemoryCacheTracker<K> xtends java.lang.Object {
+				export class MemoryCacheTracker<K>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.MemoryCacheTracker<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.imagepipeline.cache.MemoryCacheTracker<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -7512,7 +7512,7 @@ declare module com {
 					public onMemoryCacheMiss(): void;
 					public static getInstance(): com.facebook.imagepipeline.cache.NoOpImageCacheStatsTracker;
 					public onStagingAreaMiss(): void;
-					public registerBitmapMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,  any>): void;
+					public registerBitmapMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
 					public onBitmapCacheHit(param0: com.facebook.cache.common.CacheKey): void;
 					public onMemoryCacheHit(param0: com.facebook.cache.common.CacheKey): void;
 					public onDiskCacheGetFail(): void;
@@ -7520,7 +7520,7 @@ declare module com {
 					public onMemoryCachePut(): void;
 					public onBitmapCacheMiss(): void;
 					public onDiskCacheHit(): void;
-					public registerEncodedMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,  any>): void;
+					public registerEncodedMemoryCache(param0: com.facebook.imagepipeline.cache.CountingMemoryCache<any,any>): void;
 					public onDiskCacheMiss(): void;
 				}
 			}
@@ -7566,7 +7566,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module cache {
-				export class ValueDescriptor<V> xtends java.lang.Object {
+				export class ValueDescriptor<V>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.cache.ValueDescriptor<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.imagepipeline.cache.ValueDescriptor<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -7945,10 +7945,10 @@ declare module com {
 					public clearMemoryCaches(): void;
 					public prefetchToBitmapCache(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.datasource.DataSource<java.lang.Void>;
 					public fetchEncodedImage(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any): com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.common.memory.PooledByteBuffer>>;
-					public getBitmapMemoryCache(): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>;
+					public getBitmapMemoryCache(): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
 					public resume(): void;
 					public isInBitmapMemoryCache(param0: globalAndroid.net.Uri): boolean;
-					public constructor(param0: com.facebook.imagepipeline.core.ProducerSequenceFactory, param1: java.util.Set<com.facebook.imagepipeline.listener.RequestListener>, param2: com.facebook.common.internal.Supplier<java.lang.Boolean>, param3: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey , com.facebook.common.memory.PooledByteBuffer>, param5: com.facebook.imagepipeline.cache.BufferedDiskCache, param6: com.facebook.imagepipeline.cache.BufferedDiskCache, param7: com.facebook.imagepipeline.cache.CacheKeyFactory, param8: com.facebook.imagepipeline.producers.ThreadHandoffProducerQueue, param9: com.facebook.common.internal.Supplier<java.lang.Boolean>);
+					public constructor(param0: com.facebook.imagepipeline.core.ProducerSequenceFactory, param1: java.util.Set<com.facebook.imagepipeline.listener.RequestListener>, param2: com.facebook.common.internal.Supplier<java.lang.Boolean>, param3: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param4: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param5: com.facebook.imagepipeline.cache.BufferedDiskCache, param6: com.facebook.imagepipeline.cache.BufferedDiskCache, param7: com.facebook.imagepipeline.cache.CacheKeyFactory, param8: com.facebook.imagepipeline.producers.ThreadHandoffProducerQueue, param9: com.facebook.common.internal.Supplier<java.lang.Boolean>);
 					public getDataSourceSupplier(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any, param2: com.facebook.imagepipeline.request.ImageRequest.RequestLevel): com.facebook.common.internal.Supplier<com.facebook.datasource.DataSource<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>>;
 					public evictFromCache(param0: globalAndroid.net.Uri): void;
 					public clearCaches(): void;
@@ -8075,7 +8075,7 @@ declare module com {
 					export class DefaultProducerFactoryMethod extends java.lang.Object implements com.facebook.imagepipeline.core.ImagePipelineExperiments.ProducerFactoryMethod {
 						public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineExperiments.DefaultProducerFactoryMethod>;
 						public constructor();
-						public createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey , com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
+						public createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
 					}
 					export class ProducerFactoryMethod extends java.lang.Object {
 						public static class: java.lang.Class<com.facebook.imagepipeline.core.ImagePipelineExperiments.ProducerFactoryMethod>;
@@ -8083,10 +8083,10 @@ declare module com {
 						 * Constructs a new instance of the com.facebook.imagepipeline.core.ImagePipelineExperiments$ProducerFactoryMethod interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 						 */
 						public constructor(implementation: {
-							createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey , com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
+							createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
 						});
 						public constructor();
-						public createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey , com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
+						public createProducerFactory(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean): com.facebook.imagepipeline.core.ProducerFactory;
 					}
 				}
 			}
@@ -8103,7 +8103,7 @@ declare module com {
 					public static shutDown(): void;
 					public static initialize(param0: globalAndroid.content.Context): void;
 					public static initialize(param0: com.facebook.imagepipeline.core.ImagePipelineConfig): void;
-					public getEncodedCountingMemoryCache(): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.common.memory.PooledByteBuffer>;
+					public getEncodedCountingMemoryCache(): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>;
 					public static buildPlatformDecoder(param0: com.facebook.imagepipeline.memory.PoolFactory, param1: boolean): com.facebook.imagepipeline.platform.PlatformDecoder;
 					public static getInstance(): com.facebook.imagepipeline.core.ImagePipelineFactory;
 					public getAnimatedDrawableFactory(param0: globalAndroid.content.Context): com.facebook.imagepipeline.drawable.DrawableFactory;
@@ -8112,11 +8112,11 @@ declare module com {
 					public getImagePipeline(): com.facebook.imagepipeline.core.ImagePipeline;
 					public getMainBufferedDiskCache(): com.facebook.imagepipeline.cache.BufferedDiskCache;
 					public constructor(param0: com.facebook.imagepipeline.core.ImagePipelineConfig);
-					public getEncodedMemoryCache(): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.common.memory.PooledByteBuffer>;
-					public getBitmapMemoryCache(): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>;
+					public getEncodedMemoryCache(): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>;
+					public getBitmapMemoryCache(): com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
 					public getPlatformDecoder(): com.facebook.imagepipeline.platform.PlatformDecoder;
 					public getMediaVariationsIndex(): com.facebook.imagepipeline.cache.MediaVariationsIndex;
-					public getBitmapCountingMemoryCache(): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>;
+					public getBitmapCountingMemoryCache(): com.facebook.imagepipeline.cache.CountingMemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>;
 					public static buildPlatformBitmapFactory(param0: com.facebook.imagepipeline.memory.PoolFactory, param1: com.facebook.imagepipeline.platform.PlatformDecoder): com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory;
 					public getPlatformBitmapFactory(): com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory;
 				}
@@ -8163,7 +8163,7 @@ declare module com {
 					public newResizeAndRotateProducer(param0: com.facebook.imagepipeline.producers.Producer<com.facebook.imagepipeline.image.EncodedImage>, param1: boolean, param2: boolean): com.facebook.imagepipeline.producers.ResizeAndRotateProducer;
 					public static newAddImageTransformMetaDataProducer(param0: com.facebook.imagepipeline.producers.Producer<com.facebook.imagepipeline.image.EncodedImage>): com.facebook.imagepipeline.producers.AddImageTransformMetaDataProducer;
 					public newLocalContentUriFetchProducer(): com.facebook.imagepipeline.producers.LocalContentUriFetchProducer;
-					public constructor(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey , com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean);
+					public constructor(param0: globalAndroid.content.Context, param1: com.facebook.common.memory.ByteArrayPool, param2: com.facebook.imagepipeline.decoder.ImageDecoder, param3: com.facebook.imagepipeline.decoder.ProgressiveJpegConfig, param4: boolean, param5: boolean, param6: boolean, param7: com.facebook.common.internal.Supplier<java.lang.Boolean>, param8: com.facebook.imagepipeline.core.ExecutorSupplier, param9: com.facebook.common.memory.PooledByteBufferFactory, param10: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param11: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param12: com.facebook.imagepipeline.cache.BufferedDiskCache, param13: com.facebook.imagepipeline.cache.BufferedDiskCache, param14: com.facebook.imagepipeline.cache.MediaVariationsIndex, param15: com.facebook.imagepipeline.cache.CacheKeyFactory, param16: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param17: number, param18: number, param19: boolean);
 					public newLocalFileFetchProducer(): com.facebook.imagepipeline.producers.LocalFileFetchProducer;
 					public newQualifiedResourceFetchProducer(): com.facebook.imagepipeline.producers.QualifiedResourceFetchProducer;
 					public newBackgroundThreadHandoffProducer(param0: com.facebook.imagepipeline.producers.Producer<any>, param1: com.facebook.imagepipeline.producers.ThreadHandoffProducerQueue): com.facebook.imagepipeline.producers.ThreadHandoffProducer<any>;
@@ -8208,7 +8208,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module datasource {
-				export abstract class AbstractProducerToDataSourceAdapter<T> xtends com.facebook.datasource.AbstractDataSource<any> implements com.facebook.imagepipeline.request.HasImageRequest {
+				export abstract class AbstractProducerToDataSourceAdapter<T>  extends com.facebook.datasource.AbstractDataSource<any> implements com.facebook.imagepipeline.request.HasImageRequest  {
 					public static class: java.lang.Class<com.facebook.imagepipeline.datasource.AbstractProducerToDataSourceAdapter<any>>;
 					public constructor(param0: com.facebook.imagepipeline.producers.Producer<any>, param1: com.facebook.imagepipeline.producers.SettableProducerContext, param2: com.facebook.imagepipeline.listener.RequestListener);
 					public isFinished(): boolean;
@@ -8273,7 +8273,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module datasource {
-				export class CloseableProducerToDataSourceAdapter<T> xtends com.facebook.imagepipeline.datasource.AbstractProducerToDataSourceAdapter<com.facebook.common.references.CloseableReference<any>> {
+				export class CloseableProducerToDataSourceAdapter<T>  extends com.facebook.imagepipeline.datasource.AbstractProducerToDataSourceAdapter<com.facebook.common.references.CloseableReference<any>> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.datasource.CloseableProducerToDataSourceAdapter<any>>;
 					public isFinished(): boolean;
 					public close(): boolean;
@@ -8301,7 +8301,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module datasource {
-				export class ListDataSource<T> xtends com.facebook.datasource.AbstractDataSource<java.util.List<com.facebook.common.references.CloseableReference<any>>> {
+				export class ListDataSource<T>  extends com.facebook.datasource.AbstractDataSource<java.util.List<com.facebook.common.references.CloseableReference<any>>> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.datasource.ListDataSource<any>>;
 					public isFinished(): boolean;
 					public static create(param0: native.Array<com.facebook.datasource.DataSource<any>>): com.facebook.imagepipeline.datasource.ListDataSource<any>;
@@ -8339,7 +8339,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module datasource {
-				export class ProducerToDataSourceAdapter<T> xtends com.facebook.imagepipeline.datasource.AbstractProducerToDataSourceAdapter<any> {
+				export class ProducerToDataSourceAdapter<T>  extends com.facebook.imagepipeline.datasource.AbstractProducerToDataSourceAdapter<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.datasource.ProducerToDataSourceAdapter<any>>;
 					public isFinished(): boolean;
 					public getProgress(): number;
@@ -8362,7 +8362,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module datasource {
-				export class SettableDataSource<T> xtends com.facebook.datasource.AbstractDataSource<com.facebook.common.references.CloseableReference<any>> {
+				export class SettableDataSource<T>  extends com.facebook.datasource.AbstractDataSource<com.facebook.common.references.CloseableReference<any>> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.datasource.SettableDataSource<any>>;
 					public isFinished(): boolean;
 					public close(): boolean;
@@ -8411,7 +8411,7 @@ declare module com {
 			export module decoder {
 				export class DefaultImageDecoder extends java.lang.Object implements com.facebook.imagepipeline.decoder.ImageDecoder {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.DefaultImageDecoder>;
-					public constructor(param0: com.facebook.imagepipeline.decoder.ImageDecoder, param1: com.facebook.imagepipeline.decoder.ImageDecoder, param2: com.facebook.imagepipeline.platform.PlatformDecoder, param3: java.util.Map<com.facebook.imageformat.ImageFormat,  com.facebook.imagepipeline.decoder.ImageDecoder>);
+					public constructor(param0: com.facebook.imagepipeline.decoder.ImageDecoder, param1: com.facebook.imagepipeline.decoder.ImageDecoder, param2: com.facebook.imagepipeline.platform.PlatformDecoder, param3: java.util.Map<com.facebook.imageformat.ImageFormat,com.facebook.imagepipeline.decoder.ImageDecoder>);
 					public decodeGif(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number, param2: com.facebook.imagepipeline.image.QualityInfo, param3: com.facebook.imagepipeline.common.ImageDecodeOptions): com.facebook.imagepipeline.image.CloseableImage;
 					public decodeStaticImage(param0: com.facebook.imagepipeline.image.EncodedImage, param1: com.facebook.imagepipeline.common.ImageDecodeOptions): com.facebook.imagepipeline.image.CloseableStaticBitmap;
 					public decodeJpeg(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number, param2: com.facebook.imagepipeline.image.QualityInfo, param3: com.facebook.imagepipeline.common.ImageDecodeOptions): com.facebook.imagepipeline.image.CloseableStaticBitmap;
@@ -8451,7 +8451,7 @@ declare module com {
 				export class ImageDecoderConfig extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.decoder.ImageDecoderConfig>;
 					public static newBuilder(): com.facebook.imagepipeline.decoder.ImageDecoderConfig.Builder;
-					public getCustomImageDecoders(): java.util.Map<com.facebook.imageformat.ImageFormat,  com.facebook.imagepipeline.decoder.ImageDecoder>;
+					public getCustomImageDecoders(): java.util.Map<com.facebook.imageformat.ImageFormat,com.facebook.imagepipeline.decoder.ImageDecoder>;
 					public getCustomImageFormats(): java.util.List<com.facebook.imageformat.ImageFormat.FormatChecker>;
 				}
 				export module ImageDecoderConfig {
@@ -8781,10 +8781,10 @@ declare module com {
 					public static class: java.lang.Class<com.facebook.imagepipeline.listener.BaseRequestListener>;
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
-					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
+					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,string>): void;
 					public constructor();
-					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,  string>): void;
+					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,string>): void;
 					public onRequestStart(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any, param2: string, param3: boolean): void;
 					public onRequestSuccess(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: boolean): void;
 					public onRequestFailure(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: java.lang.Throwable, param3: boolean): void;
@@ -8805,14 +8805,14 @@ declare module com {
 					public static class: java.lang.Class<com.facebook.imagepipeline.listener.ForwardingRequestListener>;
 					public constructor(param0: native.Array<com.facebook.imagepipeline.listener.RequestListener>);
 					public onProducerStart(param0: string, param1: string): void;
-					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,  string>): void;
+					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,string>): void;
 					public onUltimateProducerReached(param0: string, param1: string, param2: boolean): void;
 					public onRequestFailure(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: java.lang.Throwable, param3: boolean): void;
 					public onProducerEvent(param0: string, param1: string, param2: string): void;
 					public requiresExtraMap(param0: string): boolean;
 					public constructor(param0: java.util.Set<com.facebook.imagepipeline.listener.RequestListener>);
-					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
+					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,string>): void;
 					public onRequestStart(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any, param2: string, param3: boolean): void;
 					public onRequestSuccess(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: boolean): void;
 					public onRequestCancellation(param0: string): void;
@@ -8838,18 +8838,18 @@ declare module com {
 						onRequestCancellation(param0: string): void;
 						onProducerStart(param0: string, param1: string): void;
 						onProducerEvent(param0: string, param1: string, param2: string): void;
-						onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-						onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,  string>): void;
-						onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
+						onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+						onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,string>): void;
+						onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,string>): void;
 						onUltimateProducerReached(param0: string, param1: string, param2: boolean): void;
 						requiresExtraMap(param0: string): boolean;
 					});
 					public constructor();
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
-					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,  string>): void;
+					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,string>): void;
 					public onRequestStart(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any, param2: string, param3: boolean): void;
 					public onRequestSuccess(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: boolean): void;
 					public onRequestFailure(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: java.lang.Throwable, param3: boolean): void;
@@ -8870,10 +8870,10 @@ declare module com {
 					public static class: java.lang.Class<com.facebook.imagepipeline.listener.RequestLoggingListener>;
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
-					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
+					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,string>): void;
 					public constructor();
-					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,  string>): void;
+					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,string>): void;
 					public onRequestStart(param0: com.facebook.imagepipeline.request.ImageRequest, param1: any, param2: string, param3: boolean): void;
 					public onRequestSuccess(param0: com.facebook.imagepipeline.request.ImageRequest, param1: string, param2: boolean): void;
 					public onUltimateProducerReached(param0: string, param1: string, param2: boolean): void;
@@ -8890,10 +8890,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export abstract class BasePool<V> xtends com.facebook.common.memory.Pool<any> {
+				export abstract class BasePool<V>  extends com.facebook.common.memory.Pool<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.BasePool<any>>;
 					public isReusable(param0: any): boolean;
-					public getStats(): java.util.Map<string,  java.lang.Integer>;
+					public getStats(): java.util.Map<string,java.lang.Integer>;
 					public free(param0: any): void;
 					public getBucketedSize(param0: number): number;
 					public alloc(param0: number): any;
@@ -9017,7 +9017,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class Bucket<V> xtends java.lang.Object {
+				export class Bucket<V>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.Bucket<any>>;
 					public mItemSize: number;
 					public mMaxLength: number;
@@ -9098,7 +9098,7 @@ declare module com {
 			export module memory {
 				export class FlexByteArrayPool extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.FlexByteArrayPool>;
-					public getStats(): java.util.Map<string,  java.lang.Integer>;
+					public getStats(): java.util.Map<string,java.lang.Integer>;
 					public getMinBufferSize(): number;
 					public get(param0: number): com.facebook.common.references.CloseableReference<native.Array<number>>;
 					public release(param0: native.Array<number>): void;
@@ -9121,7 +9121,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class GenericByteArrayPool extends com.facebook.imagepipeline.memory.BasePool<native.Array<number>> implements com.facebook.common.memory.ByteArrayPool 
+				export class GenericByteArrayPool extends com.facebook.imagepipeline.memory.BasePool<native.Array<number>> implements com.facebook.common.memory.ByteArrayPool  {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.GenericByteArrayPool>;
 					public getMinBufferSize(): number;
 					public free(param0: any): void;
@@ -9291,7 +9291,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module memory {
-				export class OOMSoftReferenceBucket<V> xtends com.facebook.imagepipeline.memory.Bucket<any> {
+				export class OOMSoftReferenceBucket<V>  extends com.facebook.imagepipeline.memory.Bucket<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.memory.OOMSoftReferenceBucket<any>>;
 					public constructor(param0: number, param1: number, param2: number);
 					public pop(): any;
@@ -9695,7 +9695,7 @@ declare module com {
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module AddImageTransformMetaDataProducer {
-					export class AddImageTransformMetaDataConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class AddImageTransformMetaDataConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.AddImageTransformMetaDataProducer.AddImageTransformMetaDataConsumer>;
 						public onNewResultImpl(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number): void;
 						public onFailure(param0: java.lang.Throwable): void;
@@ -9714,7 +9714,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export abstract class BaseConsumer<T> xtends com.facebook.imagepipeline.producers.Consumer<any> {
+				export abstract class BaseConsumer<T>  extends com.facebook.imagepipeline.producers.Consumer<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.BaseConsumer<any>>;
 					public onNewResult(param0: any, param1: number): void;
 					public onUnhandledException(param0: java.lang.Exception): void;
@@ -9743,10 +9743,10 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export abstract class BaseNetworkFetcher<FETCH_STATE> xtends com.facebook.imagepipeline.producers.NetworkFetcher<any> {
+				export abstract class BaseNetworkFetcher<FETCH_STATE>  extends com.facebook.imagepipeline.producers.NetworkFetcher<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.BaseNetworkFetcher<any>>;
 					public onFetchCompletion(param0: any, param1: number): void;
-					public getExtraMap(param0: any, param1: number): java.util.Map<string,  string>;
+					public getExtraMap(param0: any, param1: number): java.util.Map<string,string>;
 					public constructor();
 					public createFetchState(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): any;
 					public shouldPropagate(param0: any): boolean;
@@ -9813,7 +9813,7 @@ declare module com {
 				export class BitmapMemoryCacheGetProducer extends com.facebook.imagepipeline.producers.BitmapMemoryCacheProducer {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.BitmapMemoryCacheGetProducer>;
 					public static PRODUCER_NAME: string;
-					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>);
+					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>);
 					public wrapConsumer(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.cache.common.CacheKey): com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
@@ -9828,13 +9828,13 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class BitmapMemoryCacheKeyMultiplexProducer extends com.facebook.imagepipeline.producers.MultiplexProducer<globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.request.ImageRequest.RequestLevel> , com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
+				export class BitmapMemoryCacheKeyMultiplexProducer extends com.facebook.imagepipeline.producers.MultiplexProducer<globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.request.ImageRequest.RequestLevel>,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.BitmapMemoryCacheKeyMultiplexProducer>;
 					public constructor(param0: com.facebook.imagepipeline.producers.Producer<any>);
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public getKey(param0: com.facebook.imagepipeline.producers.ProducerContext): any;
 					public cloneOrNull(param0: any): any;
-					public getKey(param0: com.facebook.imagepipeline.producers.ProducerContext): globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.request.ImageRequest.RequestLevel>;
+					public getKey(param0: com.facebook.imagepipeline.producers.ProducerContext): globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.request.ImageRequest.RequestLevel>;
 					public cloneOrNull(param0: com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>): com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>;
 					public constructor(param0: com.facebook.imagepipeline.cache.CacheKeyFactory, param1: com.facebook.imagepipeline.producers.Producer<any>);
 				}
@@ -9851,7 +9851,7 @@ declare module com {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.BitmapMemoryCacheProducer>;
 					public static PRODUCER_NAME: string;
 					public static EXTRA_CACHED_VALUE_FOUND: string;
-					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>);
+					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>);
 					public wrapConsumer(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.cache.common.CacheKey): com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
@@ -9874,7 +9874,7 @@ declare module com {
 					public constructor(param0: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: number, param2: number, param3: boolean);
 				}
 				export module BitmapPrepareProducer {
-					export class BitmapPrepareConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,  com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
+					export class BitmapPrepareConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.BitmapPrepareProducer.BitmapPrepareConsumer>;
 						public onFailure(param0: java.lang.Throwable): void;
 						public onNewResultImpl(param0: any, param1: number): void;
@@ -9900,7 +9900,7 @@ declare module com {
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module BranchOnSeparateImagesProducer {
-					export class OnFirstImageConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class OnFirstImageConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.BranchOnSeparateImagesProducer.OnFirstImageConsumer>;
 						public onNewResultImpl(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number): void;
 						public onFailureImpl(param0: java.lang.Throwable): void;
@@ -9920,7 +9920,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class Consumer<T> xtends java.lang.Object {
+				export class Consumer<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.Consumer<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.imagepipeline.producers.Consumer<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -10033,7 +10033,7 @@ declare module com {
 						public onNewResult(param0: any, param1: number): void;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.imagepipeline.producers.ProducerContext, param2: boolean);
 					}
-					export abstract class ProgressiveDecoder extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
+					export abstract class ProgressiveDecoder extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.DecodeProducer.ProgressiveDecoder>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
@@ -10061,8 +10061,8 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export abstract class DelegatingConsumer<I, O> xtends com.facebook.imagepipeline.producers.BaseConsumer<any> {
-					public static class: java.lang.Class<com.facebook.imagepipeline.producers.DelegatingConsumer<any,  any>>;
+				export abstract class DelegatingConsumer<I, O>  extends com.facebook.imagepipeline.producers.BaseConsumer<any> {
+					public static class: java.lang.Class<com.facebook.imagepipeline.producers.DelegatingConsumer<any,any>>;
 					public onNewResult(param0: any, param1: number): void;
 					public onCancellationImpl(): void;
 					public onCancellation(): void;
@@ -10108,7 +10108,7 @@ declare module com {
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module DiskCacheWriteProducer {
-					export class DiskCacheWriteConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class DiskCacheWriteConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.DiskCacheWriteProducer.DiskCacheWriteConsumer>;
 						public onNewResultImpl(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number): void;
 						public onFailure(param0: java.lang.Throwable): void;
@@ -10141,14 +10141,14 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class EncodedCacheKeyMultiplexProducer extends com.facebook.imagepipeline.producers.MultiplexProducer<globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.request.ImageRequest.RequestLevel> , com.facebook.imagepipeline.image.EncodedImage> {
+				export class EncodedCacheKeyMultiplexProducer extends com.facebook.imagepipeline.producers.MultiplexProducer<globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.request.ImageRequest.RequestLevel>,com.facebook.imagepipeline.image.EncodedImage> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.EncodedCacheKeyMultiplexProducer>;
 					public constructor(param0: com.facebook.imagepipeline.producers.Producer<any>);
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public getKey(param0: com.facebook.imagepipeline.producers.ProducerContext): any;
 					public cloneOrNull(param0: any): any;
 					public cloneOrNull(param0: com.facebook.imagepipeline.image.EncodedImage): com.facebook.imagepipeline.image.EncodedImage;
-					public getKey(param0: com.facebook.imagepipeline.producers.ProducerContext): globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.request.ImageRequest.RequestLevel>;
+					public getKey(param0: com.facebook.imagepipeline.producers.ProducerContext): globalAndroid.util.Pair<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.request.ImageRequest.RequestLevel>;
 					public constructor(param0: com.facebook.imagepipeline.cache.CacheKeyFactory, param1: com.facebook.imagepipeline.producers.Producer<any>);
 				}
 			}
@@ -10164,12 +10164,12 @@ declare module com {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.EncodedMemoryCacheProducer>;
 					public static PRODUCER_NAME: string;
 					public static EXTRA_CACHED_VALUE_FOUND: string;
-					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.common.memory.PooledByteBuffer>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.imagepipeline.image.EncodedImage>);
+					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.imagepipeline.image.EncodedImage>);
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module EncodedMemoryCacheProducer {
-					export class EncodedMemoryCacheConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class EncodedMemoryCacheConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.EncodedMemoryCacheProducer.EncodedMemoryCacheConsumer>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
@@ -10179,7 +10179,7 @@ declare module com {
 						public onProgressUpdate(param0: number): void;
 						public onCancellation(): void;
 						public onNewResult(param0: any, param1: number): void;
-						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.common.memory.PooledByteBuffer>, param2: com.facebook.cache.common.CacheKey);
+						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.common.memory.PooledByteBuffer>, param2: com.facebook.cache.common.CacheKey);
 					}
 				}
 			}
@@ -10221,7 +10221,7 @@ declare module com {
 					public static HTTP_PERMANENT_REDIRECT: number;
 					public static HTTP_DEFAULT_TIMEOUT: number;
 					public onFetchCompletion(param0: any, param1: number): void;
-					public getExtraMap(param0: any, param1: number): java.util.Map<string,  string>;
+					public getExtraMap(param0: any, param1: number): java.util.Map<string,string>;
 					public constructor();
 					public createFetchState(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): any;
 					public shouldPropagate(param0: any): boolean;
@@ -10446,7 +10446,7 @@ declare module com {
 					public constructor(param0: com.facebook.imagepipeline.cache.BufferedDiskCache, param1: com.facebook.imagepipeline.cache.BufferedDiskCache, param2: com.facebook.imagepipeline.cache.CacheKeyFactory, param3: com.facebook.imagepipeline.cache.MediaVariationsIndex, param4: com.facebook.imagepipeline.producers.Producer<com.facebook.imagepipeline.image.EncodedImage>);
 				}
 				export module MediaVariationsFallbackProducer {
-					export class MediaVariationsConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class MediaVariationsConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.MediaVariationsFallbackProducer.MediaVariationsConsumer>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
@@ -10474,8 +10474,8 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export abstract class MultiplexProducer<K, T> xtends com.facebook.imagepipeline.producers.Producer<any> {
-					public static class: java.lang.Class<com.facebook.imagepipeline.producers.MultiplexProducer<any,  any>>;
+				export abstract class MultiplexProducer<K, T>  extends com.facebook.imagepipeline.producers.Producer<any> {
+					public static class: java.lang.Class<com.facebook.imagepipeline.producers.MultiplexProducer<any,any>>;
 					public constructor(param0: com.facebook.imagepipeline.producers.Producer<any>);
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public getKey(param0: com.facebook.imagepipeline.producers.ProducerContext): any;
@@ -10535,7 +10535,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class NetworkFetcher<FETCH_STATE> xtends java.lang.Object {
+				export class NetworkFetcher<FETCH_STATE>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.NetworkFetcher<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.imagepipeline.producers.NetworkFetcher<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -10545,11 +10545,11 @@ declare module com {
 						fetch(param0: FETCH_STATE, param1: com.facebook.imagepipeline.producers.NetworkFetcher.Callback): void;
 						shouldPropagate(param0: FETCH_STATE): boolean;
 						onFetchCompletion(param0: FETCH_STATE, param1: number): void;
-						getExtraMap(param0: FETCH_STATE, param1: number): java.util.Map<string,  string>;
+						getExtraMap(param0: FETCH_STATE, param1: number): java.util.Map<string,string>;
 					});
 					public constructor();
 					public createFetchState(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): FETCH_STATE;
-					public getExtraMap(param0: FETCH_STATE, param1: number): java.util.Map<string,  string>;
+					public getExtraMap(param0: FETCH_STATE, param1: number): java.util.Map<string,string>;
 					public fetch(param0: FETCH_STATE, param1: com.facebook.imagepipeline.producers.NetworkFetcher.Callback): void;
 					public shouldPropagate(param0: FETCH_STATE): boolean;
 					public onFetchCompletion(param0: FETCH_STATE, param1: number): void;
@@ -10580,7 +10580,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class NullProducer<T> xtends com.facebook.imagepipeline.producers.Producer<any> {
+				export class NullProducer<T>  extends com.facebook.imagepipeline.producers.Producer<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.NullProducer<any>>;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public constructor();
@@ -10604,7 +10604,7 @@ declare module com {
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module PartialDiskCacheProducer {
-					export class PartialDiskCacheConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class PartialDiskCacheConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.PartialDiskCacheProducer.PartialDiskCacheConsumer>;
 						public onNewResultImpl(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number): void;
 						public onFailure(param0: java.lang.Throwable): void;
@@ -10626,17 +10626,17 @@ declare module com {
 				export class PostprocessedBitmapMemoryCacheProducer extends com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.PostprocessedBitmapMemoryCacheProducer>;
 					public static PRODUCER_NAME: string;
-					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>);
+					public constructor(param0: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>, param1: com.facebook.imagepipeline.cache.CacheKeyFactory, param2: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>);
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 					public getProducerName(): string;
 				}
 				export module PostprocessedBitmapMemoryCacheProducer {
-					export class CachedPostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,  com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
+					export class CachedPostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.PostprocessedBitmapMemoryCacheProducer.CachedPostprocessorConsumer>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
-						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.cache.common.CacheKey, param2: boolean, param3: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,  com.facebook.imagepipeline.image.CloseableImage>);
+						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.cache.common.CacheKey, param2: boolean, param3: com.facebook.imagepipeline.cache.MemoryCache<com.facebook.cache.common.CacheKey,com.facebook.imagepipeline.image.CloseableImage>);
 						public onFailure(param0: java.lang.Throwable): void;
 						public onNewResultImpl(param0: any, param1: number): void;
 						public onProgressUpdate(param0: number): void;
@@ -10662,7 +10662,7 @@ declare module com {
 					public constructor(param0: com.facebook.imagepipeline.producers.Producer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.imagepipeline.bitmaps.PlatformBitmapFactory, param2: java.util.concurrent.Executor);
 				}
 				export module PostprocessorProducer {
-					export class PostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,  com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
+					export class PostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.PostprocessorProducer.PostprocessorConsumer>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
@@ -10676,7 +10676,7 @@ declare module com {
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>>, param1: com.facebook.imagepipeline.producers.ProducerListener, param2: string, param3: com.facebook.imagepipeline.request.Postprocessor, param4: com.facebook.imagepipeline.producers.ProducerContext);
 						public onNewResultImpl(param0: com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>, param1: number): void;
 					}
-					export class RepeatedPostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,  com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> implements com.facebook.imagepipeline.request.RepeatedPostprocessorRunner{
+					export class RepeatedPostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> implements com.facebook.imagepipeline.request.RepeatedPostprocessorRunner  {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.PostprocessorProducer.RepeatedPostprocessorConsumer>;
 						public onFailureImpl(param0: java.lang.Throwable): void;
 						public onCancellationImpl(): void;
@@ -10688,7 +10688,7 @@ declare module com {
 						public onNewResult(param0: any, param1: number): void;
 						public onNewResultImpl(param0: com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>, param1: number): void;
 					}
-					export class SingleUsePostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,  com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
+					export class SingleUsePostprocessorConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>,com.facebook.common.references.CloseableReference<com.facebook.imagepipeline.image.CloseableImage>> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.PostprocessorProducer.SingleUsePostprocessorConsumer>;
 						public onFailure(param0: java.lang.Throwable): void;
 						public onNewResultImpl(param0: any, param1: number): void;
@@ -10707,7 +10707,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class Producer<T> xtends java.lang.Object {
+				export class Producer<T>  extends java.lang.Object {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.Producer<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.imagepipeline.producers.Producer<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -10809,18 +10809,18 @@ declare module com {
 					public constructor(implementation: {
 						onProducerStart(param0: string, param1: string): void;
 						onProducerEvent(param0: string, param1: string, param2: string): void;
-						onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-						onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,  string>): void;
-						onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
+						onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+						onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,string>): void;
+						onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,string>): void;
 						onUltimateProducerReached(param0: string, param1: string, param2: boolean): void;
 						requiresExtraMap(param0: string): boolean;
 					});
 					public constructor();
 					public requiresExtraMap(param0: string): boolean;
 					public onProducerStart(param0: string, param1: string): void;
-					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,  string>): void;
-					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,  string>): void;
+					public onProducerFinishWithSuccess(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+					public onProducerFinishWithCancellation(param0: string, param1: string, param2: java.util.Map<string,string>): void;
+					public onProducerFinishWithFailure(param0: string, param1: string, param2: java.lang.Throwable, param3: java.util.Map<string,string>): void;
 					public onUltimateProducerReached(param0: string, param1: string, param2: boolean): void;
 					public onProducerEvent(param0: string, param1: string, param2: string): void;
 				}
@@ -10860,7 +10860,7 @@ declare module com {
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module RemoveImageTransformMetaDataProducer {
-					export class RemoveImageTransformMetaDataConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.common.references.CloseableReference<com.facebook.common.memory.PooledByteBuffer>> {
+					export class RemoveImageTransformMetaDataConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.common.references.CloseableReference<com.facebook.common.memory.PooledByteBuffer>> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.RemoveImageTransformMetaDataProducer.RemoveImageTransformMetaDataConsumer>;
 						public onNewResultImpl(param0: com.facebook.imagepipeline.image.EncodedImage, param1: number): void;
 						public onFailure(param0: java.lang.Throwable): void;
@@ -10887,7 +10887,7 @@ declare module com {
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module ResizeAndRotateProducer {
-					export class TransformingConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class TransformingConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.ResizeAndRotateProducer.TransformingConsumer>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
@@ -10936,16 +10936,16 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export abstract class StatefulProducerRunnable<T> xtends com.facebook.common.executors.StatefulRunnable<any> {
+				export abstract class StatefulProducerRunnable<T>  extends com.facebook.common.executors.StatefulRunnable<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.StatefulProducerRunnable<any>>;
 					public onFailure(param0: java.lang.Exception): void;
 					public onCancellation(): void;
 					public constructor();
-					public getExtraMapOnSuccess(param0: any): java.util.Map<string,  string>;
+					public getExtraMapOnSuccess(param0: any): java.util.Map<string,string>;
 					public run(): void;
-					public getExtraMapOnFailure(param0: java.lang.Exception): java.util.Map<string,  string>;
+					public getExtraMapOnFailure(param0: java.lang.Exception): java.util.Map<string,string>;
 					public disposeResult(param0: any): void;
-					public getExtraMapOnCancellation(): java.util.Map<string,  string>;
+					public getExtraMapOnCancellation(): java.util.Map<string,string>;
 					public onSuccess(param0: any): void;
 					public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerListener, param2: string, param3: string);
 				}
@@ -10958,7 +10958,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class SwallowResultProducer<T> xtends com.facebook.imagepipeline.producers.Producer<java.lang.Void> {
+				export class SwallowResultProducer<T>  extends com.facebook.imagepipeline.producers.Producer<java.lang.Void> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.SwallowResultProducer<any>>;
 					public constructor(param0: com.facebook.imagepipeline.producers.Producer<any>);
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
@@ -10973,7 +10973,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ThreadHandoffProducer<T> xtends com.facebook.imagepipeline.producers.Producer<any> {
+				export class ThreadHandoffProducer<T>  extends com.facebook.imagepipeline.producers.Producer<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThreadHandoffProducer<any>>;
 					public static PRODUCER_NAME: string;
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
@@ -11006,14 +11006,14 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ThrottlingProducer<T> xtends com.facebook.imagepipeline.producers.Producer<any> {
+				export class ThrottlingProducer<T>  extends com.facebook.imagepipeline.producers.Producer<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThrottlingProducer<any>>;
 					public static PRODUCER_NAME: string;
 					public constructor(param0: number, param1: java.util.concurrent.Executor, param2: com.facebook.imagepipeline.producers.Producer<any>);
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<any>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module ThrottlingProducer {
-					export class ThrottlerConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<any,  any> {
+					export class ThrottlerConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<any,any> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThrottlingProducer.ThrottlerConsumer>;
 						public onFailureImpl(param0: java.lang.Throwable): void;
 						public onCancellationImpl(): void;
@@ -11040,7 +11040,7 @@ declare module com {
 					public constructor(param0: native.Array<com.facebook.imagepipeline.producers.ThumbnailProducer<com.facebook.imagepipeline.image.EncodedImage>>);
 				}
 				export module ThumbnailBranchProducer {
-					export class ThumbnailConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class ThumbnailConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThumbnailBranchProducer.ThumbnailConsumer>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
@@ -11063,7 +11063,7 @@ declare module com {
 	export module facebook {
 		export module imagepipeline {
 			export module producers {
-				export class ThumbnailProducer<T> xtends com.facebook.imagepipeline.producers.Producer<any> {
+				export class ThumbnailProducer<T>  extends com.facebook.imagepipeline.producers.Producer<any> {
 					public static class: java.lang.Class<com.facebook.imagepipeline.producers.ThumbnailProducer<any>>;
 					/**
 					 * Constructs a new instance of the com.facebook.imagepipeline.producers.ThumbnailProducer<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
@@ -11110,7 +11110,7 @@ declare module com {
 					public produceResults(param0: com.facebook.imagepipeline.producers.Consumer<com.facebook.imagepipeline.image.EncodedImage>, param1: com.facebook.imagepipeline.producers.ProducerContext): void;
 				}
 				export module WebpTranscodeProducer {
-					export class WebpTranscodeConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,  com.facebook.imagepipeline.image.EncodedImage> {
+					export class WebpTranscodeConsumer extends com.facebook.imagepipeline.producers.DelegatingConsumer<com.facebook.imagepipeline.image.EncodedImage,com.facebook.imagepipeline.image.EncodedImage> {
 						public static class: java.lang.Class<com.facebook.imagepipeline.producers.WebpTranscodeProducer.WebpTranscodeConsumer>;
 						public constructor(param0: com.facebook.imagepipeline.producers.Consumer<any>);
 						public constructor();
@@ -11465,11 +11465,11 @@ declare module com {
 				public static ARGB_8888_BYTES_PER_PIXEL: number;
 				public static RGB_565_BYTES_PER_PIXEL: number;
 				public static MAX_BITMAP_SIZE: number;
-				public static decodeDimensions(param0: java.io.InputStream): globalAndroid.util.Pair<java.lang.Integer,  java.lang.Integer>;
+				public static decodeDimensions(param0: java.io.InputStream): globalAndroid.util.Pair<java.lang.Integer,java.lang.Integer>;
 				public static getPixelSizeForBitmapConfig(param0: globalAndroid.graphics.Bitmap.Config): number;
 				public static getSizeInBytes(param0: globalAndroid.graphics.Bitmap): number;
 				public constructor();
-				public static decodeDimensions(param0: native.Array<number>): globalAndroid.util.Pair<java.lang.Integer,  java.lang.Integer>;
+				public static decodeDimensions(param0: native.Array<number>): globalAndroid.util.Pair<java.lang.Integer,java.lang.Integer>;
 				public static getSizeInByteForBitmap(param0: number, param1: number, param2: globalAndroid.graphics.Bitmap.Config): number;
 			}
 		}
@@ -11538,7 +11538,7 @@ declare module com {
 		export module imageutils {
 			export class WebpUtil extends java.lang.Object {
 				public static class: java.lang.Class<com.facebook.imageutils.WebpUtil>;
-				public static getSize(param0: java.io.InputStream): globalAndroid.util.Pair<java.lang.Integer,  java.lang.Integer>;
+				public static getSize(param0: java.io.InputStream): globalAndroid.util.Pair<java.lang.Integer,java.lang.Integer>;
 				public static get2BytesAsInt(param0: java.io.InputStream): number;
 			}
 		}
