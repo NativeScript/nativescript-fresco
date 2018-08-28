@@ -4,26 +4,6 @@ branches:
 matrix:
   include:
     - stage: "WebPack and Build"
-      os: osx
-      env:
-        - WebPack="iOS"
-      osx_image: xcode9.4
-      language: node_js 
-      node_js: "8"
-      jdk: oraclejdk8
-      before_script:
-        - pip install six
-        - cd ../demo && tns platform add ios@next
-        - cd ../demo-angular && tns platform add ios@next
-      script: 
-      - cd ../demo && npm run build.plugin && npm i && tns build ios --bundle --env.uglify 
-      - cd ../publish 
-      - sh pack.sh
-      - cp package/*.tgz ../demo-angular/package.tgz
-      - cd ../demo-angular
-      - tns plugin add package.tgz
-      - npm i
-      - tns build ios --bundle --env.uglify --env.aot
     - language: android
       os: linux
       env:
@@ -53,20 +33,6 @@ matrix:
         - cd ../demo-angular && tns platform add android@next
       script:
         - cd ../src && npm i && npm run tsc && cd ../demo && tns build android && cd ../demo-angular && tns build android
-    - os: osx
-      env: 
-        - BuildiOS="11"
-        - Xcode="9.4"
-      osx_image: xcode9.4
-      language: node_js 
-      node_js: "8"
-      jdk: oraclejdk8
-      before_script:
-        - pip install six
-        - cd ../demo && tns platform add ios@next
-        - cd ../demo-angular && tns platform add ios@next
-      script: 
-        - cd ../src && npm i && npm run tsc && cd ../demo && tns build ios && cd ../demo-angular && tns build ios
 
 android:
   components:
