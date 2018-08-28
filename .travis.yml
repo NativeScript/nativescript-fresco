@@ -4,7 +4,7 @@ branches:
 matrix:
   include:
     - stage: "WebPack and Build"
-    - language: android
+      language: android
       os: linux
       env:
         - WebPack="Android"
