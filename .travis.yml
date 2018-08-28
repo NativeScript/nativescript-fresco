@@ -54,8 +54,10 @@ install:
     - npm install nativescript-dev-webpack@next -D
     - npm install tns-core-modules@next -P
     - npm install nativescript-dev-typescript@next -D
+    - npm install
     - cd ../demo-angular
     - npm install nativescript-dev-webpack@next -D
     - npm install tns-core-modules@next -P
     - npm install nativescript-angular@next -P
     - npm install nativescript-dev-typescript@next -D
+    - npm install
