@@ -22,6 +22,7 @@
     "lazy": "1.0.11",
     "nativescript-dev-typescript": "^0.7.1",
     "nativescript-dev-webpack": "^0.15.1",
+    "tns-platform-declarations": "^4.2.0",
     "typescript": "~2.7.2",
     "tslint": "^5.0.0"
   },

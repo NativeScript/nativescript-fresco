@@ -1,3 +1,179 @@
+// From Adroid API Level 21
+declare module localAndroid {
+	export module transition {
+		export class TransitionValues extends java.lang.Object {
+			public static class: java.lang.Class<localAndroid.transition.TransitionValues>;
+			public values: java.util.Map<string,any>;
+			public view: android.view.View;
+			public equals(param0: any): boolean;
+			public toString(): string;
+			public constructor();
+			public hashCode(): number;
+		}
+	}
+}
+
+declare module localAndroid {
+	export module transition {
+		export abstract class TransitionPropagation extends java.lang.Object {
+			public static class: java.lang.Class<localAndroid.transition.TransitionPropagation>;
+			public getStartDelay(param0: android.view.ViewGroup, param1: localAndroid.transition.Transition, param2: localAndroid.transition.TransitionValues, param3: localAndroid.transition.TransitionValues): number;
+			public captureValues(param0: localAndroid.transition.TransitionValues): void;
+			public constructor();
+			public getPropagationProperties(): native.Array<string>;
+		}
+	}
+}
+
+declare module localAndroid {
+	export module transition {
+		export abstract class PathMotion extends java.lang.Object {
+			public static class: java.lang.Class<localAndroid.transition.PathMotion>;
+			public constructor(param0: android.content.Context, param1: android.util.AttributeSet);
+			public constructor();
+			public getPath(param0: number, param1: number, param2: number, param3: number): android.graphics.Path;
+		}
+	}
+}
+
+declare module localAndroid {
+	export module transition {
+		export abstract class Transition extends java.lang.Object implements java.lang.Cloneable {
+			public static class: java.lang.Class<localAndroid.transition.Transition>;
+			public static MATCH_ID: number;
+			public static MATCH_INSTANCE: number;
+			public static MATCH_ITEM_ID: number;
+			public static MATCH_NAME: number;
+			public setStartDelay(param0: number): localAndroid.transition.Transition;
+			public createAnimator(param0: android.view.ViewGroup, param1: localAndroid.transition.TransitionValues, param2: localAndroid.transition.TransitionValues): android.animation.Animator;
+			public clone(): localAndroid.transition.Transition;
+			public getDuration(): number;
+			public getTargetTypes(): java.util.List<java.lang.Class<any>>;
+			public removeTarget(param0: string): localAndroid.transition.Transition;
+			public getTargetIds(): java.util.List<java.lang.Integer>;
+			public getInterpolator(): android.animation.TimeInterpolator;
+			public removeTarget(param0: java.lang.Class<any>): localAndroid.transition.Transition;
+			public addTarget(param0: string): localAndroid.transition.Transition;
+			public excludeChildren(param0: java.lang.Class<any>, param1: boolean): localAndroid.transition.Transition;
+			public captureEndValues(param0: localAndroid.transition.TransitionValues): void;
+			public canRemoveViews(): boolean;
+			public getEpicenterCallback(): localAndroid.transition.Transition.EpicenterCallback;
+			public addTarget(param0: java.lang.Class<any>): localAndroid.transition.Transition;
+			public setPropagation(param0: localAndroid.transition.TransitionPropagation): void;
+			public getStartDelay(): number;
+			public captureStartValues(param0: localAndroid.transition.TransitionValues): void;
+			public excludeTarget(param0: android.view.View, param1: boolean): localAndroid.transition.Transition;
+			public setPathMotion(param0: localAndroid.transition.PathMotion): void;
+			public removeTarget(param0: android.view.View): localAndroid.transition.Transition;
+			public setMatchOrder(param0: native.Array<number>): void;
+			public excludeTarget(param0: string, param1: boolean): localAndroid.transition.Transition;
+			public setEpicenterCallback(param0: localAndroid.transition.Transition.EpicenterCallback): void;
+			public getPathMotion(): localAndroid.transition.PathMotion;
+			public constructor();
+			public addListener(param0: localAndroid.transition.Transition.TransitionListener): localAndroid.transition.Transition;
+			public excludeTarget(param0: java.lang.Class<any>, param1: boolean): localAndroid.transition.Transition;
+			public getPropagation(): localAndroid.transition.TransitionPropagation;
+			public addTarget(param0: android.view.View): localAndroid.transition.Transition;
+			public getTransitionValues(param0: android.view.View, param1: boolean): localAndroid.transition.TransitionValues;
+			public setInterpolator(param0: android.animation.TimeInterpolator): localAndroid.transition.Transition;
+			public excludeChildren(param0: number, param1: boolean): localAndroid.transition.Transition;
+			public excludeChildren(param0: android.view.View, param1: boolean): localAndroid.transition.Transition;
+			public toString(): string;
+			public clone(): any;
+			public getTargets(): java.util.List<android.view.View>;
+			public getName(): string;
+			public getTransitionProperties(): native.Array<string>;
+			public getTargetNames(): java.util.List<string>;
+			public removeListener(param0: localAndroid.transition.Transition.TransitionListener): localAndroid.transition.Transition;
+			public constructor(param0: android.content.Context, param1: android.util.AttributeSet);
+			public excludeTarget(param0: number, param1: boolean): localAndroid.transition.Transition;
+			public removeTarget(param0: number): localAndroid.transition.Transition;
+			public getEpicenter(): android.graphics.Rect;
+			public setDuration(param0: number): localAndroid.transition.Transition;
+			public addTarget(param0: number): localAndroid.transition.Transition;
+		}
+		export module Transition {
+			export abstract class EpicenterCallback extends java.lang.Object {
+				public static class: java.lang.Class<localAndroid.transition.Transition.EpicenterCallback>;
+				public constructor();
+				public onGetEpicenter(param0: localAndroid.transition.Transition): android.graphics.Rect;
+			}
+			export class TransitionListener extends java.lang.Object {
+				public static class: java.lang.Class<localAndroid.transition.Transition.TransitionListener>;
+				/**
+				 * Constructs a new instance of the localAndroid.transition.Transition$TransitionListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+				 */
+				public constructor(implementation: {
+					onTransitionStart(param0: localAndroid.transition.Transition): void;
+					onTransitionEnd(param0: localAndroid.transition.Transition): void;
+					onTransitionCancel(param0: localAndroid.transition.Transition): void;
+					onTransitionPause(param0: localAndroid.transition.Transition): void;
+					onTransitionResume(param0: localAndroid.transition.Transition): void;
+				});
+				public constructor();
+				public onTransitionStart(param0: localAndroid.transition.Transition): void;
+				public onTransitionEnd(param0: localAndroid.transition.Transition): void;
+				public onTransitionResume(param0: localAndroid.transition.Transition): void;
+				public onTransitionPause(param0: localAndroid.transition.Transition): void;
+				public onTransitionCancel(param0: localAndroid.transition.Transition): void;
+			}
+		}
+		export class TransitionSet extends localAndroid.transition.Transition {
+			public static class: java.lang.Class<localAndroid.transition.TransitionSet>;
+			public static ORDERING_SEQUENTIAL: number;
+			public static ORDERING_TOGETHER: number;
+			public getOrdering(): number;
+			public setStartDelay(param0: number): localAndroid.transition.Transition;
+			public setStartDelay(param0: number): localAndroid.transition.TransitionSet;
+			public removeTarget(param0: java.lang.Class<any>): localAndroid.transition.TransitionSet;
+			public clone(): localAndroid.transition.Transition;
+			public addListener(param0: localAndroid.transition.Transition.TransitionListener): localAndroid.transition.TransitionSet;
+			public addTarget(param0: number): localAndroid.transition.TransitionSet;
+			public removeTarget(param0: string): localAndroid.transition.Transition;
+			public addTransition(param0: localAndroid.transition.Transition): localAndroid.transition.TransitionSet;
+			public removeTarget(param0: string): localAndroid.transition.TransitionSet;
+			public removeTarget(param0: java.lang.Class<any>): localAndroid.transition.Transition;
+			public removeListener(param0: localAndroid.transition.Transition.TransitionListener): localAndroid.transition.TransitionSet;
+			public getTransitionAt(param0: number): localAndroid.transition.Transition;
+			public addTarget(param0: string): localAndroid.transition.Transition;
+			public setOrdering(param0: number): localAndroid.transition.TransitionSet;
+			public setInterpolator(param0: android.animation.TimeInterpolator): localAndroid.transition.TransitionSet;
+			public captureEndValues(param0: localAndroid.transition.TransitionValues): void;
+			public addTarget(param0: java.lang.Class<any>): localAndroid.transition.Transition;
+			public setPropagation(param0: localAndroid.transition.TransitionPropagation): void;
+			public excludeTarget(param0: android.view.View, param1: boolean): localAndroid.transition.Transition;
+			public setPathMotion(param0: localAndroid.transition.PathMotion): void;
+			public captureStartValues(param0: localAndroid.transition.TransitionValues): void;
+			public removeTarget(param0: android.view.View): localAndroid.transition.Transition;
+			public excludeTarget(param0: string, param1: boolean): localAndroid.transition.Transition;
+			public setEpicenterCallback(param0: localAndroid.transition.Transition.EpicenterCallback): void;
+			public addTarget(param0: android.view.View): localAndroid.transition.TransitionSet;
+			public removeTarget(param0: android.view.View): localAndroid.transition.TransitionSet;
+			public clone(): localAndroid.transition.TransitionSet;
+			public constructor();
+			public addListener(param0: localAndroid.transition.Transition.TransitionListener): localAndroid.transition.Transition;
+			public excludeTarget(param0: java.lang.Class<any>, param1: boolean): localAndroid.transition.Transition;
+			public addTarget(param0: android.view.View): localAndroid.transition.Transition;
+			public getTransitionCount(): number;
+			public setDuration(param0: number): localAndroid.transition.TransitionSet;
+			public setInterpolator(param0: android.animation.TimeInterpolator): localAndroid.transition.Transition;
+			public removeTransition(param0: localAndroid.transition.Transition): localAndroid.transition.TransitionSet;
+			public clone(): any;
+			public addTarget(param0: java.lang.Class<any>): localAndroid.transition.TransitionSet;
+			public removeListener(param0: localAndroid.transition.Transition.TransitionListener): localAndroid.transition.Transition;
+			public addTarget(param0: string): localAndroid.transition.TransitionSet;
+			public constructor(param0: android.content.Context, param1: android.util.AttributeSet);
+			public excludeTarget(param0: number, param1: boolean): localAndroid.transition.Transition;
+			public removeTarget(param0: number): localAndroid.transition.Transition;
+			public setDuration(param0: number): localAndroid.transition.Transition;
+			public addTarget(param0: number): localAndroid.transition.Transition;
+			public removeTarget(param0: number): localAndroid.transition.TransitionSet;
+		}
+	}
+}
+
+///////////////////////////
+
 declare module bolts {
 	export class AggregateException extends java.lang.Exception {
 		public static class: java.lang.Class<bolts.AggregateException>;
@@ -5265,13 +5441,13 @@ declare module com {
 			export module view {
 				export class DraweeTransition {
 					public static class: java.lang.Class<com.facebook.drawee.view.DraweeTransition>;
-					public captureStartValues(param0: globalAndroid.transition.TransitionValues): void;
+					public captureStartValues(param0: localAndroid.transition.TransitionValues): void;
 					public constructor(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType);
-					public createAnimator(param0: globalAndroid.view.ViewGroup, param1: globalAndroid.transition.TransitionValues, param2: globalAndroid.transition.TransitionValues): globalAndroid.animation.Animator;
+					public createAnimator(param0: globalAndroid.view.ViewGroup, param1: localAndroid.transition.TransitionValues, param2: localAndroid.transition.TransitionValues): globalAndroid.animation.Animator;
 					public constructor(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param2: globalAndroid.graphics.PointF, param3: globalAndroid.graphics.PointF);
-					public captureEndValues(param0: globalAndroid.transition.TransitionValues): void;
-					public static createTransitionSet(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType): globalAndroid.transition.TransitionSet;
-					public static createTransitionSet(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param2: globalAndroid.graphics.PointF, param3: globalAndroid.graphics.PointF): globalAndroid.transition.TransitionSet;
+					public captureEndValues(param0: localAndroid.transition.TransitionValues): void;
+					public static createTransitionSet(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType): localAndroid.transition.TransitionSet;
+					public static createTransitionSet(param0: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param1: com.facebook.drawee.drawable.ScalingUtils.ScaleType, param2: globalAndroid.graphics.PointF, param3: globalAndroid.graphics.PointF): localAndroid.transition.TransitionSet;
 				}
 			}
 		}

@@ -3,24 +3,21 @@
         "target": "es5",
         "module": "commonjs",
         "declaration": false,
-        "removeComments": true,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "watch": false,
         "noLib": false,
+        "noEmitHelpers": true,
+        "preserveConstEnums": true,
         "emitDecoratorMetadata": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noImplicitUseStrict": true,
         "experimentalDecorators": true,
         "lib": [
             "es6",
             "dom",
             "es2015.iterable"
         ],
-        "pretty": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "noEmitHelpers": true,
-        "noEmitOnError": false,
-        "noImplicitAny": false,
-        "noImplicitReturns": true,
-        "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true,
         "baseUrl": ".",
         "paths": {
             "*": [
@@ -39,6 +36,5 @@
         "../src/node_modules",
         "node_modules",
         "platforms"
-    ],
-    "compileOnSave": false
+    ]
 }
