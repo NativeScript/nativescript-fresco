@@ -1,4 +1,4 @@
-/// <reference path="../src/node_modules/tns-platform-declarations/android.d.ts" />
+/// <reference path="../src/node_modules/tns-platform-declarations/android-21.d.ts" />
 /// <reference path="../src/android.d.ts" />
 
 
