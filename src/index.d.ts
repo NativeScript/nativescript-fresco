@@ -7,6 +7,12 @@ import * as viewModule from "tns-core-modules/ui/core/view";
 declare function initialize(config?: ImagePipelineConfigSetting): void;
 
 /**
+ * Shuts the native Fresco and SimpleDraweeView down. By design this method should not be called manually as it is handled by the Fresco library internally.
+ * NOTE: Be careful when manuallycalling this method as it will completely shutdown the functionality of Fresco.
+ */
+declare function shutDown(): void;
+
+/**
  * When called, initializes the android Fresco library. Calling this method is required.
  * A good place to call it is at the application onLaunch() method.
  */

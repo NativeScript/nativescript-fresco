@@ -7,6 +7,6 @@ android {
 }
 
 dependencies {
-	compile "com.facebook.fresco:fresco:1.9.0"
+	implementation "com.facebook.fresco:fresco:1.9.0"
 	implementation 'com.facebook.fresco:animated-gif:1.9.0'
 }

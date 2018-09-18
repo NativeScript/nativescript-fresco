@@ -2,6 +2,7 @@ export * from "./nativescript-fresco-common";
 import * as commonModule from "./nativescript-fresco-common";
 export declare function initialize(config?: commonModule.ImagePipelineConfigSetting): void;
 export declare function getImagePipeline(): ImagePipeline;
+export declare function shutDown(): void;
 export declare class ImagePipeline {
     private _android;
     private isInDiskCacheSync(uri);
