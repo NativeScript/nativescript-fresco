@@ -4,51 +4,35 @@ branches:
 matrix:
   include:
     - stage: "WebPack and Build"
-      os: osx
-      env:
-        - WebPack="iOS"
-      osx_image: xcode9.2
-      language: node_js 
-      node_js: "6"
-      jdk: oraclejdk8
-      before_script:
-        - cd ../demo && tns platform add ios@next
-        - cd ../demo-angular && tns platform add ios@next
-      script: cd ../demo && npm run build.plugin && npm i && tns build ios --bundle --env.uglify && cd ../demo-angular && npm i && tns build ios --bundle --env.uglify --env.aot
-    - language: android
+      language: android
       os: linux
       env:
         - WebPack="Android"
       jdk: oraclejdk8
-      before_install: nvm install 6.10.3
+      before_install: nvm install 8.11.4
       before_script:
         - cd ../demo && tns platform add android@next
         - cd ../demo-angular && tns platform add android@next
-      script: cd ../demo && npm run build.plugin && npm i && tns build android --bundle --env.uglify --env.snapshot && cd ../demo-angular && tns build android --bundle --env.uglify --env.snapshot --env.aot
+      script: 
+        - cd ../demo && npm run build.plugin && npm i && tns build android --bundle --env.uglify --env.snapshot
+        - cd ../publish 
+        - sh pack.sh
+        - cp package/*.tgz ../demo-angular/package.tgz
+        - cd ../demo-angular
+        - tns plugin add package.tgz
+        - npm i
+        - tns build android --bundle --env.uglify --env.snapshot --env.aot
     - language: android
       env: 
         - BuildAndroid="26"
       os: linux
       jdk: oraclejdk8
-      before_install: nvm install 8.9.4
+      before_install: nvm install 8.11.4
       before_script:
         - cd ../demo && tns platform add android@next
         - cd ../demo-angular && tns platform add android@next
       script:
         - cd ../src && npm i && npm run tsc && cd ../demo && tns build android && cd ../demo-angular && tns build android
-    - os: osx
-      env: 
-        - BuildiOS="11"
-        - Xcode="9.2"
-      osx_image: xcode9.2
-      language: node_js 
-      node_js: "8"
-      jdk: oraclejdk8
-      before_script:
-        - cd ../demo && tns platform add ios@next
-        - cd ../demo-angular && tns platform add ios@next
-      script: 
-        - cd ../src && npm i && npm run tsc && cd ../demo && tns build ios && cd ../demo-angular && tns build ios
 
 android:
   components:
@@ -67,11 +51,13 @@ install:
     - npm uninstall tns-core-modules -D && npm install tns-core-modules@next -D
     - npm uninstall nativescript-angular -D && npm install nativescript-angular@next -D
     - cd ../demo
-    - npm uninstall tns-core-modules -P && npm install tns-core-modules@next -P
-    - npm uninstall nativescript-dev-webpack -D && npm install nativescript-dev-webpack@next -D
-    - npm uninstall nativescript-dev-typescript -D && npm install nativescript-dev-typescript@next -D
+    - npm install nativescript-dev-webpack@next -D
+    - npm install tns-core-modules@next -P
+    - npm install nativescript-dev-typescript@next -D
+    - npm install
     - cd ../demo-angular
-    - npm uninstall tns-core-modules -P && npm install tns-core-modules@next -P
-    - npm uninstall nativescript-angular -P && npm install nativescript-angular@next -P
-    - npm uninstall nativescript-dev-webpack -D && npm install nativescript-dev-webpack@next -D
-    - npm uninstall nativescript-dev-typescript -D && npm install nativescript-dev-typescript@next -D
+    - npm install nativescript-dev-webpack@next -D
+    - npm install tns-core-modules@next -P
+    - npm install nativescript-angular@next -P
+    - npm install nativescript-dev-typescript@next -D
+    - npm install

@@ -31,6 +31,11 @@ export function getImagePipeline(): ImagePipeline {
     return null;
 }
 
+export function shutDown(): void {
+    com.facebook.drawee.view.SimpleDraweeView.shutDown();
+    com.facebook.drawee.backends.pipeline.Fresco.shutDown();
+}
+
 export class ImagePipeline {
     private _android: com.facebook.imagepipeline.core.ImagePipeline;
 
@@ -495,7 +500,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     private getDrawable(path: string) {
         let drawable;
-        let builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
         if (utils.isFileOrResourcePath(path)) {
             if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
                 drawable = this.getDrawableFromResource(path);
@@ -614,7 +618,7 @@ class GenericDraweeHierarchyBuilder {
             return null;
         }
 
-        let params = new com.facebook.drawee.generic.RoundingParams.asCircle();
+        let params = com.facebook.drawee.generic.RoundingParams.asCircle();
         this.nativeBuilder.setRoundingParams(params);
 
         return this;
@@ -630,10 +634,6 @@ class GenericDraweeHierarchyBuilder {
         this.nativeBuilder.setRoundingParams(params);
 
         return this;
-    }
-
-    public shutDown(): void {
-        this.nativeBuilder.shutDown();
     }
 }
 
@@ -660,4 +660,6 @@ function getScaleType(scaleType: string) {
                 break;
         }
     }
+
+    return null;
 }

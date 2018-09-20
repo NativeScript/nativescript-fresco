@@ -74,7 +74,7 @@ if (application.android) {
 > When working with "downsampling" you will need to pass a configuration to the `initialize` function:
 
 ```javascript
-frescoModule.initialize({ isDownsampleEnabled: true });
+fresco.initialize({ isDownsampleEnabled: true });
 ```
 
 
@@ -594,6 +594,20 @@ imagePipeLine.evictFromMemoryCache("<uri-to-a-photo-from-the-web>");
 imagePipeLine.evictFromDiskCache("<uri-to-a-photo-from-the-web>");
 ```
 
+#### Manually shut down the native Fresco library
+In very very rare occasions the native Android Fresco library may experience strange memory leak issues, in such scenarios as a last resort you may want to "shut down" the library forcing all of the managed memory to possibly be released. You can do that by calling the `shutDown` function exposed by the nativescript-fresco module, one good application lifecycle event to call it inside may be in the `exit` event of the application:
+
+```javascript
+import * as app from "application";
+import * as frescoModule from "nativescript-fresco";
+
+if (app.android) {
+    app.on(app.exitEvent, (args) => {
+        frescoModule.shutDown();
+    });
+}
+```
+
 ## Sample Screenshots
 
 All of the images are sample images for showcasing purposes.
@@ -610,6 +624,6 @@ Sample 3 - Image shown successfully from imageUri |  Sample 4 - 'Failure' image 
 We love PRs! Check out the [contributing guidelines](CONTRIBUTING.md). If you want to contribute, but you are not sure where to start - look for [issues labeled `help wanted`](https://github.com/NativeScript/nativescript-fresco/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
 
 ## Get Help 
-Please, use [github issues](https://github.com/NativeScript/nativescript-fresco/issues) strictly for [reporting bugs](CONTRIBUTING.md#reporting-bugs) or [requesting features](CONTRIBUTING.md#requesting-new-features). For general questions and support, check out the [NativeScript community forum](https://discourse.nativescript.org/) or ask our experts in [NativeScript community Slack channel](http://developer.telerik.com/wp-login.php?action=slack-invitation).
+Please, use [github issues](https://github.com/NativeScript/nativescript-fresco/issues) strictly for [reporting bugs](CONTRIBUTING.md#reporting-bugs) or [requesting features](CONTRIBUTING.md#requesting-new-features). For general questions and support, check out [Stack Overflow](https://stackoverflow.com/questions/tagged/nativescript) or ask our experts in [NativeScript community Slack channel](http://developer.telerik.com/wp-login.php?action=slack-invitation).
 
 ![](https://ga-beacon.appspot.com/UA-111455-24/nativescript/nativescript-fresco?pixel)
