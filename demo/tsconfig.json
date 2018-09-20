@@ -1,27 +1,39 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
         "target": "es5",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "watch": false,
+        "noLib": false,
         "noEmitHelpers": true,
-        "noEmitOnError": true,
+        "preserveConstEnums": true,
+        "emitDecoratorMetadata": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noImplicitUseStrict": true,
+        "experimentalDecorators": true,
         "lib": [
             "es6",
-            "dom"
+            "dom",
+            "es2015.iterable"
         ],
         "baseUrl": ".",
         "paths": {
+            "*": [
+                "./node_modules/*"
+            ],
             "~/*": [
                 "app/*"
-            ],
-            "*": [
-                "./node_modules/tns-core-modules/*",
-                "./node_modules/*"
             ]
         }
     },
+    "include": [
+        "../src",
+        "**/*"
+    ],
     "exclude": [
+        "../src/node_modules",
         "node_modules",
         "platforms"
     ]

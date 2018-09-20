@@ -6,9 +6,16 @@ import * as application from "tns-core-modules/application";
 import * as imageSource from "tns-core-modules/image-source";
 import * as fs from "tns-core-modules/file-system";
 
-export function initialize(): void {
+export function initialize(config?: commonModule.ImagePipelineConfigSetting): void {
     if (application.android) {
-        com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context);
+        if (config && config.isDownsampleEnabled) {
+            let imagePipelineConfig = com.facebook.imagepipeline.core.ImagePipelineConfig.newBuilder(application.android.context)
+                .setDownsampleEnabled(true)
+                .build();
+            com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context, imagePipelineConfig);
+        } else {
+            com.facebook.drawee.backends.pipeline.Fresco.initialize(application.android.context);
+        }
     }
 }
 
@@ -22,6 +29,11 @@ export function getImagePipeline(): ImagePipeline {
     }
 
     return null;
+}
+
+export function shutDown(): void {
+    com.facebook.drawee.view.SimpleDraweeView.shutDown();
+    com.facebook.drawee.backends.pipeline.Fresco.shutDown();
 }
 
 export class ImagePipeline {
@@ -69,36 +81,7 @@ export class ImagePipeline {
     }
 }
 
-export interface AnimatedImage extends com.facebook.imagepipeline.animated.base.AnimatedDrawable, commonModule.IAnimatedImage {
-    /*tslint:disable-next-line no-misused-new*/
-    new(): AnimatedImage;
-    start(): void;
-    stop(): void;
-    isRunning(): boolean;
-}
-export let AnimatedImage: AnimatedImage;
-function initializeAnimatedImage() {
-if (AnimatedImage) {
-    return;
-}
-class AnimatedImageImpl extends com.facebook.imagepipeline.animated.base.AnimatedDrawable implements commonModule.IAnimatedImage {
-    start(): void {
-        super.start();
-    }
-
-    stop(): void {
-        super.stop();
-    }
-
-    isRunning(): boolean {
-        return super.isRunning();
-    }
-}
-AnimatedImage = AnimatedImageImpl as any;
-}
-
-
-export class FrescoError implements commonModule.IError {
+export class FrescoError implements commonModule.FrescoError {
     private _stringValue;
     private _message;
     private _errorType;
@@ -130,7 +113,7 @@ export interface QualityInfo {
     isOfGoodEnoughQuality();
 }
 
-export class ImageInfo implements commonModule.IImageInfo {
+export class ImageInfo implements commonModule.ImageInfo {
     private _nativeImageInfo: com.facebook.imagepipeline.image.ImageInfo;
 
     constructor(imageInfo) {
@@ -153,7 +136,7 @@ export class ImageInfo implements commonModule.IImageInfo {
 
 export class FinalEventData extends commonModule.EventData {
     private _imageInfo: ImageInfo;
-    private _animatable: commonModule.IAnimatedImage;
+    private _animatable: commonModule.AnimatedImage;
 
     get imageInfo(): ImageInfo {
         return this._imageInfo;
@@ -163,11 +146,11 @@ export class FinalEventData extends commonModule.EventData {
         this._imageInfo = value;
     }
 
-    get animatable(): commonModule.IAnimatedImage {
+    get animatable(): commonModule.AnimatedImage {
         return this._animatable;
     }
 
-    set animatable(value: commonModule.IAnimatedImage) {
+    set animatable(value: commonModule.AnimatedImage) {
         this._animatable = value;
     }
 }
@@ -200,7 +183,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     private _android: com.facebook.drawee.view.SimpleDraweeView;
 
     public createNativeView() {
-        initializeAnimatedImage();
         this._android = new com.facebook.drawee.view.SimpleDraweeView(this._context);
         return this._android;
     }
@@ -295,7 +277,7 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
     }
 
     protected onAspectRatioChanged(oldValue: number, newValue: number) {
-
+        this.initImage();
     }
 
     private initDrawee() {
@@ -327,15 +309,28 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     } else if (this.imageUri.indexOf("/") === 0) {
                         uri = android.net.Uri.parse(`file:${this.imageUri}`);
                     }
-                }
-                if (uri === undefined) {
+                } else {
                     uri = android.net.Uri.parse(this.imageUri);
                 }
 
+                if (!uri) {
+                    console.log(`Error: 'imageUri' not valid: ${this.imageUri}`);
+                    return;
+                }
+
                 let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;
-                let request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                    .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                    .build();
+
+                let request: com.facebook.imagepipeline.request.ImageRequest;
+                if (this.decodeWidth && this.decodeHeight) {
+                    request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
+                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                        .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
+                        .build();
+                } else {
+                    request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
+                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
+                        .build();
+                }
 
                 let that: WeakRef<FrescoDrawee> = new WeakRef(this);
                 let listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({
@@ -343,11 +338,11 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                         if (that && that.get()) {
                             let info = new ImageInfo(imageInfo);
 
-                            let args: FinalEventData = <FinalEventData>{
+                            let args = <FinalEventData>{
                                 eventName: commonModule.FrescoDrawee.finalImageSetEvent,
                                 object: that.get(),
                                 imageInfo: info,
-                                animatable: animatable,
+                                animatable: <commonModule.AnimatedImage>animatable,
                             };
 
                             that.get().notify(args);
@@ -505,7 +500,6 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
 
     private getDrawable(path: string) {
         let drawable;
-        let builder: GenericDraweeHierarchyBuilder = new GenericDraweeHierarchyBuilder();
         if (utils.isFileOrResourcePath(path)) {
             if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
                 drawable = this.getDrawableFromResource(path);
@@ -624,7 +618,7 @@ class GenericDraweeHierarchyBuilder {
             return null;
         }
 
-        let params = new com.facebook.drawee.generic.RoundingParams.asCircle();
+        let params = com.facebook.drawee.generic.RoundingParams.asCircle();
         this.nativeBuilder.setRoundingParams(params);
 
         return this;
@@ -640,10 +634,6 @@ class GenericDraweeHierarchyBuilder {
         this.nativeBuilder.setRoundingParams(params);
 
         return this;
-    }
-
-    public shutDown(): void {
-        this.nativeBuilder.shutDown();
     }
 }
 
@@ -670,4 +660,6 @@ function getScaleType(scaleType: string) {
                 break;
         }
     }
+
+    return null;
 }

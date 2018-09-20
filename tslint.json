@@ -1,4 +1,9 @@
 {
+    "linterOptions": {
+        "exclude": [
+            "src/android.d.ts"
+        ]
+    },
     "rules": {
         "class-name": true,
         "comment-format": [

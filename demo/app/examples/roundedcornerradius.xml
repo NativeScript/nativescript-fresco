@@ -1,11 +1,13 @@
-<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
-                    verticalAlignment="center"
-                    placeholderImageUri="res://ns_logo"
-                    margin="10"
-                    aspectRatio="2"
-                    roundedCornerRadius="50"
-                    roundBottomRight="true"
-                    roundBottomLeft="true"
-                    roundTopLeft="true"
-                    roundTopRight="true"
-                    imageUri="http://lorempixel.com/400/200/"/>
+<GridLayout>
+    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+                        verticalAlignment="center"
+                        placeholderImageUri="res://ns_logo"
+                        margin="10"
+                        aspectRatio="1.49"
+                        roundedCornerRadius="50"
+                        roundBottomRight="true"
+                        roundBottomLeft="true"
+                        roundTopLeft="true"
+                        roundTopRight="true"
+                        imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast2.jpg"/>
+</GridLayout>
