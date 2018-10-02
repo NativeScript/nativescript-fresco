@@ -268,6 +268,14 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
         this.updateHierarchy();
     }
 
+    protected onBlurRadiusChanged(oldValue: number, newValue: number) {
+        this.initImage();
+    }
+
+    protected onBlurDownSamplingChanged(oldValue: number, newValue: number) {
+        this.initImage();
+    }
+
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean) {
 
     }
@@ -318,19 +326,19 @@ export class FrescoDrawee extends commonModule.FrescoDrawee {
                     return;
                 }
 
-                let progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;
+                const progressiveRenderingEnabledValue = this.progressiveRenderingEnabled !== undefined ? this.progressiveRenderingEnabled : false;
+                const requestBuilder = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
+                    .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue);
 
-                let request: com.facebook.imagepipeline.request.ImageRequest;
                 if (this.decodeWidth && this.decodeHeight) {
-                    request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                        .setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight))
-                        .build();
-                } else {
-                    request = com.facebook.imagepipeline.request.ImageRequestBuilder.newBuilderWithSource(uri)
-                        .setProgressiveRenderingEnabled(progressiveRenderingEnabledValue)
-                        .build();
+                    requestBuilder.setResizeOptions(new com.facebook.imagepipeline.common.ResizeOptions(this.decodeWidth, this.decodeHeight));
                 }
+                if (this.blurRadius) {
+                    const postProcessor: any = new jp.wasabeef.fresco.processors.BlurPostprocessor(this._context, this.blurRadius, this.blurDownSampling || 1);
+                    requestBuilder.setPostprocessor(postProcessor);
+                }
+
+                const request = requestBuilder.build();
 
                 let that: WeakRef<FrescoDrawee> = new WeakRef(this);
                 let listener = new com.facebook.drawee.controller.ControllerListener<com.facebook.imagepipeline.image.ImageInfo>({

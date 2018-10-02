@@ -12150,6 +12150,57 @@ declare module com {
 	}
 }
 
+declare module jp {
+	export module wasabeef {
+		export module fresco {
+			export module processors {
+				export class BlurPostprocessor {
+					public static class: java.lang.Class<jp.wasabeef.fresco.processors.BlurPostprocessor>;
+					public constructor(param0: globalAndroid.content.Context);
+					public getName(): string;
+					public constructor(param0: globalAndroid.content.Context, param1: number);
+					public getPostprocessorCacheKey(): com.facebook.cache.common.CacheKey;
+					public constructor(param0: globalAndroid.content.Context, param1: number, param2: number);
+					public process(param0: globalAndroid.graphics.Bitmap, param1: globalAndroid.graphics.Bitmap): void;
+				}
+				export class ColorFilterPostprocessor {
+					public static class: java.lang.Class<jp.wasabeef.fresco.processors.ColorFilterPostprocessor>;
+					public getName(): string;
+					public getPostprocessorCacheKey(): com.facebook.cache.common.CacheKey;
+					public process(param0: globalAndroid.graphics.Bitmap, param1: globalAndroid.graphics.Bitmap): void;
+					public constructor(param0: number);
+				}
+				export class CombinePostProcessors {
+					public static class: java.lang.Class<jp.wasabeef.fresco.processors.CombinePostProcessors>;
+					public process(param0: globalAndroid.graphics.Bitmap, param1: globalAndroid.graphics.Bitmap): void;
+				}
+				export module CombinePostProcessors {
+					export class Builder {
+						public static class: java.lang.Class<jp.wasabeef.fresco.processors.CombinePostProcessors.Builder>;
+						public build(): jp.wasabeef.fresco.processors.CombinePostProcessors;
+						public constructor();
+						public add(param0: com.facebook.imagepipeline.request.BasePostprocessor): jp.wasabeef.fresco.processors.CombinePostProcessors.Builder;
+					}
+				}
+				export class GrayscalePostprocessor {
+					public static class: java.lang.Class<jp.wasabeef.fresco.processors.GrayscalePostprocessor>;
+					public constructor();
+					public getName(): string;
+					public getPostprocessorCacheKey(): com.facebook.cache.common.CacheKey;
+					public process(param0: globalAndroid.graphics.Bitmap, param1: globalAndroid.graphics.Bitmap): void;
+				}
+				export class MaskPostprocessor {
+					public static class: java.lang.Class<jp.wasabeef.fresco.processors.MaskPostprocessor>;
+					public getName(): string;
+					public constructor(param0: globalAndroid.content.Context, param1: number);
+					public getPostprocessorCacheKey(): com.facebook.cache.common.CacheKey;
+					public process(param0: globalAndroid.graphics.Bitmap, param1: globalAndroid.graphics.Bitmap): void;
+				}
+			}
+		}
+	}
+}
+
 //Generics information:
 //bolts.Capture:1
 //bolts.Continuation:2

@@ -77,6 +77,8 @@ export class FrescoDrawee extends View {
     public roundTopRight: boolean;
     public roundBottomLeft: boolean;
     public roundedCornerRadius: number;
+    public blurRadius: number;
+    public blurDownSampling: number;
     public autoPlayAnimations: boolean;
     public tapToRetryEnabled: boolean;
     public aspectRatio: number;
@@ -236,6 +238,26 @@ export class FrescoDrawee extends View {
             },
         });
 
+    public static blurRadiusProperty = new Property<FrescoDrawee, number>(
+        {
+            name: "blurRadius",
+            defaultValue: undefined,
+            valueConverter: (v) => parseFloat(v),
+            valueChanged: (target, oldValue, newValue) => {
+                target.onBlurRadiusPropertyChanged(oldValue, newValue);
+            },
+        });
+
+    public static blurDownSamplingProperty = new Property<FrescoDrawee, number>(
+        {
+            name: "blurDownSampling",
+            defaultValue: undefined,
+            valueConverter: (v) => parseFloat(v),
+            valueChanged: (target, oldValue, newValue) => {
+                target.onBlurDownSamplingPropertyChanged(oldValue, newValue);
+            },
+        });
+
     public static autoPlayAnimationsProperty = new Property<FrescoDrawee, boolean>(
         {
             name: "autoPlayAnimations",
@@ -346,6 +368,14 @@ export class FrescoDrawee extends View {
         this.onRoundedCornerRadiusChanged(oldValue, newValue);
     }
 
+    private onBlurRadiusPropertyChanged(oldValue: number, newValue: number) {
+        this.onBlurRadiusChanged(oldValue, newValue);
+    }
+
+    private onBlurDownSamplingPropertyChanged(oldValue: number, newValue: number) {
+        this.onBlurDownSamplingChanged(oldValue, newValue);
+    }
+
     private onAutoPlayAnimationsPropertyChanged(oldValue: boolean, newValue: boolean) {
         this.onAutoPlayAnimationsPChanged(oldValue, newValue);
     }
@@ -426,6 +456,14 @@ export class FrescoDrawee extends View {
 
     }
 
+    protected onBlurRadiusChanged(oldValue: number, newValue: number) {
+
+    }
+
+    protected onBlurDownSamplingChanged(oldValue: number, newValue: number) {
+
+    }
+
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean) {
 
     }
@@ -463,6 +501,8 @@ FrescoDrawee.roundTopRightProperty.register(FrescoDrawee);
 FrescoDrawee.roundBottomLeftProperty.register(FrescoDrawee);
 FrescoDrawee.roundBottomRightProperty.register(FrescoDrawee);
 FrescoDrawee.roundedCornerRadiusProperty.register(FrescoDrawee);
+FrescoDrawee.blurRadiusProperty.register(FrescoDrawee);
+FrescoDrawee.blurDownSamplingProperty.register(FrescoDrawee);
 FrescoDrawee.autoPlayAnimationsProperty.register(FrescoDrawee);
 FrescoDrawee.tapToRetryEnabledProperty.register(FrescoDrawee);
 FrescoDrawee.aspectRatioProperty.register(FrescoDrawee);

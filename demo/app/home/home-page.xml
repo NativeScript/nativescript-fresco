@@ -50,6 +50,11 @@
             <examples:fade />
         </TabViewItem.view>
       </TabViewItem>
+      <TabViewItem title="blur">
+        <TabViewItem.view>
+            <examples:blur />
+        </TabViewItem.view>
+      </TabViewItem>
       <TabViewItem title="progressiverenderingenabled">
         <TabViewItem.view>
             <examples:progressiverenderingenabled />

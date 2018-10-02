@@ -71,6 +71,8 @@ export declare class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onRoundBottomLeftChanged(oldValue: boolean, newValue: boolean): void;
     protected onRoundBottomRightChanged(oldValue: boolean, newValue: boolean): void;
     protected onRoundedCornerRadiusChanged(oldValue: number, newValue: number): void;
+    protected onBlurRadiusChanged(oldValue: number, newValue: number): void;
+    protected onBlurDownSamplingChanged(oldValue: number, newValue: number): void;
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean): void;
     protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean): void;
     protected onAspectRatioChanged(oldValue: number, newValue: number): void;
