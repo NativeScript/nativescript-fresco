@@ -146,6 +146,16 @@ export class FrescoDrawee extends viewModule.View {
     roundedCornerRadius: number;
 
     /**
+     * Number value used as input for the blur function. Larger value means slower processing.
+     */
+    blurRadius: number;
+
+    /**
+     * Number value used to scale the image before applying the blur function. Bigger value means faster processing.
+     */
+    blurDownSampling: number;
+
+    /**
      * Boolean value used for enabling/disabling automatic playing of animated images.
      */
     autoPlayAnimations: boolean;
