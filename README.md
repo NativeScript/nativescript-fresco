@@ -187,6 +187,22 @@ Number value used for the fade-in duration. This value is in milliseconds.
 <nativescript-fresco:FrescoDrawee fadeDuration="3000"/>
 ```
 
+- **blurRadius** 
+
+Number value greater than zero, used as input for the blur function. Larger value means slower processing. For example a value of `10` means that each pixel in the image will be blurred using all adjacent pixels up to a distance of 10.
+
+```xml
+<nativescript-fresco:FrescoDrawee blurRadius="25"/>
+```
+
+- **blurDownSampling** 
+
+Number value greater than zero, used to scale the image before applying the blur function. Larger value means faster processing. For example a value of `2` means that the image will be scaled by a factor of two before applying blur.
+
+```xml
+<nativescript-fresco:FrescoDrawee blurDownSampling="2"/>
+```
+
 - **aspectRatio** 
 
 Number value used as the aspect ratio of the image. This property is useful when you are working with different aspect ratio images and want to have a fixed Width or Height. The ratio of an image is calculated by dividing its width by its height. 
