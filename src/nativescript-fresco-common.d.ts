@@ -55,6 +55,8 @@ export declare class FrescoDrawee extends View {
     roundTopRight: boolean;
     roundBottomLeft: boolean;
     roundedCornerRadius: number;
+    blurRadius: number;
+    blurDownSampling: number;
     autoPlayAnimations: boolean;
     tapToRetryEnabled: boolean;
     aspectRatio: number;
@@ -75,6 +77,8 @@ export declare class FrescoDrawee extends View {
     static roundBottomLeftProperty: Property<FrescoDrawee, boolean>;
     static roundBottomRightProperty: Property<FrescoDrawee, boolean>;
     static roundedCornerRadiusProperty: Property<FrescoDrawee, number>;
+    static blurRadiusProperty: Property<FrescoDrawee, number>;
+    static blurDownSamplingProperty: Property<FrescoDrawee, number>;
     static autoPlayAnimationsProperty: Property<FrescoDrawee, boolean>;
     static tapToRetryEnabledProperty: Property<FrescoDrawee, boolean>;
     static aspectRatioProperty: Property<FrescoDrawee, number>;
@@ -95,6 +99,8 @@ export declare class FrescoDrawee extends View {
     private onRoundBottomLeftPropertyChanged(oldValue, newValue);
     private onRoundBottomRightPropertyChanged(oldValue, newValue);
     private onRoundedCornerRadiusPropertyChanged(oldValue, newValue);
+    private onBlurRadiusPropertyChanged(oldValue, newValue);
+    private onBlurDownSamplingPropertyChanged(oldValue, newValue);
     private onAutoPlayAnimationsPropertyChanged(oldValue, newValue);
     private onTapToRetryEnabledPropertyChanged(oldValue, newValue);
     private onAspectRatioPropertyChanged(oldValue, newValue);
@@ -115,6 +121,8 @@ export declare class FrescoDrawee extends View {
     protected onRoundBottomLeftChanged(oldValue: boolean, newValue: boolean): void;
     protected onRoundBottomRightChanged(oldValue: boolean, newValue: boolean): void;
     protected onRoundedCornerRadiusChanged(oldValue: number, newValue: number): void;
+    protected onBlurRadiusChanged(oldValue: number, newValue: number): void;
+    protected onBlurDownSamplingChanged(oldValue: number, newValue: number): void;
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean): void;
     protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean): void;
     protected onAspectRatioChanged(oldValue: number, newValue: number): void;
