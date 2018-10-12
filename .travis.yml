@@ -9,7 +9,7 @@ matrix:
       node_js: "8"
       script: cd src && npm run ci.tslint && cd ../demo && npm run ci.tslint && cd ../demo-angular && npm run ci.tslint
     - stage: "WebPack, Build and Test"
-    - language: android
+      language: android
       os: linux
       env:
         - WebPack="Android"
