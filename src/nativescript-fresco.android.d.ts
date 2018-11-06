@@ -5,7 +5,7 @@ export declare function getImagePipeline(): ImagePipeline;
 export declare function shutDown(): void;
 export declare class ImagePipeline {
     private _android;
-    private isInDiskCacheSync(uri);
+    private isInDiskCacheSync;
     isInBitmapMemoryCache(uri: string): boolean;
     evictFromMemoryCache(uri: string): void;
     evictFromDiskCache(uri: string): void;
@@ -76,10 +76,10 @@ export declare class FrescoDrawee extends commonModule.FrescoDrawee {
     protected onAutoPlayAnimationsPChanged(oldValue: boolean, newValue: boolean): void;
     protected onTapToRetryEnabledChanged(oldValue: boolean, newValue: boolean): void;
     protected onAspectRatioChanged(oldValue: number, newValue: number): void;
-    private initDrawee();
-    private initImage();
-    private updateHierarchy();
-    private getDrawable(path);
-    private getDrawableFromLocalFile(localFilePath);
-    private getDrawableFromResource(resourceName);
+    private initDrawee;
+    private initImage;
+    private updateHierarchy;
+    private getDrawable;
+    private getDrawableFromLocalFile;
+    private getDrawableFromResource;
 }
