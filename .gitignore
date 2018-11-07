@@ -54,3 +54,4 @@ AoT files
 
 #Webpack
 *.esm.json
+*.tns.json
