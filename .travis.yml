@@ -60,4 +60,5 @@ install:
     - npm install tns-core-modules@next -P
     - npm install nativescript-angular@next -P
     - npm install nativescript-dev-typescript@next -D
+    - npm install typescript@3.1.6 -D
     - npm install
