@@ -12,7 +12,7 @@
   },
   "nativescript": {
     "platforms": {
-      "android": "3.0.0"
+      "android": "4.0.0"
     }
   },
   "devDependencies": {
