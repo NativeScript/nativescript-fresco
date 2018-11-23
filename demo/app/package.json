@@ -1,7 +1,8 @@
 {
   "android": {
     "v8Flags": "--expose_gc",
-    "requireModules": ["nativescript-fresco"]
+    "requireModules": ["nativescript-fresco"],
+    "markingMode": "none"
   },
   "main": "app.js",
   "name": "tns-template-blank-ts",

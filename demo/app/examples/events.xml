@@ -11,8 +11,10 @@
                             imageUri="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"
                             finalImageSet="onFinalImageSet"
                             intermediateImageSet="onIntermediateImageSet"
+                            intermediateImageFailed="onIntermediateImageFailed"
                             submit="onSubmit"
-                            release="onRelease"/>
+                            release="onRelease" 
+                            failure="onFailure" />
         <Label id="outputLabel" text="output: " row="1" textWrap="true"/>
     </GridLayout>
 </ScrollView>

@@ -23,7 +23,6 @@
     "nativescript-angular": "~7.0.0",
     "nativescript-fresco": "../src",
     "nativescript-theme-core": "^1.0.4",
-    "nativescript-ui-listview": "~3.8.0",
     "reflect-metadata": "~0.1.8",
     "rxjs": "^6.3.3",
     "tns-core-modules": "^5.0.0"
