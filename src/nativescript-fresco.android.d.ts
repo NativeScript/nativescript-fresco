@@ -31,7 +31,7 @@ export interface QualityInfo {
 }
 export declare class ImageInfo implements commonModule.ImageInfo {
     private _nativeImageInfo;
-    constructor(imageInfo: any);
+    constructor(imageInfo: com.facebook.imagepipeline.image.ImageInfo);
     getHeight(): number;
     getWidth(): number;
     getQualityInfo(): QualityInfo;
