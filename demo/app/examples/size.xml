@@ -1,11 +1,11 @@
 <ScrollView>
     <StackLayout>
         <Button text="change" tap="onChangeTap"/>
-        <fresco:FrescoDrawee verticalAlignment="center"
+        <img:Img verticalAlignment="center"
                             row="1"
-                            id="frescoDrawee"
-                            xmlns:fresco="nativescript-fresco"
-                            imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/drink1.jpg"
+                            id="nsImage"
+                            xmlns:img="nativescript-image"
+                            src="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/drink1.jpg"
                             aspectRatio="1.49"
                             placeholderImageUri="res://ns_logo"/>
     </StackLayout>

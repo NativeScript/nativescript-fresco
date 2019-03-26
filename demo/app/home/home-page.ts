@@ -1,6 +1,6 @@
 import { ViewModel } from "./home-view-model";
 import { EventData } from "tns-core-modules/data/observable";
-import * as frescoModel from "nativescript-fresco";
+import * as imageModel from "nativescript-image";
 
 export function onNavigatingTo(args) {
     this.page = args.object;
@@ -8,6 +8,6 @@ export function onNavigatingTo(args) {
 }
 
 export function onClearCache(args: EventData) {
-    let imagePipeLine = frescoModel.getImagePipeline();
+    let imagePipeLine = imageModel.getImagePipeline();
     imagePipeLine.clearCaches();
 }

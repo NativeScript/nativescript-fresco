@@ -1,8 +1,8 @@
 <StackLayout>
     <Button text="set / unset" tap="onSetTap"/>
-    <fresco:FrescoDrawee verticalAlignment="center" row="1"
-                        id="frescoDrawee"
-                        xmlns:fresco="nativescript-fresco"
+    <img:Img verticalAlignment="center" row="1"
+                        id="nsImage"
+                        xmlns:img="nativescript-image"
                         fadeDuration="3000"
                         aspectRatio="1.49"/>
 </StackLayout>

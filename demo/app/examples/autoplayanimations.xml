@@ -1,9 +1,9 @@
 <GridLayout>
-    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+    <img:Img xmlns:img="nativescript-image" 
                         verticalAlignment="center"
                         placeholderImageUri="res://ns_logo"
                         width="100"
                         aspectRatio="0.99"
                         autoPlayAnimations="true"
-                        imageUri="res://animation"/>
+                        src="res://animation"/>
 </GridLayout>

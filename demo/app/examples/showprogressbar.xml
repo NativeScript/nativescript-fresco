@@ -1,10 +1,10 @@
 <GridLayout>
-    <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+    <img:Img xmlns:img="nativescript-image" 
                         verticalAlignment="center"
                         placeholderImageUri="res://ns_logo"
                         aspectRatio="0.754"
                         progressiveRenderingEnabled="true"
                         showProgressBar="true"
                         progressBarColor="blue"
-                        imageUri="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"/>
+                        src="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"/>
 </GridLayout>

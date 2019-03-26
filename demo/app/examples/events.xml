@@ -1,6 +1,6 @@
 <ScrollView>
     <GridLayout rows="*, auto">
-        <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+        <img:Img xmlns:img="nativescript-image" 
                             placeholderImageUri="res://ns_logo"
                             verticalAlignment="top"
                             width="75%"
@@ -8,7 +8,7 @@
                             progressiveRenderingEnabled="true"
                             showProgressBar="true"
                             progressBarColor="#3C5AFD"
-                            imageUri="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"
+                            src="http://pooyak.com/p/progjpeg/jpegload.cgi?o=1"
                             finalImageSet="onFinalImageSet"
                             intermediateImageSet="onIntermediateImageSet"
                             intermediateImageFailed="onIntermediateImageFailed"

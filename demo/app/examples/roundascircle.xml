@@ -1,6 +1,6 @@
-<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+<img:Img xmlns:img="nativescript-image" 
                     verticalAlignment="center"
                     placeholderImageUri="res://ns_logo"
                     aspectRatio="1.49"
                     roundAsCircle="true"
-                    imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast2.jpg"/>
+                    src="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast2.jpg"/>

@@ -1,13 +1,13 @@
-import { FrescoDrawee } from "nativescript-fresco";
+import { Img } from "nativescript-image";
 
 export function onLoaded(args) {
-    let drawee = args.object as FrescoDrawee;
-    if (drawee.android) {
+    let image = args.object as Img;
+    if (image.android) {
         const matrix: android.graphics.ColorMatrix = new android.graphics.ColorMatrix();
         matrix.setSaturation(0);
         const filter: android.graphics.ColorMatrixColorFilter = new android.graphics.ColorMatrixColorFilter(
             matrix
         );
-        drawee.android.setColorFilter(filter);
+        image.android.setColorFilter(filter);
     }
 }

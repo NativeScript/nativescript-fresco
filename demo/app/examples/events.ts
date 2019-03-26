@@ -1,40 +1,40 @@
-import { FrescoDrawee, FailureEventData, FinalEventData, IntermediateEventData } from "nativescript-fresco";
+import { Img, FailureEventData, FinalEventData, IntermediateEventData } from "nativescript-image";
 import { EventData } from "tns-core-modules/data/observable";
 import { writeToOutputLabel } from "./appLogger";
 
 export function onFinalImageSet(args: FinalEventData) {
-    let drawee = args.object as FrescoDrawee;
+    let image = args.object as Img;
     let message = ">>>>> onFinalImageSet ";
-    writeToOutputLabel(drawee, message);
+    writeToOutputLabel(image, message);
 }
 
 export function onFailure(args: FailureEventData) {
-    let drawee = args.object as FrescoDrawee;
+    let image = args.object as Img;
     let message = ">>>>> onFailure " + (args.error && args.error.getMessage());
-    writeToOutputLabel(drawee, message);
+    writeToOutputLabel(image, message);
 }
 
 export function onIntermediateImageFailed(args: FailureEventData) {
-    let drawee = args.object as FrescoDrawee;
+    let image = args.object as Img;
     let message = ">>>>> onIntermediateImageFailed " + (args.error && args.error.getMessage());
-    writeToOutputLabel(drawee, message);
+    writeToOutputLabel(image, message);
 }
 
 export function onIntermediateImageSet(args: IntermediateEventData) {
-    let drawee = args.object as FrescoDrawee;
+    let image = args.object as Img;
     let message = ">>>>> onIntermediateImageSet ";
-    writeToOutputLabel(drawee, message);
+    writeToOutputLabel(image, message);
 }
 
 export function onSubmit(args: EventData) {
-    let drawee = args.object as FrescoDrawee;
+    let image = args.object as Img;
     let message = ">>>>> onSubmit ";
-    writeToOutputLabel(drawee, message);
+    writeToOutputLabel(image, message);
 }
 
 
 export function onRelease(args: EventData) {
-    let drawee = args.object as FrescoDrawee;
+    let image = args.object as Img;
     let message = ">>>>> onRelease ";
-    writeToOutputLabel(drawee, message);
+    writeToOutputLabel(image, message);
 }

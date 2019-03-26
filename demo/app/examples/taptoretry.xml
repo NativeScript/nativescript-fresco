@@ -1,8 +1,8 @@
-<fresco:FrescoDrawee xmlns:fresco="nativescript-fresco"  
+<img:Img xmlns:img="nativescript-image"  
                         height="200" width="400"
                         placeholderImageUri="res://ns_logo"            
                         failureImageUri="res://ns_logo_black"
                         aspectRatio="1.49"
                         tapToRetryEnabled="true"
                         showProgressBar="true"
-                        imageUri="http://error.jpgerror"/>
+                        src="http://error.jpgerror"/>

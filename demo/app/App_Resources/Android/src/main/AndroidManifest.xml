@@ -22,12 +22,12 @@
 		android:name="com.tns.NativeScriptApplication"
 		android:allowBackup="true"
 		android:icon="@drawable/icon"
-		android:label="NativeScript-Fresco sample"
+		android:label="NativeScript-Image sample"
 		android:theme="@style/AppTheme">
 
 		<activity
 			android:name="com.tns.NativeScriptActivity"
-			android:label="NativeScript-Fresco sample"
+			android:label="NativeScript-Image sample"
 			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:theme="@style/LaunchScreenTheme">
 

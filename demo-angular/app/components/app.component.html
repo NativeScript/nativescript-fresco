@@ -1,7 +1,7 @@
 <ActionBar title="NativeScript-Fresco Angular sample app">
 </ActionBar>
 <GridLayout rows="*, auto, auto">
-    <FrescoDrawee #drawee verticalAlignment="center" placeholderImageUri="res://ns_logo" aspectRatio="2" imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast1.jpg"></FrescoDrawee>
+    <Img #drawee verticalAlignment="center" placeholderImageUri="res://ns_logo" aspectRatio="2" imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast1.jpg" />
     <Button text="Animate to 0" row="1" (tap)="onAnimateToZero($event)"></Button>
     <Button text="Animate to 1" row="2" (tap)="onAnimateToOne($event)"></Button>
 </GridLayout>

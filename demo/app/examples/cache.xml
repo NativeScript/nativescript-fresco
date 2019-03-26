@@ -1,14 +1,14 @@
-<ScrollView xmlns:fresco="nativescript-fresco" >
-    <StackLayout>
-       <fresco:FrescoDrawee id="frescoDrawee"
-                            verticalAlignment="center"
-                            placeholderImageUri="res://ns_logo"
-                            aspectRatio="1.49"
-                            imageUri="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast1.jpg"/>
+<GridLayout xmlns:img="nativescript-image" rows="auto, auto, *">
+    <img:Img id="nsImage"
+                        verticalAlignment="center"
+                        placeholderImageUri="res://ns_logo"
+                        aspectRatio="1.49"
+                        src="https://raw.githubusercontent.com/NativeScript/nativescript-fresco/master/examples-data/breakfast1.jpg"/>
+    <StackLayout row="1">
         <Button text="Check cache" textWrap="true" tap="onCheckCache"/>
         <Button text="Clear cache" textWrap="true" tap="onClearCache"/>
         <Button text="Set image" textWrap="true" tap="onSetImage"/>
         <Button text="Reset image" textWrap="true" tap="onResetImage"/>
-        <Label id="outputLabel" text="output:" textWrap="true"/>
     </StackLayout>
-</ScrollView>
+    <Label id="outputLabel" text="output:" textWrap="true" row="2"/>
+</GridLayout>

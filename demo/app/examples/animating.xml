@@ -1,11 +1,11 @@
 <ScrollView>
     <GridLayout rows="*, auto">
-        <fresco:FrescoDrawee xmlns:fresco="nativescript-fresco" 
+        <img:Img xmlns:img="nativescript-image" 
                             width="119"
                             height="120"
                             placeholderImageUri="res://ns_logo"
                             verticalAlignment="top"
-                            imageUri="res://animation"
+                            src="res://animation"
                             finalImageSet="onFinalImageSet"/>
         <Label id="outputLabel" text="output: " row="1" textWrap="true"/>
     </GridLayout>

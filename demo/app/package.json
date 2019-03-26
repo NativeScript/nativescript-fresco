@@ -1,7 +1,7 @@
 {
   "android": {
     "v8Flags": "--expose_gc",
-    "requireModules": ["nativescript-fresco"],
+    "requireModules": ["nativescript-image"],
     "markingMode": "none"
   },
   "main": "app.js",

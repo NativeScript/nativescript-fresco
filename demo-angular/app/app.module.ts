@@ -5,13 +5,13 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NgModule, OnInit, NO_ERRORS_SCHEMA } from "@angular/core";
 import { AppComponent } from "./components/app.component";
 
-import { TNSFrescoModule } from "nativescript-fresco/angular";
-import * as frescoModule from "nativescript-fresco";
+import { TNSImageModule } from "nativescript-image/angular";
+import * as imageModule from "nativescript-image";
 import * as applicationModule from "tns-core-modules/application";
 
 if (applicationModule.android) {
     applicationModule.on("launch", () => {
-        frescoModule.initialize();
+        imageModule.initialize();
     });
 }
 
@@ -26,7 +26,7 @@ if (applicationModule.android) {
         NativeScriptModule,
         NativeScriptFormsModule,
         NativeScriptRouterModule,
-        TNSFrescoModule
+        TNSImageModule
     ],
     schemas: [
         NO_ERRORS_SCHEMA

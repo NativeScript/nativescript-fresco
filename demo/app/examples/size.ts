@@ -1,5 +1,5 @@
 import { EventData} from "tns-core-modules/data/observable";
-import { FrescoDrawee } from "nativescript-fresco";
+import { Img } from "nativescript-image";
 import { Button } from "tns-core-modules/ui/button";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
 import { Observable } from "tns-core-modules/data/observable";
@@ -22,9 +22,9 @@ let currentIndex = 1;
 export function onChangeTap(args: EventData) {
     let button = args.object as Button;
     let gridLayout = button.parent as GridLayout;
-    let drawee = gridLayout.getViewById("frescoDrawee") as FrescoDrawee;
-    drawee.aspectRatio = images[currentIndex].aspectRation;
-    drawee.imageUri = images[currentIndex].uri;
+    let image = gridLayout.getViewById("nsImage") as Img;
+    image.aspectRatio = images[currentIndex].aspectRation;
+    image.src = images[currentIndex].uri;
 
     currentIndex++;
     if (currentIndex >= images.length) {

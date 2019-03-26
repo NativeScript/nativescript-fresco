@@ -5,6 +5,6 @@
     "android": {
         "v8Flags": "--expose_gc",
         "markingMode": "none",
-        "requireModules": ["nativescript-fresco"]
+        "requireModules": ["nativescript-image"]
     }
 }

@@ -1,10 +1,10 @@
- <lv:RadListView xmlns:lv="nativescript-ui-listview" xmlns:fresco="nativescript-fresco" items="{{ dataItems }}" id="listView">
+ <lv:RadListView xmlns:lv="nativescript-ui-listview" xmlns:img="nativescript-image" items="{{ dataItems }}" id="listView">
     <lv:RadListView.itemTemplate>
         <GridLayout rows="*, auto">
-                <fresco:FrescoDrawee verticalAlignment="top"
+                <img:Img verticalAlignment="top"
                                     aspectRatio="{{ aspectRatio, aspectRatio }}"
                                     backgroundUri="res://ns_logo"
-                                    imageUri="{{ imageUri, imageUri }}"/>
+                                    src="{{ imageUri, imageUri }}"/>
                 <StackLayout backgroundColor="#c9c9c9" verticalAlignment="top" row="1">
                     <Label height="22" text="{{ id, id }}" verticalAlignment="center" horizontalAlignment="center"/>
                 </StackLayout>
