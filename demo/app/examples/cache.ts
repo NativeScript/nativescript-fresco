@@ -14,12 +14,6 @@ export function onCheckCache(args: EventData) {
     let imagePipeLine = imageModel.getImagePipeline();
     let isInCache = imagePipeLine.isInBitmapMemoryCache(imageUri);
     writeToOutputLabel(image, ">>>>> Image is in the Bitmap memory cache - " + isInCache);
-
-    // TODO: Uncomment this after upgrading the native Fresco library above the currently used 0.9.0+ version and make sure its is available in the new version.
-    // var isInDiskCache = imagePipeLine.isInDiskCacheSync(imageUri);
-    // var message = ">>>>> Image is in the disk cache: " + isInDiskCache;
-    // console.log(message);
-    // writeToOutputLabel(image, message);
 }
 
 export function onClearCache(args: EventData) {
