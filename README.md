@@ -1,29 +1,36 @@
-# Welcome to NativeScript Fresco
+# NativeScript Fresco
 
 > A NativeScript Plugin for Android apps.
 
-[![Build Status](https://travis-ci.org/NativeScript/nativescript-fresco.svg?branch=master)](https://travis-ci.org/NativeScript/nativescript-fresco)
-[![npm](https://img.shields.io/npm/v/nativescript-fresco.svg)](https://www.npmjs.com/package/nativescript-fresco)
-[![npm](https://img.shields.io/npm/dt/nativescript-fresco.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-fresco)
-[![Dependency status](https://david-dm.org/NativeScript/nativescript-fresco.svg)](https://david-dm.org/NativeScript/nativescript-fresco)
-[![peerDependencies Status](https://david-dm.org/NativeScript/nativescript-fresco/peer-status.svg)](https://david-dm.org/NativeScript/nativescript-fresco?type=peer)
+---
+**This plugin is deprecated.** Feel free to use the [Image Plugin](https://github.com/Akylas/nativescript-image) for efficiently displaying images on Android and iOS in your NativeScript app. If you already have an app that use the Fresco Plugin, read the [migrate-to-image doc](./MIGRATE-TO-IMAGE.md) for initial guidance.
 
-
+---
 <!-- TOC depthFrom:2 depthTo:3 -->
 
-- [What is `nativescript-fresco`?](#what-is-nativescript-fresco)
-- [How to use `nativescript-fresco`?](#how-to-use-nativescript-fresco)
+- [NativeScript Fresco](#nativescript-fresco)
+  - [What is `nativescript-fresco`?](#what-is-nativescript-fresco)
+  - [How to use `nativescript-fresco`?](#how-to-use-nativescript-fresco)
     - [In vanila NativeScript](#in-vanila-nativescript)
+      - [From npm](#from-npm)
+      - [From local repo?](#from-local-repo)
     - [In NativeScript + Angular 2](#in-nativescript--angular-2)
-- [Examples](#examples)
-- [Features](#features)
+  - [Examples](#examples)
+  - [Migrating from 3.x.x to 4.x.x](#migrating-from-3xx-to-4xx)
+  - [Features](#features)
+    - [Native Fresco library typings](#native-fresco-library-typings)
     - [Basic attributes](#basic-attributes)
     - [Advanced *optional* attributes](#advanced-optional-attributes)
     - [Events](#events)
+      - [Event arguments](#event-arguments)
     - [Cache](#cache)
-- [Sample Screenshots](#sample-screenshots)
-- [Contribute](#contribute)
-- [Get Help](#get-help)
+      - ['Refresh' the 'imageUri'](#refresh-the-imageuri)
+      - [Clear everything from the cache](#clear-everything-from-the-cache)
+      - [Evict all images with a specific URI from the cache](#evict-all-images-with-a-specific-uri-from-the-cache)
+      - [Manually shut down the native Fresco library](#manually-shut-down-the-native-fresco-library)
+  - [Sample Screenshots](#sample-screenshots)
+  - [Contribute](#contribute)
+  - [Get Help](#get-help)
 
 <!-- /TOC -->
 
