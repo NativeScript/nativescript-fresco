@@ -3,7 +3,7 @@
 > A NativeScript Plugin for Android apps.
 
 ---
-**This plugin is deprecated.** Feel free to use the [Image Plugin](https://github.com/Akylas/nativescript-image) for efficiently displaying images on Android and iOS in your NativeScript app. If you already have an app that use the Fresco Plugin, read the [migrate-to-image doc](./MIGRATE-TO-IMAGE.md) for initial guidance.
+**This plugin is deprecated.** Feel free to use the [Image Plugin](https://github.com/Akylas/nativescript-image) for efficiently displaying images on Android and iOS in your NativeScript app. If you already have an app that use the Fresco Plugin, read the [migrate-to-image doc](https://github.com/NativeScript/nativescript-fresco/blob/master/MIGRATE-TO-IMAGE.md) for initial guidance.
 
 ---
 <!-- TOC depthFrom:2 depthTo:3 -->
